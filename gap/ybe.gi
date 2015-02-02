@@ -41,6 +41,24 @@ function(lperms, rperms)
   return YB(List(lperms, x->ListPerm(x, Size(lperms))), List(rperms, y->ListPerm(y, Size(lperms))));
 end);
 
+InstallMethod(Table2YB, "for a square matrix", [ IsList ],
+function(table)
+  local ll, rr, x, y, p, n;
+
+  n := Sqrt(Size(table));
+
+  ll := List([1..n], x->[1..n]);
+  rr := List([1..n], x->[1..n]);
+
+  for p in table do
+    x := p[1][1];
+    y := p[1][2];
+    ll[x][y] := p[2][1];
+    rr[y][x] := p[2][2];
+  od;
+  return YB(ll, rr);
+end);
+
 #### This function returns the table of the solution, which is 
 #### the matrix that in the (i,j)-entry has r(i,j)
 InstallMethod(Table, "for a set theoretic solution", [ IsYB ], 
@@ -72,6 +90,23 @@ function(table)
   od;
   return YB(ll, rr);
 end);
+
+#InstallMethod(AffineYB, "for an integer", [ IsInt ],
+#function(m)
+#  local x, y, ll, rr;
+#
+#  ll := List([1..m], x->[1..m]);
+#  rr := List([1..m], x->[1..m]);
+#
+#  for x in [1..m] do
+#    for y in [1..m] do
+#      ll[x][y] := ((y-1) mod m)+1;
+#      rr[y][x] := ((x+1) mod m)+1;
+#    od;
+#  od;
+#  return YB(l_actions := ll, r_actions := rr);
+#end);
+
 
 ### This function returns true if <obj> is square-free
 ### A solution r is square-free iff r(x,x)=(x,x) for all x
