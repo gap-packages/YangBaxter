@@ -9,10 +9,12 @@ DeclareGlobalFunction("NrSmallCycleSets");
 
 ### Properties of a cycle set
 DeclareProperty("IsSquareFree", IsCycleSet);
+DeclareProperty("DehornoyClass", IsCycleSet);
 DeclareAttribute("IdCycleSet", IsCycleSet);
 
 ### 
 DeclareAttribute("Permutations", IsCycleSet);
+DeclareAttribute("IYBGroup", IsCycleSet);
 DeclareAttribute("CycleSet2YB", IsCycleSet);
 
 ### Dynamical cocycles and extensions
@@ -42,8 +44,16 @@ DeclareOperation("IsCycleSetHomomorphism", [IsList, IsCycleSet, IsCycleSet]);
 DeclareOperation("SubCycleSet", [IsCycleSet, IsList]);
 DeclareOperation("MinimalGenerators", [IsCycleSet]);
 
+### Homology
+DeclareOperation("BoundaryMap", [ IsCycleSet, IsInt ]);
+DeclareOperation("Homology", [ IsCycleSet, IsInt ]);
+DeclareOperation("BettiNumbers", [ IsCycleSet, IsInt ]);
+DeclareOperation("Torsion", [ IsCycleSet, IsInt ]);
+
 ### Cycle sets of size <9
 ReadPackage("yb", "data/CSsmall.g");
 ReadPackage("yb", "data/CSsize6.g");
 ReadPackage("yb", "data/CSsize7.g");
 ReadPackage("yb", "data/CSsize8.g");
+
+

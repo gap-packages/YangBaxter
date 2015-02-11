@@ -579,4 +579,97 @@ function(obj)
   return fail;
 end);
 
+InstallMethod(IYBGroup, "for a cycle set", [ IsCycleSet ],
+function(obj)
+  return Group(Permutations(obj));
+end);
+
+InstallOtherMethod(IsMultipermutation, "for a cycle set", [ IsCycleSet ],
+function(obj)
+  return IsMultipermutation(CycleSet2YB(obj));
+end);
+
+InstallOtherMethod(MultipermutationLevel, "for a cycle set", [ IsCycleSet ],
+function(obj)
+  return MultipermutationLevel(CycleSet2YB(obj));
+end);
+
+#InstallMethod(AffineCycleSetZmodnZ, "for constructing an affine cycle set", [IsInt, ..., ...]
+#function(n, c, d)
+#  local dom, e, x, y, m;
+#
+#  dom := ZmodnZ(n);
+#  c := c*One(dom);
+#  d := d*One(dom);
+#
+#  if Inverse(c)=fail or d^2 <> Zero(dom) then
+#    return fail;
+#  fi;
+#
+#  e := Elements(dom);
+#  m := NullMat(Size(e), Size(e));
+#  for x in e do
+#    for y in e do
+#      m[Position(e, x)][Position(e, y)] := Position(e, -d*Inverse(c)*x+Inverse(c)*y);
+#    od;
+#  od;
+#  return CycleSet(m);
+#end;
+#
+
+#InstallMethod(DehornoyClass, "for a cycle set", [ IsCycleSet ],
+#function(obj)
+#  return fail;
+#end);
+
+### d_n(x_1,...,x_n)
+InstallMethod(BoundaryMap, "for a cycle set and an integer", [ IsCycleSet, IsInt ],
+function(obj, n)
+  local m, i, t, e1, e2, d1, d2;
+
+  m := NullMat((obj!.size)^(n-1), (obj!.size)^n);
+
+  if n<2 then
+    return m;
+  fi;
+
+  e1 := EnumeratorOfTuples([1..obj!.size], n);
+  e2 := EnumeratorOfTuples([1..obj!.size], n-1);
+
+  for t in e1 do
+    for i in [1..n-1] do
+      d1 := ShallowCopy(t);
+      Remove(d1, i);
+      d2 := List(d1, x->obj!.matrix[t[i]][x]);
+      m[Position(e2, d1)][Position(e1, t)] := m[Position(e2, d1)][Position(e1, t)] + (-1)^i;
+      m[Position(e2, d2)][Position(e1, t)] := m[Position(e2, d2)][Position(e1, t)] - (-1)^i;
+    od;
+  od;
+  return m;
+end);
+
+InstallMethod(Homology, "for a cycle set and an integer", [ IsCycleSet, IsInt ],
+function(obj, n)
+  local a, b, smith;
+  a := BoundaryMap(obj, n);
+  b := BoundaryMap(obj, n+1);
+  smith := SmithNormalFormIntegerMat(b);
+  return [obj!.size^n-Rank(a)-Rank(smith), Filtered(DiagonalOfMat(smith), x->x>1)];
+end);
+
+InstallMethod(BettiNumbers, "for a cycle set and an integer", [ IsCycleSet, IsInt ],
+function(obj, n)
+  local a, b;
+  a := BoundaryMap(obj, n);
+  b := BoundaryMap(obj, n+1);
+  return obj!.size^n-Rank(a)-Rank(b);
+end);
+
+InstallMethod(Torsion, "for a cycle set and an integer", [ IsCycleSet, IsInt ],
+function(obj, n)
+  local m;
+  m := BoundaryMap(obj, n+1);
+  return Filtered(DiagonalOfMat(SmithNormalFormIntegerMat(m)), x->x>1);
+end);
+
 
