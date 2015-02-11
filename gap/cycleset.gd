@@ -5,6 +5,7 @@ DeclareGlobalVariable("CycleSetType");
 DeclareOperation("CycleSet", [IsList]);
 DeclareOperation("Permutations2CycleSet", [IsList]);
 DeclareOperation("SmallCycleSet", [IsInt, IsInt]);
+DeclareOperation("AffineCycleSetZmodnZ", [IsInt, IsInt, IsInt]);
 DeclareGlobalFunction("NrSmallCycleSets");
 
 ### Properties of a cycle set

@@ -11,7 +11,7 @@ function(lst)
 
   ### To check bijectivity
   if fail in List([1..size], i->PermList(lst[i])) then
-    return false;
+    return fail;
   fi;
 
   ### To check (xy)(xz)=(yx)(yz)
@@ -594,28 +594,30 @@ function(obj)
   return MultipermutationLevel(CycleSet2YB(obj));
 end);
 
-#InstallMethod(AffineCycleSetZmodnZ, "for constructing an affine cycle set", [IsInt, ..., ...]
-#function(n, c, d)
-#  local dom, e, x, y, m;
-#
-#  dom := ZmodnZ(n);
-#  c := c*One(dom);
-#  d := d*One(dom);
-#
-#  if Inverse(c)=fail or d^2 <> Zero(dom) then
-#    return fail;
-#  fi;
-#
-#  e := Elements(dom);
-#  m := NullMat(Size(e), Size(e));
-#  for x in e do
-#    for y in e do
-#      m[Position(e, x)][Position(e, y)] := Position(e, -d*Inverse(c)*x+Inverse(c)*y);
-#    od;
-#  od;
-#  return CycleSet(m);
-#end;
-#
+### Returns an affine cycle set over ZmodnZ(<n>) - 
+### The action is: x.y=-fg^(-1)x+g^(-1)y
+### I need: <f>^2=0 and <g> invertible
+InstallMethod(AffineCycleSetZmodnZ, "for constructing an affine cycle set", [ IsInt, IsInt, IsInt ], 
+function(n, f, g)
+  local x, y, e, m;
+ 
+  e := Elements(ZmodnZ(n));
+ 
+  f := f*One(ZmodnZ(n));
+  g := g*One(ZmodnZ(n));
+ 
+  if not IsZero(f^2) or Inverse(g)=fail then
+    return fail;
+  fi;
+ 
+  m := NullMat(n,n);
+  for x in e do
+    for y in e do
+      m[Position(e, x)][Position(e, y)] := Position(e, -f*Inverse(g)*x+Inverse(g)*y);
+    od;
+  od;
+  return CycleSet(m);
+end);
 
 #InstallMethod(DehornoyClass, "for a cycle set", [ IsCycleSet ],
 #function(obj)
