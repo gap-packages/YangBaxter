@@ -674,4 +674,18 @@ function(obj, n)
   return Filtered(DiagonalOfMat(SmithNormalFormIntegerMat(m)), x->x>1);
 end);
 
+### returns true if the map f:f(x)=x>x is bijective
+InstallOtherMethod(IsNonDegenerate, "for a cycle set", [ IsCycleSet ],
+function(obj)
+  local i,p;
+  p := [];
+  for i in [1..obj!.size] do
+    p[i] := obj!.matrix[i][i];
+  od;
+  if PermList(p) <> fail then
+    return true;
+  else
+    return false;
+  fi;
+end);
 
