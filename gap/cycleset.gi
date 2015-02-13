@@ -530,7 +530,7 @@ function(obj)
     for k in [1..NrSmallCycleSets(n)] do 
       f := IsomorphismCycleSets(obj, SmallCycleSet(n,k));
       if f <> fail then
-        return f;
+        return [n, k];
       fi;
     od;
   fi;
