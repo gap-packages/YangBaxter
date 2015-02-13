@@ -18,6 +18,7 @@ DeclareAttribute("IdCycleSet", IsCycleSet);
 DeclareAttribute("Permutations", IsCycleSet);
 DeclareAttribute("IYBGroup", IsCycleSet);
 DeclareAttribute("CycleSet2YB", IsCycleSet);
+DeclareOperation("CycleSetCycle", [ IsCycleSet, IsInt, IsInt ]);
 
 ### Dynamical cocycles and extensions
 DeclareGlobalFunction("CycleSetSquareFreeCocycles");

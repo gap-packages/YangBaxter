@@ -719,3 +719,15 @@ function(obj)
   return true;
 end);
 
+# returns the cycle of the action of x containing y
+InstallMethod(CycleSetCycle, "for a cycle set and two integers", [ IsCycleSet, IsInt, IsInt ],
+function(obj, x, y)
+local p;
+  p := Permutations(obj)[x];
+  if not y in MovedPoints(p) then
+    return [y];
+  else
+    return First(Cycles(p, MovedPoints(p)), c->y in c);
+  fi;
+end);
+
