@@ -40,6 +40,7 @@ DeclareOperation("IsQuotient", [IsCycleSet, IsCycleSet]);
 DeclareOperation("IsCovering", [IsCycleSet, IsCycleSet]);
 DeclareOperation("IsomorphismCycleSets", [IsCycleSet, IsCycleSet]);
 DeclareOperation("IsCycleSetHomomorphism", [IsList, IsCycleSet, IsCycleSet]);
+DeclareOperation("Dual", [IsCycleSet]);
 
 ### Sub objects
 DeclareOperation("SubCycleSet", [IsCycleSet, IsList]);

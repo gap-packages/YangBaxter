@@ -689,3 +689,10 @@ function(obj)
   fi;
 end);
 
+### This function returns the dual of a finite cycle set
+### By definition, it is the cycle set (X,o) where 
+### (x.y)o(y.x)=x and (xoy).(yox)=x for all x,y
+InstallMethod(Dual, "for a cycle set", [ IsCycleSet ],
+function(obj)
+  return Permutations2CycleSet(List(LeftPermutations(CycleSet2YB(obj)), Inverse));
+end);
