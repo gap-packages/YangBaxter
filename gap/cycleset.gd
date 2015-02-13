@@ -11,6 +11,7 @@ DeclareGlobalFunction("NrSmallCycleSets");
 ### Properties of a cycle set
 DeclareProperty("IsSquareFree", IsCycleSet);
 DeclareProperty("DehornoyClass", IsCycleSet);
+DeclareProperty("IsBalanced", IsCycleSet);
 DeclareAttribute("IdCycleSet", IsCycleSet);
 
 ### 

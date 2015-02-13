@@ -696,3 +696,26 @@ InstallMethod(Dual, "for a cycle set", [ IsCycleSet ],
 function(obj)
   return Permutations2CycleSet(List(LeftPermutations(CycleSet2YB(obj)), Inverse));
 end);
+
+### A cycle set is balanced if x.y=(y*x).y for all x,y
+InstallMethod(IsBalanced, "for a cycle set", [ IsCycleSet ],
+function(obj)
+  local lperms, x, y;
+
+  lperms := NullMat(obj!.size, obj!.size);
+  for x in [1..obj!.size] do
+    for y in [1..obj!.size] do
+      lperms[x][y] := obj!.matrix[x^Inverse(PermList(obj!.matrix[y]))][y];
+    od;
+  od;
+
+  for x in [1..obj!.size] do
+    for y in [1..obj!.size] do
+      if obj!.matrix[x][y] <> lperms[x][y] then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
+
