@@ -448,3 +448,21 @@ function(obj)
   return f/rels;
 end);
 
+### This function returns the trivial solution over [1..size]
+### r is trivial <=> r(x,y)=(y,x)
+InstallMethod(TrivialSolution, "for an integer", [ IsInt ],
+function(n)
+  return YB(List([1..n], x->[1..n]), List([1..n], x->[1..n]));
+end);
+
+### This function returns Lyubashenko solution over [1..size] with respect to <f> and <g>
+### r is defined as r(x,y)=(f(y),g(x)), where f and g are permutations 
+InstallMethod(LyubashenkoSolution, "for an integer and two permutations", [ IsInt, IsPerm, IsPerm ],
+function(size, f, g)
+  if f*g=g*f then
+    return YB(List([1..size], x->ListPerm(g, size)), List([1..size], x->ListPerm(f,size)));
+  else
+    return fail;
+  fi;
+end);
+

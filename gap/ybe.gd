@@ -7,6 +7,8 @@ DeclareOperation("Permutations2YB", [IsList, IsList]);
 DeclareOperation("TableYB", [IsYB, IsInt, IsInt]);
 DeclareOperation("IsInvariant", [IsYB, IsList]);
 DeclareOperation("RestrictedSolution", [IsYB, IsList]);
+DeclareOperation("TrivialSolution", [IsInt]);
+DeclareOperation("LyubashenkoSolution", [IsInt, IsPerm, IsPerm]);
 
 ### YB
 DeclareProperty("IsSquareFree", IsYB);
