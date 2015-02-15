@@ -33,5 +33,6 @@ DeclareAttribute("RightPermutations", IsYB);
 DeclareAttribute("Retract", IsYB);
 DeclareAttribute("MultipermutationLevel", IsYB);
 DeclareAttribute("YB2CycleSet", IsYB);
+DeclareAttribute("StructureGroup", IsYB);
 
 

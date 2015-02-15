@@ -426,3 +426,25 @@ function(obj, subset)
   return YB(ll, rr);
 end);
 
+### This function returns the structure group of <r>
+### Generators: x_1,x_2,...,x_n 
+### Relations: x_ix_j=x_kx_l whenever r(i,j)=(k,l)
+InstallMethod(StructureGroup, "for a solution", [ IsYB ], 
+function(obj)
+  local n, f, x, y, rels, i, j;
+
+  n := Size(obj);
+  f := FreeGroup(n);
+  x := GeneratorsOfGroup(f); 
+
+  rels := [];
+
+  for i in [1..n] do
+    for j in [1..n] do
+      y := YB_xy(obj, i, j);
+      Add(rels, x[i]*x[j]*Inverse(x[y[1]]*x[y[2]]));
+    od;
+  od;
+  return f/rels;
+end);
+
