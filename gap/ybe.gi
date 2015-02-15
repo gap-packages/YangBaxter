@@ -406,23 +406,23 @@ end);
 
 ### This function returns the restricted solution with respect to <subset>
 ### If <subset> is not invariant, the function returns fail
-#InstallMethod(RestrictedSolution, "for a solution and a list", [ IsYB, IsList ],
-#function(obj, subset)
-#  local x, y, z, ll, rr;
-#
-#  if not IsInvariant(obj, subset) then
-#    return fail;
-#  fi;
-#
-#  ll := List([1..Size(subset)], x->[1..Size(subset)]);
-#  rr := List([1..Size(subset)], x->[1..Size(subset)]);
-#
-#  for x in [1..Size(subset)] do
-#    for y in [1..Size(subset)] do
-#      ll[x][y] := Position(subset, L(r, subset[x], subset[y]));
-#      rr[y][x] := Position(subset, R(r, subset[y], subset[x]));
-#    od;
-#  od;
-#  return rec(size := Size(subset), l_actions := ll, r_actions := rr);
-#end);
+InstallMethod(RestrictedSolution, "for a solution and a list", [ IsYB, IsList ],
+function(obj, subset)
+  local x, y, z, ll, rr;
+
+  if not IsInvariant(obj, subset) then
+    return fail;
+  fi;
+
+  ll := List([1..Size(subset)], x->[1..Size(subset)]);
+  rr := List([1..Size(subset)], x->[1..Size(subset)]);
+
+  for x in [1..Size(subset)] do
+    for y in [1..Size(subset)] do
+      ll[x][y] := Position(subset, subset[y]^LeftPermutations(obj)[subset[x]]);
+      rr[y][x] := Position(subset, subset[x]^RightPermutations(obj)[subset[y]]);
+    od;
+  od;
+  return YB(ll, rr);
+end);
 

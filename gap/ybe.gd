@@ -6,6 +6,7 @@ DeclareOperation("Table2YB", [IsList]);
 DeclareOperation("Permutations2YB", [IsList, IsList]);
 DeclareOperation("TableYB", [IsYB, IsInt, IsInt]);
 DeclareOperation("IsInvariant", [IsYB, IsList]);
+DeclareOperation("RestrictedSolution", [IsYB, IsList]);
 
 ### YB
 DeclareProperty("IsSquareFree", IsYB);
