@@ -9,6 +9,7 @@ DeclareOperation("IsInvariant", [IsYB, IsList]);
 DeclareOperation("RestrictedSolution", [IsYB, IsList]);
 DeclareOperation("TrivialSolution", [IsInt]);
 DeclareOperation("LyubashenkoSolution", [IsInt, IsPerm, IsPerm]);
+DeclareOperation("CartesianProduct", [IsYB, IsYB]);
 
 ### YB
 DeclareProperty("IsSquareFree", IsYB);

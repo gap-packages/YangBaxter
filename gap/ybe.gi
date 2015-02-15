@@ -41,6 +41,8 @@ function(lperms, rperms)
   return YB(List(lperms, x->ListPerm(x, Size(lperms))), List(rperms, y->ListPerm(y, Size(lperms))));
 end);
 
+### This function returns the set-theoretic solution
+### corresponding to the matrix <table> such that the (i,j) entry is r(i,j)
 InstallMethod(Table2YB, "for a square matrix", [ IsList ],
 function(table)
   local ll, rr, x, y, p, n;
@@ -72,41 +74,6 @@ function(obj)
   od;
   return m;
 end);
-
-### This function returns the set-theoretic solution
-### corresponding to the matrix <table> such that the (i,j) entry is r(i,j)
-InstallMethod(Table2YB, "for a set theoretic solution", [ IsList ], 
-function(table)
-  local ll, rr, x, y;
-
-  ll := List([1..Size(table)], x->[1..Size(table)]);
-  rr := List([1..Size(table)], x->[1..Size(table)]);
-
-  for x in [1..Size(table)] do
-    for y in [1..Size(table)] do
-      ll[x][y] := table[x][y][1];
-      rr[y][x] := table[x][y][2];
-    od;
-  od;
-  return YB(ll, rr);
-end);
-
-#InstallMethod(AffineYB, "for an integer", [ IsInt ],
-#function(m)
-#  local x, y, ll, rr;
-#
-#  ll := List([1..m], x->[1..m]);
-#  rr := List([1..m], x->[1..m]);
-#
-#  for x in [1..m] do
-#    for y in [1..m] do
-#      ll[x][y] := ((y-1) mod m)+1;
-#      rr[y][x] := ((x+1) mod m)+1;
-#    od;
-#  od;
-#  return YB(l_actions := ll, r_actions := rr);
-#end);
-
 
 ### This function returns true if <obj> is square-free
 ### A solution r is square-free iff r(x,x)=(x,x) for all x
@@ -464,5 +431,21 @@ function(size, f, g)
   else
     return fail;
   fi;
+end);
+
+### This function returns the cartesian product of the solutions <r> and <s>
+### This means: r((a,b),(c,d))=(r(a,c),r(b,d))
+InstallMethod(CartesianProduct, "for two solutions", [ IsYB, IsYB ],
+function(r, s)
+  local c, l, u, v, w; 
+  l := [];
+  c := Cartesian([1..Size(r)], [1..Size(s)]);
+  for u in c do
+    for v in c do
+      w := [YB_xy(r, u[1], v[1]),  YB_xy(s, u[2], v[2])];
+      Add(l, [[Position(c, u), Position(c, v)], [Position(c, [w[1][1], w[2][1]]), Position(c, [w[1][2], w[2][2]])]]);
+    od;
+  od;
+  return Table2YB(l);
 end);
 
