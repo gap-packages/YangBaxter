@@ -5,6 +5,7 @@ DeclareOperation("YB", [IsList, IsList]);
 DeclareOperation("Table2YB", [IsList]);
 DeclareOperation("Permutations2YB", [IsList, IsList]);
 DeclareOperation("TableYB", [IsYB, IsInt, IsInt]);
+DeclareOperation("IsInvariant", [IsYB, IsList]);
 
 ### YB
 DeclareProperty("IsSquareFree", IsYB);
@@ -16,7 +17,7 @@ DeclareProperty("IsMultipermutation", IsYB);
 DeclareProperty("IsInvolutive", IsYB);
 #DeclareProperty("IsSymmetric", IsYB);
 
-DeclareGlobalFunction("XY");
+DeclareGlobalFunction("YB_xy");
 DeclareGlobalFunction("SmallSolution");
 DeclareGlobalFunction("NrSmallSolutions");
 

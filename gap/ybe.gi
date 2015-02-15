@@ -233,7 +233,7 @@ InstallMethod(YB2CycleSet,
   return CycleSet(m);
 end);
 
-InstallGlobalFunction(XY,
+InstallGlobalFunction(YB_xy,
   "for a set-theoretical solution",
   function(obj, x, y)
   return [obj!.l_actions[x][y], obj!.r_actions[y][x]];
@@ -263,7 +263,7 @@ InstallMethod(Retract,
 
   for x in [1..s] do
     for y in [1..s] do
-      z := XY(obj, Representative(c[x]), Representative(c[y]));
+      z := YB_xy(obj, Representative(c[x]), Representative(c[y]));
       ll[x][y] := Position(c, First(c, u->z[1] in u));
       rr[y][x] := Position(c, First(c, u->z[2] in u));
     od;
@@ -387,3 +387,42 @@ function(l_actions, r_actions)
   od;
   return true;
 end);
+
+### This function returns true if <subset> is r-invariant
+### A subset Y of X is r-invariant if r(YxY) is included in YxY
+InstallMethod(IsInvariant, "for a solution and a list", [IsYB, IsList], 
+function(obj, subset)
+  local x, y, z;
+  for x in subset do
+    for y in subset do
+      z := YB_xy(obj, x, y);
+      if not z[1] in subset or not z[2] in subset then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
+
+### This function returns the restricted solution with respect to <subset>
+### If <subset> is not invariant, the function returns fail
+#InstallMethod(RestrictedSolution, "for a solution and a list", [ IsYB, IsList ],
+#function(obj, subset)
+#  local x, y, z, ll, rr;
+#
+#  if not IsInvariant(obj, subset) then
+#    return fail;
+#  fi;
+#
+#  ll := List([1..Size(subset)], x->[1..Size(subset)]);
+#  rr := List([1..Size(subset)], x->[1..Size(subset)]);
+#
+#  for x in [1..Size(subset)] do
+#    for y in [1..Size(subset)] do
+#      ll[x][y] := Position(subset, L(r, subset[x], subset[y]));
+#      rr[y][x] := Position(subset, R(r, subset[y], subset[x]));
+#    od;
+#  od;
+#  return rec(size := Size(subset), l_actions := ll, r_actions := rr);
+#end);
+
