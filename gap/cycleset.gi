@@ -81,7 +81,7 @@ function(n, i)
   fi;
 end);
 
-### This function returns the number of cycle sets <n>
+### This function returns the number of cycle sets of size <n>
 InstallGlobalFunction(NrSmallCycleSets, 
 function(n)
   local data;
