@@ -1,4 +1,3 @@
-gap> MakeList([55]);
 ## size 55
 BRACES[55] := rec( total := -1, implemented := 2, size := 55, brace := [] );
 BRACES[55].brace[1] := rec ( size := 55, perms :=
@@ -315,5 +314,4 @@ BRACES[55].brace[2] := rec ( size := 55, perms :=
       ( 1, 5, 4, 3, 2)( 6,15,13,11, 9, 7,16,14,12,10, 8) ] ]
 );
 
-2
-gap> LogTo();
+
