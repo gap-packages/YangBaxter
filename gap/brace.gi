@@ -37,55 +37,41 @@ function(obj)
 end);
 
 InstallMethod(SmallBrace, "for a list of integers", [IsInt, IsInt],
-function(n, i)
-  local m, data;
-  data := [
-    Bsize1, 
-    Bsize2, 
-    Bsize3, 
-    Bsize4, 
-    Bsize5, 
-    Bsize6, 
-    Bsize7, 
-    Bsize8,
-    Bsize9, 
-    Bsize10, 
-    Bsize11, 
-    Bsize12,
-    Bsize13,
-    Bsize14,
-    Bsize15
-  ];
-  if n in [1..15] then
-    m := data[n][i];
-    return Brace(m);
+function(size, number)
+  local known, implemented, dir, filename;
+  known := IsBound(BRACES[size]);
+  if not known then
+    dir := DirectoriesPackageLibrary("YB", "data")[1];
+    filename := Filename(dir, Concatenation("bsize", String(size), ".g"));
+    if IsReadableFile(filename) then
+      Read(filename);
+    else
+      Error("Braces of size ", size, " are not implemented");
+    fi;
+  fi;
+  if number <= BRACES[size].implemented then
+    return Brace(BRACES[size].brace[number].perms);
   else
-    return fail;
+    Error("there are just ", NrSmallBraces(size), " braces of size ", size);
   fi;
 end);
 
 ### This function returns the number of braces of size <n>
 InstallGlobalFunction(NrSmallBraces, 
-function(n)
-  local data;
-  data := [
-    Bsize1, 
-    Bsize2, 
-    Bsize3, 
-    Bsize4, 
-    Bsize5, 
-    Bsize6, 
-    Bsize7, 
-    Bsize8,
-    Bsize9, 
-    Bsize10, 
-    Bsize11, 
-    Bsize12,
-    Bsize13,
-    Bsize14,
-    Bsize15
-  ];
-  return Size(data[n]);
+function(size)
+  local dir, filename;
+  if size <= 15 then
+    return BRACES[size].implemented;
+  else
+    dir := DirectoriesPackageLibrary("YB", "data")[1];
+    filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
+    if IsReadableFile(filename) then
+      Read(filename);
+      return BRACES[size].implemented;
+    else
+      Error("Braces of size ", size, " are not implemented");
+    fi;
+  fi;
 end);
 
 InstallMethod(BraceSum, "for a brace and two permutations", [IsBrace, IsPerm, IsPerm],

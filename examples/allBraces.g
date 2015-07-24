@@ -36,7 +36,7 @@ BraceSum := function(brace, a, b)
   return a*b;
 end;
 
-### This function returns a*b, where <a> and <b> are elements of the abelian group of the <brace>
+## This function returns a*b, where <a> and <b> are elements of the abelian group of the <brace>
 BraceProduct := function(brace, a, b)
   return PreImageElm(brace.p, Image(brace.p, b)*Image(brace.p, a));
 end;
@@ -69,6 +69,36 @@ BracesWithAbelianGroup := function(ab)
   return l;
 end;
 
+BracesWithAbelianGroup2 := function(ab)
+  local gr, aut, hol, c, s, p, l, f, used;
+
+  aut := AutomorphismGroup(ab);
+  hol := SemidirectProduct(aut, ab);
+
+  l := [];
+  used := [];
+  
+  for gr in AllGroups(Size, Size(ab), IsSolvable, true) do
+    f := List(IsomorphicSubgroups(hol, gr), x->Image(x));
+
+    for s in f do
+
+      if ForAny(used, x->IsConjugate(Image(Embedding(hol, 1)), s, x)) then
+        continue;
+      fi;
+     
+      Add(used, s);
+      p := ConstructBrace(hol, s);
+
+      if not p = fail then
+        Add(l, p);
+      fi;
+    od;
+  od;
+  return l;
+end;
+
+
 AllBraces := function(size)
   local x, l, ab;
 
@@ -98,17 +128,50 @@ check := function(brace)
 end;
 
 MakeList := function(sizes)
-  local n, braces, x;
+  local k, n, l, x;
+
   for n in sizes do
-    Print("Bsize", n, " := [\n");
-    for braces in AllBraces(n) do
-      Print("  [ ");
-      for x in braces do
-        Print(x, ",");
-      od;
-      Print("],\n");
+    l := AllBraces(n);
+    Print("## size ", n, "\n");
+    Print("BRACES[", n, "] := rec( total := -1, implemented := ", Size(l), ", size := ", n, ", brace := [] );\n");
+    for k in [1..Size(l)] do
+      Print("BRACES[", n, "].brace[", k, "] := rec ( size := ", n, ", perms :=\n", l[k] );
+      Print("\n);\n\n");
     od;
-    Print("];\n");
   od;
+  return Size(l);
 end;
 
+IsYB := function(group)
+  local f, s, ab, hol, aut, used;
+  
+  if not IsSolvable(group) then
+    return false;
+  fi;
+
+  for ab in AllGroups(Size, Size(group), IsAbelian, true) do
+
+    aut := AutomorphismGroup(ab);
+    hol := SemidirectProduct(aut, ab);
+
+    used := [];
+
+    f := IsomorphicSubgroups(hol, group);
+
+    if f <> [] then
+      for s in List(f, x->Image(x)) do
+
+        if ForAny(used, x->IsConjugate(Image(Embedding(hol, 1)), s, x)) then
+          continue;
+        fi;
+     
+        Add(used, s);
+
+        if ForAll(Image(Embedding(hol, 2)), a->Number(s, x->x*a in Image(Embedding(hol, 1)))=1) then
+          return true;
+        fi;
+      od;
+    fi;
+  od;
+  return false;
+end;
