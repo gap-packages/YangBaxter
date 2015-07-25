@@ -1,4 +1,3 @@
-gap> MakeList([93]);
 ## size 93
 BRACES[93] := rec( total := -1, implemented := 2, size := 93, brace := [] );
 BRACES[93].brace[1] := rec ( size := 93, perms :=
@@ -1009,5 +1008,4 @@ BRACES[93].brace[2] := rec ( size := 93, perms :=
         (59,61,90)(60,80,73)(62,76,75) ] ]
 );
 
-2
-gap> LogTo();;LogTo("../data/Bsize94.g");
+
