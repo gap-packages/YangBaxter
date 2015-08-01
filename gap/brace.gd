@@ -18,6 +18,7 @@ DeclareAttribute("Brace2CycleSet", IsBrace);
 DeclareAttribute("Socle", IsBrace);
 DeclareAttribute("BraceAdditiveGroup", IsBrace);
 DeclareAttribute("BraceMultiplicativeGroup", IsBrace);
+DeclareAttribute("IsTwoSidedBrace", IsBrace);
 
 ### Braces of size <15
 ReadPackage("yb", "data/Bsmall.g");

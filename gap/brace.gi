@@ -36,6 +36,24 @@ function(obj)
   Print( "Brace of size ", obj!.size);
 end);
 
+### This function returns true is the <brace> is a two-sided brace
+### This means: (a+b)c+c=ac+bc
+### Equivalent condition: l(a+b)(c)+c=l(a)(c)+l(b)(c), where l(a)(b)=ab-a
+InstallMethod(IsTwoSidedBrace, "for a brace", [IsBrace], 
+function(obj)
+  local a, b, c;
+  for a in obj!.ab do
+    for b in obj!.ab do
+      for c in obj!.ab do
+        if BraceSum(obj, c^LambdaMap(obj, BraceSum(obj, a, b)), c) <> BraceSum(obj, c^LambdaMap(obj, a), c^LambdaMap(obj, b)) then
+          return false;
+        fi;
+      od;
+    od;
+  od;
+  return true;
+end);
+
 InstallMethod(SmallBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
   local known, implemented, dir, filename;
