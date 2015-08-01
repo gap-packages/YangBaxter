@@ -10,6 +10,7 @@ DeclareOperation("AdditiveInverse", [IsBrace, IsPerm]);
 DeclareOperation("MultiplicativeInverse", [IsBrace, IsPerm]);
 DeclareOperation("LambdaMap", [IsBrace, IsPerm]);
 DeclareOperation("InverseLambdaMap", [IsBrace, IsPerm]);
+DeclareOperation("IsomorphismBraces", [IsBrace, IsBrace]);
 
 DeclareGlobalFunction("NrSmallBraces");
 

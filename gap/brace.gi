@@ -134,21 +134,35 @@ function(obj, a)
   return InverseGeneralMapping(LambdaMap, obj, a);
 end);
 
-
+### This function returns the cycle set associated with the brace <obj>
 InstallMethod(Brace2CycleSet, "for braces", [ IsBrace ],
 function(obj)
-  local x, y, m, e, l;
-
-  m := NullMat(Size(obj), Size(obj));
-  l := Enumerator(obj!.ab);
-
+  local p, x, y, e, xy;
+  e := Enumerator(obj!.ab);
+  p := NullMat(Size(obj), Size(obj));
   for x in obj!.ab do
     for y in obj!.ab do
-### WRONG
-      m[Position(l, Image(LambdaMap(obj, x), y))][Position(l, x)] := Position(l, Image(InverseLambdaMap(obj, Image(LambdaMap(obj, x), y), x)));
+      xy := BraceProduct(obj, x, y);
+      p[Position(e, y)][Position(e, x)] := Position(e, BraceProduct(obj, MultiplicativeInverse(obj, BraceSum(obj, xy, Inverse(x))), xy));
     od;
   od;
-  return CycleSet(m);
+  return Permutations2CycleSet(List(p, x->Inverse(PermList(x))));
 end);
 
+### This function returns an isomorphism between the braces
+### <brace1> and <brace2> 
+### If <brace1> and <brace2> are not isomorphic the function returns fail
+InstallMethod(IsomorphismBraces, "for braces", [ IsBrace, IsBrace ],
+function(brace1, brace2)
+  local f, ab1, ab2;
 
+  ab1 :=  BraceAdditiveGroup(brace1);
+  ab2 :=  BraceAdditiveGroup(brace2);
+
+  for f in Filtered(AllHomomorphisms(ab1, ab2), x->IsInjective(x)) do
+    if ForAll(Cartesian(AsList(ab1), AsList(ab1)), x->BraceProduct(brace1, x[1], x[2])^f = BraceProduct(brace2, x[1]^f, x[2]^f)) then
+      return f;
+    fi;
+  od;
+  return fail;
+end);
