@@ -10,6 +10,7 @@ DeclareOperation("RestrictedSolution", [IsYB, IsList]);
 DeclareOperation("TrivialSolution", [IsInt]);
 DeclareOperation("LyubashenkoSolution", [IsInt, IsPerm, IsPerm]);
 DeclareOperation("CartesianProduct", [IsYB, IsYB]);
+DeclareOperation("DerivedRack", [IsYB]);
 
 ### YB
 DeclareProperty("IsSquareFree", IsYB);

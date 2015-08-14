@@ -449,3 +449,24 @@ function(r, s)
   return Table2YB(l);
 end);
 
+### This function returns the matrix of the rack corresponding to the derived solution of a solution 
+InstallMethod(DerivedRack, "for a solution", [ IsYB ],
+function(obj)
+  local x, y, z, m;
+
+  if not IsNonDegenerate(obj) then
+    return fail;
+  fi;
+
+  m := NullMat(Size(obj), Size(obj));
+  for x in [1..Size(obj)] do
+    for y in [1..Size(obj)] do
+      # I have two operations. Let S(x,y)=(g_x(y),f_y(x)) and 
+      # xoy=g_y(x), y*x=Inverse(f)_y(x). 
+      # Then the derived rack structure is given by x>y=f_x((y*x)oy)
+      z := y^LeftPermutations(obj)[x^Inverse(RightPermutations(obj)[y])];    
+      m[x][y] := z^RightPermutations(obj)[x];
+    od;
+  od;
+  return m;
+end);
