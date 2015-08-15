@@ -12,6 +12,8 @@ DeclareOperation("LambdaMap", [IsBrace, IsPerm]);
 DeclareOperation("InverseLambdaMap", [IsBrace, IsPerm]);
 DeclareOperation("IsomorphismBraces", [IsBrace, IsBrace]);
 
+DeclareOperation("Wada", [IsGroup]);
+
 DeclareGlobalFunction("NrSmallBraces");
 
 DeclareAttribute("Brace2CycleSet", IsBrace);
