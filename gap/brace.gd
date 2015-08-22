@@ -4,6 +4,7 @@ DeclareGlobalVariable("BraceType");
 ### To create/recognize braces 
 DeclareOperation("Brace", [IsList]);
 DeclareOperation("SmallBrace", [IsInt, IsInt]);
+DeclareOperation("IsBraceImplemented", [IsInt]);
 DeclareOperation("BraceSum", [IsBrace, IsPerm, IsPerm]);
 DeclareOperation("BraceProduct", [IsBrace, IsPerm, IsPerm]);
 DeclareOperation("AdditiveInverse", [IsBrace, IsPerm]);

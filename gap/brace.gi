@@ -74,6 +74,21 @@ function(size, number)
   fi;
 end);
 
+InstallMethod(IsBraceImplemented, "for an integer", [IsInt],
+function(size)
+  local known, implemented, dir, filename;
+  known := IsBound(BRACES[size]);
+  if not known then
+    dir := DirectoriesPackageLibrary("YB", "data")[1];
+    filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
+    if IsReadableFile(filename) then
+      return true;
+    else
+      return false;
+    fi;
+  fi;
+end);
+
 ### This function returns the number of braces of size <n>
 InstallGlobalFunction(NrSmallBraces, 
 function(size)

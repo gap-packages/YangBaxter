@@ -1,3 +1,6 @@
+### This function returns true if <obj> is a left brace
+### The left brace condition is 
+### a(b+c)+a=ab+aca for all a,b,c 
 InstallGlobalFunction(IsLeftBrace, function(obj)
   local a, b, c;
   for a in obj!.ab do
