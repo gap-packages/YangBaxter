@@ -60,7 +60,7 @@ function(size, number)
   known := IsBound(BRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YB", "data")[1];
-    filename := Filename(dir, Concatenation("bsize", String(size), ".g"));
+    filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
     else
@@ -106,7 +106,7 @@ function(obj, a, b)
   if not a in obj!.ab or not b in obj!.ab then
     return fail;
   else
-    return PreImageElm(obj!.p, Image(obj!.p, b)*Image(obj!.p, a));
+    return PreImageElm(obj!.p, Image(obj!.p, a)*Image(obj!.p, b));
   fi;
 end);
 
