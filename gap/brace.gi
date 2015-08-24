@@ -87,6 +87,7 @@ function(size)
       return false;
     fi;
   fi;
+  return true;
 end);
 
 ### This function returns the number of braces of size <n>
