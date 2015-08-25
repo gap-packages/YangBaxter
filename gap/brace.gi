@@ -135,17 +135,17 @@ function(obj)
       Add(l, g);
     fi;
   od;
-  return Subgroup(obj!.gr, l);
+  return Subgroup(obj!.gr, SmallGeneratingSet(Subgroup(obj!.gr, l)));
 end);
 
 InstallMethod(BraceAdditiveGroup, "for a brace", [ IsBrace ], 
 function(obj)
-  return obj!.ab;
+  return Group(SmallGeneratingSet(obj!.ab));
 end);
 
 InstallMethod(BraceMultiplicativeGroup, "for a brace", [ IsBrace ], 
 function(obj)
-  return obj!.gr;
+  return Group(SmallGeneratingSet(obj!.gr));
 end);
 
 InstallMethod(AdditiveInverse, "for a brace and a permutation", [IsBrace, IsPerm], 
