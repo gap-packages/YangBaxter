@@ -25,10 +25,39 @@ end);
 InstallMethod(Rack, "for a matrix", [ IsMatrix ], 
 function(matrix)
   if IsRackMatrix(matrix) = true then
-    return rec(matrix := matrix, size := Size(matrix));
+    return Objectify(RackType, rec(matrix := matrix, size := Size(matrix)));
   else
     Error("This is not a rack");
     return fail;
   fi;
+end);
+
+InstallMethod(ViewObj,
+  "for a rack",
+  [ IsRack ],
+  function(obj)
+  Print("A rack of size ", obj!.size);
+end);
+
+InstallMethod(PrintObj,
+  "for a rack", 
+  [ IsRack ],
+  function(obj)
+  Print( "Rack( ", obj!.size, ", ", obj!.matrix, " )");
+end);
+
+InstallOtherMethod(Size, "for a rack", [ IsRack ],
+function(obj)
+  return obj!.size;
+end);
+
+InstallMethod(Permutations, "for a rack", [ IsRack ],
+function(obj)
+  return List([1..Size(obj)], x->PermList(obj!.matrix[x]));
+end);
+
+InstallMethod(Rack2YB, "for a rack", [ IsRack ], 
+function(obj)
+  return YB(obj!.matrix, List([1..Size(obj)], x->[1..Size(obj)]));
 end);
 
