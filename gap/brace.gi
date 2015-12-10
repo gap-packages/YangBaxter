@@ -165,7 +165,7 @@ end);
 
 InstallMethod(InverseLambdaMap, "for a brace and a permutation", [IsBrace, IsPerm], 
 function(obj, a)
-  return InverseGeneralMapping(LambdaMap, obj, a);
+  return InverseGeneralMapping(LambdaMap( obj, a));
 end);
 
 ### This function returns the cycle set associated with the brace <obj>
