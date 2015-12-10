@@ -468,5 +468,5 @@ function(obj)
       m[x][y] := z^RightPermutations(obj)[x];
     od;
   od;
-  return m;
+  return Rack(m);
 end);
