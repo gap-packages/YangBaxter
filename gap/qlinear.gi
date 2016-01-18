@@ -63,3 +63,29 @@ function(size)
     fi;
   fi;
 end);
+
+InstallOtherMethod(Socle, "for a quasilinear cycle set", [ IsQLCycleSet ],
+function(obj)
+  local a, b, l, group, one;
+  l := [];
+  group := Group(obj!.list);
+  one := One(group);
+  for a in obj!.list do
+    if ForAll(group, b->obj!.matrix[Position(obj!.list, a)][Position(obj!.list, b)] = obj!.matrix[Position(obj!.list, one)][Position(obj!.list, b)]) then
+      Add(l, a);
+    fi;
+  od;
+  return l;
+end);
+
+InstallOtherMethod(UnderlyingGroup, "for a quasilinear cycle set", [ IsQLCycleSet ],
+function(obj)
+  return Group(obj!.list);
+end);
+
+InstallOtherMethod(UnderlyingCycleSet, "for a quasilinear cycle set", [ IsQLCycleSet ],
+function(obj)
+  return CycleSet(obj!.matrix);
+end);
+
+
