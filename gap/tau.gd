@@ -1,0 +1,14 @@
+DeclareCategory("IsTauGroup", IsAttributeStoringRep);
+DeclareGlobalVariable("TauGroupType");
+
+DeclareOperation("TauGroup", [IsList, IsPerm]);
+DeclareOperation("SmallTauGroup", [IsInt, IsInt]);
+DeclareOperation("IsTauGroupImplemented", [IsInt]);
+DeclareOperation("IsomorphismTauGroups", [IsTauGroup, IsTauGroup]);
+
+DeclareAttribute("UnderlyingGroup", IsTauGroup);
+DeclareAttribute("UnderlyingCycleSet", IsTauGroup);
+
+DeclareGlobalFunction("NrSmallTauGroups");
+
+ReadPackage("yb", "data/TGsmall.g");
