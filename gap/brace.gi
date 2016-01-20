@@ -201,19 +201,19 @@ function(brace1, brace2)
   return fail;
 end);
 
-InstallMethod(Wada, "for a group", [ IsGroup ],
-function(group)
-  local x, y, e, lperms, rperms;
-
-  e := Elements(group);
-  lperms := NullMat(Size(group), Size(group));
-  rperms := NullMat(Size(group), Size(group));
-  for x in group do
-    for y in group do
-      lperms[Position(e, x)][Position(e, y)] := Position(e, x*Inverse(y)*Inverse(x));
-      rperms[Position(e, y)][Position(e, x)] := Position(e, x*y^2);
+### This function returns the linear cycle set associated with the brace <obj>
+InstallMethod(Brace2LinearCycleSet, "for braces", [ IsBrace ],
+function(obj)
+  local p, x, y, e, xy;
+  e := Enumerator(obj!.ab);
+  p := NullMat(Size(obj), Size(obj));
+  for x in obj!.ab do
+    for y in obj!.ab do
+      xy := BraceProduct(obj, x, y);
+      p[Position(e, y)][Position(e, x)] := Position(e, BraceProduct(obj, MultiplicativeInverse(obj, BraceSum(obj, xy, Inverse(x))), xy));
     od;
   od;
-  return YB(lperms, rperms);
+  return LinearCycleSet(Elements(e), p);##matrix := Permutations2CycleSet(List(p, x->Inverse(PermList(x)))));
 end);
+
 

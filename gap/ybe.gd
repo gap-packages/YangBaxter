@@ -39,4 +39,4 @@ DeclareAttribute("MultipermutationLevel", IsYB);
 DeclareAttribute("YB2CycleSet", IsYB);
 DeclareAttribute("StructureGroup", IsYB);
 
-
+DeclareOperation("Wada", [IsGroup]);

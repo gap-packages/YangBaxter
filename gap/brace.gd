@@ -13,11 +13,11 @@ DeclareOperation("LambdaMap", [IsBrace, IsPerm]);
 DeclareOperation("InverseLambdaMap", [IsBrace, IsPerm]);
 DeclareOperation("IsomorphismBraces", [IsBrace, IsBrace]);
 
-DeclareOperation("Wada", [IsGroup]);
 
 DeclareGlobalFunction("NrSmallBraces");
 
 DeclareAttribute("Brace2CycleSet", IsBrace);
+DeclareAttribute("Brace2LinearCycleSet", IsBrace);
 DeclareAttribute("Socle", IsBrace);
 DeclareAttribute("BraceAdditiveGroup", IsBrace);
 DeclareAttribute("BraceMultiplicativeGroup", IsBrace);

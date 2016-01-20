@@ -470,3 +470,20 @@ function(obj)
   od;
   return Rack(m);
 end);
+
+InstallMethod(Wada, "for a group", [ IsGroup ],
+function(group)
+  local x, y, e, lperms, rperms;
+
+  e := Elements(group);
+  lperms := NullMat(Size(group), Size(group));
+  rperms := NullMat(Size(group), Size(group));
+  for x in group do
+    for y in group do
+      lperms[Position(e, x)][Position(e, y)] := Position(e, x*Inverse(y)*Inverse(x));
+      rperms[Position(e, y)][Position(e, x)] := Position(e, x*y^2);
+    od;
+  od;
+  return YB(lperms, rperms);
+end);
+
