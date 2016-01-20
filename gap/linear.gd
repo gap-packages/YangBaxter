@@ -6,4 +6,9 @@ DeclareOperation("LinearCycleSet", [IsList, IsMatrix]);
 DeclareOperation("SmallLinearCycleSet", [IsInt, IsInt]);
 DeclareOperation("IsLinearCycleSetImplemented", [IsInt]);
 
+DeclareAttribute("UnderlyingGroup", IsLinearCycleSet);
+DeclareAttribute("UnderlyingCycleSet", IsLinearCycleSet);
+
+DeclareGlobalFunction("NrSmallLinearCycleSets");
+
 
