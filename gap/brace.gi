@@ -213,7 +213,7 @@ function(obj)
       p[Position(e, y)][Position(e, x)] := Position(e, BraceProduct(obj, MultiplicativeInverse(obj, BraceSum(obj, xy, Inverse(x))), xy));
     od;
   od;
-  return LinearCycleSet(Elements(e), p);##matrix := Permutations2CycleSet(List(p, x->Inverse(PermList(x)))));
+  return LinearCycleSet(Elements(e), p);
 end);
 
 
