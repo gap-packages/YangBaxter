@@ -94,7 +94,7 @@ function(obj, i, j)
 end);
 
 InstallMethod(QLCycleSetInverse, "for a quasilinear cycle set and an element", [ IsQLCycleSet, IsInt ],
-function(obj, i, j)
+function(obj, i)
   return Position(obj!.list, Inverse(obj!.list[i]));
 end);
 
