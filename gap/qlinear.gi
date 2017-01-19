@@ -88,4 +88,10 @@ function(obj)
   return CycleSet(obj!.matrix);
 end);
 
+InstallMethod(QLCycleSetSum, "for a quasilinear cycle set and two elements", [ IsQLCycleSet, IsInt, IsInt ],
+function(obj, i, j)
+  return Position(obj!.list, obj!.list[i]*obj!.list[j]);
+end);
+
+
 
