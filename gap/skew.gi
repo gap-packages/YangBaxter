@@ -1,4 +1,4 @@
-### braces
+### skew braces
 BindGlobal("SkewBraceFamily", NewFamily("SkewBraceFamily"));
 InstallValue(SkewBraceType, NewType(SkewBraceFamily, IsSkewBrace));
 
@@ -107,113 +107,128 @@ function(size)
     fi;
   fi;
 end);
-#
-#InstallMethod(BraceSum, "for a brace and two permutations", [IsBrace, IsPerm, IsPerm],
-#function(obj, a, b)
-#  if not a in obj!.additive or not b in obj!.additive then
-#    return fail;
-#  else
-#    return a*b;
-#  fi;
-#end);
-#
-#InstallMethod(BraceProduct, "for a brace and two permutations", [IsBrace, IsPerm, IsPerm],
-#function(obj, a, b)
-#  if not a in obj!.additive or not b in obj!.additive then
-#    return fail;
-#  else
-#    return PreImageElm(obj!.p, Image(obj!.p, a)*Image(obj!.p, b));
-#  fi;
-#end);
-#
-#InstallMethod(Socle, "for braces", [ IsBrace ],
-#function(obj)
-#  local l, g;
-#  l := [];
-#  for g in obj!.multiplicative do
-#    if ForAll(obj!.additive, x->PreImageElm(obj!.p, g)*x = BraceProduct(obj, PreImageElm(obj!.p, g), x)) then
-#      Add(l, g);
-#    fi;
-#  od;
-#  return Subgroup(obj!.multiplicative, SmallGeneratingSet(Subgroup(obj!.multiplicative, l)));
-#end);
-#
-#InstallMethod(BraceAdditiveGroup, "for a brace", [ IsBrace ], 
-#function(obj)
-#  return Group(SmallGeneratingSet(obj!.additive));
-#end);
-#
-#InstallMethod(BraceMultiplicativeGroup, "for a brace", [ IsBrace ], 
-#function(obj)
-#  return Group(SmallGeneratingSet(obj!.multiplicative));
-#end);
-#
-#InstallMethod(AdditiveInverse, "for a brace and a permutation", [IsBrace, IsPerm], 
-#function(obj, a)
-#  return Inverse(a);
-#end);
-#
-#InstallMethod(MultiplicativeInverse, "for a brace and a permutation", [IsBrace, IsPerm], 
-#function(obj, a)
-#  return PreImageElm(obj!.p, Inverse(Image(obj!.p, a)));
-#end);
-#
-#InstallMethod(LambdaMap, "for a brace and a permutation", [IsBrace, IsPerm], 
-#function(obj, a)
-#  return MappingByFunction(obj!.additive, obj!.additive, b->BraceProduct(obj, a, b)*Inverse(a));
-#end);
-#
-#InstallMethod(InverseLambdaMap, "for a brace and a permutation", [IsBrace, IsPerm], 
-#function(obj, a)
-#  return InverseGeneralMapping(LambdaMap( obj, a));
-#end);
-#
-#### This function returns the cycle set associated with the brace <obj>
-#InstallMethod(Brace2CycleSet, "for braces", [ IsBrace ],
-#function(obj)
-#  local p, x, y, e, xy;
-#  e := Enumerator(obj!.additive);
-#  p := NullMat(Size(obj), Size(obj));
-#  for x in obj!.additive do
-#    for y in obj!.additive do
-#      xy := BraceProduct(obj, x, y);
-#      p[Position(e, y)][Position(e, x)] := Position(e, BraceProduct(obj, MultiplicativeInverse(obj, BraceSum(obj, xy, Inverse(x))), xy));
-#    od;
-#  od;
-#  return Permutations2CycleSet(List(p, x->Inverse(PermList(x))));
-#end);
-#
-#### This function returns an isomorphism between the braces
-#### <brace1> and <brace2> 
-#### If <brace1> and <brace2> are not isomorphic the function returns fail
-#InstallMethod(IsomorphismBraces, "for braces", [ IsBrace, IsBrace ],
-#function(brace1, brace2)
-#  local f, additive, additive;
-#
-#  additive :=  BraceAdditiveGroup(brace1);
-#  additive :=  BraceAdditiveGroup(brace2);
-#
-#  for f in Filtered(AllHomomorphisms(additive, additive), x->IsInjective(x)) do
-#    if ForAll(Cartesian(AsList(additive), AsList(additive)), x->BraceProduct(brace1, x[1], x[2])^f = BraceProduct(brace2, x[1]^f, x[2]^f)) then
-#      return f;
-#    fi;
-#  od;
-#  return fail;
-#end);
-#
-#### This function returns the linear cycle set associated with the brace <obj>
-#InstallMethod(Brace2LinearCycleSet, "for braces", [ IsBrace ],
-#function(obj)
-#  local p, x, y, e, xy;
-#  e := Enumerator(obj!.additive);
-#  p := NullMat(Size(obj), Size(obj));
-#  for x in obj!.additive do
-#    for y in obj!.additive do
-#      xy := BraceProduct(obj, x, y);
-#      p[Position(e, y)][Position(e, x)] := Position(e, BraceProduct(obj, MultiplicativeInverse(obj, BraceSum(obj, xy, Inverse(x))), xy));
-#    od;
-#  od;
-#  return LinearCycleSet(Elements(e), p);
-#end);
-#
+
+### Return the additive group of a skew brace represented by as a permutation group (by left? multiplication)
+InstallMethod(SkewBraceAGroup, "for a skew brace", [IsSkewBrace],
+function(obj)
+  return obj!.additive;
+end);
+
+InstallMethod(SkewBraceMGroup, "for a skew brace", [IsSkewBrace],
+function(obj)
+  return obj!.multiplicative;
+end);
+
+InstallMethod(SkewBraceAdd, "for a skew brace and two permutations", [IsSkewBrace, IsPerm, IsPerm],
+function(obj, a, b)
+  if not a in obj!.additive or not b in obj!.additive then
+    return fail;
+  else
+    return a*b;
+  fi;
+end);
+
+InstallMethod(SkewBraceMul, "for a skew brace and two permutations", [IsSkewBrace, IsPerm, IsPerm],
+function(obj, a, b)
+  if not a in obj!.additive or not b in obj!.additive then
+    return fail;
+  else
+    return PreImageElm(obj!.p, Image(obj!.p, a)*Image(obj!.p, b));
+  fi;
+end);
+
+InstallMethod(SkewBraceMInverse, "for a skew brace and a permutation", [IsSkewBrace, IsPerm], 
+function(obj, a)
+  return PreImageElm(obj!.p, Inverse(Image(obj!.p, a)));
+end);
+
+InstallMethod(SkewBraceAInverse, "for a skew brace and a permutation", [IsSkewBrace, IsPerm], 
+function(obj, a)
+  return Inverse(a);
+end);
+
+InstallMethod(SkewBraceLambda, "for a skew brace and two permutations", [ IsSkewBrace, IsPerm, IsPerm],
+function(obj, a, b)
+  return SkewBraceAdd(obj, SkewBraceAInverse(obj, a), SkewBraceMul(obj, a, b));
+end);
+
+InstallMethod(SkewBraceLambdaAsPermutation, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ],
+function(obj, a)
+  local p, l, x;
+
+  l := AsList(SkewBraceAGroup(obj));
+  p := [1..Size(obj)];
+
+  for x in [1..Size(obj)] do
+    p[x] := Position(l, SkewBraceLambda(obj, a, l[x]));
+  od;
+
+  return PermList(p);
+end);
+
+InstallMethod(SkewBrace2Solution, "for a skew brace", [ IsSkewBrace ], 
+function(obj)
+  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
+
+  add := Elements(SkewBraceAGroup(obj));
+  set := [1..Size(obj)];
+
+  lperms := [];
+  rperms := [];
+
+  for a in add do
+
+    tmp_l := [];
+    tmp_r := [];
+
+    for b in add do
+      x := SkewBraceAdd(obj, SkewBraceMul(obj, a, b), SkewBraceAInverse(obj, a));
+      u := Position(add, x);
+      v := Position(add, SkewBraceMul(obj, SkewBraceMul(obj, SkewBraceMInverse(obj, x), a), b));
+      Add(tmp_l, u); 
+      Add(tmp_r, v); 
+    od;
+    Add(lperms, tmp_l);
+    Add(rperms, tmp_r);
+  od;
+
+  lperms := List(lperms, PermList);
+  rperms := List(TransposedMat(rperms), PermList);
+
+  return Permutations2YB(lperms, rperms); 
+end);
+
+InstallMethod(IsClassical, "for a skew brace", [ IsSkewBrace ], 
+function(obj)
+  return IsAbelian(SkewBraceAGroup(obj));
+end);
+
+InstallMethod(Is2Sided, "for a skew brace", [ IsSkewBrace ], 
+function(obj)
+  local a, b, c;
+  for a in SkewBraceAGroup(obj) do
+    for b in SkewBraceAGroup(obj) do
+      for c in SkewBraceAGroup(obj) do
+        if SkewBraceMul(obj, SkewBraceAdd(obj, a, b), c) <> SkewBraceAdd(obj, SkewBraceMul(obj, a, c), SkewBraceAdd(obj, SkewBraceAInverse(obj, c), SkewBraceMul(obj, b, c))) then
+          #Display([a,b,c]);
+          return false;
+        fi;
+      od;
+    od;
+  od;
+  return true;
+end);
+
+### Returns the value of <a> under the image of the 
+### bijective 1-cocycle from the multiplicative group into the 
+### additive group of 
+InstallMethod(Bijective1Cocycle, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ], 
+function(obj, a)
+  return PreImage(obj!.p, a);
+end);
+
+InstallMethod(InverseBijective1Cocycle, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ], 
+function(obj, a)
+  return Image(obj!.p, a);
+end);
 

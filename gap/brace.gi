@@ -15,8 +15,8 @@ function(p)
 
   return Objectify(BraceType, rec(
     size := Size(ab),
-    ab := ab,
-    gr := gr, 
+    additive := ab,
+    multiplicative := gr, 
     p := MappingByFunction(ab, gr, x->First(p, y->IsOne(y[1]*Inverse(x)))[2]),
   ));
 end);
@@ -42,9 +42,9 @@ end);
 InstallMethod(IsTwoSidedBrace, "for a brace", [IsBrace], 
 function(obj)
   local a, b, c;
-  for a in obj!.ab do
-    for b in obj!.ab do
-      for c in obj!.ab do
+  for a in obj!.additive do
+    for b in obj!.additive do
+      for c in obj!.additive do
         if BraceSum(obj, c^LambdaMap(obj, BraceSum(obj, a, b)), c) <> BraceSum(obj, c^LambdaMap(obj, a), c^LambdaMap(obj, b)) then
           return false;
         fi;
@@ -110,7 +110,7 @@ end);
 
 InstallMethod(BraceSum, "for a brace and two permutations", [IsBrace, IsPerm, IsPerm],
 function(obj, a, b)
-  if not a in obj!.ab or not b in obj!.ab then
+  if not a in obj!.additive or not b in obj!.additive then
     return fail;
   else
     return a*b;
@@ -119,7 +119,7 @@ end);
 
 InstallMethod(BraceProduct, "for a brace and two permutations", [IsBrace, IsPerm, IsPerm],
 function(obj, a, b)
-  if not a in obj!.ab or not b in obj!.ab then
+  if not a in obj!.additive or not b in obj!.additive then
     return fail;
   else
     return PreImageElm(obj!.p, Image(obj!.p, a)*Image(obj!.p, b));
@@ -130,22 +130,22 @@ InstallMethod(Socle, "for braces", [ IsBrace ],
 function(obj)
   local l, g;
   l := [];
-  for g in obj!.gr do
-    if ForAll(obj!.ab, x->PreImageElm(obj!.p, g)*x = BraceProduct(obj, PreImageElm(obj!.p, g), x)) then
+  for g in obj!.multiplicative do
+    if ForAll(obj!.additive, x->PreImageElm(obj!.p, g)*x = BraceProduct(obj, PreImageElm(obj!.p, g), x)) then
       Add(l, g);
     fi;
   od;
-  return Subgroup(obj!.gr, SmallGeneratingSet(Subgroup(obj!.gr, l)));
+  return Subgroup(obj!.multiplicative, SmallGeneratingSet(Subgroup(obj!.multiplicative, l)));
 end);
 
 InstallMethod(BraceAdditiveGroup, "for a brace", [ IsBrace ], 
 function(obj)
-  return Group(SmallGeneratingSet(obj!.ab));
+  return Group(SmallGeneratingSet(obj!.additive));
 end);
 
 InstallMethod(BraceMultiplicativeGroup, "for a brace", [ IsBrace ], 
 function(obj)
-  return Group(SmallGeneratingSet(obj!.gr));
+  return Group(SmallGeneratingSet(obj!.multiplicative));
 end);
 
 InstallMethod(AdditiveInverse, "for a brace and a permutation", [IsBrace, IsPerm], 
@@ -160,7 +160,7 @@ end);
 
 InstallMethod(LambdaMap, "for a brace and a permutation", [IsBrace, IsPerm], 
 function(obj, a)
-  return MappingByFunction(obj!.ab, obj!.ab, b->BraceProduct(obj, a, b)*Inverse(a));
+  return MappingByFunction(obj!.additive, obj!.additive, b->BraceProduct(obj, a, b)*Inverse(a));
 end);
 
 InstallMethod(InverseLambdaMap, "for a brace and a permutation", [IsBrace, IsPerm], 
@@ -172,10 +172,10 @@ end);
 InstallMethod(Brace2CycleSet, "for braces", [ IsBrace ],
 function(obj)
   local p, x, y, e, xy;
-  e := Enumerator(obj!.ab);
+  e := Enumerator(obj!.additive);
   p := NullMat(Size(obj), Size(obj));
-  for x in obj!.ab do
-    for y in obj!.ab do
+  for x in obj!.additive do
+    for y in obj!.additive do
       xy := BraceProduct(obj, x, y);
       p[Position(e, y)][Position(e, x)] := Position(e, BraceProduct(obj, MultiplicativeInverse(obj, BraceSum(obj, xy, Inverse(x))), xy));
     od;
@@ -205,10 +205,10 @@ end);
 InstallMethod(Brace2LinearCycleSet, "for braces", [ IsBrace ],
 function(obj)
   local p, x, y, e, xy;
-  e := Enumerator(obj!.ab);
+  e := Enumerator(obj!.additive);
   p := NullMat(Size(obj), Size(obj));
-  for x in obj!.ab do
-    for y in obj!.ab do
+  for x in obj!.additive do
+    for y in obj!.additive do
       xy := BraceProduct(obj, x, y);
       p[Position(e, y)][Position(e, x)] := Position(e, BraceProduct(obj, MultiplicativeInverse(obj, BraceSum(obj, xy, Inverse(x))), xy));
     od;

@@ -7,6 +7,7 @@ ReadPackage("yb", "gap/checking.gd");
 ReadPackage("yb", "gap/tau.gd");
 ReadPackage("yb", "gap/qlinear.gd");
 ReadPackage("yb", "gap/linear.gd");
+ReadPackage("yb", "gap/skew.gd");
 
 
 

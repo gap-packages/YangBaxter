@@ -21,6 +21,7 @@ DeclareProperty("IsRetractable", IsYB);
 DeclareProperty("IsMultipermutation", IsYB);
 DeclareProperty("IsInvolutive", IsYB);
 #DeclareProperty("IsSymmetric", IsYB);
+DeclareProperty("IsBiquandle", IsYB);
 
 DeclareGlobalFunction("YB_xy");
 DeclareGlobalFunction("SmallSolution");
@@ -29,7 +30,7 @@ DeclareGlobalFunction("NrSmallSolutions");
 DeclareGlobalFunction("YB_ij");
 DeclareGlobalFunction("YB_IsBraidedSet");
 
-DeclareAttribute("Table", IsYB);
+DeclareAttribute("DisplayTable", IsYB);
 DeclareAttribute("YBPermutationGroup", IsYB);
 DeclareAttribute("IYBGroup", IsYB);
 DeclareAttribute("LeftPermutations", IsYB);
@@ -38,5 +39,8 @@ DeclareAttribute("Retract", IsYB);
 DeclareAttribute("MultipermutationLevel", IsYB);
 DeclareAttribute("YB2CycleSet", IsYB);
 DeclareAttribute("StructureGroup", IsYB);
+DeclareAttribute("YB2Permutation", IsYB);
+DeclareAttribute("YBRackL", IsYB);
+DeclareAttribute("YBRackR", IsYB);
 
 DeclareOperation("Wada", [IsGroup]);

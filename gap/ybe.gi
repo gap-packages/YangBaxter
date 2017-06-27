@@ -63,7 +63,7 @@ end);
 
 #### This function returns the table of the solution, which is 
 #### the matrix that in the (i,j)-entry has r(i,j)
-InstallMethod(Table, "for a set theoretic solution", [ IsYB ], 
+InstallMethod(DisplayTable, "for a set theoretic solution", [ IsYB ], 
 function(obj)
   local m, x, y;
   m := NullMat(Size(obj), Size(obj));
@@ -487,3 +487,74 @@ function(group)
   return YB(lperms, rperms);
 end);
 
+InstallMethod(IsBiquandle, "for a solution", [ IsYB ],
+function(obj)
+  local x, y;
+  for x in [1..Size(obj)] do
+    if not ForAny([1..Size(obj)], y->YB_xy(obj, x, y)=[x,y]) then
+      return false;
+    fi;
+  od;
+  return true;
+end);
+
+InstallMethod(YB2Permutation, "for a solution", [ IsYB ],
+function(obj)
+  local perm, x, y, u, v;
+
+  perm := [1..Size(obj)^2];
+
+  for x in [1..Size(obj)] do
+    for y in [1..Size(obj)] do
+      u := YB_xy(obj, x, y)[1];
+      v := YB_xy(obj, x, y)[2];
+      perm[x+Size(obj)*y] := u+Size(obj)*v;
+    od;
+  od;
+  return PermList(perm);
+end);
+
+# j>i = s_y t_(s_x^(-1)(y))(x)
+lrack := function(lperms, rperms)
+  local i,j,m,n;
+  n := Size(lperms);
+  m := NullMat(n,n);
+  for i in [1..n] do
+    for j in [1..n] do
+      m[j][i] := (i^lperms[j^Inverse(rperms[i])])^rperms[j];
+    od;
+  od;
+  return Rack(m);
+end;
+
+InstallMethod(YBRackR, "for a solution", [ IsYB ], 
+function(obj)
+  local i,j,m,n,lperms,rperms;
+  lperms := List(obj!.l_actions, PermList);
+  rperms := List(obj!.r_actions, PermList);
+  n := Size(lperms);
+  m := NullMat(n,n);
+  for i in [1..n] do
+    for j in [1..n] do
+      m[j][i] := (i^rperms[j^Inverse(lperms[i])])^lperms[j];
+    od;
+  od;
+  return Rack(m);
+end);
+
+# j>i = s_y t_(s_x^(-1)(y))(x)
+# it follows the notation of my paper with Lebed
+InstallMethod(YBRackL, "for a solution", [ IsYB ], 
+function(obj)
+  local i,j,m,n,lperms,rperms;
+  lperms := List(obj!.l_actions, PermList);
+  rperms := List(obj!.r_actions, PermList);
+  n := Size(lperms);
+  m := NullMat(n,n);
+  for i in [1..n] do
+    for j in [1..n] do
+      m[j][i] := (i^lperms[j^Inverse(rperms[i])])^rperms[j];
+    od;
+  od;
+  return Rack(m);
+end);
