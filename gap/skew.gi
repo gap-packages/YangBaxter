@@ -56,7 +56,7 @@ end);
 #
 InstallMethod(SmallSkewBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local known, implemented, dir, filename;
+  local obj, known, implemented, dir, filename;
   known := IsBound(NCBRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -68,7 +68,9 @@ function(size, number)
     fi;
   fi;
   if number <= NCBRACES[size].implemented then
-    return SkewBrace(NCBRACES[size].brace[number].perms);
+    obj := SkewBrace(NCBRACES[size].brace[number].perms);
+    Unbind(NCBRACES[size]);
+    return obj;
   else
     Error("there are just ", NrSmallSkewBraces(size), " braces of size ", size);
   fi;
