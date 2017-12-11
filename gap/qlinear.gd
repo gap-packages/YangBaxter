@@ -12,6 +12,6 @@ DeclareAttribute("UnderlyingCycleSet", IsQLCycleSet);
 
 DeclareGlobalFunction("NrSmallQLCycleSets");
 
-ReadPackage("yb", "data/QLsmall.g");
+ReadPackage("yangbaxter", "data/QLsmall.g");
 
 
