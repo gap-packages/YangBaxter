@@ -11,4 +11,4 @@ DeclareAttribute("UnderlyingCycleSet", IsTauGroup);
 
 DeclareGlobalFunction("NrSmallTauGroups");
 
-ReadPackage("yb", "data/TGsmall.g");
+ReadPackage("yangbaxter", "data/TGsmall.g");

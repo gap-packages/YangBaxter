@@ -1,13 +1,13 @@
-ReadPackage("yb", "gap/ybe.gi" );
-ReadPackage("yb", "gap/cycleset.gi" );
-ReadPackage("yb", "gap/utils.gi" );
-ReadPackage("yb", "gap/brace.gi" );
-ReadPackage("yb", "gap/rack.gi" );
-ReadPackage("yb", "gap/checking.gi" );
-ReadPackage("yb", "gap/tau.gi" );
-ReadPackage("yb", "gap/qlinear.gi" );
-ReadPackage("yb", "gap/linear.gi" );
-ReadPackage("yb", "gap/skew.gi" );
+ReadPackage("yangbaxter", "gap/ybe.gi" );
+ReadPackage("yangbaxter", "gap/cycleset.gi" );
+ReadPackage("yangbaxter", "gap/utils.gi" );
+ReadPackage("yangbaxter", "gap/brace.gi" );
+ReadPackage("yangbaxter", "gap/rack.gi" );
+ReadPackage("yangbaxter", "gap/checking.gi" );
+ReadPackage("yangbaxter", "gap/tau.gi" );
+ReadPackage("yangbaxter", "gap/qlinear.gi" );
+ReadPackage("yangbaxter", "gap/linear.gi" );
+ReadPackage("yangbaxter", "gap/skew.gi" );
 
 
 

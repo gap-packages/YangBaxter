@@ -55,9 +55,9 @@ DeclareOperation("BettiNumbers", [ IsCycleSet, IsInt ]);
 DeclareOperation("Torsion", [ IsCycleSet, IsInt ]);
 
 ### Cycle sets of size <9
-ReadPackage("yb", "data/CSsmall.g");
-ReadPackage("yb", "data/CSsize6.g");
-ReadPackage("yb", "data/CSsize7.g");
-ReadPackage("yb", "data/CSsize8.g");
+ReadPackage("yangbaxter", "data/CSsmall.g");
+ReadPackage("yangbaxter", "data/CSsize6.g");
+ReadPackage("yangbaxter", "data/CSsize7.g");
+ReadPackage("yangbaxter", "data/CSsize8.g");
 
 
