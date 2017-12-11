@@ -1,6 +1,6 @@
 SetPackageInfo( rec(
-PackageName := "yb",
-Subtitle := "YB",
+PackageName := "YangBaxter",
+Subtitle := "YangBaxter",
 Version := "0",
 Date := "00/00/0000",
 ArchiveURL := "http://",

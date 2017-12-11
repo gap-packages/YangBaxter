@@ -9,7 +9,7 @@ function(p)
   additive := Group(List(p, x->x[1]));
   multiplicative := Group(List(p, x->x[2]));
 
-  ### <additive> is (a permutation representation of) the abelian group of the brace
+  ### <additive> is (a permutation representation of) the additive group of the brace
   ### <multiplicative> is the multiplicative group of the brace
   ### <p> is the bijection from <additive> to <multiplicative> 
 
@@ -59,7 +59,7 @@ function(size, number)
   local known, implemented, dir, filename;
   known := IsBound(NCBRACES[size]);
   if not known then
-    dir := DirectoriesPackageLibrary("YB", "data")[1];
+    dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
     filename := Filename(dir, Concatenation("SBsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
@@ -79,7 +79,7 @@ function(size)
   local known, implemented, dir, filename;
   known := IsBound(NCBRACES[size]);
   if not known then
-    dir := DirectoriesPackageLibrary("YB", "data")[1];
+    dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
     filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
     if IsReadableFile(filename) then
       return true;
@@ -97,7 +97,7 @@ function(size)
   if size <= 15 then
     return NCBRACES[size].implemented;
   else
-    dir := DirectoriesPackageLibrary("YB", "data")[1];
+    dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
     filename := Filename(dir, Concatenation("SBsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
