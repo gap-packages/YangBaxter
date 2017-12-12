@@ -59,7 +59,14 @@ gap> for k in [1..NrSmallSkewBraces(n)] do
 >   Print("Compatibility fails for n=", n, " and k=", k, "\n");
 > fi;
 > od;
+
+# Two-sided skew braces
+gap> Number([1..NrSmallSkewBraces(8)], k->IsTwoSidedSkewBrace(SmallSkewBrace(8,k)));
+42
+gap> NrSmallSkewBraces(8);
+47
 gap> STOP_TEST( "skew.tst", 1 );
+
 
 #############################################################################
 ##
