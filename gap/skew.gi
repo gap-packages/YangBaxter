@@ -132,6 +132,7 @@ function(size, number)
   fi;
   if number <= NCBRACES[size].implemented then
     obj := SkewBrace(NCBRACES[size].brace[number].perms);
+    SetIdSkewBrace( obj, [ size, number ] );
     if size > 15 then
       Unbind(NCBRACES[size]);
     fi;
