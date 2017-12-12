@@ -132,7 +132,9 @@ function(size, number)
   fi;
   if number <= NCBRACES[size].implemented then
     obj := SkewBrace(NCBRACES[size].brace[number].perms);
-    Unbind(NCBRACES[size]);
+    if size > 15 then
+      Unbind(NCBRACES[size]);
+    fi;
     return obj;
   else
     Error("there are just ", NrSmallSkewBraces(size), " braces of size ", size);

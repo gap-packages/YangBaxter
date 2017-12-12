@@ -5,6 +5,7 @@
 gap> START_TEST("skew.tst");
 gap> List([2..10],NrSmallSkewBraces);
 [ 1, 1, 4, 1, 6, 1, 47, 4, 6 ]
+
 gap> br:=SmallSkewBrace(8,1);;
 gap> Size(br);
 8
@@ -17,13 +18,13 @@ gap> SkewBraceMGroup(br);
 
 # Check brace compatibility condition
 gap> check_compatibility := function(obj)
-> local add,a,b,c;
+> local a,b,c;
 > for a in AsList(obj) do
 >   for b in AsList(obj) do
 >     for c in AsList(obj) do
 >       if a*(b+c) <> (a*b)-a+(a*c) then
-> 	  return false;
-> 	fi;
+>         return false;
+>       fi;
 >     od;
 >   od;
 > od;
@@ -38,7 +39,7 @@ gap> for k in [1..NrSmallSkewBraces(n)] do
 >   Print("Compatibility fails for n=", n, " and k=", k, "\n");
 > fi;
 > od;
-gap> STOP_TEST( "braces.tst", 1 );
+gap> STOP_TEST( "skew.tst", 1 );
 
 #############################################################################
 ##
