@@ -12,6 +12,9 @@ BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsS
 DeclareOperation("SkewBrace", [IsList]);
 DeclareOperation("SmallSkewBrace", [IsInt, IsInt]);
 DeclareAttribute("IdSkewBrace", IsSkewBrace);
+DeclareAttribute("ZeroImmutable", IsSkewBrace);
+DeclareAttribute("OneImmutable", IsSkewBrace);
+DeclareAttribute("Representative", IsSkewBrace);
 DeclareOperation("IsSkewBraceImplemented", [IsInt]);
 DeclareOperation("SkewBraceAdd", [IsSkewBrace, IsPerm, IsPerm]);
 DeclareOperation("SkewBraceMul", [IsSkewBrace, IsPerm, IsPerm]);
