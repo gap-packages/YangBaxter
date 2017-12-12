@@ -1,8 +1,12 @@
 DeclareCategory("IsSkewBrace", IsAttributeStoringRep);
-DeclareGlobalVariable("SkewBraceType");
+DeclareCategory("IsSkewBraceElm", IsMultiplicativeElementWithInverse and IsAdditiveElementWithInverse);
+DeclareCategoryCollections("IsSkewBraceElm");
 
-#DeclareAttribute( "SkewBraceFamily", IsFamily );
-#DeclareAttribute( "SkewBraceObject", IsPerm );
+DeclareRepresentation( "IsSkewBraceElmRep", IsPositionalObjectRep, [ 1 ]);
+
+BindGlobal("SkewBraceElmFamily", NewFamily("SkewBraceElmFamily", IsSkewBraceElm));
+BindGlobal("SkewBraceElmType", NewType(SkewBraceElmFamily, IsSkewBraceElm));
+BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsSkewBrace and IsAttributeStoringRep));
 
 ### To create/recognize braces 
 DeclareOperation("SkewBrace", [IsList]);
@@ -28,6 +32,7 @@ DeclareGlobalFunction("NrSmallSkewBraces");
 #DeclareAttribute("Socle", IsBrace);
 DeclareAttribute("SkewBraceAGroup", IsSkewBrace);
 DeclareAttribute("SkewBraceMGroup", IsSkewBrace);
+DeclareAttribute("AsList", IsSkewBrace);
 DeclareAttribute("Is2Sided", IsSkewBrace);
 DeclareAttribute("IsClassical", IsSkewBrace);
 DeclareAttribute("SkewBrace2Solution", IsSkewBrace);
