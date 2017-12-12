@@ -41,6 +41,7 @@ DeclareAttribute("Is2Sided", IsSkewBrace);
 DeclareAttribute("IsClassical", IsSkewBrace);
 DeclareAttribute("SkewBrace2Solution", IsSkewBrace);
 DeclareProperty("IsTwoSidedSkewBrace", IsSkewBrace);
+DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 
 ### Braces of size <15
 ReadPackage("yangbaxter", "data/SBsize2.g");

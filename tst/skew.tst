@@ -67,6 +67,9 @@ gap> NrSmallSkewBraces(8);
 47
 gap> STOP_TEST( "skew.tst", 1 );
 
+# Classical braces
+gap> Number([1..NrSmallSkewBraces(8)], k->IsClassicalSkewBrace(SmallSkewBrace(8,k)));
+27
 
 #############################################################################
 ##

@@ -272,28 +272,12 @@ end);
 #
 #  return Permutations2YB(lperms, rperms); 
 #end);
-#
-#InstallMethod(IsClassical, "for a skew brace", [ IsSkewBrace ], 
-#function(obj)
-#  return IsAbelian(SkewBraceAGroup(obj));
-#end);
-#
-#InstallMethod(Is2Sided, "for a skew brace", [ IsSkewBrace ], 
-#function(obj)
-#  local a, b, c;
-#  for a in SkewBraceAGroup(obj) do
-#    for b in SkewBraceAGroup(obj) do
-#      for c in SkewBraceAGroup(obj) do
-#        if SkewBraceMul(obj, SkewBraceAdd(obj, a, b), c) <> SkewBraceAdd(obj, SkewBraceMul(obj, a, c), SkewBraceAdd(obj, SkewBraceAInverse(obj, c), SkewBraceMul(obj, b, c))) then
-#          #Display([a,b,c]);
-#          return false;
-#        fi;
-#      od;
-#    od;
-#  od;
-#  return true;
-#end);
-#
+
+InstallMethod(IsClassicalSkewBrace, "for a skew brace", [ IsSkewBrace ], 
+function(obj)
+  return IsAbelian(Group(SkewBraceAGroup(obj)));
+end);
+
 #### Returns the value of <a> under the image of the 
 #### bijective 1-cocycle from the multiplicative group into the 
 #### additive group of 
