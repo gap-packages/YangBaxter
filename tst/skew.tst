@@ -18,6 +18,24 @@ gap> SkewBraceMGroup(br);
 [ (), (1,2)(3,4)(5,6)(7,8), (1,4,2,3)(5,8,6,7), (1,3,2,4)(5,7,6,8), 
   (1,7,3,6,2,8,4,5), (1,8,3,5,2,7,4,6), (1,5,4,8,2,6,3,7), (1,6,4,7,2,5,3,8) ]
 
+# Checking neutral elements
+gap> br:=SmallSkewBrace(27,15);;
+gap> for a in AsList(br) do
+>      if a*One(br)<>a then
+>        Print("zero fails\n");
+>      fi;
+>    od;
+gap> for a in AsList(br) do
+>      if a+Zero(br)<>a then
+>        Print("one fails\n");
+>      fi;
+>    od;
+gap> for a in AsList(br) do
+>      if a*a^-1 <> One(br) or a-a <> Zero(br) then
+>        Print("inverse fails\n");
+>      fi;
+>    od;
+
 # Check brace compatibility condition
 gap> check_compatibility := function(obj)
 > local a,b,c;

@@ -69,10 +69,59 @@ InstallMethod( \*,
 end);
 
 InstallMethod(AdditiveInverseOp, 
-    "for an elements of a skew brace",
+    "for an element of a skew brace",
     [ IsSkewBraceElm ],
     function( x )
       return SkewBraceElmConstructor(FamilyObj(x)!.Brace, Inverse(x![1]));
+end);
+
+InstallMethod(InverseOp, 
+    "for an element of a skew brace",
+    [ IsSkewBraceElm ],
+    function( x )
+      local i, obj, mul, add;
+
+      obj := FamilyObj(x)!.Brace;
+      add := SkewBraceAGroup(obj);
+      mul := SkewBraceMGroup(obj);
+
+      i := Position(add, x![1]);
+      return SkewBraceElmConstructor(obj, add[Position(mul, mul[i]^-1)]);
+end);
+
+InstallMethod(ZeroOp, 
+    "for an element of a skew brace",
+    [ IsSkewBraceElm ],
+    function( x )
+      return SkewBraceElmConstructor(FamilyObj(x)!.Brace, () );
+end);
+
+InstallMethod(OneOp, 
+    "for an element of a skew brace",
+    [ IsSkewBraceElm ],
+    function( x )
+      return SkewBraceElmConstructor(FamilyObj(x)!.Brace, () );
+end);
+
+InstallMethod(ZeroOp, 
+    "for an element of a skew brace",
+    [ IsSkewBraceElm ],
+    function( x )
+      return SkewBraceElmConstructor(FamilyObj(x)!.Brace, () );
+end);
+
+InstallMethod(ZeroImmutable, 
+    "for a skew brace",
+    [ IsSkewBrace ],
+    function( obj )
+      return SkewBraceElmConstructor( obj, () );
+end);
+
+InstallMethod(Representative, 
+    "for a skew brace",
+    [ IsSkewBrace ],
+    function( obj )
+      return ZeroImmutable( obj );
 end);
 
 InstallMethod(AsList, 
