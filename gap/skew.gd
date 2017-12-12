@@ -11,7 +11,9 @@ BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsS
 ### To create/recognize braces 
 DeclareOperation("SkewBrace", [IsList]);
 DeclareOperation("SmallSkewBrace", [IsInt, IsInt]);
+DeclareOperation("SmallBrace", [IsInt, IsInt]);
 DeclareAttribute("IdSkewBrace", IsSkewBrace);
+DeclareAttribute("IdBrace", IsSkewBrace);
 DeclareAttribute("ZeroImmutable", IsSkewBrace);
 DeclareAttribute("OneImmutable", IsSkewBrace);
 DeclareAttribute("Representative", IsSkewBrace);
@@ -27,10 +29,11 @@ DeclareOperation("InverseBijective1Cocycle", [IsSkewBrace, IsPerm]);
 #DeclareOperation("LambdaMap", [IsBrace, IsPerm]);
 #DeclareOperation("InverseLambdaMap", [IsBrace, IsPerm]);
 #DeclareOperation("IsomorphismBraces", [IsBrace, IsBrace]);
-#
-#
+
+
 DeclareGlobalFunction("NrSmallSkewBraces");
-#
+DeclareGlobalFunction("NrSmallBraces");
+
 #DeclareAttribute("Brace2CycleSet", IsBrace);
 #DeclareAttribute("Brace2LinearCycleSet", IsBrace);
 #DeclareAttribute("Socle", IsBrace);
@@ -43,7 +46,7 @@ DeclareAttribute("SkewBrace2Solution", IsSkewBrace);
 DeclareProperty("IsTwoSidedSkewBrace", IsSkewBrace);
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 
-### Braces of size <15
+### Skew braces of size <15
 ReadPackage("yangbaxter", "data/SBsize2.g");
 ReadPackage("yangbaxter", "data/SBsize4.g");
 ReadPackage("yangbaxter", "data/SBsize5.g");
@@ -57,4 +60,20 @@ ReadPackage("yangbaxter", "data/SBsize12.g");
 ReadPackage("yangbaxter", "data/SBsize13.g");
 ReadPackage("yangbaxter", "data/SBsize14.g");
 ReadPackage("yangbaxter", "data/SBsize15.g");
+
+### Braces of size <15
+ReadPackage("yangbaxter", "data/Bsmall.g");
+ReadPackage("yangbaxter", "data/Bsize2.g");
+ReadPackage("yangbaxter", "data/Bsize4.g");
+ReadPackage("yangbaxter", "data/Bsize5.g");
+ReadPackage("yangbaxter", "data/Bsize6.g");
+ReadPackage("yangbaxter", "data/Bsize7.g");
+ReadPackage("yangbaxter", "data/Bsize8.g");
+ReadPackage("yangbaxter", "data/Bsize9.g");
+ReadPackage("yangbaxter", "data/Bsize10.g");
+ReadPackage("yangbaxter", "data/Bsize11.g");
+ReadPackage("yangbaxter", "data/Bsize12.g");
+ReadPackage("yangbaxter", "data/Bsize13.g");
+ReadPackage("yangbaxter", "data/Bsize14.g");
+ReadPackage("yangbaxter", "data/Bsize15.g");
 

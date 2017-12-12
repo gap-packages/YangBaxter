@@ -188,6 +188,31 @@ function(size, number)
   fi;
 end);
 
+InstallMethod(SmallBrace, "for a list of integers", [IsInt, IsInt],
+function(size, number)
+  local obj, known, implemented, dir, filename;
+  known := IsBound(BRACES[size]);
+  if not known then
+    dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
+    filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
+    if IsReadableFile(filename) then
+      Read(filename);
+    else
+      Error("Braces of size ", size, " are not implemented");
+    fi;
+  fi;
+  if number <= BRACES[size].implemented then
+    obj := SkewBrace(BRACES[size].brace[number].perms);
+    SetIdBrace( obj, [ size, number ] );
+    if size > 15 then
+      Unbind(BRACES[size]);
+    fi;
+    return obj;
+  else
+    Error("there are just ", NrSmallBraces(size), " braces of size ", size);
+  fi;
+end);
+
 InstallMethod(IsSkewBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, implemented, dir, filename;
@@ -218,6 +243,23 @@ function(size)
       return NCBRACES[size].implemented;
     else
       Error("Skew braces of size ", size, " are not implemented");
+    fi;
+  fi;
+end);
+
+InstallGlobalFunction(NrSmallBraces, 
+function(size)
+  local dir, filename;
+  if size <= 15 then
+    return BRACES[size].implemented;
+  else
+    dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
+    filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
+    if IsReadableFile(filename) then
+      Read(filename);
+      return BRACES[size].implemented;
+    else
+      Error("Braces of size ", size, " are not implemented");
     fi;
   fi;
 end);
@@ -289,5 +331,6 @@ end);
 #InstallMethod(InverseBijective1Cocycle, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ], 
 #function(obj, a)
 #  return Image(obj!.p, a);
+#p := MappingByFunction(ab, gr, x->First(p, y->IsOne(y[1]*Inverse(x)))[2]),
 #end);
 
