@@ -5,7 +5,7 @@ BindGlobal("SkewBraceFamily", NewFamily("SkewBraceFamily"));
 
 InstallMethod(SkewBrace, "for a list of pairs of elements in a group", [IsList], 
 function(p)
-  local add, mul, per, fam, obj;
+  local add, mul, per, fam, obj, gens;
 
   ### <add> is (a permutation representation of) the additive group of the brace
   ### <mul> is the multiplicative group of the brace, 
@@ -23,8 +23,20 @@ function(p)
   SetSize(obj, Size(add)); 
   SetSkewBraceAList(obj, add);
   SetSkewBraceMList(obj, mul);
-  SetUnderlyingAdditiveGroup(obj, Group(SmallGeneratingSet(Group(add))));
-  SetUnderlyingMultiplicativeGroup(obj, Group(SmallGeneratingSet(Group(mul))));
+
+  gens := SmallGeneratingSet(Group(add));
+  if gens = [] then
+    SetUnderlyingAdditiveGroup(obj, Group(()));
+  else
+    SetUnderlyingAdditiveGroup(obj, Group(gens));
+  fi;
+
+  gens := SmallGeneratingSet(Group(mul));
+  if gens = [] then
+    SetUnderlyingMultiplicativeGroup(obj, Group(()));
+  else
+    SetUnderlyingMultiplicativeGroup(obj, Group(gens));
+  fi;
 
   return obj;
 

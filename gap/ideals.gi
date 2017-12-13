@@ -18,6 +18,21 @@ is_ideal := function(obj, subset)
   return true;
 end;
 
+my_ideals := function(obj)
+  local add, sg, l, subset;
+  l := [];
+  add := SkewBraceAList(obj);
+  for sg in NormalSubgroups(Group(add)) do 
+    subset := List(sg, x->SkewBraceElmConstructor(obj, x));
+    if is_ideal(obj, subset) then
+      Add(l, subset);
+    fi;
+  od;
+  return List(List(l, x->List(x, y->[y![1], y^InverseBijective1Cocycle(obj)])), SkewBrace);
+end;
+
+
+
 ideals := function(obj)
   local add, sg, l, subset;
   l := [];
