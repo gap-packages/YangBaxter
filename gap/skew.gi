@@ -124,6 +124,20 @@ InstallMethod(Representative,
       return ZeroImmutable( obj );
 end);
 
+InstallMethod(Random,
+    "for a skew brace",
+    [ IsSkewBrace ],
+    function( obj )
+      return SkewBraceElmConstructor(obj, Random(SkewBraceAList(obj)));
+end);
+
+InstallMethod(Enumerator,
+    "for a skew brace",
+    [ IsSkewBrace ],
+    function( obj )
+      return AsList(obj);
+end);
+
 InstallMethod(AsList, 
     "for a skew brace",
     [ IsSkewBrace ],

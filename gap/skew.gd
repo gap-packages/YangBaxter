@@ -17,11 +17,10 @@ DeclareAttribute("IdBrace", IsSkewBrace);
 DeclareAttribute("ZeroImmutable", IsSkewBrace);
 DeclareAttribute("OneImmutable", IsSkewBrace);
 DeclareAttribute("Representative", IsSkewBrace);
+DeclareAttribute("Enumerator", IsSkewBrace);
+
+DeclareOperation("Random", [IsSkewBrace]);
 DeclareOperation("IsSkewBraceImplemented", [IsInt]);
-DeclareOperation("SkewBraceAdd", [IsSkewBrace, IsPerm, IsPerm]);
-DeclareOperation("SkewBraceMul", [IsSkewBrace, IsPerm, IsPerm]);
-DeclareOperation("SkewBraceAInverse", [IsSkewBrace, IsPerm]);
-DeclareOperation("SkewBraceMInverse", [IsSkewBrace, IsPerm]);
 DeclareOperation("SkewBraceLambda", [IsSkewBrace, IsPerm, IsPerm]);
 DeclareOperation("SkewBraceLambdaAsPermutation", [IsSkewBrace, IsPerm]);
 DeclareOperation("Bijective1Cocycle", [IsSkewBrace, IsPerm]);

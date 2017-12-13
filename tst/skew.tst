@@ -18,7 +18,14 @@ gap> SkewBraceMList(br);
 [ (), (1,2)(3,4)(5,6)(7,8), (1,4,2,3)(5,8,6,7), (1,3,2,4)(5,7,6,8), 
   (1,7,3,6,2,8,4,5), (1,8,3,5,2,7,4,6), (1,5,4,8,2,6,3,7), (1,6,4,7,2,5,3,8) ]
 
-# Checking neutral elements
+# More testings
+gap> br := SmallSkewBrace(8,25);;
+gap> IdGroup(UnderlyingAdditiveGroup(br));
+[ 8, 3 ]
+gap> IdGroup(UnderlyingMultiplicativeGroup(br));
+[ 8, 2 ]
+
+# Check neutral elements
 gap> br:=SmallSkewBrace(27,15);;
 gap> for a in AsList(br) do
 >      if a*One(br)<>a then
@@ -36,7 +43,7 @@ gap> for a in AsList(br) do
 >      fi;
 >    od;
 
-# Check brace compatibility condition
+# Check the compatibility condition
 gap> check_compatibility := function(obj)
 > local a,b,c;
 > for a in AsList(obj) do
