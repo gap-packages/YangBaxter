@@ -18,7 +18,7 @@ is_ideal := function(obj, subset)
   return true;
 end;
 
-my_ideals := function(obj)
+InstallMethod(Ideals, "for a skew brace", [ IsSkewBrace], function(obj)
   local add, sg, l, subset;
   l := [];
   add := SkewBraceAList(obj);
@@ -28,10 +28,16 @@ my_ideals := function(obj)
       Add(l, subset);
     fi;
   od;
-  return List(List(l, x->List(x, y->[y![1], y^InverseBijective1Cocycle(obj)])), SkewBrace);
-end;
+  return List(l, x->SubSkewBrace(obj, x));
+end);
 
-
+InstallGlobalFunction(SubSkewBrace, function(obj, subset)
+  local l,br;
+  l := List(subset, y->[y![1], y^InverseBijective1Cocycle(obj)]);
+  br := SkewBrace(l);
+  SetParent(br, obj);
+  return br;
+end);
 
 ideals := function(obj)
   local add, sg, l, subset;

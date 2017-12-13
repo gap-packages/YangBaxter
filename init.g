@@ -8,6 +8,7 @@ ReadPackage("yangbaxter", "gap/tau.gd");
 ReadPackage("yangbaxter", "gap/qlinear.gd");
 #ReadPackage("yangbaxter", "gap/linear.gd");
 ReadPackage("yangbaxter", "gap/skew.gd");
+ReadPackage("yangbaxter", "gap/ideals.gd");
 
 
 
