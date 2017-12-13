@@ -9,8 +9,6 @@ function(p)
 
   ### <add> is (a permutation representation of) the additive group of the brace
   ### <mul> is the multiplicative group of the brace, 
-#  add := Group(List(p, x->x[1]));
-#  mul := Group(List(p, x->x[2]));
 
   add := List(p, x->x[1]); 
   per := Sortex(add);
@@ -25,6 +23,8 @@ function(p)
   SetSize(obj, Size(add)); 
   SetSkewBraceAList(obj, add);
   SetSkewBraceMList(obj, mul);
+  SetSkewBraceAGroup(obj, Group(SmallGeneratingSet(Group(add))));
+  SetSkewBraceMGroup(obj, Group(SmallGeneratingSet(Group(mul))));
 
   return obj;
 
