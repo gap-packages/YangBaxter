@@ -341,4 +341,21 @@ InstallMethod(Lambda,
       return -x+x*y;
 end);
 
+InstallMethod(InverseBijective1Cocycle,
+    "for a skew brace", 
+    [ IsSkewBrace ],
+    function(obj)
+      local add, mul;
+      add := SkewBraceAList(obj);
+      mul := SkewBraceMList(obj);
+      return MappingByFunction(Domain(AsList(obj)), Domain(mul), x->mul[Position(add, x![1])]);
+end);
+
+InstallMethod(Bijective1Cocycle,
+    "for a skew brace", 
+    [ IsSkewBrace ],
+    function(obj)
+       return InverseGeneralMapping(InverseBijective1Cocycle(obj));  
+end);
+
 

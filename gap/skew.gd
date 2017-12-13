@@ -28,8 +28,9 @@ DeclareOperation("Random", [IsSkewBrace]);
 DeclareOperation("IsSkewBraceImplemented", [IsInt]);
 DeclareOperation("SkewBraceLambda", [IsSkewBrace, IsPerm, IsPerm]);
 DeclareOperation("SkewBraceLambdaAsPermutation", [IsSkewBrace, IsPerm]);
-DeclareOperation("Bijective1Cocycle", [IsSkewBrace, IsPerm]);
-DeclareOperation("InverseBijective1Cocycle", [IsSkewBrace, IsPerm]);
+DeclareOperation("Bijective1Cocycle", [IsSkewBrace]);
+DeclareOperation("InverseBijective1Cocycle", [IsSkewBrace]);
+
 #DeclareOperation("LambdaMap", [IsBrace, IsPerm]);
 #DeclareOperation("InverseLambdaMap", [IsBrace, IsPerm]);
 #DeclareOperation("IsomorphismBraces", [IsBrace, IsBrace]);

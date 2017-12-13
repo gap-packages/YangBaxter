@@ -80,6 +80,26 @@ gap> NrSmallBraces(8);
 27
 gap> Number([1..NrSmallBraces(8)], k->IsClassicalSkewBrace(SmallBrace(8,k)));
 27
+
+# Test Lambda
+gap> br := SmallSkewBrace(16,40);;
+gap> for a in AsList(br) do
+> for b in AsList(br) do
+> if a+Lambda(a,b) <> a*b then
+> Print("This is wrong!\n");
+> fi;
+> od;
+> od;
+
+# Test the bijective 1-cocycle and its inverse
+gap> f := Bijective1Cocycle(br);;
+gap> for a in AsList(br) do
+> for b in AsList(br) do
+> if a*b <> Image(f, PreImageElm(f, a)*PreImageElm(f, b)) then
+> Print("This is wrong!\n");
+> fi;
+> od;
+> od;
 gap> STOP_TEST( "skew.tst", 1 );
 
 #############################################################################

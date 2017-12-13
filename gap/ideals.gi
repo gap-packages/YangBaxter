@@ -85,15 +85,4 @@ yb2permutation := function(obj)
   return PermList(perm);
 end;
 
-inverse_bijective_1cocycle := function(obj)
-  local add, mul;
-  add := SkewBraceAList(obj);
-  mul := SkewBraceMList(obj);
-  return MappingByFunction(Domain(AsList(obj)), Domain(mul), x->mul[Position(add, x![1])]);
-end;
-
-bijective_1cocycle := function(obj)
-  return InverseGeneralMapping(inverse_bijective_1cocycle(obj));  
-end;
-
 

@@ -26,26 +26,6 @@ gap> for k in [1..NrSmallBraces(n)] do
 > fi;
 > od;
 
-# Test Lambda
-gap> br := SmallSkewBrace(16,40);;
-gap> for a in AsList(br) do
-> for b in AsList(br) do
-> if a+Lambda(a,b) <> a*b then
-> Print("This is wrong!\n");
-> fi;
-> od;
-> od;
-
-# Test the bijective 1-cocycle and its inverse
-gap> f := bijective_1cocycle(br);;
-gap> for a in AsList(br) do
-> for b in AsList(br) do
-> if a*b <> Image(f, PreImageElm(f, a)*PreImageElm(f, b)) then
-> Print("This is wrong!\n");
-> fi;
-> od;
-> od;
-
 # Test the socle
 # The results are matched with arXiv:1407.5224
 gap> l := [];;
