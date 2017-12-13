@@ -370,4 +370,9 @@ InstallMethod(Bijective1Cocycle,
        return InverseGeneralMapping(InverseBijective1Cocycle(obj));  
 end);
 
+InstallMethod(\in, "for a skew brace and a skew brace element", [ IsSkewBraceElm, IsSkewBrace ], 
+function(x, obj)
+  return x in AsList(obj);
+end);
+
 

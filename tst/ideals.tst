@@ -9,7 +9,7 @@ gap> START_TEST("ideals.tst");
 gap> n := 12;;
 gap> for k in [1..NrSmallSkewBraces(n)] do
 > br := SmallSkewBrace(n,k);
-> if is_simple(br) then
+> if IsSimpleSkewBrace(br) then
 > Print("n=", n, ", k=", k, "\n");
 > fi;
 > od;
@@ -31,10 +31,19 @@ gap> for k in [1..NrSmallBraces(n)] do
 gap> l := [];;
 gap> for k in [1..NrSmallBraces(8)] do
 > br := SmallBrace(8,k);
-> Add(l, Size(socle(br)));
+> Add(l, Size(Socle(br)));
 > od;
 gap> Collected(l);
 [ [ 1, 2 ], [ 2, 11 ], [ 4, 11 ], [ 8, 3 ] ]
+
+# Test IsIdeal
+gap> for k in [1..NrSmallSkewBraces(8)] do
+> br := SmallSkewBrace(8,k);
+> soc := Socle(br);
+> if not IsIdeal(br, soc) then
+> Print("This is wrong!\n");
+> fi;
+> od;
 gap> STOP_TEST( "ideals.tst", 1 );
 
 #############################################################################
