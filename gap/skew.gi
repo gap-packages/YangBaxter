@@ -23,8 +23,8 @@ function(p)
   SetSize(obj, Size(add)); 
   SetSkewBraceAList(obj, add);
   SetSkewBraceMList(obj, mul);
-  SetSkewBraceAGroup(obj, Group(SmallGeneratingSet(Group(add))));
-  SetSkewBraceMGroup(obj, Group(SmallGeneratingSet(Group(mul))));
+  SetUnderlyingAdditiveGroup(obj, Group(SmallGeneratingSet(Group(add))));
+  SetUnderlyingMultiplicativeGroup(obj, Group(SmallGeneratingSet(Group(mul))));
 
   return obj;
 
