@@ -339,17 +339,4 @@ function(obj)
   return IsAbelian(Group(SkewBraceAList(obj)));
 end);
 
-#### Returns the value of <a> under the image of the 
-#### bijective 1-cocycle from the multiplicative group into the 
-#### additive group of 
-#InstallMethod(Bijective1Cocycle, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ], 
-#function(obj, a)
-#  return PreImage(obj!.p, a);
-#end);
-#
-#InstallMethod(InverseBijective1Cocycle, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ], 
-#function(obj, a)
-#  return Image(obj!.p, a);
-#p := MappingByFunction(ab, gr, x->First(p, y->IsOne(y[1]*Inverse(x)))[2]),
-#end);
 

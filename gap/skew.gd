@@ -19,6 +19,9 @@ DeclareAttribute("OneImmutable", IsSkewBrace);
 DeclareAttribute("Representative", IsSkewBrace);
 DeclareAttribute("Enumerator", IsSkewBrace);
 
+DeclareAttribute("Ideals", IsSkewBrace);
+DeclareOperation("IsIdeal", [IsSkewBrace, IsList]);
+
 DeclareOperation("Random", [IsSkewBrace]);
 DeclareOperation("IsSkewBraceImplemented", [IsInt]);
 DeclareOperation("SkewBraceLambda", [IsSkewBrace, IsPerm, IsPerm]);
