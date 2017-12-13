@@ -23,8 +23,8 @@ function(p)
   fam!.Brace := obj;
 
   SetSize(obj, Size(add)); 
-  SetSkewBraceAGroup(obj, add);
-  SetSkewBraceMGroup(obj, mul);
+  SetSkewBraceAList(obj, add);
+  SetSkewBraceMList(obj, mul);
 
   return obj;
 
@@ -60,8 +60,8 @@ InstallMethod( \*,
       local i, j, obj, mul, add;
 
       obj := FamilyObj(x)!.Brace;
-      add := SkewBraceAGroup(obj);
-      mul := SkewBraceMGroup(obj);
+      add := SkewBraceAList(obj);
+      mul := SkewBraceMList(obj);
 
       i := Position(add, x![1]);
       j := Position(add, y![1]);
@@ -82,8 +82,8 @@ InstallMethod(InverseOp,
       local i, obj, mul, add;
 
       obj := FamilyObj(x)!.Brace;
-      add := SkewBraceAGroup(obj);
-      mul := SkewBraceMGroup(obj);
+      add := SkewBraceAList(obj);
+      mul := SkewBraceMList(obj);
 
       i := Position(add, x![1]);
       return SkewBraceElmConstructor(obj, add[Position(mul, mul[i]^-1)]);
@@ -128,12 +128,17 @@ InstallMethod(AsList,
     "for a skew brace",
     [ IsSkewBrace ],
     function( obj )
-      return List( SkewBraceAGroup(obj), x->SkewBraceElmConstructor( obj, x ) );
+      return List( SkewBraceAList(obj), x->SkewBraceElmConstructor( obj, x ) );
 end);
 
 InstallMethod(ViewObj, "for skew braces", [ IsSkewBrace ],
 function(obj)
   Print("<skew brace of size ", Size(obj), ">");
+end);
+
+InstallMethod(ViewObj, "for skew brace elements", [ IsSkewBraceElm ],
+function(x)
+  Print("{", x![1], "}");
 end);
 
 InstallMethod(PrintObj, "for skew braces", [ IsSkewBrace ],
@@ -273,7 +278,7 @@ end);
 #function(obj, a)
 #  local p, l, x;
 #
-#  l := AsList(SkewBraceAGroup(obj));
+#  l := AsList(SkewBraceAList(obj));
 #  p := [1..Size(obj)];
 #
 #  for x in [1..Size(obj)] do
@@ -287,7 +292,7 @@ end);
 #function(obj)
 #  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
 #
-#  add := Elements(SkewBraceAGroup(obj));
+#  add := Elements(SkewBraceAList(obj));
 #  set := [1..Size(obj)];
 #
 #  lperms := [];
@@ -317,7 +322,7 @@ end);
 
 InstallMethod(IsClassicalSkewBrace, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
-  return IsAbelian(Group(SkewBraceAGroup(obj)));
+  return IsAbelian(Group(SkewBraceAList(obj)));
 end);
 
 #### Returns the value of <a> under the image of the 
