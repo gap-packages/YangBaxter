@@ -26,11 +26,11 @@ gap> for k in [1..NrSmallBraces(n)] do
 > fi;
 > od;
 
-# Test lambda
+# Test Lambda
 gap> br := SmallSkewBrace(16,40);;
 gap> for a in AsList(br) do
 > for b in AsList(br) do
-> if a+lambda(a,b) <> a*b then
+> if a+Lambda(a,b) <> a*b then
 > Print("This is wrong!\n");
 > fi;
 > od;

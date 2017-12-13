@@ -1,7 +1,3 @@
-lambda := function(a, b)
-  return -a+(a*b);
-end;
-
 # <subset> is a subset of AsList(obj)
 is_ideal := function(obj, subset)
   local lst, a, x;
@@ -14,7 +10,7 @@ is_ideal := function(obj, subset)
 
   for a in lst do
     for x in subset do
-      if not lambda(a, x) in subset or not a*x*a^-1 in subset or not a+x-a in subset then
+      if not Lambda(a, x) in subset or not a*x*a^-1 in subset or not a+x-a in subset then
         return false;
       fi;
     od;
@@ -43,7 +39,7 @@ socle := function(obj)
   local add, l;
   add := SkewBraceAList(obj);
   l := List(Center(Group(add)), x->SkewBraceElmConstructor(obj, x));
-  return Filtered(l, a->ForAll(AsList(obj), b->lambda(a,b)=b));
+  return Filtered(l, a->ForAll(AsList(obj), b->Lambda(a,b)=b));
 end;
 
 skewbrace2solution := function(obj)
@@ -61,8 +57,8 @@ skewbrace2solution := function(obj)
     tmp_r := [];
 
     for b in AsList(obj) do
-      Add(tmp_l, Position(AsList(obj), lambda(a,b))); 
-      Add(tmp_r, Position(AsList(obj), lambda(a,b)^(-1)*a*b)); 
+      Add(tmp_l, Position(AsList(obj), Lambda(a,b))); 
+      Add(tmp_r, Position(AsList(obj), Lambda(a,b)^(-1)*a*b)); 
     od;
     Add(lperms, tmp_l);
     Add(rperms, tmp_r);

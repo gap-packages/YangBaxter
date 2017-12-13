@@ -283,11 +283,6 @@ function(size)
   fi;
 end);
 
-#InstallMethod(SkewBraceLambda, "for a skew brace and two permutations", [ IsSkewBrace, IsPerm, IsPerm],
-#function(obj, a, b)
-#  return SkewBraceAdd(obj, SkewBraceAInverse(obj, a), SkewBraceMul(obj, a, b));
-#end);
-#
 #InstallMethod(SkewBraceLambdaAsPermutation, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ],
 #function(obj, a)
 #  local p, l, x;
@@ -337,6 +332,13 @@ end);
 InstallMethod(IsClassicalSkewBrace, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
   return IsAbelian(Group(SkewBraceAList(obj)));
+end);
+
+InstallMethod(Lambda, 
+    "for two elements of a skew brace",
+    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    function( x, y )
+      return -x+x*y;
 end);
 
 
