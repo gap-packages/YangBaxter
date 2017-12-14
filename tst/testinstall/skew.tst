@@ -150,6 +150,22 @@ gap> Number([1..NrSmallSkewBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallSkewBra
 27
 gap> Number([1..NrSmallBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallBrace(8,k))));
 27
+
+# Test how to convert classical braces to cycle sets
+gap> br := SmallBrace(8,10);;
+gap> Brace2CycleSet(br);
+<A cycle set of size 8>
+gap> Matrix(Brace2CycleSet(br));
+[ [ 1, 2, 3, 4, 5, 6, 7, 8 ], [ 1, 2, 3, 4, 5, 6, 7, 8 ], 
+  [ 1, 2, 3, 4, 5, 6, 7, 8 ], [ 1, 2, 3, 4, 5, 6, 7, 8 ], 
+  [ 1, 2, 3, 4, 7, 8, 5, 6 ], [ 1, 2, 3, 4, 7, 8, 5, 6 ], 
+  [ 1, 2, 3, 4, 7, 8, 5, 6 ], [ 1, 2, 3, 4, 7, 8, 5, 6 ] ]
+gap> Permutations(Brace2CycleSet(br));
+[ (), (), (), (), (5,7)(6,8), (5,7)(6,8), (5,7)(6,8), (5,7)(6,8) ]
+gap> br := SmallSkewBrace(10,4);
+<skew brace of size 10>
+gap> Brace2CycleSet(br);
+Error, this is not a classical brace
 gap> STOP_TEST( "skew.tst", 1 );
 
 #############################################################################

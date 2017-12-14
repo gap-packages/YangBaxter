@@ -416,4 +416,9 @@ InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
   return Permutations2YB(lperms, rperms); 
 end);
 
-
+InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewBrace ], function(obj)
+  if not IsClassicalSkewBrace(obj) then
+    Error("this is not a classical brace\n");
+  fi;
+  return YB2CycleSet(SkewBrace2YB(obj));
+end);
