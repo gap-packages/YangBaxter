@@ -4,6 +4,8 @@ DeclareCategoryCollections("IsSkewBraceElm");
 
 DeclareRepresentation( "IsSkewBraceElmRep", IsPositionalObjectRep, [ 1 ]);
 
+DeclareOperation("SkewBraceElmConstructor", [IsSkewBrace, IsPerm]);
+
 BindGlobal("SkewBraceElmFamily", NewFamily("SkewBraceElmFamily", IsSkewBraceElm));
 BindGlobal("SkewBraceElmType", NewType(SkewBraceElmFamily, IsSkewBraceElm));
 BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsSkewBrace and IsAttributeStoringRep));

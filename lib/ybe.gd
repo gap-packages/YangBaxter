@@ -1,6 +1,7 @@
 DeclareCategory("IsYB", IsAttributeStoringRep);
 DeclareGlobalVariable("YBType");
 
+DeclareOperation("SmallIYB", [IsInt, IsInt]);
 DeclareOperation("YB", [IsList, IsList]);
 DeclareOperation("Table2YB", [IsList]);
 DeclareOperation("Permutations2YB", [IsList, IsList]);
@@ -24,11 +25,16 @@ DeclareProperty("IsInvolutive", IsYB);
 DeclareProperty("IsBiquandle", IsYB);
 
 DeclareGlobalFunction("YB_xy");
-DeclareGlobalFunction("SmallIYB");
+#DeclareGlobalFunction("SmallIYB");
 DeclareGlobalFunction("NrSmallIYB");
 
-DeclareGlobalFunction("YB_ij");
+#DeclareGlobalFunction("YB_ij");
 DeclareGlobalFunction("YB_IsBraidedSet");
+
+DeclareAttribute("LPerms", IsYB);
+DeclareAttribute("RPerms", IsYB);
+DeclareAttribute("LMatrix", IsYB);
+DeclareAttribute("RMatrix", IsYB);
 
 DeclareAttribute("DisplayTable", IsYB);
 DeclareAttribute("YBPermutationGroup", IsYB);
@@ -40,7 +46,7 @@ DeclareAttribute("MultipermutationLevel", IsYB);
 DeclareAttribute("YB2CycleSet", IsYB);
 DeclareAttribute("StructureGroup", IsYB);
 DeclareAttribute("YB2Permutation", IsYB);
-DeclareAttribute("YBRackL", IsYB);
-DeclareAttribute("YBRackR", IsYB);
+DeclareAttribute("DerivedLeftRack", IsYB);
+DeclareAttribute("DerivedRightRack", IsYB);
 
 DeclareOperation("Wada", [IsGroup]);

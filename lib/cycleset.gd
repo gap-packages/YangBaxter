@@ -1,5 +1,13 @@
 DeclareCategory("IsCycleSet", IsAttributeStoringRep);
-DeclareGlobalVariable("CycleSetType");
+DeclareCategory("IsCycleSetElm", IsMultiplicativeElement);
+
+DeclareRepresentation( "IsCycleSetElmRep", IsPositionalObjectRep, [ 1 ]);
+DeclareOperation("CycleSetElmConstructor", [IsCycleSet, IsInt]);
+
+#DeclareGlobalVariable("CycleSetType");
+BindGlobal("CycleSetElmFamily", NewFamily("CycleSetElmFamily", IsCycleSetElm));
+BindGlobal("CycleSetElmType", NewType(CycleSetElmFamily, IsCycleSetElm));
+BindGlobal("CycleSetType", NewType(CollectionsFamily( CycleSetElmFamily ), IsCycleSet and IsAttributeStoringRep));
 
 ### To create/recognize cycle sets 
 DeclareOperation("CycleSet", [IsList]);
@@ -15,10 +23,15 @@ DeclareProperty("IsBalanced", IsCycleSet);
 DeclareAttribute("IdCycleSet", IsCycleSet);
 
 ### 
-DeclareAttribute("Permutations", IsCycleSet);
 DeclareAttribute("IYBGroup", IsCycleSet);
 DeclareAttribute("CycleSet2YB", IsCycleSet);
 DeclareOperation("CycleSetCycle", [ IsCycleSet, IsInt, IsInt ]);
+
+DeclareAttribute("AsList", IsCycleSet);
+DeclareAttribute("Enumerator", IsCycleSet);
+DeclareAttribute("Permutations", IsCycleSet);
+DeclareAttribute("Matrix", IsCycleSet);
+
 
 ### Dynamical cocycles and extensions
 DeclareGlobalFunction("CycleSetSquareFreeCocycles");

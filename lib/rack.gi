@@ -1,63 +1,83 @@
 ### racks
 BindGlobal("RackFamily", NewFamily("RackFamily"));
-InstallValue(RackType, NewType(RackFamily, IsRack));
-
-InstallGlobalFunction(IsRackMatrix, 
-function( matrix )
-  local i, j, k;
-  for i in [1..Size(matrix)] do
-    for j in [1..Size(matrix)] do
-      for k in [1..Size(matrix)] do
-        if matrix[i][matrix[j][k]] <> matrix[matrix[i][j]][matrix[i][k]] then
-          return false;
-        fi;
-      od;
-    od;
-  od;
-  for i in [1..Size(matrix)] do
-    if PermList(matrix[i]) = fail then
-      return false;
-    fi;
-  od;
-  return true;
-end);
+#InstallValue(RackType, NewType(RackFamily, IsRack));
 
 InstallMethod(Rack, "for a matrix", [ IsMatrix ], 
 function(matrix)
-  if IsRackMatrix(matrix) = true then
-    return Objectify(RackType, rec(matrix := matrix, size := Size(matrix)));
-  else
-    Error("This is not a rack");
-    return fail;
+  local fam, obj;
+  if not IS_RACK(matrix) then
+    Error("this is not a rack, ");
   fi;
+
+  fam := NewFamily("RackElmFamily", IsRackElm, IsMultiplicativeElement);
+  fam!.DefaultType := NewType(fam, IsRackElmRep);
+
+  obj := Objectify(NewType(CollectionsFamily(fam), IsRack and IsAttributeStoringRep), rec());
+  fam!.Rack := obj;
+
+  SetSize(obj, Size(matrix)); 
+  SetMatrix(obj, matrix);
+  SetPermutations(obj, List([1..Size(obj)], x->PermList(matrix[x])));
+
+  return obj;
 end);
 
 InstallMethod(ViewObj,
   "for a rack",
   [ IsRack ],
   function(obj)
-  Print("A rack of size ", obj!.size);
+  Print("<A rack of size ", Size(obj), ">");
 end);
 
 InstallMethod(PrintObj,
   "for a rack", 
   [ IsRack ],
   function(obj)
-  Print( "Rack( ", obj!.size, ", ", obj!.matrix, " )");
+  Print( "Rack( ", Matrix(obj), " )");
 end);
 
-InstallOtherMethod(Size, "for a rack", [ IsRack ],
-function(obj)
-  return obj!.size;
+InstallMethod(Enumerator,
+    "for a rack", 
+    [ IsRack ],
+    function( obj )
+      return AsList(obj);
 end);
 
-InstallMethod(Permutations, "for a rack", [ IsRack ],
-function(obj)
-  return List([1..Size(obj)], x->PermList(obj!.matrix[x]));
+InstallMethod(AsList, 
+    "for a rack",
+    [ IsRack ],
+    function( obj )
+  return List([1..Size(obj)], x->RackElmConstructor(obj, x));
+end);
+
+InstallMethod( \=,
+    "for two elements of a rack",
+    IsIdenticalObj, [ IsRackElm, IsRackElm ],
+    function( x, y )
+      return x![1] = y![1];
+end);
+
+InstallMethod(ViewObj, "for a rack element", [ IsRackElm ],
+function(x)
+  Print("<", x![1], ">");
+end);
+
+InstallMethod(RackElmConstructor, "for a rack and an integer", [ IsRack, IsInt ], 
+function( obj, x )
+  return Objectify(ElementsFamily(FamilyObj(obj))!.DefaultType, [ x ]);
+end);
+
+InstallMethod( \*,
+    "for two elements of a rack",
+    IsIdenticalObj, [ IsRackElm, IsRackElm ],
+    function( x, y )
+    local fam;
+    fam := FamilyObj(x);
+    return RackElmConstructor(fam!.Rack, Matrix(fam!.Rack)[x![1]][y![1]]);
 end);
 
 InstallMethod(Rack2YB, "for a rack", [ IsRack ], 
 function(obj)
-  return YB(obj!.matrix, List([1..Size(obj)], x->[1..Size(obj)]));
+  return YB(Matrix(obj), List([1..Size(obj)], x->[1..Size(obj)]));
 end);
 

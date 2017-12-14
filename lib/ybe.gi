@@ -4,76 +4,83 @@ InstallValue(YBType, NewType(YBFamily, IsYB));
 ### This function returns the set-theoretic solution given by the permutations <l_actions> and <r_actions>
 ### <l_action> and <r_action> are matrices!
 InstallMethod(YB, "for a two lists of permutations", [ IsList, IsList ], 
-function(l_actions, r_actions)
-  if Size(r_actions) <> Size(l_actions) then 
-    return fail;
-  else
-    if YB_IsBraidedSet(l_actions, r_actions) then      
-      return Objectify(YBType, rec(size := Size(r_actions), r_actions := r_actions, l_actions := l_actions));
-    else
-      return fail;
-    fi;
+function(l, r)
+  local obj;
+  if not IS_YB(l, r) then
+    Error("this is not a solution of the YBE, ");
   fi;
-end);
+  
+  obj := Objectify(YBType, rec());
 
+  SetSize(obj, Size(l));
+  SetLMatrix(obj, List(l, x->List(x, y->y)));
+  SetRMatrix(obj, List(r, x->List(x, y->y)));
+
+  return obj;
+
+end);
 
 InstallMethod(ViewObj,
   "for a set-theoretical solution",
   [ IsYB ],
   function(obj)
-  Print("A set-theoretical solution of size ", obj!.size);
+  Print("<A set-theoretical solution of size ", Size(obj), ">");
 end);
 
 InstallMethod(PrintObj,
   "for a set-theoretical solution",
   [ IsYB ],
   function(obj)
-  Print( "YB( ", obj!.size, ", ", obj!.r_actions, ", ", obj!.l_actions, " )" );
+  if Size(obj) < 5 then
+    Print("YB(", LMatrix(obj), ",", RMatrix(obj), ")");
+  else
+    Print("<A set-theoretical solution of size ", Size(obj), ">");
+  fi;
 end);
 
-InstallOtherMethod(Size, "for a set-theoretical solution", [ IsYB ],
-function(obj)
-  return obj!.size;
+InstallMethod(SmallIYB, "for two integers", [ IsInt, IsInt ],
+function(size, number)
+  return CycleSet2YB(SmallCycleSet(size, number));
 end);
 
 InstallMethod(Permutations2YB, "for a list of permutations", [ IsList, IsList ],
-function(lperms, rperms)
-  return YB(List(lperms, x->ListPerm(x, Size(lperms))), List(rperms, y->ListPerm(y, Size(lperms))));
+function(l, r)
+  return YB(List(l, x->ListPerm(x, Size(l))), List(r, y->ListPerm(y, Size(l))));
 end);
 
 ### This function returns the set-theoretic solution
 ### corresponding to the matrix <table> such that the (i,j) entry is r(i,j)
-InstallMethod(Table2YB, "for a square matrix", [ IsList ],
-function(table)
-  local ll, rr, x, y, p, n;
+#InstallMethod(Table2YB, "for a square matrix", [ IsList ],
+#function(table)
+#  local ll, rr, x, y, p, n;
+#
+#  n := Sqrt(Size(table));
+#
+#  ll := List([1..n], x->[1..n]);
+#  rr := List([1..n], x->[1..n]);
+#
+#  for p in table do
+#    x := p[1][1];
+#    y := p[1][2];
+#    ll[x][y] := p[2][1];
+#    rr[y][x] := p[2][2];
+#  od;
+#  return YB(ll, rr);
+#end);
 
-  n := Sqrt(Size(table));
-
-  ll := List([1..n], x->[1..n]);
-  rr := List([1..n], x->[1..n]);
-
-  for p in table do
-    x := p[1][1];
-    y := p[1][2];
-    ll[x][y] := p[2][1];
-    rr[y][x] := p[2][2];
-  od;
-  return YB(ll, rr);
-end);
-
-#### This function returns the table of the solution, which is 
-#### the matrix that in the (i,j)-entry has r(i,j)
-InstallMethod(DisplayTable, "for a set theoretic solution", [ IsYB ], 
-function(obj)
-  local m, x, y;
-  m := NullMat(Size(obj), Size(obj));
-  for x in [1..Size(obj)] do
-    for y in [1..Size(obj)] do
-      m[x][y] := TableYB(obj, x, y);
-    od;
-  od;
-  return m;
-end);
+##### This function returns the table of the solution, which is 
+##### the matrix that in the (i,j)-entry has r(i,j)
+#InstallMethod(DisplayTable, "for a set theoretic solution", [ IsYB ], 
+#function(obj)
+#  local m, x, y;
+#  m := NullMat(Size(obj), Size(obj));
+#  for x in [1..Size(obj)] do
+#    for y in [1..Size(obj)] do
+#      m[x][y] := TableYB(obj, x, y);
+#    od;
+#  od;
+#  return m;
+#end);
 
 ### This function returns true if <obj> is square-free
 ### A solution r is square-free iff r(x,x)=(x,x) for all x
@@ -82,8 +89,8 @@ InstallOtherMethod(IsSquareFree,
   [ IsYB ],
   function(obj)
   local x;
-  for x in [1..obj!.size] do
-    if [obj!.l_actions[x][x], obj!.r_actions[x][x]] <> [x, x] then
+  for x in [1..Size(obj)] do
+    if [LMatrix(obj)[x][x], RMatrix(obj)[x][x]] <> [x, x] then
       return false;
     fi;
   od;
@@ -97,14 +104,13 @@ end);
 
 InstallMethod(YBPermutationGroup, "for a set-theoretical solution", [ IsYB ],
 function(obj)
-  return Group(LeftPermutations(obj));
+  return Group(LPerms(obj));
 end);
-
 
 ### This function returns the vector value of <obj> at (<x>,<y>)
 InstallMethod(TableYB, "for a set-theoretical solution", [ IsYB, IsInt, IsInt ],
 function(obj, x, y)
-  return [obj!.l_actions[x][y], obj!.r_actions[y][x]];
+  return [LMatrix(obj)[x][y], RMatrix(obj)[y][x]];
 end);
 
 ### This function returns true if <obj> is involutive
@@ -131,17 +137,27 @@ end);
 
 ### This function returns true if the maps x->L_x are bijective
 ### r(x,y)=(L_x(y), R_y(x))
+### CHECK
 InstallMethod(IsLeftNonDegenerate,
   "for a set-theoretical solution",
   [ IsYB ],
   function(obj)
-  local x;
-  for x in [1..obj!.size] do
-    if PermList(obj!.l_actions[x]) = fail then
-      return false;
-    fi;
-  od;
-  return true;
+  local l;
+  l := List(LMatrix(obj), PermList);
+  if fail in l then
+    return false;
+  else
+    SetLPerms(obj, l);
+    return true;
+  fi;
+
+  #for x in [1..Size(obj)] do
+  #  if PermList(LMatrix(obj)[x]) = fail then
+  #    return false;
+  #  fi;
+  #od;
+  #SetLPerms(obj, List(LMatrix(obj), PermList));
+  #return true;
 end);
 
 ### This function returns true if the maps x->R_x are bijective
@@ -150,13 +166,14 @@ InstallMethod(IsRightNonDegenerate,
   "for a set-theoretical solution",
   [ IsYB ],
   function(obj)
-  local x;
-  for x in [1..obj!.size] do
-    if PermList(obj!.r_actions[x]) = fail then
-      return false;
-    fi;
-  od;
-  return true;
+  local l;
+  l := List(RMatrix(obj), PermList);
+  if fail in l then
+    return false;
+  else
+    SetRPerms(obj, l);
+    return true;
+  fi;
 end);
 
 ### This function returns true if <r> is left and right non-degenerate
@@ -164,46 +181,50 @@ InstallMethod(IsNonDegenerate,
   "for a set-theoretical solution",
   [ IsYB ],
   function(obj)
-  return (IsLeftNonDegenerate(obj) and IsRightNonDegenerate(obj));
+  return IsLeftNonDegenerate(obj) and IsRightNonDegenerate(obj);
 end);
 
-InstallMethod(LeftPermutations,
+InstallMethod(LPerms, 
   "for a set-theoretical solution",
   [ IsYB ],
   function(obj)
   if IsLeftNonDegenerate(obj) then
-    return List(obj!.l_actions, x->PermList(x));
-  fi;
-  return fail;
-end);
-    
-### This function returns the right permutations
-InstallMethod(RightPermutations,
-  "for a set-theoretical solution",
-  [ IsYB ],
-  function(obj)
-  if IsRightNonDegenerate(obj) then
-    return List(obj!.r_actions, x->PermList(x));
+    return LPerms(obj);# List(obj!.l_actions, x->PermList(x));
   fi;
   return fail;
 end);
 
+InstallMethod(RPerms, 
+  "for a set-theoretical solution",
+  [ IsYB ],
+  function(obj)
+  if IsRightNonDegenerate(obj) then
+    return RPerms(obj);
+  fi;
+  return fail;
+end);
+ 
 InstallMethod(YB2CycleSet,
   "for a set-theoretical solution",
   [ IsYB ],
   function(obj)
-  local p,m;
-  m := [];
-  for p in obj!.r_actions do
-    Add(m, ListPerm(Inverse(PermList(p)),obj!.size));
-  od;
-  return CycleSet(m);
+
+  if not IsInvolutive(obj) then
+    Error("the solution of the YBE is not involutive, ");
+  fi;
+
+  if not IsRightNonDegenerate(obj) then
+    Error("the soslution of the YBE is not (right) non-degenerate, ");
+  fi;
+
+  return CycleSet(RMatrix(obj));
 end);
 
 InstallGlobalFunction(YB_xy,
   "for a set-theoretical solution",
   function(obj, x, y)
-  return [obj!.l_actions[x][y], obj!.r_actions[y][x]];
+  return [LMatrix(obj)[x][y], RMatrix(obj)[y][x]];
+  #return [obj!.l_actions[x][y], obj!.r_actions[y][x]];
 end);
 
 InstallMethod(Retract,
@@ -212,16 +233,20 @@ InstallMethod(Retract,
   function(obj)
   local e, c, s, pairs, x, y, z, ll, rr;
 
+  if not IsInvolutive(obj) then
+    Error("the solutions of the YBE is not involutive, ");
+  fi;
+
   pairs := [];
-  for x in [1..obj!.size] do
-    for y in [1..obj!.size] do
-      if LeftPermutations(obj)[x] = LeftPermutations(obj)[y] then
+  for x in [1..Size(obj)] do
+    for y in [1..Size(obj)] do
+      if LPerms(obj)[x] = LPerms(obj)[y] then
         Add(pairs, [x, y]);
       fi;
     od;
   od;
 
-  e := EquivalenceRelationByPairs(Domain([1..obj!.size]), pairs);
+  e := EquivalenceRelationByPairs(Domain([1..Size(obj)]), pairs);
   c := EquivalenceClasses(e); 
   s := Size(c);
 
@@ -244,7 +269,7 @@ InstallMethod(IsRetractable,
   function(obj)
   local r;
   r := Retract(obj);
-  if r!.size = obj!.size then
+  if Size(r) = Size(obj) then
     return false;
   else
     return true;
@@ -274,12 +299,12 @@ InstallMethod(MultipermutationLevel,
   repeat
     s := ShallowCopy(r);
     r := Retract(s);
-    if r!.size <> s!.size then
+    if Size(r) <> Size(s) then
       l := l+1;
     else
       return fail;
     fi;
-  until r!.size = 1;
+  until Size(r) = 1;
   return l;
 end);
 
@@ -295,15 +320,15 @@ InstallOtherMethod(Permutations,
   "for set-theoretic solutions", 
   [ IsYB ],
   function(obj)
-  return [LeftPermutations(obj), RightPermutations(obj)];
+  return [LPerms(obj), RPerms(obj)];
 end);
 
 
 ### This function returns the <i>-th involutive set-theoretic solution of size <n>
 ### These solutions were computed by Etingof, Schedler and Soloviev
-InstallGlobalFunction(SmallIYB, 
-function(n, i)
-  return CycleSet2YB(SmallCycleSet(n, i));
+#InstallGlobalFunction(SmallIYB, 
+#function(n, i)
+#  return CycleSet2YB(SmallCycleSet(n,i));
 #  local r, data;
 #  data := [
 #    YB_size1, 
@@ -321,17 +346,7 @@ function(n, i)
 #  else
 #    return fail;
 #  fi;
-end);
-
-### This function returns the value of <obj> acting on the coordinates (<i>,<j>) of <v> 
-InstallGlobalFunction(YB_ij, 
-function(l_actions, r_actions, v, i, j)
-  local w;
-  w := ShallowCopy(v);
-  w[i] := l_actions[v[i]][v[j]];
-  w[j] := r_actions[v[j]][v[i]];
-  return w;
-end);
+#end);
 
 InstallGlobalFunction(YB_IsBraidedSet, 
 function(l_actions, r_actions)
@@ -464,8 +479,8 @@ function(obj)
       # I have two operations. Let S(x,y)=(g_x(y),f_y(x)) and 
       # xoy=g_y(x), y*x=Inverse(f)_y(x). 
       # Then the derived rack structure is given by x>y=f_x((y*x)oy)
-      z := y^LeftPermutations(obj)[x^Inverse(RightPermutations(obj)[y])];    
-      m[x][y] := z^RightPermutations(obj)[x];
+      z := y^LPerms(obj)[x^Inverse(RPerms(obj)[y])];    
+      m[x][y] := z^RPerms(obj)[x];
     od;
   od;
   return Rack(m);
@@ -473,20 +488,21 @@ end);
 
 InstallMethod(Wada, "for a group", [ IsGroup ],
 function(group)
-  local x, y, e, lperms, rperms;
+  local x, y, e, l, r;
 
   e := Elements(group);
-  lperms := NullMat(Size(group), Size(group));
-  rperms := NullMat(Size(group), Size(group));
+  l := NullMat(Size(group), Size(group));
+  r := NullMat(Size(group), Size(group));
   for x in group do
     for y in group do
-      lperms[Position(e, x)][Position(e, y)] := Position(e, x*Inverse(y)*Inverse(x));
-      rperms[Position(e, y)][Position(e, x)] := Position(e, x*y^2);
+      l[Position(e, x)][Position(e, y)] := Position(e, x*Inverse(y)*Inverse(x));
+      r[Position(e, y)][Position(e, x)] := Position(e, x*y^2);
     od;
   od;
-  return YB(lperms, rperms);
+  return YB(l, r);
 end);
 
+### CHECK and FIXME
 InstallMethod(IsBiquandle, "for a solution", [ IsYB ],
 function(obj)
   local x, y;
@@ -514,20 +530,20 @@ function(obj)
   return PermList(perm);
 end);
 
-# j>i = s_y t_(s_x^(-1)(y))(x)
-lrack := function(lperms, rperms)
-  local i,j,m,n;
-  n := Size(lperms);
-  m := NullMat(n,n);
-  for i in [1..n] do
-    for j in [1..n] do
-      m[j][i] := (i^lperms[j^Inverse(rperms[i])])^rperms[j];
-    od;
-  od;
-  return Rack(m);
-end;
+## j>i = s_y t_(s_x^(-1)(y))(x)
+#lrack := function(lperms, rperms)
+#  local i,j,m,n;
+#  n := Size(lperms);
+#  m := NullMat(n,n);
+#  for i in [1..n] do
+#    for j in [1..n] do
+#      m[j][i] := (i^lperms[j^Inverse(rperms[i])])^rperms[j];
+#    od;
+#  od;
+#  return Rack(m);
+#end;
 
-InstallMethod(YBRackR, "for a solution", [ IsYB ], 
+InstallMethod(DerivedRightRack, "for a solution", [ IsYB ], 
 function(obj)
   local i,j,m,n,lperms,rperms;
   lperms := List(obj!.l_actions, PermList);
@@ -544,17 +560,8 @@ end);
 
 # j>i = s_y t_(s_x^(-1)(y))(x)
 # it follows the notation of my paper with Lebed
-InstallMethod(YBRackL, "for a solution", [ IsYB ], 
+InstallMethod(DerivedLeftRack, "for a solution", [ IsYB ], 
 function(obj)
-  local i,j,m,n,lperms,rperms;
-  lperms := List(obj!.l_actions, PermList);
-  rperms := List(obj!.r_actions, PermList);
-  n := Size(lperms);
-  m := NullMat(n,n);
-  for i in [1..n] do
-    for j in [1..n] do
-      m[j][i] := (i^lperms[j^Inverse(rperms[i])])^rperms[j];
-    od;
-  od;
-  return Rack(m);
+  return DerivedRack(obj);
 end);
+
