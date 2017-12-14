@@ -42,7 +42,6 @@ function(p)
 
 end);
 
-DeclareOperation("SkewBraceElmConstructor", [IsSkewBrace, IsPerm]);
 
 InstallMethod(SkewBraceElmConstructor, "for a skew brace and an underlying permutation", [ IsSkewBrace, IsPerm ], 
 function( obj, perm )
