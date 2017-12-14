@@ -309,7 +309,7 @@ end);
 #  return PermList(p);
 #end);
 #
-#InstallMethod(SkewBrace2Solution, "for a skew brace", [ IsSkewBrace ], 
+#InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], 
 #function(obj)
 #  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
 #
@@ -374,5 +374,48 @@ InstallMethod(\in, "for a skew brace and a skew brace element", [ IsSkewBraceElm
 function(x, obj)
   return x in AsList(obj);
 end);
+
+InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
+  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
+
+  add := AsList(obj);
+  set := [1..Size(obj)];
+
+  lperms := [];
+  rperms := [];
+
+  for a in AsList(obj) do
+
+    tmp_l := [];
+    tmp_r := [];
+
+    for b in AsList(obj) do
+      Add(tmp_l, Position(AsList(obj), Lambda(a,b))); 
+      Add(tmp_r, Position(AsList(obj), Lambda(a,b)^(-1)*a*b)); 
+    od;
+    Add(lperms, tmp_l);
+    Add(rperms, tmp_r);
+  od;
+
+  lperms := List(lperms, PermList);
+  rperms := List(TransposedMat(rperms), PermList);
+
+  return Permutations2YB(lperms, rperms); 
+end);
+
+yb2permutation := function(obj)
+  local perm, x, y, u, v;
+
+  perm := [1..Size(obj)^2];
+
+  for x in [1..Size(obj)] do
+    for y in [1..Size(obj)] do
+      u := YB_xy(obj, x, y)[1];
+      v := YB_xy(obj, x, y)[2];
+      perm[x+Size(obj)*y] := u+Size(obj)*v;
+    od;
+  od;
+  return PermList(perm);
+end;
 
 

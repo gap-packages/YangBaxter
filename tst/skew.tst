@@ -100,6 +100,12 @@ gap> for a in AsList(br) do
 > fi;
 > od;
 > od;
+
+# Test the solution of the YBE associated with a (skew) brace
+gap> Number([1..NrSmallSkewBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallSkewBrace(8,k))));
+27
+gap> Number([1..NrSmallBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallBrace(8,k))));
+27
 gap> STOP_TEST( "skew.tst", 1 );
 
 #############################################################################

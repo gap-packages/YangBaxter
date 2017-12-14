@@ -19,7 +19,7 @@ DeclareAttribute("OneImmutable", IsSkewBrace);
 DeclareAttribute("Representative", IsSkewBrace);
 DeclareAttribute("Enumerator", IsSkewBrace);
 
-DeclareOperation("IsIdeal", [IsSkewBrace, IsList]);
+#DeclareOperation("IsIdeal", [IsSkewBrace, IsList]);
 
 DeclareOperation("Lambda", [IsSkewBraceElm, IsSkewBraceElm]);
 
@@ -47,7 +47,7 @@ DeclareAttribute("SkewBraceMList", IsSkewBrace);
 DeclareAttribute("AsList", IsSkewBrace);
 DeclareAttribute("Is2Sided", IsSkewBrace);
 DeclareAttribute("IsClassical", IsSkewBrace);
-DeclareAttribute("SkewBrace2Solution", IsSkewBrace);
+DeclareAttribute("SkewBrace2YB", IsSkewBrace);
 DeclareProperty("IsTwoSidedSkewBrace", IsSkewBrace);
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 

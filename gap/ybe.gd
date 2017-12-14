@@ -6,9 +6,9 @@ DeclareOperation("Table2YB", [IsList]);
 DeclareOperation("Permutations2YB", [IsList, IsList]);
 DeclareOperation("TableYB", [IsYB, IsInt, IsInt]);
 DeclareOperation("IsInvariant", [IsYB, IsList]);
-DeclareOperation("RestrictedSolution", [IsYB, IsList]);
-DeclareOperation("TrivialSolution", [IsInt]);
-DeclareOperation("LyubashenkoSolution", [IsInt, IsPerm, IsPerm]);
+DeclareOperation("RestrictedYB", [IsYB, IsList]);
+DeclareOperation("TrivialYB", [IsInt]);
+DeclareOperation("LyubashenkoYB", [IsInt, IsPerm, IsPerm]);
 DeclareOperation("CartesianProduct", [IsYB, IsYB]);
 DeclareOperation("DerivedRack", [IsYB]);
 
@@ -24,8 +24,8 @@ DeclareProperty("IsInvolutive", IsYB);
 DeclareProperty("IsBiquandle", IsYB);
 
 DeclareGlobalFunction("YB_xy");
-DeclareGlobalFunction("SmallSolution");
-DeclareGlobalFunction("NrSmallSolutions");
+DeclareGlobalFunction("SmallIYB");
+DeclareGlobalFunction("NrSmallIYB");
 
 DeclareGlobalFunction("YB_ij");
 DeclareGlobalFunction("YB_IsBraidedSet");

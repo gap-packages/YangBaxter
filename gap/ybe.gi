@@ -284,7 +284,7 @@ InstallMethod(MultipermutationLevel,
 end);
 
 ### This function returns the number of involutive set-theoretic solutions of size <n>
-InstallGlobalFunction(NrSmallSolutions, 
+InstallGlobalFunction(NrSmallIYB, 
 function(n)
   return NrSmallCycleSets(n);
 end);
@@ -301,7 +301,7 @@ end);
 
 ### This function returns the <i>-th involutive set-theoretic solution of size <n>
 ### These solutions were computed by Etingof, Schedler and Soloviev
-InstallGlobalFunction(SmallSolution, 
+InstallGlobalFunction(SmallIYB, 
 function(n, i)
   return CycleSet2YB(SmallCycleSet(n, i));
 #  local r, data;
@@ -373,7 +373,7 @@ end);
 
 ### This function returns the restricted solution with respect to <subset>
 ### If <subset> is not invariant, the function returns fail
-InstallMethod(RestrictedSolution, "for a solution and a list", [ IsYB, IsList ],
+InstallMethod(RestrictedYB, "for a solution and a list", [ IsYB, IsList ],
 function(obj, subset)
   local x, y, z, ll, rr;
 
@@ -417,14 +417,14 @@ end);
 
 ### This function returns the trivial solution over [1..size]
 ### r is trivial <=> r(x,y)=(y,x)
-InstallMethod(TrivialSolution, "for an integer", [ IsInt ],
+InstallMethod(TrivialYB, "for an integer", [ IsInt ],
 function(n)
   return YB(List([1..n], x->[1..n]), List([1..n], x->[1..n]));
 end);
 
 ### This function returns Lyubashenko solution over [1..size] with respect to <f> and <g>
 ### r is defined as r(x,y)=(f(y),g(x)), where f and g are permutations 
-InstallMethod(LyubashenkoSolution, "for an integer and two permutations", [ IsInt, IsPerm, IsPerm ],
+InstallMethod(LyubashenkoYB, "for an integer and two permutations", [ IsInt, IsPerm, IsPerm ],
 function(size, f, g)
   if f*g=g*f then
     return YB(List([1..size], x->ListPerm(g, size)), List([1..size], x->ListPerm(f,size)));
