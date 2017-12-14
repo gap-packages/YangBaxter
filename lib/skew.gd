@@ -10,7 +10,29 @@ BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsS
 
 ### To create/recognize braces 
 DeclareOperation("SkewBrace", [IsList]);
+
+# <#GAPDoc Label="SmallSkewBrace">
+# <ManSection>
+#    <Oper Name="SmallSkewBrace"
+#          Arg="k,n"/>
+#    <Returns>
+#          A skew brace
+#    </Returns>
+# <Description>
+# This is how to do this.
+#
+# <Example>
+# <![CDATA[
+# gap> SmallSkewBrace(8,3);
+# <brace of size 8>
+# ]]>
+# </Example>
+#
+# </Description>
+# </ManSection>
+# <#/GAPDoc>
 DeclareOperation("SmallSkewBrace", [IsInt, IsInt]);
+
 DeclareOperation("SmallBrace", [IsInt, IsInt]);
 DeclareAttribute("IdSkewBrace", IsSkewBrace);
 DeclareAttribute("IdBrace", IsSkewBrace);
