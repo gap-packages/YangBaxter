@@ -101,6 +101,23 @@ gap> for a in AsList(br) do
 > od;
 > od;
 
+# Test Lambda and its inverse
+gap> br := SmallSkewBrace(8,25);;
+gap> for a in br do
+> for b in br do
+> if Lambda(a,InverseLambda(a,b)) <> b then
+> Print("This is wrong!\n");
+> fi;
+> od;
+> od;
+gap> for a in br do
+> for b in br do
+> if InverseLambda(a, Lambda(a,b)) <> b then
+> Print("This is wrong!\n");
+> fi;
+> od;
+> od;
+
 # Test the solution of the YBE associated with a (skew) brace
 gap> Number([1..NrSmallSkewBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallSkewBrace(8,k))));
 27

@@ -353,6 +353,13 @@ InstallMethod(Lambda,
       return -x+x*y;
 end);
 
+InstallMethod(InverseLambda, 
+    "for two elements of a skew brace",
+    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    function( x, y )
+      return Inverse(x)*(x+y);
+end);
+
 InstallMethod(InverseBijective1Cocycle,
     "for a skew brace", 
     [ IsSkewBrace ],
