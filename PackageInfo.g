@@ -3,6 +3,13 @@ PackageName := "YangBaxter",
 Subtitle := "YangBaxter",
 Version := "0",
 Date := "00/00/0000",
+
+##  <#GAPDoc Label="PKGVERSIONDATA">
+##  <!ENTITY VERSION "0">
+##  <!ENTITY RELEASEDATE "14 December 2017">
+##  <!ENTITY RELEASEYEAR "2017">
+##  <#/GAPDoc>
+
 ArchiveURL := "http://",
 ArchiveFormats := ".zoo",
 Persons := [
@@ -35,22 +42,20 @@ Persons := [
 #
 #PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
 #               
-#PackageDoc := rec(
-#  BookName  := "rig",
-#  # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
-##  Archive := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-2.0.zoo",
-#  ArchiveURLSubset := ["doc", "htm"],
-#  HTMLStart := "htm/chapters.htm",
-#  PDFFile   := "doc/manual.pdf",
-#  # the path to the .six file used by GAP's help system
-#  SixFile   := "doc/manual.six",
-#  # a longer title of the book, this together with the book name should
-#  # fit on a single text line (appears with the '?books' command in GAP)
-#  LongTitle := "A GAP package for racks, quandles and crossed sets",
-#  # Should this help book be autoloaded when GAP starts up? This should
-#  # usually be 'true', otherwise say 'false'. 
-#  Autoload  := true
-#),
+PackageDoc := rec(
+  # use same as in GAP            
+  BookName  := "YangBaxter",
+  # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zip.
+  ArchiveURLSubset := ["doc"],
+  HTMLStart := "doc/chap0.html",
+  PDFFile   := "doc/manual.pdf",
+  # the path to the .six file used by GAP's help system
+  SixFile   := "doc/manual.six",
+  # a longer title of the book, this together with the book name should
+  # fit on a single text line (appears with the '?books' command in GAP)
+  # LongTitle := "Elementary Divisors of Integer Matrices",
+  LongTitle := "YangBaxter",
+),
 
 
 Dependencies := rec(
