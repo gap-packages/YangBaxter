@@ -159,7 +159,7 @@ end);
 
 InstallMethod(ViewObj, "for skew braces", [ IsSkewBrace ],
 function(obj)
-  if HasIdBrace(obj) then
+  if HasIdBrace(obj) or IsClassicalSkewBrace(obj) then
     Print("<brace of size ", Size(obj), ">");
   else
     Print("<skew brace of size ", Size(obj), ">");
@@ -241,6 +241,7 @@ function(size, number)
   if number <= BRACES[size].implemented then
     obj := SkewBrace(BRACES[size].brace[number].perms);
     SetIdBrace( obj, [ size, number ] );
+    SetIsClassicalSkewBrace(obj, true);
     if size > 15 then
       Unbind(BRACES[size]);
     fi;
