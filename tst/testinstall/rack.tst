@@ -23,6 +23,15 @@ gap> for x in obj do
 > od;
 > od;
 > od;
+gap> Rack([[2,1],[1,2]]);
+Error, this is not a rack
+gap> r := Rack([[1,2],[1,2]]);
+<A rack of size 2>
+gap> r := Rack([[1,2],[1,2]]);;
+gap> Display(r);
+Rack( [ [ 1, 2 ], [ 1, 2 ] ] )
+gap> Rack2YB(r);
+<A set-theoretical solution of size 2>
 gap> STOP_TEST( "rack.tst", 1 );
 
 #############################################################################

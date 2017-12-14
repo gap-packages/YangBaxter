@@ -7,7 +7,7 @@ InstallMethod(YB, "for a two lists of permutations", [ IsList, IsList ],
 function(l, r)
   local obj;
   if not IS_YB(l, r) then
-    Error("this is not a solution of the YBE, ");
+    Error("this is not a solution of the YBE\n");
   fi;
   
   obj := Objectify(YBType, rec());
@@ -210,11 +210,11 @@ InstallMethod(YB2CycleSet,
   function(obj)
 
   if not IsInvolutive(obj) then
-    Error("the solution of the YBE is not involutive, ");
+    Error("the solution of the YBE is not involutive\n");
   fi;
 
   if not IsRightNonDegenerate(obj) then
-    Error("the soslution of the YBE is not (right) non-degenerate, ");
+    Error("the soslution of the YBE is not (right) non-degenerate\n");
   fi;
 
   return CycleSet(RMatrix(obj));
@@ -234,7 +234,7 @@ InstallMethod(Retract,
   local e, c, s, pairs, x, y, z, ll, rr;
 
   if not IsInvolutive(obj) then
-    Error("the solutions of the YBE is not involutive, ");
+    Error("the solutions of the YBE is not involutive\n");
   fi;
 
   pairs := [];
@@ -564,4 +564,21 @@ InstallMethod(DerivedLeftRack, "for a solution", [ IsYB ],
 function(obj)
   return DerivedRack(obj);
 end);
+
+InstallMethod(YB2Permutation, "for a solution", [ IsYB ], function(obj)
+  local perm, x, y, u, v;
+
+  perm := [1..Size(obj)^2];
+
+  for x in [1..Size(obj)] do
+    for y in [1..Size(obj)] do
+      u := YB_xy(obj, x, y)[1];
+      v := YB_xy(obj, x, y)[2];
+      perm[x+Size(obj)*y] := u+Size(obj)*v;
+    od;
+  od;
+  return PermList(perm);
+end);
+
+
 

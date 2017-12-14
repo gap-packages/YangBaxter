@@ -12,6 +12,7 @@ DeclareOperation("TrivialYB", [IsInt]);
 DeclareOperation("LyubashenkoYB", [IsInt, IsPerm, IsPerm]);
 DeclareOperation("CartesianProduct", [IsYB, IsYB]);
 DeclareOperation("DerivedRack", [IsYB]);
+DeclareOperation("YB2Permutation", [IsYB]);
 
 ### YB
 DeclareProperty("IsSquareFree", IsYB);
@@ -45,7 +46,7 @@ DeclareAttribute("Retract", IsYB);
 DeclareAttribute("MultipermutationLevel", IsYB);
 DeclareAttribute("YB2CycleSet", IsYB);
 DeclareAttribute("StructureGroup", IsYB);
-DeclareAttribute("YB2Permutation", IsYB);
+#DeclareAttribute("YB2Permutation", IsYB);
 DeclareAttribute("DerivedLeftRack", IsYB);
 DeclareAttribute("DerivedRightRack", IsYB);
 

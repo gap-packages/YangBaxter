@@ -6,7 +6,7 @@ InstallMethod(Rack, "for a matrix", [ IsMatrix ],
 function(matrix)
   local fam, obj;
   if not IS_RACK(matrix) then
-    Error("this is not a rack, ");
+    Error("this is not a rack\n");
   fi;
 
   fam := NewFamily("RackElmFamily", IsRackElm, IsMultiplicativeElement);

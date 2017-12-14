@@ -416,19 +416,4 @@ InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
   return Permutations2YB(lperms, rperms); 
 end);
 
-yb2permutation := function(obj)
-  local perm, x, y, u, v;
-
-  perm := [1..Size(obj)^2];
-
-  for x in [1..Size(obj)] do
-    for y in [1..Size(obj)] do
-      u := YB_xy(obj, x, y)[1];
-      v := YB_xy(obj, x, y)[2];
-      perm[x+Size(obj)*y] := u+Size(obj)*v;
-    od;
-  od;
-  return PermList(perm);
-end;
-
 
