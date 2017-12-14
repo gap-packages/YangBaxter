@@ -366,10 +366,19 @@ InstallMethod(InverseLambda,
       return Inverse(x)*(x+y);
 end);
 
-#InstallMethod(LambdaAsPerm, "for an element of a skew brace", [ IsSkewBraceElm ], function(x)
-#  local obj;
-#  obj := FamilyObj(x).SkewBrace;
-#end);
+InstallMethod(Lambda2Permutation, "for an element of a skew brace", [ IsSkewBraceElm ], function(x)
+  local obj, lst, p, k;
+  obj := FamilyObj(x)!.SkewBrace;
+  lst := AsList(obj);
+
+  p := [1..Size(obj)];
+
+  for k in [1..Size(obj)] do
+    p[k] := Position(lst, Lambda(x, lst[k]));
+  od;
+
+  return PermList(p);
+end);
 
 InstallMethod(InverseBijective1Cocycle,
     "for a skew brace", 

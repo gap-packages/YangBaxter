@@ -47,6 +47,7 @@ DeclareAttribute("Enumerator", IsSkewBrace);
 
 DeclareOperation("Lambda", [IsSkewBraceElm, IsSkewBraceElm]);
 DeclareOperation("InverseLambda", [IsSkewBraceElm, IsSkewBraceElm]);
+DeclareOperation("Lambda2Permutation", [IsSkewBraceElm]);
 
 DeclareOperation("Random", [IsSkewBrace]);
 DeclareOperation("IsSkewBraceImplemented", [IsInt]);

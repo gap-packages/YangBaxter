@@ -166,6 +166,14 @@ gap> br := SmallSkewBrace(10,4);
 <skew brace of size 10>
 gap> Brace2CycleSet(br);
 Error, this is not a classical brace
+
+# Test the map lambda written as a permutation
+gap> br := SmallSkewBrace(8,28);
+<skew brace of size 8>
+gap> gens := List(br, x->Lambda2Permutation(x));
+[ (), (), (), (), (3,4)(7,8), (3,4)(7,8), (3,4)(7,8), (3,4)(7,8) ]
+gap> Orbits(Group(gens));
+[ [ 3, 4 ], [ 7, 8 ] ]
 gap> STOP_TEST( "skew.tst", 1 );
 
 #############################################################################
