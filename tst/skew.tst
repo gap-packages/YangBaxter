@@ -118,7 +118,17 @@ gap> for a in br do
 > od;
 > od;
 
-# Test the solution of the YBE associated with a (skew) brace
+# Test PrintObj and ViewObj for (skew)braces
+gap> br := SmallSkewBrace(8,15);
+<skew brace of size 8>
+gap> Display(br);
+SmallSkewBrace(8,15)
+gap> br := SmallBrace(8,25);
+<brace of size 8>
+gap> Display(br);
+SmallBrace(8,25)
+
+# Test the solution of the YBE associated with a (skew)brace
 gap> Number([1..NrSmallSkewBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallSkewBrace(8,k))));
 27
 gap> Number([1..NrSmallBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallBrace(8,k))));

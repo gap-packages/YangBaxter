@@ -159,18 +159,24 @@ end);
 
 InstallMethod(ViewObj, "for skew braces", [ IsSkewBrace ],
 function(obj)
-  Print("<skew brace of size ", Size(obj), ">");
+  if HasIdBrace(obj) then
+    Print("<brace of size ", Size(obj), ">");
+  else
+    Print("<skew brace of size ", Size(obj), ">");
+  fi;
 end);
 
 InstallMethod(ViewObj, "for skew brace elements", [ IsSkewBraceElm ],
 function(x)
-  Print("{", x![1], "}");
+  Print("<", x![1], ">");
 end);
 
 InstallMethod(PrintObj, "for skew braces", [ IsSkewBrace ],
 function(obj)
-  if HasIdSkewBrace(obj) then
-    Print( "SmallSkewBrace(", IdSkewBrace(obj)[1], ", ", IdSkewBrace(obj)[2], ")");
+  if HasIdBrace(obj) then
+    Print( "SmallBrace(", IdBrace(obj)[1], ",", IdBrace(obj)[2], ")");
+  elif HasIdSkewBrace(obj) then
+    Print( "SmallSkewBrace(", IdSkewBrace(obj)[1], ",", IdSkewBrace(obj)[2], ")");
   else
     Print("<skew brace of size ", Size(obj), ">");
   fi;
