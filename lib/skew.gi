@@ -18,7 +18,7 @@ function(p)
   fam!.DefaultType := NewType(fam, IsSkewBraceElmRep);
 
   obj := Objectify(NewType(CollectionsFamily(fam), IsSkewBrace and IsAttributeStoringRep), rec());
-  fam!.Brace := obj;
+  fam!.SkewBrace := obj;
 
   SetSize(obj, Size(add)); 
   SetSkewBraceAList(obj, add);
@@ -54,7 +54,7 @@ InstallMethod( \+,
     function( x, y )
       local fam;
       fam := FamilyObj(x);
-      return SkewBraceElmConstructor(fam!.Brace, x![1] * y![1]);
+      return SkewBraceElmConstructor(fam!.SkewBrace, x![1] * y![1]);
 end);
 
 InstallMethod( \=,
@@ -70,7 +70,7 @@ InstallMethod( \*,
     function( x, y )
       local i, j, obj, mul, add;
 
-      obj := FamilyObj(x)!.Brace;
+      obj := FamilyObj(x)!.SkewBrace;
       add := SkewBraceAList(obj);
       mul := SkewBraceMList(obj);
 
@@ -83,7 +83,7 @@ InstallMethod(AdditiveInverseOp,
     "for an element of a skew brace",
     [ IsSkewBraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.Brace, Inverse(x![1]));
+      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, Inverse(x![1]));
 end);
 
 InstallMethod(InverseOp, 
@@ -92,7 +92,7 @@ InstallMethod(InverseOp,
     function( x )
       local i, obj, mul, add;
 
-      obj := FamilyObj(x)!.Brace;
+      obj := FamilyObj(x)!.SkewBrace;
       add := SkewBraceAList(obj);
       mul := SkewBraceMList(obj);
 
@@ -104,21 +104,21 @@ InstallMethod(ZeroOp,
     "for an element of a skew brace",
     [ IsSkewBraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.Brace, () );
+      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, () );
 end);
 
 InstallMethod(OneOp, 
     "for an element of a skew brace",
     [ IsSkewBraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.Brace, () );
+      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, () );
 end);
 
 InstallMethod(ZeroOp, 
     "for an element of a skew brace",
     [ IsSkewBraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.Brace, () );
+      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, () );
 end);
 
 InstallMethod(ZeroImmutable, 
@@ -365,6 +365,11 @@ InstallMethod(InverseLambda,
     function( x, y )
       return Inverse(x)*(x+y);
 end);
+
+#InstallMethod(LambdaAsPerm, "for an element of a skew brace", [ IsSkewBraceElm ], function(x)
+#  local obj;
+#  obj := FamilyObj(x).SkewBrace;
+#end);
 
 InstallMethod(InverseBijective1Cocycle,
     "for a skew brace", 
