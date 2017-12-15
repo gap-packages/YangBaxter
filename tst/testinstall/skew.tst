@@ -176,6 +176,41 @@ gap> Orbits(Group(gens));
 [ [ 3, 4 ], [ 7, 8 ] ]
 gap> STOP_TEST( "skew.tst", 1 );
 
+# Test isomorphisms and ids
+gap> br := SmallSkewBrace(16,500);;
+gap> IdSkewBrace(br);
+[ 16, 500 ]
+gap> IdBrace(br);
+[ 16, 119 ]
+gap> fail <> IsomorphismSkewBraces(br,br);
+true
+gap> for n in [2..7] do
+> for k in [1..NrSmallSkewBraces(n)] do
+> br := SmallSkewBrace(n,k);
+> if IdSkewBrace(br) <> [n,k] then
+> Print("This is wrong!\n");
+> fi;
+> od;
+> od;
+gap> for n in [2..7] do
+> for k in [1..NrSmallSkewBraces(n)] do
+> br := SmallSkewBrace(n,k);
+> if IsClassicalSkewBrace(br) then
+> Print("IdBrace: ", IdBrace(br), ", IdSkewBrace: ", [n,k], "\n");
+> fi;
+> od;
+> od;
+IdBrace: [ 2, 1 ], IdSkewBrace: [ 2, 1 ]
+IdBrace: [ 3, 1 ], IdSkewBrace: [ 3, 1 ]
+IdBrace: [ 4, 1 ], IdSkewBrace: [ 4, 1 ]
+IdBrace: [ 4, 2 ], IdSkewBrace: [ 4, 2 ]
+IdBrace: [ 4, 3 ], IdSkewBrace: [ 4, 3 ]
+IdBrace: [ 4, 4 ], IdSkewBrace: [ 4, 4 ]
+IdBrace: [ 5, 1 ], IdSkewBrace: [ 5, 1 ]
+IdBrace: [ 6, 1 ], IdSkewBrace: [ 6, 5 ]
+IdBrace: [ 6, 2 ], IdSkewBrace: [ 6, 6 ]
+IdBrace: [ 7, 1 ], IdSkewBrace: [ 7, 1 ]
+
 #############################################################################
 ##
 #E

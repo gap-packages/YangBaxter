@@ -1,1 +1,2 @@
-DeclareGlobalFunction("list2matrix");
+#DeclareGlobalFunction("list2matrix");
+DeclareGlobalFunction("AllInjectiveHomomorphisms");

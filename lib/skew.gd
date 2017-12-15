@@ -58,10 +58,12 @@ DeclareOperation("InverseBijective1Cocycle", [IsSkewBrace]);
 
 #DeclareOperation("LambdaMap", [IsBrace, IsPerm]);
 #DeclareOperation("InverseLambdaMap", [IsBrace, IsPerm]);
-#DeclareOperation("IsomorphismBraces", [IsBrace, IsBrace]);
 
 DeclareGlobalFunction("NrSmallSkewBraces");
 DeclareGlobalFunction("NrSmallBraces");
+DeclareGlobalFunction("IsSkewBraceHomomorphism");
+DeclareGlobalFunction("SkewBraceElm");
+DeclareGlobalFunction("IsomorphismSkewBraces");
 
 #DeclareAttribute("Brace2CycleSet", IsBrace);
 #DeclareAttribute("Brace2LinearCycleSet", IsBrace);

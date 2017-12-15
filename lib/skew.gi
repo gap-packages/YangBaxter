@@ -42,6 +42,65 @@ function(p)
 
 end);
 
+# If <obj> is a classical brace, this function returns the id of the skew brace <obj>
+InstallMethod(IdBrace, "for a skew brace", [IsSkewBrace], function(obj)
+  if not IsClassicalSkewBrace(obj) then
+    Error("the skew brace is not classical\n");
+  fi;
+  return [Size(obj), First([1..NrSmallBraces(Size(obj))], k->IsomorphismSkewBraces(obj, SmallBrace(Size(obj),k)) <> fail)];
+end);
+
+# This function returns the id of the skew brace <obj>
+InstallMethod(IdSkewBrace, "for a skew brace", [IsSkewBrace], function(obj)
+  return [Size(obj), First([1..NrSmallSkewBraces(Size(obj))], k->IsomorphismSkewBraces(obj, SmallSkewBrace(Size(obj),k)) <> fail)];
+end);
+
+InstallGlobalFunction(SkewBraceElm, function(obj, x)
+  if x in SkewBraceAList(obj) then
+    return SkewBraceElmConstructor(obj, x);
+  else
+    Error("the permutation does not belong to the additive group of the skew brace\n");
+  fi;
+end);
+
+InstallGlobalFunction(IsSkewBraceHomomorphism, function(f, obj1, obj2)
+  local a, b, c, x, y, z;
+  for x in obj1 do
+    a := x![1];
+    for y in obj1 do
+      b := y![1]; 
+      z := x*y;
+      c := z![1];
+      if SkewBraceElm(obj2, Image(f, c)) <> SkewBraceElm(obj2, Image(f, a))*SkewBraceElm(obj2, Image(f, b)) then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
+
+# This function returns an isomorphism between the finite skew braces
+# <obj1> and <obj2> 
+# If <obj1> and <obj2> are not isomorphic the function returns fail
+InstallGlobalFunction(IsomorphismSkewBraces, function(obj1, obj2)
+  local f, ab1, ab2;
+
+  if Size(obj1) <> Size(obj2) then
+    return fail;
+  fi;
+
+  ab1 :=  UnderlyingAdditiveGroup(obj1);
+  ab2 :=  UnderlyingAdditiveGroup(obj2);
+
+  for f in AllInjectiveHomomorphisms(ab1, ab2) do
+    if IsSkewBraceHomomorphism(f, obj1, obj2) then
+      return f;
+    fi;
+  od;
+  return fail;
+end);
+
+
 
 InstallMethod(SkewBraceElmConstructor, "for a skew brace and an underlying permutation", [ IsSkewBrace, IsPerm ], 
 function( obj, perm )
