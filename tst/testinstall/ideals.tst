@@ -34,6 +34,17 @@ gap> for k in [1..NrSmallSkewBraces(8)] do
 > Print("This is wrong!\n");
 > fi;
 > od;
+
+# Test quotients 
+gap> br := SmallSkewBrace(16,300);;
+gap> Ideals(br);
+[ <skew brace of size 16>, <brace of size 8>, <brace of size 8>, 
+  <brace of size 8>, <brace of size 4>, <brace of size 2>, <brace of size 2>, 
+  <brace of size 2>, <brace of size 1> ]
+gap> List(last, x->Quotient(br, x));
+[ <brace of size 1>, <brace of size 2>, <brace of size 2>, <brace of size 2>, 
+  <brace of size 4>, <skew brace of size 8>, <skew brace of size 8>, 
+  <brace of size 8>, <skew brace of size 16> ]
 gap> STOP_TEST( "ideals.tst", 1 );
 
 #############################################################################

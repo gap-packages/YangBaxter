@@ -2,7 +2,6 @@
 BindGlobal("SkewBraceFamily", NewFamily("SkewBraceFamily"));
 #InstallValue(SkewBraceType, NewType(SkewBraceFamily, IsSkewBrace));
 
-
 InstallMethod(SkewBrace, "for a list of pairs of elements in a group", [IsList], 
 function(p)
   local add, mul, per, fam, obj, gens;
