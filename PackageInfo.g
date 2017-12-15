@@ -1,17 +1,28 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
-Subtitle := "YangBaxter",
-Version := "0",
-Date := "00/00/0000",
+Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
+Version := "0.0.1",
+Date := "15/12/2017",
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "0">
-##  <!ENTITY RELEASEDATE "14 December 2017">
+##  <!ENTITY VERSION "0.0.1">
+##  <!ENTITY RELEASEDATE "15 December 2017">
 ##  <!ENTITY RELEASEYEAR "2017">
 ##  <#/GAPDoc>
 
-ArchiveURL := "http://",
-ArchiveFormats := ".zoo",
+PackageWWWHome :=
+  Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+
+ArchiveURL := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-", ~.Version ),
+ArchiveFormats := ".tar.gz",
+
 Persons := [
   rec( 
     LastName      := "Vendramin",
@@ -26,26 +37,38 @@ Persons := [
                        "Buenos Aires, Argentina" ] ),
     Place         := "Buenos Aires",
     Institution   := "UBA"
-  )
+  ),
+  rec( 
+    LastName      := "Konovalov",
+    FirstNames    := "Alexander",
+    IsAuthor      := true,
+    IsMaintainer  := true,
+    Email         := "alexander.konovalov@st-andrews.ac.uk",
+    WWWHome       := "http://www.cs.st-andrews.ac.uk/~alexk/",
+    PostalAddress := Concatenation( [
+                     "School of Computer Science\n",
+                     "University of St Andrews\n",
+                     "Jack Cole Building, North Haugh,\n",
+                     "St Andrews, Fife, KY16 9SX, Scotland" ] ),
+    Place         := "St Andrews",
+    Institution   := "University of St Andrews"
+     ),  
 ],
 
-#Status := "deposited",
-#README_URL := 
-#  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/README.example",
-#PackageInfoURL := 
-#  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/PackageInfo.g",
-#
-#AbstractHTML := 
-#  "The <span class=\"pkgname\">Example</span> package, as its name suggests, \
-#   is an example of how to create a <span class=\"pkgname\">GAP</span> \
-#   package. It has little functionality except for being a package",
-#
-#PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
-#               
+Status := "dev",
+
+README_URL := 
+  Concatenation( ~.PackageWWWHome, "/README.md" ),
+PackageInfoURL := 
+  Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+
+AbstractHTML := 
+"The <span class=\"pkgname\">YangBaxter</span> package provides functionality \
+to construct classical and skew braces. It also includes a database of classical \
+and skew braces of small orders.",
+   
 PackageDoc := rec(
-  # use same as in GAP            
   BookName  := "YangBaxter",
-  # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zip.
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
@@ -53,23 +76,20 @@ PackageDoc := rec(
   SixFile   := "doc/manual.six",
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
-  # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "YangBaxter",
+  LongTitle := "Combinatorial Solutions for the Yang-Baxter equation",
 ),
 
-
 Dependencies := rec(
-   GAP := ">=4.4",
-  NeededOtherPackages := [],
-  SuggestedOtherPackages := [],
-  ExternalConditions := []
+   GAP := ">=4.8",
+  NeededOtherPackages := [ ],
+  SuggestedOtherPackages := [ ],
+  ExternalConditions := [ ]
 ),
 
 AvailabilityTest := ReturnTrue,
-BannerString := Concatenation( 
-  "--\nYB - Version ", ~.Version, "\n", ~.ArchiveURL,"\n"),
-Autoload := false,
+
+TestFile := "tst/testall.g",
+
 Keywords := ["QYBE", "cycle sets", "racks", "quandles"]
+
 ));
-
-
