@@ -6,21 +6,21 @@
                                    [1XYangBaxter[101X
   
   
-                                   Version 0
+                                 Version 0.0.1
   
   
-                                14 December 2017
+                                15 December 2017
   
+  
+                               Leandro Vendramin
   
                               Alexander Konovalov
   
-                              Alexander Konovalov
   
   
-  
-  Alexander Konovalov
-      Email:    [7Xmailto:alexk@mcs.st-andrews.ac.uk[107X
-      Homepage: [7Xhttp://www.cs.st-andrews.ac.uk/~alexk/[107X
+  Leandro Vendramin
+      Email:    [7Xmailto:lvendramin@dm.uba.ar[107X
+      Homepage: [7Xhttp://mate.dm.uba.ar/~lvendram[107X
   Alexander Konovalov
       Email:    [7Xmailto:alexk@mcs.st-andrews.ac.uk[107X
       Homepage: [7Xhttp://www.cs.st-andrews.ac.uk/~alexk/[107X
@@ -32,15 +32,12 @@
   [33X[0;0Y[5XYangBaxter[105X  package  is free software; you can redistribute it and/or modify
   it    under    the    terms    of    the    GNU   General   Public   License
   ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
-  Foundation;  either  version 2 of the License, or (at your option) any later
-  version.[133X
+  Foundation, version 3.[133X
   
   
   -------------------------------------------------------
   [1XAcknowledgements[101X
-  [33X[0;0YWe  appreciate  very  much  all  past  and  future comments, suggestions and
-  contributions  to  this  package and its documentation provided by [5XGAP[105X users
-  and developers.[133X
+  [33X[0;0YThanks to Travis Schedler for the involutive solutions up to size 8.[133X
   
   
   -------------------------------------------------------
@@ -49,8 +46,13 @@
   [1XContents (YangBaxter)[101X
   
   1 [33X[0;0YBraces and Skew Braces[133X
-    1.1 [33X[0;0YSmall Skew Braces Library[133X
-      1.1-1 SmallSkewBrace
+    1.1 [33X[0;0YCategories of Braces and Their Objects[133X
+      1.1-1 IsSkewBrace
+      1.1-2 IsSkewBraceElm
+    1.2 [33X[0;0YConstructing Skew Braces[133X
+      1.2-1 SkewBrace
+    1.3 [33X[0;0YSmall Skew Braces Library[133X
+      1.3-1 SmallSkewBrace
   
   
   [32X

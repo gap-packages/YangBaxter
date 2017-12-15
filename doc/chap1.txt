@@ -1,20 +1,58 @@
   
   [1X1 [33X[0;0YBraces and Skew Braces[133X[101X
   
-  [33X[0;0YThis Chapter describes functionality for ...[133X
+  [33X[0;0YThis Chapter describes functionality for creating skew braces.[133X
   
   
-  [1X1.1 [33X[0;0YSmall Skew Braces Library[133X[101X
+  [1X1.1 [33X[0;0YCategories of Braces and Their Objects[133X[101X
   
-  [33X[0;0YThe  library  contains  all  skew braces up to isomorphism for the following
-  orders...[133X
+  [1X1.1-1 IsSkewBrace[101X
   
-  [1X1.1-1 SmallSkewBrace[101X
+  [29X[2XIsSkewBrace[102X[32X filter
+  
+  [33X[0;0YA category of skew braces.[133X
+  
+  [1X1.1-2 IsSkewBraceElm[101X
+  
+  [29X[2XIsSkewBraceElm[102X[32X filter
+  
+  [33X[0;0YA category of skew brace elements.[133X
+  
+  
+  [1X1.2 [33X[0;0YConstructing Skew Braces[133X[101X
+  
+  [1X1.2-1 SkewBrace[101X
+  
+  [29X[2XSkewBrace[102X( [3Xt[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA skew brace[133X
+  
+  [33X[0;0YThe argument [3Xt[103X is a list of pairs of elements in a group.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSkewBrace([[(),()]]);[127X[104X
+    [4X[28X<brace of size 1>[128X[104X
+    [4X[25Xgap>[125X [27XSkewBrace([[(),()],[(1,2),(1,2)]]);[127X[104X
+    [4X[28X<brace of size 2>[128X[104X
+    [4X[25Xgap>[125X [27XSkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ], [127X[104X
+    [4X[25X>[125X [27X[ (1,3,2,4), (1,4,2,3) ], [ (1,4,2,3), (1,3,2,4) ] ] );[127X[104X
+    [4X[28X<brace of size 4>[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3 [33X[0;0YSmall Skew Braces Library[133X[101X
+  
+  [33X[0;0YThe Small Skew Braces Library contains all skew braces up to isomorphism for
+  certain orders.[133X
+  
+  [1X1.3-1 SmallSkewBrace[101X
   
   [29X[2XSmallSkewBrace[102X( [3Xk[103X, [3Xn[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10YA skew brace[133X
   
-  [33X[0;0YThis is how to do this.[133X
+  [33X[0;0Y[2XSmallSkewBrace[102X  returns  an [3Xn[103X-th skew brace from the database of skew braces
+  of order [3Xk[103X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
