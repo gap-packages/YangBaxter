@@ -8,7 +8,17 @@
 #
 gap> START_TEST( "yangbaxter01.tst");
 
-# YangBaxter/doc/../lib/skew.gd:24-29
+# YangBaxter/doc/../lib/skew.gd:39-49
+
+gap> SkewBrace([[(),()]]);
+<brace of size 1>
+gap> SkewBrace([[(),()],[(1,2),(1,2)]]);
+<brace of size 2>
+gap> SkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ], 
+>      [ (1,3,2,4), (1,4,2,3) ], [ (1,4,2,3), (1,3,2,4) ] ] );
+<brace of size 4>
+
+# YangBaxter/doc/../lib/skew.gd:67-72
 
 gap> SmallSkewBrace(8,3);
 <brace of size 8>

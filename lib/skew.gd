@@ -1,4 +1,21 @@
+# <#GAPDoc Label="IsSkewBrace">
+# <ManSection>
+#    <Filt Name="IsSkewBrace" />
+# <Description>
+# A category of skew braces.
+# </Description>
+# </ManSection>
+# <#/GAPDoc>
 DeclareCategory("IsSkewBrace", IsAttributeStoringRep);
+
+# <#GAPDoc Label="IsSkewBraceElm">
+# <ManSection>
+#    <Filt Name="IsSkewBraceElm" />
+# <Description>
+# A category of skew brace elements.
+# </Description>
+# </ManSection>
+# <#/GAPDoc>
 DeclareCategory("IsSkewBraceElm", IsMultiplicativeElementWithInverse and IsAdditiveElementWithInverse);
 DeclareCategoryCollections("IsSkewBraceElm");
 
@@ -10,7 +27,30 @@ BindGlobal("SkewBraceElmFamily", NewFamily("SkewBraceElmFamily", IsSkewBraceElm)
 BindGlobal("SkewBraceElmType", NewType(SkewBraceElmFamily, IsSkewBraceElm));
 BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsSkewBrace and IsAttributeStoringRep));
 
-### To create/recognize braces 
+# <#GAPDoc Label="SkewBrace">
+# <ManSection>
+#    <Oper Name="SkewBrace"
+#          Arg="t"/>
+#    <Returns>
+#          A skew brace
+#    </Returns>
+# <Description>
+# The argument <A>t</A> is a list of pairs of elements in a group.
+# <Example>
+# <![CDATA[
+# gap> SkewBrace([[(),()]]);
+# <brace of size 1>
+# gap> SkewBrace([[(),()],[(1,2),(1,2)]]);
+# <brace of size 2>
+# gap> SkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ], 
+# > [ (1,3,2,4), (1,4,2,3) ], [ (1,4,2,3), (1,3,2,4) ] ] );
+# <brace of size 4>
+# ]]>
+# </Example>
+#
+# </Description>
+# </ManSection>
+# <#/GAPDoc>
 DeclareOperation("SkewBrace", [IsList]);
 
 # <#GAPDoc Label="SmallSkewBrace">
@@ -21,7 +61,8 @@ DeclareOperation("SkewBrace", [IsList]);
 #          A skew brace
 #    </Returns>
 # <Description>
-# This is how to do this.
+# <Ref Oper="SmallSkewBrace"/> returns an <A>n</A>-th skew brace from
+# the database of skew braces of order <A>k</A>.
 #
 # <Example>
 # <![CDATA[
