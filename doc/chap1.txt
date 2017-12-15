@@ -1,0 +1,25 @@
+  
+  [1X1 [33X[0;0YBraces and Skew Braces[133X[101X
+  
+  [33X[0;0YThis Chapter describes functionality for ...[133X
+  
+  
+  [1X1.1 [33X[0;0YSmall Skew Braces Library[133X[101X
+  
+  [33X[0;0YThe  library  contains  all  skew braces up to isomorphism for the following
+  orders...[133X
+  
+  [1X1.1-1 SmallSkewBrace[101X
+  
+  [29X[2XSmallSkewBrace[102X( [3Xk[103X, [3Xn[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA skew brace[133X
+  
+  [33X[0;0YThis is how to do this.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSmallSkewBrace(8,3);[127X[104X
+    [4X[28X<brace of size 8>[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  

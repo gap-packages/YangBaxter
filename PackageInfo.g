@@ -1,102 +1,95 @@
-#############################################################################
-##  
-##  Demo PackageInfo.g for the GitHubPagesForGAP
-##
-
 SetPackageInfo( rec(
+PackageName := "YangBaxter",
+Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
+Version := "0.0.1",
+Date := "15/12/2017",
 
-PackageName := "GitHubPagesForGAP",
+##  <#GAPDoc Label="PKGVERSIONDATA">
+##  <!ENTITY VERSION "0.0.1">
+##  <!ENTITY RELEASEDATE "15 December 2017">
+##  <!ENTITY RELEASEYEAR "2017">
+##  <#/GAPDoc>
 
-Subtitle := "A GitHub Pages generator for GAP packages",
-Version := "0.2",
-Date := "04/02/2017", # dd/mm/yyyy format
+PackageWWWHome :=
+  Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+
+ArchiveURL := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-", ~.Version ),
+ArchiveFormats := ".tar.gz",
 
 Persons := [
-  rec(
-    LastName      := "Horn",
-    FirstNames    := "Max",
+  rec( 
+    LastName      := "Vendramin",
+    FirstNames    := "Leandro",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "max.horn@math.uni-giessen.de",
-    WWWHome       := "http://www.quendi.de/math",
-    PostalAddress := Concatenation(
-                       "AG Algebra\n",
-                       "Mathematisches Institut\n",
-                       "Justus-Liebig-Universität Gießen\n",
-                       "Arndtstraße 2\n",
-                       "35392 Gießen\n",
-                       "Germany" ),
-    Place         := "Gießen",
-    Institution   := "Justus-Liebig-Universität Gießen"
+    Email         := "lvendramin@dm.uba.ar",
+    WWWHome       := "http://mate.dm.uba.ar/~lvendram",
+    PostalAddress := Concatenation( [
+                       "Departamento de matem\'atica, FCEN, UBA",
+                       "Ciudad Universitaria, Pab. 1,\n",
+                       "Buenos Aires, Argentina" ] ),
+    Place         := "Buenos Aires",
+    Institution   := "UBA"
   ),
-
-  rec(
-    LastName      := "Thor",
-    FirstNames    := "A. U.",
+  rec( 
+    LastName      := "Konovalov",
+    FirstNames    := "Alexander",
     IsAuthor      := true,
-    IsMaintainer  := false,
-    #Email         := "author@example.com",
-  ),
-
-  rec(
-    LastName      := "Itor",
-    FirstNames    := "Jan",
-    IsAuthor      := false,
     IsMaintainer  := true,
-    #Email         := "janitor@example.com",
-  ),
+    Email         := "alexander.konovalov@st-andrews.ac.uk",
+    WWWHome       := "http://www.cs.st-andrews.ac.uk/~alexk/",
+    PostalAddress := Concatenation( [
+                     "School of Computer Science\n",
+                     "University of St Andrews\n",
+                     "Jack Cole Building, North Haugh,\n",
+                     "St Andrews, Fife, KY16 9SX, Scotland" ] ),
+    Place         := "St Andrews",
+    Institution   := "University of St Andrews"
+     ),  
 ],
 
-Status := "other",
+Status := "dev",
 
-# The following are not strictly necessary in your own PackageInfo.g
-# (in the sense that update.g only looks at the usual fields
-# like PackageWWWHome, ArchiveURL etc.). But they are convenient
-# if you use exactly the scheme for your package website that we propose.
-GithubUser := "gap-system",
-GithubRepository := ~.PackageName,
-GithubWWW := Concatenation("https://github.com/", ~.GithubUser, "/", ~.GithubRepository),
-
-PackageWWWHome := Concatenation("https://", ~.GithubUser, ".github.io/", ~.GithubRepository, "/"),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-# The following assumes you are using the Github releases system. If not, adjust
-# it accordingly.
-ArchiveURL     := Concatenation(~.GithubWWW,
-                    "/releases/download/v", ~.Version, "/",
-                    ~.GithubRepository, "-", ~.Version),
-
-ArchiveFormats := ".tar.gz .tar.bz2",
+README_URL := 
+  Concatenation( ~.PackageWWWHome, "/README.md" ),
+PackageInfoURL := 
+  Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
 AbstractHTML := 
-  "This is a pseudo package that contains no actual\
-  <span class=\"pkgname\">GAP</span> code. Instead, it is a template for other\
-  GAP packages that allows to quickly setup GitHub Pages.",
-
+"The <span class=\"pkgname\">YangBaxter</span> package provides functionality \
+to construct classical and skew braces. It also includes a database of classical \
+and skew braces of small orders.",
+   
 PackageDoc := rec(
-  BookName  := "GitHubPagesForGAP",
+  BookName  := "YangBaxter",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
+  # the path to the .six file used by GAP's help system
   SixFile   := "doc/manual.six",
-  LongTitle := "A GitHub Pages generator for GAP packages",
+  # a longer title of the book, this together with the book name should
+  # fit on a single text line (appears with the '?books' command in GAP)
+  LongTitle := "Combinatorial Solutions for the Yang-Baxter equation",
 ),
 
-# The following dependencies are fake and for testing / demo purposes
 Dependencies := rec(
-  GAP := ">=4.8.1",
-  NeededOtherPackages := [
-    ["GAPDoc", ">= 1.2"],
-    ["IO", ">= 4.1"],
-  ],
-  SuggestedOtherPackages := [["orb", ">= 4.2"]],
-  ExternalConditions := []
+   GAP := ">=4.8",
+  NeededOtherPackages := [ ],
+  SuggestedOtherPackages := [ ],
+  ExternalConditions := [ ]
 ),
 
 AvailabilityTest := ReturnTrue,
 
-Keywords := ["GitHub Pages", "GAP"]
+TestFile := "tst/testall.g",
+
+Keywords := ["QYBE", "cycle sets", "racks", "quandles"]
 
 ));
-
-
