@@ -96,6 +96,7 @@ ReadPackage("yangbaxter", "data/SBsize15.g");
 ### Braces of size <15
 ReadPackage("yangbaxter", "data/Bsmall.g");
 ReadPackage("yangbaxter", "data/Bsize2.g");
+ReadPackage("yangbaxter", "data/Bsize3.g");
 ReadPackage("yangbaxter", "data/Bsize4.g");
 ReadPackage("yangbaxter", "data/Bsize5.g");
 ReadPackage("yangbaxter", "data/Bsize6.g");
