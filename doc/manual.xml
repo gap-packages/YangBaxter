@@ -14,9 +14,9 @@
   <Subtitle>YangBaxter</Subtitle>
   <Version>Version &VERSION;</Version>
   <Date>&RELEASEDATE;</Date>
-  <Author> Alexander Konovalov
-    <Email>alexk@mcs.st-andrews.ac.uk</Email>
-    <Homepage>http://www.cs.st-andrews.ac.uk/~alexk/</Homepage>
+  <Author> Leandro Vendramin
+    <Email>lvendramin@dm.uba.ar</Email>
+    <Homepage>http://mate.dm.uba.ar/~lvendram</Homepage>
   </Author>
   <Author> Alexander Konovalov
     <Email>alexk@mcs.st-andrews.ac.uk</Email>
@@ -28,13 +28,10 @@
     &YB; package is free software; 
     you can redistribute it and/or modify it under the terms of the 
     <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL> 
-    as published by the Free Software Foundation; either version 2 of the License, 
-    or (at your option) any later version.
+    as published by the Free Software Foundation, version 3.
   </Copyright>
   <Acknowledgements>
-    We appreciate very much all past and future comments, suggestions and 
-    contributions to this package and its documentation provided by &GAP; 
-    users and developers.
+    Thanks to Travis Schedler for the involutive solutions up to size 8.
   </Acknowledgements>
 </TitlePage>
 
