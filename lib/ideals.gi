@@ -132,3 +132,41 @@ function(obj, subset)
   return res;
 end);
 
+InstallMethod(Quotient, "for two skew braces", [IsSkewBrace, IsSkewBrace], function(obj, ideal)
+  local add, mul, bij, idA, idG, fA, fG, r, s, x, a, l;
+
+  if not IsIdeal(obj, AsList(ideal)) then
+    Error("<ideal> must be an ideal of <obj>");
+  fi;
+
+  # groups of <obj>
+  add := UnderlyingAdditiveGroup(obj);
+  mul := UnderlyingMultiplicativeGroup(obj);
+
+  # bijection between <add> and <mul>
+  bij := InverseBijective1Cocycle(obj);
+
+  # the additive group of <ideal>
+  idA := UnderlyingAdditiveGroup(ideal);
+  idG := Group(List(ideal, x->Image(bij, x)));
+
+  # canonical epimorphism from <add> to <idA>
+  fA := NaturalHomomorphismByNormalSubgroup(add, idA);
+  fG := NaturalHomomorphismByNormalSubgroup(mul, idG);
+
+  # permutation representations of <add> and <mul>
+  r := fA*IsomorphismPermGroup(Image(fA));
+  s := fG*IsomorphismPermGroup(Image(fG));
+
+  # list to construct the skew brace
+  l := [];
+
+  for x in Image(r) do
+    a := SkewBraceElm(obj, Representative(PreImagesElm(r, x)));
+    Add(l, [x, Image(s, Image(bij, a))]);
+  od;
+
+  return SkewBrace(l);
+end);
+
+

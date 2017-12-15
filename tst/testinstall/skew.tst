@@ -174,7 +174,6 @@ gap> gens := List(br, x->Lambda2Permutation(x));
 [ (), (), (), (), (3,4)(7,8), (3,4)(7,8), (3,4)(7,8), (3,4)(7,8) ]
 gap> Orbits(Group(gens));
 [ [ 3, 4 ], [ 7, 8 ] ]
-gap> STOP_TEST( "skew.tst", 1 );
 
 # Test isomorphisms and ids
 gap> br := SmallSkewBrace(16,500);;
@@ -192,25 +191,19 @@ gap> for n in [2..7] do
 > fi;
 > od;
 > od;
-gap> for n in [2..7] do
-> for k in [1..NrSmallSkewBraces(n)] do
+
+# Test for IdBrace 
+gap> n := 12;;
+gap> l := [];;
+gap> for k in [1..NrSmallSkewBraces(n)] do
 > br := SmallSkewBrace(n,k);
 > if IsClassicalSkewBrace(br) then
-> Print("IdBrace: ", IdBrace(br), ", IdSkewBrace: ", [n,k], "\n");
+> Add(l, IdBrace(br));
 > fi;
 > od;
-> od;
-IdBrace: [ 2, 1 ], IdSkewBrace: [ 2, 1 ]
-IdBrace: [ 3, 1 ], IdSkewBrace: [ 3, 1 ]
-IdBrace: [ 4, 1 ], IdSkewBrace: [ 4, 1 ]
-IdBrace: [ 4, 2 ], IdSkewBrace: [ 4, 2 ]
-IdBrace: [ 4, 3 ], IdSkewBrace: [ 4, 3 ]
-IdBrace: [ 4, 4 ], IdSkewBrace: [ 4, 4 ]
-IdBrace: [ 5, 1 ], IdSkewBrace: [ 5, 1 ]
-IdBrace: [ 6, 1 ], IdSkewBrace: [ 6, 5 ]
-IdBrace: [ 6, 2 ], IdSkewBrace: [ 6, 6 ]
-IdBrace: [ 7, 1 ], IdSkewBrace: [ 7, 1 ]
-
+gap> l;
+[ [ 12, 1 ], [ 12, 2 ], [ 12, 3 ], [ 12, 4 ], [ 12, 5 ], [ 12, 6 ], [ 12, 7 ], [ 12, 8 ], [ 12, 9 ], [ 12, 10 ] ]
+gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##
 #E

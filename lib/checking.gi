@@ -1,19 +1,20 @@
-#### This function returns true if <obj> is a left brace
-#### The left brace condition is 
-#### a(b+c)+a=ab+aca for all a,b,c 
-#InstallGlobalFunction(IsLeftBrace, function(obj)
-#  local a, b, c;
-#  for a in obj!.ab do
-#    for b in obj!.ab do
-#      for c in obj!.ab do
-#        if BraceSum(obj, a, BraceProduct(obj, a, BraceSum(obj, b, c))) <> BraceSum(obj, BraceProduct(obj, a, b), BraceProduct(obj, a, c)) then
-#          return false;
-#        fi;
-#      od;
-#    od;
-#  od;
-#  return true;
-#end);
+# This function checks the compatibility condition
+# in a skew brace: 
+# a(b+c)=ab-a+ac for all a,b,c 
+# It works for braces and skew braces!
+InstallGlobalFunction(IS_BRACE,  function(obj)
+  local a,b,c;
+  for a in obj do
+    for b in obj do
+      for c in obj do
+        if a*(b+c) <> a*b-a+a*c then
+          return false;
+        fi;
+      od;
+    od;
+  od;
+  return true;
+end);
 
 InstallGlobalFunction(IS_CYCLESET, function(m)
   local x, y, z, xy, xz, yx, yz, size;
