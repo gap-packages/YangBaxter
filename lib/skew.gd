@@ -117,6 +117,7 @@ DeclareAttribute("AsList", IsSkewBrace);
 DeclareAttribute("Is2Sided", IsSkewBrace);
 DeclareAttribute("IsClassical", IsSkewBrace);
 DeclareAttribute("SkewBrace2YB", IsSkewBrace);
+DeclareAttribute("Labels", IsSkewBrace);
 DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 DeclareProperty("IsTwoSidedSkewBrace", IsSkewBrace);
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);

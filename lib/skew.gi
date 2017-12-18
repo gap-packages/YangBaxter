@@ -359,52 +359,6 @@ function(size)
   fi;
 end);
 
-#InstallMethod(SkewBraceLambdaAsPermutation, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ],
-#function(obj, a)
-#  local p, l, x;
-#
-#  l := AsList(SkewBraceAList(obj));
-#  p := [1..Size(obj)];
-#
-#  for x in [1..Size(obj)] do
-#    p[x] := Position(l, SkewBraceLambda(obj, a, l[x]));
-#  od;
-#
-#  return PermList(p);
-#end);
-#
-#InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], 
-#function(obj)
-#  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
-#
-#  add := Elements(SkewBraceAList(obj));
-#  set := [1..Size(obj)];
-#
-#  lperms := [];
-#  rperms := [];
-#
-#  for a in add do
-#
-#    tmp_l := [];
-#    tmp_r := [];
-#
-#    for b in add do
-#      x := SkewBraceAdd(obj, SkewBraceMul(obj, a, b), SkewBraceAInverse(obj, a));
-#      u := Position(add, x);
-#      v := Position(add, SkewBraceMul(obj, SkewBraceMul(obj, SkewBraceMInverse(obj, x), a), b));
-#      Add(tmp_l, u); 
-#      Add(tmp_r, v); 
-#    od;
-#    Add(lperms, tmp_l);
-#    Add(rperms, tmp_r);
-#  od;
-#
-#  lperms := List(lperms, PermList);
-#  rperms := List(TransposedMat(rperms), PermList);
-#
-#  return Permutations2YB(lperms, rperms); 
-#end);
-
 InstallMethod(IsClassicalSkewBrace, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
   return IsAbelian(Group(SkewBraceAList(obj)));
@@ -461,7 +415,7 @@ function(x, obj)
 end);
 
 InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
-  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
+  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms, yb;
 
   add := AsList(obj);
   set := [1..Size(obj)];
@@ -485,7 +439,10 @@ InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
   lperms := List(lperms, PermList);
   rperms := List(TransposedMat(rperms), PermList);
 
-  return Permutations2YB(lperms, rperms); 
+  yb := Permutations2YB(lperms, rperms); 
+  SetLabels(yb, AsList(obj));
+
+  return yb;
 end);
 
 InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewBrace ], function(obj)

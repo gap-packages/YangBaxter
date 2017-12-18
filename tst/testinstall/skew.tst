@@ -203,6 +203,21 @@ gap> for k in [1..NrSmallSkewBraces(n)] do
 > od;
 gap> l;
 [ [ 12, 1 ], [ 12, 2 ], [ 12, 3 ], [ 12, 4 ], [ 12, 5 ], [ 12, 6 ], [ 12, 7 ], [ 12, 8 ], [ 12, 9 ], [ 12, 10 ] ]
+
+# Test labels for solutions
+gap> br := SmallSkewBrace(16,200);;
+gap> yb := SkewBrace2YB(br);;
+gap> perms := Permutations(yb);;
+gap> l := AsList(br);;
+gap> for i in [1..Size(br)] do
+> a := l[i];
+> for j in [1..Size(br)] do
+> b := l[j];
+> if Position(l, Lambda(a,b)) <> j^perms[1][i] or Position(l, Lambda(a,b)^(-1)*a*b) <> i^perms[2][j] then
+> Print("This is wrong!\n");
+> fi;
+> od;
+> od;
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##
