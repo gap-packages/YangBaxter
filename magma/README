@@ -1,0 +1,15 @@
+To construct classical braces of size, say, 100 this is what one needs to do:
+Run the magma file 4gap.m and inside magma 
+
+> MakeList4GAP(100, "Bsize100.dat");
+> MakeList4GAP(101, "Bsize101.dat");
+> MakeList4GAP(102, "Bsize102.dat");
+
+This creates the list of braces of size 100,101 and 102. Now one needs to compress the data with 
+the GAP file make.g:
+
+gap> create_braces([100..102]);
+
+
+
+
