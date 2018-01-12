@@ -284,7 +284,7 @@ end);
 
 InstallMethod(SmallBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local obj, known, implemented, dir, filename;
+  local obj, known, implemented, dir, filename, add, mul;
   known := IsBound(BRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -295,8 +295,19 @@ function(size, number)
       Error("Braces of size ", size, " are not implemented");
     fi;
   fi;
-  if number <= BRACES[size].implemented then
-    obj := SkewBrace(BRACES[size].brace[number].perms);
+  if number <= Size(BRACES[size]) then
+
+    add := List(Group(BRACES[size][number].gadd));
+    mul := List(Group(BRACES[size][number].gmul)); 
+
+    Sortex(add);
+    Sortex(mul);
+
+    add := Permuted(add, Inverse(BRACES[size][number].p));
+    mul := Permuted(mul, Inverse(BRACES[size][number].q));
+
+    obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
+    #BRACES[size][number].perms);
     SetIdBrace( obj, [ size, number ] );
     SetIsClassicalSkewBrace(obj, true);
     if size > 15 then
@@ -309,6 +320,22 @@ function(size, number)
 end);
 
 InstallMethod(IsSkewBraceImplemented, "for an integer", [IsInt],
+function(size)
+  local known, dir, filename;
+  known := IsBound(NCBRACES[size]);
+  if not known then
+    dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
+    filename := Filename(dir, Concatenation("SBsize", String(size), ".g"));
+    if IsReadableFile(filename) then
+      return true;
+    else
+      return false;
+    fi;
+  fi;
+  return true;
+end);
+
+InstallMethod(IsBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, implemented, dir, filename;
   known := IsBound(NCBRACES[size]);
@@ -346,13 +373,13 @@ InstallGlobalFunction(NrSmallBraces,
 function(size)
   local dir, filename;
   if size <= 15 then
-    return BRACES[size].implemented;
+    return Size(BRACES[size]);
   else
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
     filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
-      return BRACES[size].implemented;
+      return Size(BRACES[size]);
     else
       Error("Braces of size ", size, " are not implemented");
     fi;

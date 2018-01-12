@@ -93,6 +93,7 @@ DeclareOperation("Lambda2Permutation", [IsSkewBraceElm]);
 
 DeclareOperation("Random", [IsSkewBrace]);
 DeclareOperation("IsSkewBraceImplemented", [IsInt]);
+DeclareOperation("IsBraceImplemented", [IsInt]);
 DeclareOperation("SkewBraceLambda", [IsSkewBrace, IsPerm, IsPerm]);
 DeclareOperation("SkewBraceLambdaAsPermutation", [IsSkewBrace, IsPerm]);
 DeclareOperation("Bijective1Cocycle", [IsSkewBrace]);
@@ -140,7 +141,7 @@ ReadPackage("yangbaxter", "data/SBsize14.g");
 ReadPackage("yangbaxter", "data/SBsize15.g");
 
 ### Braces of size <15
-ReadPackage("yangbaxter", "data/Bsmall.g");
+ReadPackage("yangbaxter", "data/Bsize1.g");
 ReadPackage("yangbaxter", "data/Bsize2.g");
 ReadPackage("yangbaxter", "data/Bsize3.g");
 ReadPackage("yangbaxter", "data/Bsize4.g");
