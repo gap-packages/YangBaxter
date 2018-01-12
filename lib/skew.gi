@@ -378,6 +378,13 @@ InstallMethod(InverseLambda,
       return Inverse(x)*(x+y);
 end);
 
+InstallMethod(Star, 
+    "for two elements of a skew brace",
+    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    function( x, y )
+      return -x+x*y-y;
+end);
+
 InstallMethod(Lambda2Permutation, "for an element of a skew brace", [ IsSkewBraceElm ], function(x)
   local obj, lst, p, k;
   obj := FamilyObj(x)!.SkewBrace;

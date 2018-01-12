@@ -88,6 +88,7 @@ DeclareAttribute("Enumerator", IsSkewBrace);
 
 DeclareOperation("Lambda", [IsSkewBraceElm, IsSkewBraceElm]);
 DeclareOperation("InverseLambda", [IsSkewBraceElm, IsSkewBraceElm]);
+DeclareOperation("Star", [IsSkewBraceElm, IsSkewBraceElm]);
 DeclareOperation("Lambda2Permutation", [IsSkewBraceElm]);
 
 DeclareOperation("Random", [IsSkewBrace]);
@@ -123,6 +124,7 @@ DeclareProperty("IsTwoSidedSkewBrace", IsSkewBrace);
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 
 ### Skew braces of size <15
+ReadPackage("yangbaxter", "data/SBsize1.g");
 ReadPackage("yangbaxter", "data/SBsize2.g");
 ReadPackage("yangbaxter", "data/SBsize4.g");
 ReadPackage("yangbaxter", "data/SBsize5.g");
