@@ -10,6 +10,18 @@ create_braces := function(lst)
   od;
 end;
 
+create_skewbraces := function(lst)
+  local k;
+  for k in lst do
+    LogTo();
+    LogTo(Concatenation("SBsize", String(k), ".g"));
+    Read(Concatenation("SBsize", String(k), ".dat"));
+    COMPRESS_SKEWBRACES(k);
+  od;
+end;
+
+
 BRACES := [];
+NCBRACES := [];
 
 

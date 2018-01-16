@@ -259,7 +259,7 @@ end);
 
 InstallMethod(SmallSkewBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local obj, known, implemented, dir, filename;
+  local obj, known, implemented, dir, filename, add, mul;
   known := IsBound(NCBRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -267,18 +267,28 @@ function(size, number)
     if IsReadableFile(filename) then
       Read(filename);
     else
-      Error("Braces of size ", size, " are not implemented");
+      Error("Skew braces of size ", size, " are not implemented");
     fi;
   fi;
-  if number <= NCBRACES[size].implemented then
-    obj := SkewBrace(NCBRACES[size].brace[number].perms);
+  if number <= Size(NCBRACES[size]) then
+
+    add := List(Group(NCBRACES[size][number].gadd));
+    mul := List(Group(NCBRACES[size][number].gmul)); 
+
+    Sortex(add);
+    Sortex(mul);
+
+    add := Permuted(add, Inverse(NCBRACES[size][number].p));
+    mul := Permuted(mul, Inverse(NCBRACES[size][number].q));
+
+    obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
     SetIdSkewBrace( obj, [ size, number ] );
     if size > 15 then
       Unbind(NCBRACES[size]);
     fi;
     return obj;
   else
-    Error("there are just ", NrSmallSkewBraces(size), " braces of size ", size);
+    Error("there are just ", NrSmallSkewBraces(size), " skew braces of size ", size);
   fi;
 end);
 
@@ -356,13 +366,13 @@ InstallGlobalFunction(NrSmallSkewBraces,
 function(size)
   local dir, filename;
   if size <= 15 then
-    return NCBRACES[size].implemented;
+    return Size(NCBRACES[size]);
   else
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
     filename := Filename(dir, Concatenation("SBsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
-      return NCBRACES[size].implemented;
+      return Size(NCBRACES[size]);
     else
       Error("Skew braces of size ", size, " are not implemented");
     fi;

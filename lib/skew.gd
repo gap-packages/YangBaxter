@@ -127,6 +127,7 @@ DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 ### Skew braces of size <15
 ReadPackage("yangbaxter", "data/SBsize1.g");
 ReadPackage("yangbaxter", "data/SBsize2.g");
+ReadPackage("yangbaxter", "data/SBsize3.g");
 ReadPackage("yangbaxter", "data/SBsize4.g");
 ReadPackage("yangbaxter", "data/SBsize5.g");
 ReadPackage("yangbaxter", "data/SBsize6.g");
