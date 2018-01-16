@@ -259,7 +259,7 @@ end);
 
 InstallMethod(SmallSkewBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local obj, known, implemented, dir, filename;
+  local obj, known, implemented, dir, filename, add, mul;
   known := IsBound(NCBRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -267,24 +267,34 @@ function(size, number)
     if IsReadableFile(filename) then
       Read(filename);
     else
-      Error("Braces of size ", size, " are not implemented");
+      Error("Skew braces of size ", size, " are not implemented");
     fi;
   fi;
-  if number <= NCBRACES[size].implemented then
-    obj := SkewBrace(NCBRACES[size].brace[number].perms);
+  if number <= Size(NCBRACES[size]) then
+
+    add := List(Group(NCBRACES[size][number].gadd));
+    mul := List(Group(NCBRACES[size][number].gmul)); 
+
+    Sortex(add);
+    Sortex(mul);
+
+    add := Permuted(add, Inverse(NCBRACES[size][number].p));
+    mul := Permuted(mul, Inverse(NCBRACES[size][number].q));
+
+    obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
     SetIdSkewBrace( obj, [ size, number ] );
     if size > 15 then
       Unbind(NCBRACES[size]);
     fi;
     return obj;
   else
-    Error("there are just ", NrSmallSkewBraces(size), " braces of size ", size);
+    Error("there are just ", NrSmallSkewBraces(size), " skew braces of size ", size);
   fi;
 end);
 
 InstallMethod(SmallBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local obj, known, implemented, dir, filename;
+  local obj, known, implemented, dir, filename, add, mul;
   known := IsBound(BRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -295,8 +305,19 @@ function(size, number)
       Error("Braces of size ", size, " are not implemented");
     fi;
   fi;
-  if number <= BRACES[size].implemented then
-    obj := SkewBrace(BRACES[size].brace[number].perms);
+  if number <= Size(BRACES[size]) then
+
+    add := List(Group(BRACES[size][number].gadd));
+    mul := List(Group(BRACES[size][number].gmul)); 
+
+    Sortex(add);
+    Sortex(mul);
+
+    add := Permuted(add, Inverse(BRACES[size][number].p));
+    mul := Permuted(mul, Inverse(BRACES[size][number].q));
+
+    obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
+    #BRACES[size][number].perms);
     SetIdBrace( obj, [ size, number ] );
     SetIsClassicalSkewBrace(obj, true);
     if size > 15 then
@@ -309,6 +330,22 @@ function(size, number)
 end);
 
 InstallMethod(IsSkewBraceImplemented, "for an integer", [IsInt],
+function(size)
+  local known, dir, filename;
+  known := IsBound(NCBRACES[size]);
+  if not known then
+    dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
+    filename := Filename(dir, Concatenation("SBsize", String(size), ".g"));
+    if IsReadableFile(filename) then
+      return true;
+    else
+      return false;
+    fi;
+  fi;
+  return true;
+end);
+
+InstallMethod(IsBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, implemented, dir, filename;
   known := IsBound(NCBRACES[size]);
@@ -329,13 +366,13 @@ InstallGlobalFunction(NrSmallSkewBraces,
 function(size)
   local dir, filename;
   if size <= 15 then
-    return NCBRACES[size].implemented;
+    return Size(NCBRACES[size]);
   else
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
     filename := Filename(dir, Concatenation("SBsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
-      return NCBRACES[size].implemented;
+      return Size(NCBRACES[size]);
     else
       Error("Skew braces of size ", size, " are not implemented");
     fi;
@@ -346,64 +383,18 @@ InstallGlobalFunction(NrSmallBraces,
 function(size)
   local dir, filename;
   if size <= 15 then
-    return BRACES[size].implemented;
+    return Size(BRACES[size]);
   else
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
     filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
-      return BRACES[size].implemented;
+      return Size(BRACES[size]);
     else
       Error("Braces of size ", size, " are not implemented");
     fi;
   fi;
 end);
-
-#InstallMethod(SkewBraceLambdaAsPermutation, "for a skew brace and a permutation", [ IsSkewBrace, IsPerm ],
-#function(obj, a)
-#  local p, l, x;
-#
-#  l := AsList(SkewBraceAList(obj));
-#  p := [1..Size(obj)];
-#
-#  for x in [1..Size(obj)] do
-#    p[x] := Position(l, SkewBraceLambda(obj, a, l[x]));
-#  od;
-#
-#  return PermList(p);
-#end);
-#
-#InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], 
-#function(obj)
-#  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
-#
-#  add := Elements(SkewBraceAList(obj));
-#  set := [1..Size(obj)];
-#
-#  lperms := [];
-#  rperms := [];
-#
-#  for a in add do
-#
-#    tmp_l := [];
-#    tmp_r := [];
-#
-#    for b in add do
-#      x := SkewBraceAdd(obj, SkewBraceMul(obj, a, b), SkewBraceAInverse(obj, a));
-#      u := Position(add, x);
-#      v := Position(add, SkewBraceMul(obj, SkewBraceMul(obj, SkewBraceMInverse(obj, x), a), b));
-#      Add(tmp_l, u); 
-#      Add(tmp_r, v); 
-#    od;
-#    Add(lperms, tmp_l);
-#    Add(rperms, tmp_r);
-#  od;
-#
-#  lperms := List(lperms, PermList);
-#  rperms := List(TransposedMat(rperms), PermList);
-#
-#  return Permutations2YB(lperms, rperms); 
-#end);
 
 InstallMethod(IsClassicalSkewBrace, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
@@ -422,6 +413,13 @@ InstallMethod(InverseLambda,
     IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
     function( x, y )
       return Inverse(x)*(x+y);
+end);
+
+InstallMethod(Star, 
+    "for two elements of a skew brace",
+    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    function( x, y )
+      return -x+x*y-y;
 end);
 
 InstallMethod(Lambda2Permutation, "for an element of a skew brace", [ IsSkewBraceElm ], function(x)
@@ -461,7 +459,7 @@ function(x, obj)
 end);
 
 InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
-  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms;
+  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms, yb;
 
   add := AsList(obj);
   set := [1..Size(obj)];
@@ -485,7 +483,10 @@ InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
   lperms := List(lperms, PermList);
   rperms := List(TransposedMat(rperms), PermList);
 
-  return Permutations2YB(lperms, rperms); 
+  yb := Permutations2YB(lperms, rperms); 
+  SetLabels(yb, AsList(obj));
+
+  return yb;
 end);
 
 InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewBrace ], function(obj)

@@ -88,10 +88,12 @@ DeclareAttribute("Enumerator", IsSkewBrace);
 
 DeclareOperation("Lambda", [IsSkewBraceElm, IsSkewBraceElm]);
 DeclareOperation("InverseLambda", [IsSkewBraceElm, IsSkewBraceElm]);
+DeclareOperation("Star", [IsSkewBraceElm, IsSkewBraceElm]);
 DeclareOperation("Lambda2Permutation", [IsSkewBraceElm]);
 
 DeclareOperation("Random", [IsSkewBrace]);
 DeclareOperation("IsSkewBraceImplemented", [IsInt]);
+DeclareOperation("IsBraceImplemented", [IsInt]);
 DeclareOperation("SkewBraceLambda", [IsSkewBrace, IsPerm, IsPerm]);
 DeclareOperation("SkewBraceLambdaAsPermutation", [IsSkewBrace, IsPerm]);
 DeclareOperation("Bijective1Cocycle", [IsSkewBrace]);
@@ -117,12 +119,15 @@ DeclareAttribute("AsList", IsSkewBrace);
 DeclareAttribute("Is2Sided", IsSkewBrace);
 DeclareAttribute("IsClassical", IsSkewBrace);
 DeclareAttribute("SkewBrace2YB", IsSkewBrace);
+DeclareAttribute("Labels", IsSkewBrace);
 DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 DeclareProperty("IsTwoSidedSkewBrace", IsSkewBrace);
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 
 ### Skew braces of size <15
+ReadPackage("yangbaxter", "data/SBsize1.g");
 ReadPackage("yangbaxter", "data/SBsize2.g");
+ReadPackage("yangbaxter", "data/SBsize3.g");
 ReadPackage("yangbaxter", "data/SBsize4.g");
 ReadPackage("yangbaxter", "data/SBsize5.g");
 ReadPackage("yangbaxter", "data/SBsize6.g");
@@ -137,7 +142,7 @@ ReadPackage("yangbaxter", "data/SBsize14.g");
 ReadPackage("yangbaxter", "data/SBsize15.g");
 
 ### Braces of size <15
-ReadPackage("yangbaxter", "data/Bsmall.g");
+ReadPackage("yangbaxter", "data/Bsize1.g");
 ReadPackage("yangbaxter", "data/Bsize2.g");
 ReadPackage("yangbaxter", "data/Bsize3.g");
 ReadPackage("yangbaxter", "data/Bsize4.g");

@@ -29,6 +29,13 @@ gap> Permutations(yb);
 # Test YB2Permutation
 gap> Collected(List(List([1..NrSmallIYB(5)], k->YB2Permutation(SmallIYB(5,k))), Order));
 [ [ 2, 88 ] ]
+
+# Test for RestrictedYB
+gap> yb := SmallIYB(8,500);;
+gap> RestrictedYB(yb, [1,2,3]);
+<A set-theoretical solution of size 3>
+gap> RestrictedYB(yb, [1,2,4]);
+fail
 gap> STOP_TEST( "ybe.tst", 1 );
 #############################################################################
 ##

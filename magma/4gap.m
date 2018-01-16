@@ -42,11 +42,12 @@ end procedure;
 /***
  *
  *
- ***/
+ *
 SetLogFile("4gap.log");
 
 for k in {1..15} do
   s := "Bsize" cat IntegerToString(k) cat ".g";
   MakeList4GAP(k, s);
 end for;
+*/
   

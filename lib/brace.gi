@@ -67,7 +67,7 @@ function(size, number)
       Error("Braces of size ", size, " are not implemented");
     fi;
   fi;
-  if number <= BRACES[size].implemented then
+  if number <= Size(BRACES[size]) then
     return Brace(BRACES[size].brace[number].perms);
   else
     Error("there are just ", NrSmallBraces(size), " braces of size ", size);
@@ -95,13 +95,13 @@ InstallGlobalFunction(NrSmallBraces,
 function(size)
   local dir, filename;
   if size <= 15 then
-    return BRACES[size].implemented;
+    return Size(BRACES[size]);
   else
     dir := DirectoriesPackageLibrary("YB", "data")[1];
     filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
-      return BRACES[size].implemented;
+      return Size(BRACES[size]);
     else
       Error("Braces of size ", size, " are not implemented");
     fi;

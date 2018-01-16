@@ -401,8 +401,8 @@ function(obj, subset)
 
   for x in [1..Size(subset)] do
     for y in [1..Size(subset)] do
-      ll[x][y] := Position(subset, subset[y]^LeftPermutations(obj)[subset[x]]);
-      rr[y][x] := Position(subset, subset[x]^RightPermutations(obj)[subset[y]]);
+      ll[x][y] := Position(subset, subset[y]^LPerms(obj)[subset[x]]);
+      rr[y][x] := Position(subset, subset[x]^RPerms(obj)[subset[y]]);
     od;
   od;
   return YB(ll, rr);
