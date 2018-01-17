@@ -1,7 +1,8 @@
 BRACES := [];
 
 BRACES[1] := [ rec(
-      gadd := [ ],
-      gmul := [ ],
+      gadd := [ () ],
+      gmul := [ () ],
       p := (),
-      q := () ) ];
+      q := () ) 
+];
