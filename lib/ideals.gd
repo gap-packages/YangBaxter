@@ -30,6 +30,8 @@ DeclareAttribute("LeftSeries", IsSkewBrace);
 DeclareAttribute("RightSeries", IsSkewBrace);
 DeclareAttribute("SocleSeries", IsSkewBrace);
 DeclareAttribute("MultipermutationLevel", IsSkewBrace);
+DeclareAttribute("Fix", IsSkewBrace);
+DeclareAttribute("KernelOfLambda", IsSkewBrace);
 
 DeclareProperty("IsSimpleSkewBrace", IsSkewBrace);
 DeclareProperty("IsLeftNilpotent", IsSkewBrace);
