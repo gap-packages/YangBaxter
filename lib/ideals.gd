@@ -28,10 +28,13 @@ DeclareAttribute("Socle", IsSkewBrace);
 DeclareAttribute("LeftSeries", IsSkewBrace);
 
 DeclareAttribute("RightSeries", IsSkewBrace);
+DeclareAttribute("SocleSeries", IsSkewBrace);
+DeclareAttribute("MultipermutationLevel", IsSkewBrace);
 
 DeclareProperty("IsSimpleSkewBrace", IsSkewBrace);
 DeclareProperty("IsLeftNilpotent", IsSkewBrace);
 DeclareProperty("IsRightNilpotent", IsSkewBrace);
+DeclareProperty("IsMultipermutation", IsSkewBrace);
 
 DeclareOperation("IsIdeal", [ IsSkewBrace, IsCollection ]);
 DeclareOperation("AsIdeal", [ IsSkewBrace, IsCollection ]);

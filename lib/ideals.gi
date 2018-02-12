@@ -229,3 +229,42 @@ InstallMethod(IsRightNilpotent, "for a skew brace", [IsSkewBrace], function(obj)
   return 1 in List(RightSeries(obj), Size);
 end);
 
+InstallMethod(SocleSeries, "for a skew brace", [IsSkewBrace], function(obj)
+  local l, tmp, old, new, done;
+
+  old := ShallowCopy(obj);
+  l := [old];
+  done := false;
+
+  repeat
+    new := ShallowCopy(Quotient(old, Socle(old)));
+
+    if Size(new) <> Size(old) then
+      Add(l, new);
+    fi;
+
+    if Size(new)=Size(old) or Size(new)=1 then
+      done := true;
+    fi;
+  
+    old := ShallowCopy(new);
+  until done; 
+
+  return l;
+  
+end);
+
+InstallMethod(MultipermutationLevel, "for a skew brace", [IsSkewBrace], function(obj)
+  local s;
+  s := SocleSeries(obj);
+  if 1 in List(s, Size) then
+    return Size(s);
+  else
+    return fail;
+  fi;
+end);
+
+InstallMethod(IsMultipermutation, "for a skew brace", [IsSkewBrace], function(obj)
+  return 1 in List(SocleSeries(obj), Size);
+end);
+
