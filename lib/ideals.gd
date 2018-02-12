@@ -39,6 +39,7 @@ DeclareProperty("IsRightNilpotent", IsSkewBrace);
 DeclareProperty("IsMultipermutation", IsSkewBrace);
 
 DeclareOperation("IsIdeal", [ IsSkewBrace, IsCollection ]);
+DeclareOperation("IsLeftIdeal", [ IsSkewBrace, IsCollection ]);
 DeclareOperation("AsIdeal", [ IsSkewBrace, IsCollection ]);
 
 DeclareOperation("Quotient", [IsSkewBrace, IsSkewBrace]);

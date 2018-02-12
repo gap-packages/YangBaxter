@@ -25,25 +25,31 @@ function(obj, subset)
   return true;
 end);
 
-# <subset> is a subset of AsList(obj)
-is_ideal := function(obj, subset)
-  local lst, a, x;
+InstallMethod(IsLeftIdeal, "for a skew brace and a collection", [ IsSkewBrace, IsCollection ], 
+function(obj, subset)
+  local a, x;
 
-  lst := AsList(obj);
+  if IsSkewBrace(subset) then
+    if HasParent(subset) and Parent(subset) = obj then
+      return true;
+    fi;
+  fi;
+
+  subset := AsList(subset);
 
   if Order(Group(List(subset, x->x![1]))) <> Size(subset) then
     return false;
   fi;
 
-  for a in lst do
+  for a in obj do
     for x in subset do
-      if not Lambda(a, x) in subset or not a*x*a^-1 in subset or not a+x-a in subset then
+      if not Lambda(a, x) in subset or not a+x-a in subset then
         return false;
       fi;
     od;
   od;
   return true;
-end;
+end);
 
 InstallMethod(Ideals, "for a skew brace", [ IsSkewBrace], function(obj)
   local add, sg, l, subset, x, res, tmp;
@@ -51,7 +57,7 @@ InstallMethod(Ideals, "for a skew brace", [ IsSkewBrace], function(obj)
   add := SkewBraceAList(obj);
   for sg in NormalSubgroups(Group(add)) do 
     subset := List(sg, x->SkewBraceElmConstructor(obj, x));
-    if is_ideal(obj, subset) then
+    if IsIdeal(obj, subset) then
       Add(l, subset);
     fi;
   od;
@@ -99,22 +105,22 @@ InstallGlobalFunction(SubSkewBrace, function(obj, sub)
 
 end);
 
-ideals := function(obj)
-  local add, sg, l, subset;
-  l := [];
-  add := SkewBraceAList(obj);
-  for sg in NormalSubgroups(Group(add)) do 
-    subset := List(sg, x->SkewBraceElmConstructor(obj, x));
-    if is_ideal(obj, subset) then
-      Add(l, subset);
-    fi;
-  od;
-  return l;
-end;
+#ideals := function(obj)
+#  local add, sg, l, subset;
+#  l := [];
+#  add := SkewBraceAList(obj);
+#  for sg in NormalSubgroups(Group(add)) do 
+#    subset := List(sg, x->SkewBraceElmConstructor(obj, x));
+#    if s_ideal(obj, subset) then
+#      Add(l, subset);
+#    fi;
+#  od;
+#  return l;
+#end;
 
 InstallMethod(IsSimpleSkewBrace, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
-  return Size(ideals(obj))=2;
+  return Size(Ideals(obj))=2;
 end);
 
 InstallMethod(Socle, "for a skew brace", [ IsSkewBrace ], function(obj)
