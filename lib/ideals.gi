@@ -169,4 +169,63 @@ InstallMethod(Quotient, "for two skew braces", [IsSkewBrace, IsSkewBrace], funct
   return SkewBrace(l);
 end);
 
+InstallMethod(LeftSeries, "for a skew brace", [IsSkewBrace], function(obj)
+  local tmp, old, new, l, done;
+
+  done := false;
+  old := ShallowCopy(obj);
+  l := [old];
+
+  repeat
+    tmp := List(Cartesian(obj, old), x->Star(x[1],x[2]));
+    new := SubSkewBrace(obj, List(Group(List(tmp, x->x![1])), y->SkewBraceElmConstructor(obj, y)));
+
+    if Size(new) <> Size(old) then
+      Add(l, new);
+    fi;
+
+    if Size(new)=Size(old) or Size(new)=1 then
+      done := true;
+    fi;
+
+    old := ShallowCopy(new);
+
+  until done; 
+  return l;
+
+end);
+
+InstallMethod(RightSeries, "for a skew brace", [IsSkewBrace], function(obj)
+  local tmp, old, new, l, done;
+
+  done := false;
+  old := ShallowCopy(obj);
+  l := [old];
+
+  repeat
+    tmp := List(Cartesian(old, obj), x->Star(x[1],x[2]));
+    new := SubSkewBrace(obj, List(Group(List(tmp, x->x![1])), y->SkewBraceElmConstructor(obj, y)));
+
+    if Size(new) <> Size(old) then
+      Add(l, new);
+      SetIsIdealInParent(new, true);
+    fi;
+
+    if Size(new)=Size(old) or Size(new)=1 then
+      done := true;
+    fi;
+
+    old := ShallowCopy(new);
+
+  until done; 
+  return l;
+end);
+
+InstallMethod(IsLeftNilpotent, "for a skew brace", [IsSkewBrace], function(obj)
+  return 1 in List(LeftSeries(obj), Size);
+end);
+
+InstallMethod(IsRightNilpotent, "for a skew brace", [IsSkewBrace], function(obj)
+  return 1 in List(RightSeries(obj), Size);
+end);
 

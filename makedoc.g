@@ -53,7 +53,7 @@ end;
 # Files containing parts of the manual
 YANGBAXTERMANUALFILES:=[ 
 "../PackageInfo.g",
-"../lib/skew.gd"
+"../lib/skew.gd",
 ];
 
 MakeGAPDocDoc( "doc",     # path to the directory containing the main file
