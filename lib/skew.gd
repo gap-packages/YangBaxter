@@ -104,6 +104,8 @@ DeclareOperation("InverseBijective1Cocycle", [IsSkewBrace]);
 
 DeclareGlobalFunction("NrSmallSkewBraces");
 DeclareGlobalFunction("NrSmallBraces");
+DeclareGlobalFunction("AllSmallSkewBraces");
+DeclareGlobalFunction("AllSmallBraces");
 DeclareGlobalFunction("IsSkewBraceHomomorphism");
 DeclareGlobalFunction("SkewBraceElm");
 DeclareGlobalFunction("IsomorphismSkewBraces");
