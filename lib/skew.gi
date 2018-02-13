@@ -495,3 +495,97 @@ InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewBrace ], function(obj)
   fi;
   return YB2CycleSet(SkewBrace2YB(obj));
 end);
+
+
+################################################################################
+#
+# SelectSmallBraces
+# AllSmallBraces
+# AllSmallSkewBraces
+#
+SelectSmallBraces := function( argl, skew )
+local  size, conditions, name, availabilitycheck, nrfunc, constructfunc, 
+  funcs, vals, pos, f, res, i, j, br;
+
+if Length(argl) = 0 then
+  Error("You must specify at least one argument - the order of the brace\n");
+elif IsPosInt( argl[1] ) then
+  size := argl[1];
+  conditions := argl{[2..Length(argl)]};
+elif not argl[1] = Size then
+  Error("The first argument must be a positive integer or 'Size'\n");
+elif IsPosInt( argl[2] ) then
+  size := argl[2];
+  conditions := argl{[3..Length(argl)]};
+else
+  Error("The 2nd argument must be a positive integer - the order of the brace\n");
+fi;
+  
+if skew then
+  name := "skew braces";
+  availabilitycheck := IsSkewBraceImplemented;
+  nrfunc := NrSmallSkewBraces;
+  constructfunc := SmallSkewBrace;
+else
+  name := "braces";
+  availabilitycheck := IsBraceImplemented;
+  nrfunc := NrSmallBraces;
+  constructfunc := SmallBrace;
+fi;
+
+if not availabilitycheck(size) then
+  Error( name, " of size ", size, " are not implemented\n");
+fi;
+
+if IsBound(conditions[1]) and not IsFunction( conditions[1] ) then
+  Error( "Expected a function, but got ", conditions[1], "\n");
+fi;
+
+funcs:=[];
+vals:=[];
+
+pos:=1;
+while pos <= Length(conditions) do
+  if IsFunction( conditions[pos] ) then
+    # we have a function
+    Add( funcs, conditions[pos] );
+    if not IsBound( conditions[pos+1] ) or IsFunction( conditions[pos+1] ) then
+      # if next entry is bound and is a function too, default is 'true'
+      Add( vals, true );
+      pos := pos+1;
+    else
+      # otherwise, use next entry as value
+      Add( vals, conditions[pos+1] );
+      pos := pos+2;
+      # look ahead and check that the value is either 
+      # the last or followed by a function
+      if IsBound( conditions[pos] ) and not IsFunction( conditions[pos] ) then
+        Error( "Expected a function, but got ", conditions[pos], "\n");
+      fi;
+    fi;
+  fi;  
+od;
+
+res := [];
+
+for i in [1..nrfunc(size)] do
+  br := constructfunc(size,i);
+  if ForAll( [1..Length(funcs)], j -> funcs[j](br)=vals[j] ) then
+    Add( res, br );
+  fi;
+od;
+  
+return res;
+end;
+
+
+InstallGlobalFunction(AllSmallBraces, 
+function( arg )
+  return SelectSmallBraces( arg, false );
+end);
+
+
+InstallGlobalFunction(AllSmallSkewBraces, 
+function( arg )
+  return SelectSmallBraces( arg, true );
+end);
