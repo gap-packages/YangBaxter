@@ -50,9 +50,13 @@ DeclareAttribute("LeftSeries", IsSkewBrace);
 DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
 
 
-
+#! 
 DeclareAttribute("RightSeries", IsSkewBrace);
+
+#!
 DeclareAttribute("SocleSeries", IsSkewBrace);
+
+#!
 DeclareAttribute("MultipermutationLevel", IsSkewBrace);
 DeclareAttribute("Fix", IsSkewBrace);
 DeclareAttribute("KernelOfLambda", IsSkewBrace);
