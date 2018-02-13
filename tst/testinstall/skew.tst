@@ -68,7 +68,7 @@ gap> for k in [1..NrSmallSkewBraces(n)] do
 > od;
 
 # Two-sided skew braces
-gap> Number([1..NrSmallSkewBraces(8)], k->IsTwoSidedSkewBrace(SmallSkewBrace(8,k)));
+gap> Number([1..NrSmallSkewBraces(8)], k->IsTwoSided(SmallSkewBrace(8,k)));
 42
 gap> NrSmallSkewBraces(8);
 47
