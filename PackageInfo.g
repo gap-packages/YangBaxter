@@ -68,7 +68,7 @@ to construct classical and skew braces. It also includes a database of classical
 and skew braces of small orders.",
    
 PackageDoc := rec(
-  BookName  := "YangBaxter",
+  BookName  := ~.PackageName,
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
@@ -76,7 +76,7 @@ PackageDoc := rec(
   SixFile   := "doc/manual.six",
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
-  LongTitle := "Combinatorial Solutions for the Yang-Baxter equation",
+  LongTitle := ~.Subtitle,
 ),
 
 Dependencies := rec(

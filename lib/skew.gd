@@ -27,30 +27,19 @@ BindGlobal("SkewBraceElmFamily", NewFamily("SkewBraceElmFamily", IsSkewBraceElm)
 BindGlobal("SkewBraceElmType", NewType(SkewBraceElmFamily, IsSkewBraceElm));
 BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsSkewBrace and IsAttributeStoringRep));
 
-# <#GAPDoc Label="SkewBrace">
-# <ManSection>
-#    <Oper Name="SkewBrace"
-#          Arg="t"/>
-#    <Returns>
-#          A skew brace
-#    </Returns>
-# <Description>
-# The argument <A>t</A> is a list of pairs of elements in a group.
-# <Example>
-# <![CDATA[
-# gap> SkewBrace([[(),()]]);
-# <brace of size 1>
-# gap> SkewBrace([[(),()],[(1,2),(1,2)]]);
-# <brace of size 2>
-# gap> SkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ], 
-# > [ (1,3,2,4), (1,4,2,3) ], [ (1,4,2,3), (1,3,2,4) ] ] );
-# <brace of size 4>
-# ]]>
-# </Example>
-#
-# </Description>
-# </ManSection>
-# <#/GAPDoc>
+#!
+#! @Arguments t
+#! @Returns a skew brace 
+#! @Description
+#!  The argument <A>t</A> is a list of pairs of elements in a group.
+#! @ExampleSession
+#! gap> SkewBrace([[(),()]]);
+#! <brace of size 1>
+#! gap> SkewBrace([[(),()],[(1,2),(1,2)]]);
+#! <brace of size 2>
+#! gap> SkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ], [ (1,3,2,4), (1,4,2,3) ], [ (1,4,2,3), (1,3,2,4) ] ] );
+#! <brace of size 4>
+#! @EndExampleSession
 DeclareOperation("SkewBrace", [IsList]);
 
 # <#GAPDoc Label="SmallSkewBrace">
@@ -104,7 +93,14 @@ DeclareOperation("InverseBijective1Cocycle", [IsSkewBrace]);
 
 DeclareGlobalFunction("NrSmallSkewBraces");
 DeclareGlobalFunction("NrSmallBraces");
+
+#!
 DeclareGlobalFunction("AllSmallSkewBraces");
+
+#! @Arguments n
+#! @Returns a list
+#! @Description 
+#!  Returns a list of small braces 
 DeclareGlobalFunction("AllSmallBraces");
 DeclareGlobalFunction("IsSkewBraceHomomorphism");
 DeclareGlobalFunction("SkewBraceElm");
@@ -124,27 +120,16 @@ DeclareAttribute("SkewBrace2YB", IsSkewBrace);
 DeclareAttribute("Labels", IsSkewBrace);
 DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 
-# <#GAPDoc Label="IsTwoSided">
-# <ManSection>
-#    <Oper Name="IsTwoSided"
-#          Arg="t"/>
-#    <Returns>
-#          True if the skew brace is two sided, false otherwise
-#    </Returns>
-# <Description>
-# A skew brace <M>A</M> is said to be <E>two-sided</E> if <M>(a+b)\circ c=a\circ c-c+b\circ c</M> holds for all <M>a,b,c\in A</M>.
-# <Example>
-# <![CDATA[
-# gap> IsTwoSided(SmallSkewBrace(8,2));
-# false
-# gap> IsTwoSided(SmallSkewBrace(8,4));
-# true
-# ]]>
-# </Example>
-#
-# </Description>
-# </ManSection>
-# <#/GAPDoc>
+#! 
+#! @Returns true if the skew brace is two sided, false otherwise
+#! @Description
+#!  A skew brace $A$ is said to be two-sided if $(a+b)\circ c=a\circ c-c+b\circ c$ holds for all $a,b,c\in A$.
+#! @ExampleSession
+#! gap> IsTwoSided(SmallSkewBrace(8,2));
+#! false
+#! gap> IsTwoSided(SmallSkewBrace(8,4));
+#! true
+#! @EndExampleSession
 DeclareProperty("IsTwoSided", IsSkewBrace);
 
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
