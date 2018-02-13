@@ -10,13 +10,11 @@ DeclareAttribute("Socle", IsSkewBrace);
 #    </Returns>
 # <Description>
 # The left series of a skew brace <A>obj</A> is defined
-# recursively as $A^1=A$ and $A^{n+1}=A*A^n$ for $n\geq1$, where $a*b=\lambda_a(b)-b$. 
+# recursively as <M>A^1=A</M> and <M>A^{n+1}=A*A^n</M> for <M>n\geq1</M>, where <M>a*b=\lambda_a(b)-b</M>. 
 # <Example>
 # <![CDATA[
 # gap> br := SmallSkewBrace(8,20);
 # <skew brace of size 8>
-# gap> LeftSeries
-# LeftSeries  
 # gap> LeftSeries(br);
 # [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
 # ]]>
@@ -26,6 +24,32 @@ DeclareAttribute("Socle", IsSkewBrace);
 # </ManSection>
 # <#/GAPDoc>
 DeclareAttribute("LeftSeries", IsSkewBrace);
+
+# <#GAPDoc Label="SmoktunowiczSeries">
+# <ManSection>
+#    <Oper Name="SmoktunowiczSeries"
+#          Arg="t"/>
+#    <Returns>
+#          A list of the elements of the Smoktunowicz's series 
+#    </Returns>
+# <Description>
+# The Smoktunowicz's series of a skew brace <A>obj</A> is defined
+# recursively as <M>A^{[1]}=A</M> and <M>A^{[n+1]}=\sum_{i=1}^n A^{[i]}*A^{[n+1-i]}</M> for <M>n\geq1</M>, where <M>a*b=\lambda_a(b)-b</M>. 
+# <Example>
+# <![CDATA[
+# gap> br := SmallSkewBrace(10,2);
+# <skew brace of size 10>
+# gap> SmoktunowiczSeries(br);
+# [ <skew brace of size 10>, <brace of size 1> ]
+# ]]>
+# </Example>
+#
+# </Description>
+# </ManSection>
+# <#/GAPDoc>
+DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
+
+
 
 DeclareAttribute("RightSeries", IsSkewBrace);
 DeclareAttribute("SocleSeries", IsSkewBrace);

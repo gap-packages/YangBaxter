@@ -36,6 +36,7 @@ for certain orders.
 <Heading>Ideals of skew braces</Heading>
 
 <#Include Label="LeftSeries">
+<#Include Label="SmoktunowiczSeries">
 
 </Section>
 

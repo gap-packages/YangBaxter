@@ -23,13 +23,18 @@ gap> SkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ],
 gap> SmallSkewBrace(8,3);
 <brace of size 8>
 
-# YangBaxter/doc/../lib/ideals.gd:14-23
+# YangBaxter/doc/../lib/ideals.gd:14-21
 
 gap> br := SmallSkewBrace(8,20);
 <skew brace of size 8>
-gap> LeftSeries
-LeftSeries  
 gap> LeftSeries(br);
 [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
+
+# YangBaxter/doc/../lib/ideals.gd:38-45
+
+gap> br := SmallSkewBrace(10,2);
+<skew brace of size 10>
+gap> SmoktunowiczSeries(br);
+[ <skew brace of size 10>, <brace of size 1> ]
 
 gap> STOP_TEST("yangbaxter01.tst", 1 );

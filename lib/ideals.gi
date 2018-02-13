@@ -285,4 +285,32 @@ InstallMethod(KernelOfLambda, "for a skew brace", [IsSkewBrace], function(obj)
   return Filtered(AsList(obj), a->ForAll(AsList(obj), b->Lambda(a,b)=b));
 end);
 
+InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewBrace], function(obj)
+  local i, n, s, old, tmp, new, done;
 
+  old := ShallowCopy(obj);
+  s := [old];
+  n := 1;
+  done := false;
+
+	repeat 
+		tmp := [];
+		for i in [1..n] do
+			tmp := Concatenation(tmp, List(Cartesian(AsList(s[i]), AsList(s[n+1-i])), x->Star(x[1],x[2])));  
+		od;
+		new := SubSkewBrace(obj, List(Group(List(tmp, x->x![1])), y->SkewBraceElmConstructor(obj, y)));
+
+		if Size(new) <> Size(old) then
+			Add(s, new);
+		fi;
+
+		if Size(new)=Size(old) or Size(new)=1 then
+			done := true;
+		fi;
+
+		old := ShallowCopy(new);
+		n := n+1;
+	until done;
+
+  return s;
+end);
