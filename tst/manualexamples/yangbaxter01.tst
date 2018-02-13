@@ -23,6 +23,13 @@ gap> SkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ],
 gap> SmallSkewBrace(8,3);
 <brace of size 8>
 
+# YangBaxter/doc/../lib/skew.gd:134-141
+
+gap> IsTwoSided(SmallSkewBrace(8,2));
+false
+gap> IsTwoSided(SmallSkewBrace(8,4));
+true
+
 # YangBaxter/doc/../lib/ideals.gd:14-21
 
 gap> br := SmallSkewBrace(8,20);

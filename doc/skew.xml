@@ -29,7 +29,7 @@ The Small Skew Braces Library contains all skew braces up to isomorphism
 for certain orders.
 
 <#Include Label="SmallSkewBrace">
-
+<#Include Label="IsTwoSided">
 </Section>
 
 <Section Label="Ideals">

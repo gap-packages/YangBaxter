@@ -242,7 +242,7 @@ end);
 #### This function returns true is the <brace> is a two-sided brace
 #### This means: (a+b)c+c=ac+bc
 #### Equivalent condition: l(a+b)(c)+c=l(a)(c)+l(b)(c), where l(a)(b)=ab-a
-InstallMethod(IsTwoSidedSkewBrace, "for a skew brace", [IsSkewBrace], 
+InstallMethod(IsTwoSided, "for a skew brace", [IsSkewBrace], 
 function(obj)
   local a, b, c;
   for a in AsList(obj) do 

@@ -121,7 +121,30 @@ DeclareAttribute("IsClassical", IsSkewBrace);
 DeclareAttribute("SkewBrace2YB", IsSkewBrace);
 DeclareAttribute("Labels", IsSkewBrace);
 DeclareAttribute("Brace2CycleSet", IsSkewBrace);
-DeclareProperty("IsTwoSidedSkewBrace", IsSkewBrace);
+
+# <#GAPDoc Label="IsTwoSided">
+# <ManSection>
+#    <Oper Name="IsTwoSided"
+#          Arg="t"/>
+#    <Returns>
+#          True if the skew brace is two sided, false otherwise
+#    </Returns>
+# <Description>
+# A skew brace <M>A</M> is said to be <E>two-sided</E> if <M>(a+b)\circ c=a\circ c-c+b\circ c</M> holds for all <M>a,b,c\in A</M>.
+# <Example>
+# <![CDATA[
+# gap> IsTwoSided(SmallSkewBrace(8,2));
+# false
+# gap> IsTwoSided(SmallSkewBrace(8,4));
+# true
+# ]]>
+# </Example>
+#
+# </Description>
+# </ManSection>
+# <#/GAPDoc>
+DeclareProperty("IsTwoSided", IsSkewBrace);
+
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 
 ### Skew braces of size <15
