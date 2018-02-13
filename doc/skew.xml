@@ -31,4 +31,12 @@ for certain orders.
 <#Include Label="SmallSkewBrace">
 
 </Section>
+
+<Section Label="Ideals">
+<Heading>Ideals of skew braces</Heading>
+
+<#Include Label="LeftSeries">
+
+</Section>
+
 </Chapter>
