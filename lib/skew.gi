@@ -606,3 +606,35 @@ InstallGlobalFunction(AllSmallSkewBraces,
 function( arg )
   return SelectSmallBraces( arg, true );
 end);
+
+# The function transform a list of element of the
+# multiplicative group of a skew brace into the additiv
+# group
+InstallGlobalFunction(FromMul2Add, function(obj, subset)
+  local p;
+  p := Bijective1Cocycle(obj);
+  return List(List(subset, x->x^p), y->y![1]);
+end);
+
+InstallGlobalFunction(FromAdd2Mul, function(obj, subset)
+  local q;
+  q := InverseBijective1Cocycle(obj);
+  return List(List(subset, x->SkewBraceElmConstructor(obj, x)), y->y^q);
+end);
+
+InstallGlobalFunction(FromSkewBrace2Add, function(obj, subset)
+  return List(subset, x->x![1]);
+end);
+
+InstallGlobalFunction(FromSkewBrace2Mul, function(obj, subset)
+  return FromAdd2Mul(obj, FromSkewBrace2Add(obj, subset));
+end);
+
+InstallGlobalFunction(FromAdd2SkewBrace, function(obj, subset)
+  return List(subset, x->SkewBraceElmConstructor(obj, x));
+end);
+
+InstallGlobalFunction(FromMul2SkewBrace, function(obj, subset)
+  return FromAdd2SkewBrace(obj, FromMul2Add(obj, subset));
+end);
+
