@@ -355,10 +355,10 @@ end);
 InstallMethod(IsBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, implemented, dir, filename;
-  known := IsBound(NCBRACES[size]);
+  known := IsBound(BRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
-    filename := Filename(dir, Concatenation("SBsize", String(size), ".g"));
+    filename := Filename(dir, Concatenation("Bsize", String(size), ".g"));
     if IsReadableFile(filename) then
       return true;
     else
