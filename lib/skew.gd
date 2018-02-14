@@ -134,6 +134,14 @@ DeclareProperty("IsTwoSided", IsSkewBrace);
 
 DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
 
+# Conversion utilities
+DeclareGlobalFunction("FromMul2Add");
+DeclareGlobalFunction("FromAdd2Mul");
+DeclareGlobalFunction("FromSkewBrace2Add");
+DeclareGlobalFunction("FromSkewBrace2Mul");
+DeclareGlobalFunction("FromAdd2SkewBrace");
+DeclareGlobalFunction("FromMul2SkewBrace");
+
 ### Skew braces of size <15
 ReadPackage("yangbaxter", "data/SBsize1.g");
 ReadPackage("yangbaxter", "data/SBsize2.g");
