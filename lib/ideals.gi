@@ -5,7 +5,9 @@ function(obj, subset)
 
   if IsSkewBrace(subset) then
     if HasParent(subset) and Parent(subset) = obj then
-      return true;
+      if HasIsIdealInParent(subset) then
+        return IsIdealInParent(subset);
+      fi;
     fi;
   fi;
 
@@ -31,7 +33,11 @@ function(obj, subset)
 
   if IsSkewBrace(subset) then
     if HasParent(subset) and Parent(subset) = obj then
-      return true;
+      if HasIsIdealInParent(subset) then
+        return IsIdealInParent(subset);
+      elif HasIsLeftIdealInParent(subset) then
+        return IsLeftIdealInParent(subset);
+      fi;
     fi;
   fi;
 
