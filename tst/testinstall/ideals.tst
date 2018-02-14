@@ -31,7 +31,10 @@ gap> for k in [1..NrSmallSkewBraces(8)] do
 > br := SmallSkewBrace(8,k);
 > soc := Socle(br);
 > if not IsIdeal(br, soc) then
-> Print("This is wrong!\n");
+>   Print("This is wrong!\n");
+> fi;
+> if not IsLeftIdeal(br, soc) then
+>   Print("This is wrong!\n");
 > fi;
 > od;
 
