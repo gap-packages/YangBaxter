@@ -6,6 +6,10 @@
 gap> START_TEST("ideals.tst");
 
 # Simple calls
+gap> AllSmallBraces([1..3]);
+[ <brace of size 1>, <brace of size 2>, <brace of size 3> ]
+gap> AllSmallBraces([1,3,5]);
+[ <brace of size 1>, <brace of size 3>, <brace of size 5> ]
 gap> AllSmallBraces(9);
 [ <brace of size 9>, <brace of size 9>, <brace of size 9>, <brace of size 9> ]
 gap>  AllSmallBraces(Size,9);
@@ -23,25 +27,27 @@ gap> AllSmallSkewBraces(4,IsTwoSided);
 gap> AllSmallSkewBraces(10,IsTwoSided,false);
 [ <brace of size 10> ]
 gap> AllSmallSkewBraces(8,IsTwoSided,
->      br->IdGroup(UnderlyingAdditiveGroup(br)),[8,1]);
+>      br->IdGroup(UnderlyingAdditiveGroup(br)),[[8,1]]);
 [ <brace of size 8>, <brace of size 8>, <brace of size 8> ]
 gap> AllSmallSkewBraces(8,IsTwoSided,false,
->      br->IdGroup(UnderlyingAdditiveGroup(br)),[8,1]);
+>      br->IdGroup(UnderlyingAdditiveGroup(br)),[[8,1]] );
 [ <brace of size 8>, <brace of size 8> ]
 
 # Error messages
 gap> AllSmallSkewBraces(1024);
-Error, skew braces of size 1024 are not implemented
+Error, skew braces of sizes [ 1024 ] are not implemented
 gap> AllSmallBraces();
-Error, You must specify at least one argument - the order of the brace
+Error, You must specify at least one argument
 gap> AllSmallBraces(true);
-Error, The first argument must be a positive integer or 'Size'
+Error, The 1st argument is not a positive integer or a list
+gap> AllSmallBraces([true]);
+Error, The 1st argument is not a list of positive integers
 gap> AllSmallSkewBraces(Size,IsSimpleSkewBrace);
-Error, The 2nd argument must be a positive integer - the order of the brace
+Error, The 2nd argument is not a positive integer or a list
 gap> AllSmallSkewBraces(16,true);
 Error, Expected a function, but got true
-gap> AllSmallSkewBraces(8,IsTwoSided,true,[8,1]);
-Error, Expected a function, but got [ 8, 1 ]
+gap> AllSmallSkewBraces(8,IsTwoSided,true, [[8,1]]);
+Error, Expected a function, but got [ [ 8, 1 ] ]
 gap> STOP_TEST( "selection.tst", 1 );
 
 #############################################################################
