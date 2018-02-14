@@ -3,11 +3,11 @@ InstallMethod(IsIdeal, "for a skew brace and a collection", [ IsSkewBrace, IsCol
 function(obj, subset)
   local a, x;
 
-  if IsSkewBrace(subset) then
-    if HasParent(subset) and Parent(subset) = obj then
-      return true;
-    fi;
-  fi;
+#  if IsSkewBrace(subset) then
+#    if HasParent(subset) and Parent(subset) = obj then
+#      return true;
+#    fi;
+#  fi;
 
   subset := AsList(subset);
 
@@ -29,11 +29,11 @@ InstallMethod(IsLeftIdeal, "for a skew brace and a collection", [ IsSkewBrace, I
 function(obj, subset)
   local a, x;
 
-  if IsSkewBrace(subset) then
-    if HasParent(subset) and Parent(subset) = obj then
-      return true;
-    fi;
-  fi;
+#  if IsSkewBrace(subset) then
+#    if HasParent(subset) and Parent(subset) = obj then
+#      return true;
+#    fi;
+#  fi;
 
   subset := AsList(subset);
 
