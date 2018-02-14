@@ -106,6 +106,13 @@ function( obj, perm )
   return Objectify(ElementsFamily(FamilyObj(obj))!.DefaultType, [ perm ]);
 end);
 
+InstallMethod( \<,
+    "for two elements of a skew brace",
+    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    function( x, y )
+      return x![1] < y![1];
+end);
+
 InstallMethod( \+,
     "for two elements of a skew brace",
     IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],

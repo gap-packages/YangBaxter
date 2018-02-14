@@ -2,52 +2,30 @@ DeclareAttribute("LeftIdeals", IsSkewBrace);
 DeclareAttribute("Ideals", IsSkewBrace);
 DeclareAttribute("Socle", IsSkewBrace);
 
-# <#GAPDoc Label="LeftSeries">
-# <ManSection>
-#    <Oper Name="LeftSeries"
-#          Arg="t"/>
-#    <Returns>
-#          A list of the elements of the left series
-#    </Returns>
-# <Description>
-# The left series of a skew brace <A>obj</A> is defined
-# recursively as <M>A^1=A</M> and <M>A^{n+1}=A*A^n</M> for <M>n\geq1</M>, where <M>a*b=\lambda_a(b)-b</M>. 
-# <Example>
-# <![CDATA[
-# gap> br := SmallSkewBrace(8,20);
-# <skew brace of size 8>
-# gap> LeftSeries(br);
-# [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
-# ]]>
-# </Example>
-#
-# </Description>
-# </ManSection>
-# <#/GAPDoc>
+#!
+#! @Arguments blah
+#! @Returns a small skew brace 
+#! @Description
+#!  blah
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(8,20);
+#! <skew brace of size 8>
+#! gap> LeftSeries(br);
+#! [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
+#! @EndExampleSession
 DeclareAttribute("LeftSeries", IsSkewBrace);
 
-# <#GAPDoc Label="SmoktunowiczSeries">
-# <ManSection>
-#    <Oper Name="SmoktunowiczSeries"
-#          Arg="t"/>
-#    <Returns>
-#          A list of the elements of the Smoktunowicz's series 
-#    </Returns>
-# <Description>
-# The Smoktunowicz's series of a skew brace <A>obj</A> is defined
-# recursively as <M>A^{[1]}=A</M> and <M>A^{[n+1]}=\sum_{i=1}^n A^{[i]}*A^{[n+1-i]}</M> for <M>n\geq1</M>, where <M>a*b=\lambda_a(b)-b</M>. 
-# <Example>
-# <![CDATA[
-# gap> br := SmallSkewBrace(10,2);
-# <skew brace of size 10>
-# gap> SmoktunowiczSeries(br);
-# [ <skew brace of size 10>, <brace of size 1> ]
-# ]]>
-# </Example>
-#
-# </Description>
-# </ManSection>
-# <#/GAPDoc>
+#!
+#! @Arguments blah
+#! @Returns a list of the elements of the Smoktunowicz's series 
+#! @Description
+#!  The Smoktunowicz's series of a skew brace $A$ is defined recursively as $A^{[1]}=A$ and $A^{[n+1]}=\sum_{i=1}^n A^{[i]}*A^{[n+1-i]}$ for $n\geq1$, where $a*b=\lambda_a(b)-b$. 
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(10,2);
+#! <skew brace of size 10>
+#! gap> SmoktunowiczSeries(br);
+#! [ <skew brace of size 10>, <brace of size 1> ]
+#! @EndExampleSession
 DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
 
 
