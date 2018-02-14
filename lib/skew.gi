@@ -504,23 +504,34 @@ end);
 # AllSmallSkewBraces
 #
 SelectSmallBraces := function( argl, skew )
-local  size, conditions, name, availabilitycheck, nrfunc, constructfunc, 
+local sizes, sizepos, size, conditions, name, availabilitycheck, nrfunc, constructfunc, 
   funcs, vals, pos, f, res, i, j, br;
 
 if Length(argl) = 0 then
-  Error("You must specify at least one argument - the order of the brace\n");
-elif IsPosInt( argl[1] ) then
-  size := argl[1];
-  conditions := argl{[2..Length(argl)]};
-elif not argl[1] = Size then
-  Error("The first argument must be a positive integer or 'Size'\n");
-elif IsPosInt( argl[2] ) then
-  size := argl[2];
-  conditions := argl{[3..Length(argl)]};
-else
-  Error("The 2nd argument must be a positive integer - the order of the brace\n");
+  Error("You must specify at least one argument\n");
 fi;
   
+# determine expected position of size(s) in the list of arguments 
+if argl[1] = Size then
+  sizepos := 2;
+else
+  sizepos := 1;
+fi;
+
+if IsPosInt( argl[ sizepos ] ) then     # only one size is given
+  sizes := [ argl[ sizepos ] ];
+elif IsList (argl[ sizepos ]) then          # list of sizes is given
+  if ForAll( argl[ sizepos ], IsPosInt ) then
+    sizes := argl[ sizepos ];
+  else
+    Error("The ", Ordinal( sizepos ), " argument is not a list of positive integers\n");
+  fi;
+else
+  Error("The ", Ordinal( sizepos ), " argument is not a positive integer or a list\n");
+fi;
+
+conditions := argl{[ sizepos+1 .. Length(argl)]};
+ 
 if skew then
   name := "skew braces";
   availabilitycheck := IsSkewBraceImplemented;
@@ -533,8 +544,8 @@ else
   constructfunc := SmallBrace;
 fi;
 
-if not availabilitycheck(size) then
-  Error( name, " of size ", size, " are not implemented\n");
+if not ForAll( sizes, availabilitycheck ) then
+  Error( name, " of sizes ", Filtered( sizes, i -> not availabilitycheck(i) ), " are not implemented\n");
 fi;
 
 if IsBound(conditions[1]) and not IsFunction( conditions[1] ) then
@@ -550,12 +561,16 @@ while pos <= Length(conditions) do
     # we have a function
     Add( funcs, conditions[pos] );
     if not IsBound( conditions[pos+1] ) or IsFunction( conditions[pos+1] ) then
-      # if next entry is bound and is a function too, default is 'true'
-      Add( vals, true );
+      # if next entry is bound and is a function too, default is '[true]'
+      Add( vals, [ true ] );
       pos := pos+1;
     else
-      # otherwise, use next entry as value
-      Add( vals, conditions[pos+1] );
+      # otherwise, use next entry for the list of values
+      if IsList( conditions[pos+1] ) then
+        Add( vals, conditions[pos+1] );
+      else  
+        Add( vals, [ conditions[pos+1] ] );
+      fi;        
       pos := pos+2;
       # look ahead and check that the value is either 
       # the last or followed by a function
@@ -563,16 +578,18 @@ while pos <= Length(conditions) do
         Error( "Expected a function, but got ", conditions[pos], "\n");
       fi;
     fi;
-  fi;  
+  fi;
 od;
 
 res := [];
 
-for i in [1..nrfunc(size)] do
-  br := constructfunc(size,i);
-  if ForAll( [1..Length(funcs)], j -> funcs[j](br)=vals[j] ) then
-    Add( res, br );
-  fi;
+for size in sizes do
+  for i in [1..nrfunc(size)] do
+    br := constructfunc(size,i);
+    if ForAll( [1..Length(funcs)], j -> funcs[j](br) in vals[j] ) then
+      Add( res, br );
+    fi;
+  od;
 od;
   
 return res;
