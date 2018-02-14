@@ -1,3 +1,4 @@
+DeclareAttribute("LeftIdeals", IsSkewBrace);
 DeclareAttribute("Ideals", IsSkewBrace);
 DeclareAttribute("Socle", IsSkewBrace);
 
