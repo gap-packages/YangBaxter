@@ -416,10 +416,21 @@ InstallMethod(InverseLambda,
 end);
 
 InstallMethod(Star, 
-    "for two elements of a skew brace",
-    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
-    function( x, y )
-      return -x+x*y-y;
+  "for two elements of a skew brace",
+  IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+  function( x, y )
+    return -x+x*y-y;
+end);
+
+InstallMethod(Star,
+  "for two subsets of elements of the same skew brace",
+  [IsCollection, IsCollection], function(subset1, subset2)
+  local elm, gens, group, obj; 
+  elm := AsList(subset1)[1];
+  obj := FamilyObj(elm)!.SkewBrace;
+  gens := List(Cartesian(AsList(subset1), AsList(subset2)), x->Star(x[1], x[2])); 
+  group := Group(List(gens, x->x![1]));
+  return List(AsList(group), x->SkewBraceElmConstructor(obj, x));
 end);
 
 InstallMethod(Lambda2Permutation, "for an element of a skew brace", [ IsSkewBraceElm ], function(x)
