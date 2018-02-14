@@ -70,6 +70,25 @@ InstallMethod(Ideals, "for a skew brace", [ IsSkewBrace], function(obj)
   return res;
 end);
 
+InstallMethod(LeftIdeals, "for a skew brace", [ IsSkewBrace], function(obj)
+  local add, sg, l, subset, x, res, tmp;
+  l := [];
+  add := SkewBraceAList(obj);
+  for sg in NormalSubgroups(Group(add)) do 
+    subset := List(sg, x->SkewBraceElmConstructor(obj, x));
+    if IsLeftIdeal(obj, subset) then
+      Add(l, subset);
+    fi;
+  od;
+  res := [];
+  for x in l do
+    tmp := SubSkewBrace(obj, x);
+    SetIsIdealInParent(tmp, true);
+    Add(res, tmp);
+  od;
+  return res;
+end);
+
 InstallGlobalFunction(SubSkewBrace, function(obj, sub)
   local p, res, add, mul, per, fam, gens;
 
@@ -104,19 +123,6 @@ InstallGlobalFunction(SubSkewBrace, function(obj, sub)
   return res;
 
 end);
-
-#ideals := function(obj)
-#  local add, sg, l, subset;
-#  l := [];
-#  add := SkewBraceAList(obj);
-#  for sg in NormalSubgroups(Group(add)) do 
-#    subset := List(sg, x->SkewBraceElmConstructor(obj, x));
-#    if s_ideal(obj, subset) then
-#      Add(l, subset);
-#    fi;
-#  od;
-#  return l;
-#end;
 
 InstallMethod(IsSimpleSkewBrace, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
