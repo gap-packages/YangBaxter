@@ -49,7 +49,7 @@ function(obj, subset)
 
   for a in obj do
     for x in subset do
-      if not Lambda(a, x) in subset or not a+x-a in subset then
+      if not Lambda(a, x) in subset then
         return false;
       fi;
     od;
