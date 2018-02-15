@@ -48,8 +48,22 @@ gap> List(last, x->Quotient(br, x));
 [ <brace of size 1>, <brace of size 2>, <brace of size 2>, <brace of size 2>, 
   <brace of size 4>, <skew brace of size 8>, <skew brace of size 8>, 
   <brace of size 8>, <skew brace of size 16> ]
-gap> STOP_TEST( "ideals.tst", 1 );
 
+# Test LeftSeries and IsLeftIdeal
+gap> br := SmallSkewBrace(36,191);;
+gap> ls := LeftSeries(br);
+[ <skew brace of size 36>, <skew brace of size 18>, <brace of size 3> ]
+gap> List(ls, x->IsLeftIdeal(br, x));
+[ true, true, true ]
+gap> List(ls, x->IsIdeal(br, x));
+[ true, true, false ]
+gap> add := UnderlyingAdditiveGroup(br);;
+gap> List(NormalSubgroups(add), Size);
+[ 36, 18, 9, 1 ]
+gap> List(ls, IdSkewBrace);
+[ [ 36, 191 ], [ 18, 22 ], [ 3, 1 ] ]
+
+gap> STOP_TEST( "ideals.tst", 1 );
 #############################################################################
 ##
 #E
