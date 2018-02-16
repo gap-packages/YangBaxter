@@ -1,15 +1,15 @@
   
   
-                                   [1X[5XYangBaxter[105X[101X
+                                  [1X YangBaxter [101X
   
   
-                                   [1XYangBaxter[101X
+             [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                 Version 0.0.1
+                                     0.1.0
   
   
-                                15 December 2017
+                                16 February 2018
   
   
                                Leandro Vendramin
@@ -21,23 +21,19 @@
   Leandro Vendramin
       Email:    [7Xmailto:lvendramin@dm.uba.ar[107X
       Homepage: [7Xhttp://mate.dm.uba.ar/~lvendram[107X
+      Address:  [33X[0;14YDepartamento  de  matem'atica,  FCEN, UBACiudad Universitaria,
+                Pab. 1,[133X
+                [33X[0;14YBuenos Aires, Argentina[133X
+  
+  
   Alexander Konovalov
-      Email:    [7Xmailto:alexk@mcs.st-andrews.ac.uk[107X
+      Email:    [7Xmailto:alexander.konovalov@st-andrews.ac.uk[107X
       Homepage: [7Xhttp://www.cs.st-andrews.ac.uk/~alexk/[107X
+      Address:  [33X[0;14YSchool of Computer Science[133X
+                [33X[0;14YUniversity of St Andrews[133X
+                [33X[0;14YJack Cole Building, North Haugh,[133X
+                [33X[0;14YSt Andrews, Fife, KY16 9SX, Scotland[133X
   
-  -------------------------------------------------------
-  [1XCopyright[101X
-  [33X[0;0Y© 1997-2017 by Leandro Vendramin and Alexander Konovalov[133X
-  
-  [33X[0;0Y[5XYangBaxter[105X  package  is free software; you can redistribute it and/or modify
-  it    under    the    terms    of    the    GNU   General   Public   License
-  ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
-  Foundation, version 3.[133X
-  
-  
-  -------------------------------------------------------
-  [1XAcknowledgements[101X
-  [33X[0;0YThanks to Travis Schedler for the involutive solutions up to size 8.[133X
   
   
   -------------------------------------------------------
@@ -45,14 +41,25 @@
   
   [1XContents (YangBaxter)[101X
   
-  1 [33X[0;0YBraces and Skew Braces[133X
-    1.1 [33X[0;0YCategories of Braces and Their Objects[133X
-      1.1-1 IsSkewBrace
-      1.1-2 IsSkewBraceElm
-    1.2 [33X[0;0YConstructing Skew Braces[133X
+  1 [33X[0;0YYangBaxter automatic generated documentation[133X
+    1.1 [33X[0;0YYangBaxter automatic generated documentation of attributes[133X
+      1.1-1 LeftSeries
+      1.1-2 SmoktunowiczSeries
+      1.1-3 RightSeries
+      1.1-4 SocleSeries
+      1.1-5 MultipermutationLevel
+      1.1-6 Fix
+      1.1-7 KernelOfLambda
+    1.2 [33X[0;0YYangBaxter automatic generated documentation of methods[133X
       1.2-1 SkewBrace
-    1.3 [33X[0;0YSmall Skew Braces Library[133X
-      1.3-1 SmallSkewBrace
+    1.3 [33X[0;0YYangBaxter automatic generated documentation of global functions[133X
+      1.3-1 AllSmallSkewBraces
+      1.3-2 AllSmallBraces
+      1.3-3 IsSkewBraceHomomorphism
+      1.3-4 SkewBraceElm
+      1.3-5 IsomorphismSkewBraces
+    1.4 [33X[0;0YYangBaxter automatic generated documentation of properties[133X
+      1.4-1 IsTwoSided
   
   
   [32X

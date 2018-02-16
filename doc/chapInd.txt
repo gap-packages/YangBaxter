@@ -2,11 +2,20 @@
   
   [1XIndex[101X
   
-  [2XIsSkewBrace[102X 1.1-1 
-  [2XIsSkewBraceElm[102X 1.1-2 
-  License .-1 
-  [2XSkewBrace[102X 1.2-1 
-  [2XSmallSkewBrace[102X 1.3-1 
+  [2XAllSmallBraces[102X 1.3-2 
+  [2XAllSmallSkewBraces[102X 1.3-1 
+  [2XFix[102X, for IsSkewBrace 1.1-6 
+  [2XIsomorphismSkewBraces[102X 1.3-5 
+  [2XIsSkewBraceHomomorphism[102X 1.3-3 
+  [2XIsTwoSided[102X, for IsSkewBrace 1.4-1 
+  [2XKernelOfLambda[102X, for IsSkewBrace 1.1-7 
+  [2XLeftSeries[102X, for IsSkewBrace 1.1-1 
+  [2XMultipermutationLevel[102X, for IsSkewBrace 1.1-5 
+  [2XRightSeries[102X, for IsSkewBrace 1.1-3 
+  [2XSkewBrace[102X, for IsList 1.2-1 
+  [2XSkewBraceElm[102X 1.3-4 
+  [2XSmoktunowiczSeries[102X, for IsSkewBrace 1.1-2 
+  [2XSocleSeries[102X, for IsSkewBrace 1.1-4 
   
   
   -------------------------------------------------------

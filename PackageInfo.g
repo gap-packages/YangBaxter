@@ -1,14 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.0.1",
-Date := "15/12/2017",
-
-##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "0.0.1">
-##  <!ENTITY RELEASEDATE "15 December 2017">
-##  <!ENTITY RELEASEYEAR "2017">
-##  <#/GAPDoc>
+Version := "0.1.0",
+Date := "16/02/2018",
 
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
@@ -68,7 +62,7 @@ to construct classical and skew braces. It also includes a database of classical
 and skew braces of small orders.",
    
 PackageDoc := rec(
-  BookName  := "YangBaxter",
+  BookName  := ~.PackageName,
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
@@ -76,7 +70,7 @@ PackageDoc := rec(
   SixFile   := "doc/manual.six",
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
-  LongTitle := "Combinatorial Solutions for the Yang-Baxter equation",
+  LongTitle := ~.Subtitle,
 ),
 
 Dependencies := rec(

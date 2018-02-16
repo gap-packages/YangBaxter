@@ -26,61 +26,76 @@
 <p><a id="X7D2C85EC87DD46E5" name="X7D2C85EC87DD46E5"></a></p>
 <div class="pcenter">
 
-<h1><strong class="pkg">YangBaxter</strong></h1>
+<h1>YangBaxter</h1>
 
 
-<h2>YangBaxter</h2>
+<h2>Combinatorial Solutions for the Yang-Baxter equation</h2>
 
-<p>Version 0.0.1</p>
+<p>
+    0.1.0</p>
 
-<p>15 December 2017</p>
+<p>
+    16 February 2018
+  </p>
 
 </div>
-<p><b> Leandro Vendramin
-    
-    
+<p><b>
+    Leandro Vendramin
+
+
+
+
   </b>
 <br />Email: <span class="URL"><a href="mailto:lvendramin@dm.uba.ar">lvendramin@dm.uba.ar</a></span>
 <br />Homepage: <span class="URL"><a href="http://mate.dm.uba.ar/~lvendram">http://mate.dm.uba.ar/~lvendram</a></span>
-</p><p><b> Alexander Konovalov
-    
-    
+<br />Address: <br />Departamento de matem'atica, FCEN, UBACiudad Universitaria, Pab. 1,<br /> Buenos Aires, Argentina<br />
+</p><p><b>
+    Alexander Konovalov
+
+
+
+
   </b>
-<br />Email: <span class="URL"><a href="mailto:alexk@mcs.st-andrews.ac.uk">alexk@mcs.st-andrews.ac.uk</a></span>
+<br />Email: <span class="URL"><a href="mailto:alexander.konovalov@st-andrews.ac.uk">alexander.konovalov@st-andrews.ac.uk</a></span>
 <br />Homepage: <span class="URL"><a href="http://www.cs.st-andrews.ac.uk/~alexk/">http://www.cs.st-andrews.ac.uk/~alexk/</a></span>
+<br />Address: <br />School of Computer Science<br /> University of St Andrews<br /> Jack Cole Building, North Haugh,<br /> St Andrews, Fife, KY16 9SX, Scotland<br />
 </p>
-
-<p><a id="X81488B807F2A1CF1" name="X81488B807F2A1CF1"></a></p>
-<h3>Copyright</h3>
-<p>© 1997-2017 by Leandro Vendramin and Alexander Konovalov</p>
-
-<p><strong class="pkg">YangBaxter</strong> package is free software; you can redistribute it and/or modify it under the terms of the <span class="URL"><a href="http://www.fsf.org/licenses/gpl.html">GNU General Public License</a></span> as published by the Free Software Foundation, version 3.</p>
-
-<p><a id="X82A988D47DFAFCFA" name="X82A988D47DFAFCFA"></a></p>
-<h3>Acknowledgements</h3>
-<p>Thanks to Travis Schedler for the involutive solutions up to size 8.</p>
 
 <p><a id="X8537FEB07AF2BEC8" name="X8537FEB07AF2BEC8"></a></p>
 
 <div class="contents">
 <h3>Contents<a id="contents" name="contents"></a></h3>
 
-<div class="ContChap"><a href="chap1_mj.html#X84C2DFF4780E6782">1 <span class="Heading">Braces and Skew Braces</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8639B30A8543F592">1.1 <span class="Heading">Categories of Braces and Their Objects</span></a>
+<div class="ContChap"><a href="chap1_mj.html#X81D398D67DC78FB5">1 <span class="Heading">YangBaxter automatic generated documentation</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X874DFE6F8545386D">1.1 <span class="Heading">YangBaxter automatic generated documentation of attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X818902947D2A6A97">1.1-1 IsSkewBrace</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87BD8F6C7E17DF92">1.1-2 IsSkewBraceElm</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X845E09BF86C4DD2E">1.1-1 LeftSeries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85C96CD3841C466C">1.1-2 SmoktunowiczSeries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B9ED49481948B91">1.1-3 RightSeries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E0053787EDFEAFB">1.1-4 SocleSeries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85AA85F57FF7BD73">1.1-5 MultipermutationLevel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8616F73781699DC3">1.1-6 Fix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CE04CC57E82FD02">1.1-7 KernelOfLambda</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X81990D3F82A60C51">1.2 <span class="Heading">Constructing Skew Braces</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7ECA588F820E4FDD">1.2 <span class="Heading">YangBaxter automatic generated documentation of methods</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X859DFE407FDB8165">1.2-1 SkewBrace</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C2FB9E27C641F49">1.2-1 SkewBrace</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7F9A04257EF058C0">1.3 <span class="Heading">Small Skew Braces Library</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7A61267C790B6F3A">1.3 <span class="Heading">YangBaxter automatic generated documentation of global functions</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FF0084279FB65C5">1.3-1 SmallSkewBrace</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AE0A06C7E30AFDF">1.3-1 AllSmallSkewBraces</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8241FE3E7F86375C">1.3-2 AllSmallBraces</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X824899517A214506">1.3-3 IsSkewBraceHomomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79EE20B97BD26A1F">1.3-4 SkewBraceElm</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79746AAC863EA794">1.3-5 IsomorphismSkewBraces</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C287494794C9DD6">1.4 <span class="Heading">YangBaxter automatic generated documentation of properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84880C7484699973">1.4-1 IsTwoSided</a></span>
 </div></div>
 </div>
 <div class="ContChap"><a href="chapInd_mj.html"><span class="Heading">Index</span></a></div>
