@@ -74,11 +74,11 @@ gap> NrSmallSkewBraces(8);
 47
 
 # Classical braces
-gap> Number([1..NrSmallSkewBraces(8)], k->IsClassicalSkewBrace(SmallSkewBrace(8,k)));
+gap> Number([1..NrSmallSkewBraces(8)], k->IsClassical(SmallSkewBrace(8,k)));
 27
 gap> NrSmallBraces(8);
 27
-gap> Number([1..NrSmallBraces(8)], k->IsClassicalSkewBrace(SmallBrace(8,k)));
+gap> Number([1..NrSmallBraces(8)], k->IsClassical(SmallBrace(8,k)));
 27
 
 # Test Lambda
@@ -128,7 +128,7 @@ gap> br := SmallBrace(8,25);
 gap> Display(br);
 SmallBrace(8,25)
 
-# Test IsClassicalSkewBrace 
+# Test IsClassical
 gap> obj1 := SmallBrace(8,10);
 <brace of size 8>
 gap> Display(obj1);
@@ -197,7 +197,7 @@ gap> n := 12;;
 gap> l := [];;
 gap> for k in [1..NrSmallSkewBraces(n)] do
 > br := SmallSkewBrace(n,k);
-> if IsClassicalSkewBrace(br) then
+> if IsClassical(br) then
 > Add(l, IdBrace(br));
 > fi;
 > od;
@@ -234,6 +234,26 @@ gap> l;
   1, 1708, 4, 8, 1, 11, 1, 80, 2, 91, 2, 2, 1, 28, 1, 2, 11, -1, 1, 4, 1, 11, 
   1, 4, 1, 489, 1, 2, 5, 9, 1, 6, 1, 1985, -1, 2, 1, 34, 1, 2, 1, 90, 1, 16, 
   1, 9, 2, 2, 1, -1, 1, 8, 4, 51 ]
+
+# Test braces of size p and p^2
+gap> IsBraceImplemented(19^2);
+true
+gap> IsSkewBraceImplemented(23^2);
+true
+gap> List([1..4], k->IdBrace(SmallBrace(9,k)));
+[ [ 9, 1 ], [ 9, 2 ], [ 9, 3 ], [ 9, 4 ] ]
+gap> List([1..4], k->IdSkewBrace(SmallBrace(9,k)));
+[ [ 9, 1 ], [ 9, 2 ], [ 9, 3 ], [ 9, 4 ] ]
+gap> List([1..4], k->IdSkewBrace(SmallSkewBrace(9,k)));
+[ [ 9, 1 ], [ 9, 2 ], [ 9, 3 ], [ 9, 4 ] ]
+gap> NrSmallBraces(23^2);
+4
+gap> NrSmallBraces(23);
+1
+gap> NrSmallSkewBraces(23);
+1
+gap> NrSmallSkewBraces(29^2);
+4
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##

@@ -43,7 +43,7 @@ end);
 
 # If <obj> is a classical brace, this function returns the id of the skew brace <obj>
 InstallMethod(IdBrace, "for a skew brace", [IsSkewBrace], function(obj)
-  if not IsClassicalSkewBrace(obj) then
+  if not IsClassical(obj) then
     Error("the skew brace is not classical\n");
   fi;
   return [Size(obj), First([1..NrSmallBraces(Size(obj))], k->IsomorphismSkewBraces(obj, SmallBrace(Size(obj),k)) <> fail)];
@@ -223,7 +223,7 @@ end);
 
 InstallMethod(ViewObj, "for skew braces", [ IsSkewBrace ],
 function(obj)
-  if HasIdBrace(obj) or IsClassicalSkewBrace(obj) then
+  if HasIdBrace(obj) or IsClassical(obj) then
     Print("<brace of size ", Size(obj), ">");
   else
     Print("<skew brace of size ", Size(obj), ">");
@@ -266,8 +266,9 @@ end);
 
 InstallMethod(SmallSkewBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local obj, known, implemented, dir, filename, add, mul, l;
+  local obj, known, implemented, dir, filename, add, mul, l, n;
 
+	# Size p are trivial
   if IsPrime(size) then
     if number=1 then
         l := AsList(CyclicGroup(IsPermGroup, size));
@@ -276,6 +277,11 @@ function(size, number)
         Error("there is only one skew brace of size one");
     fi;
   fi;
+
+	# Size p^2 are known!
+	if IsPrime(Sqrt(size)) then
+		return BraceP2(size, number);
+	fi;
 
   known := IsBound(NCBRACES[size]);
   if not known then
@@ -322,6 +328,11 @@ function(size, number)
     fi;
   fi;
 
+	# Size p^2 are known!
+	if IsPrime(Sqrt(size)) then
+		return BraceP2(size, number);
+	fi;
+
   known := IsBound(BRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -345,7 +356,7 @@ function(size, number)
 
     obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
     SetIdBrace( obj, [ size, number ] );
-    SetIsClassicalSkewBrace(obj, true);
+    SetIsClassical(obj, true);
     if size > 15 then
       Unbind(BRACES[size]);
     fi;
@@ -381,7 +392,7 @@ InstallMethod(IsSkewBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, dir, filename;
 
-  if IsPrime(size) then
+  if IsPrime(size) or IsPrime(Sqrt(size)) then
     return true;
   fi;
 
@@ -402,7 +413,7 @@ InstallMethod(IsBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, implemented, dir, filename;
 
-  if IsPrime(size) then
+  if IsPrime(size) or IsPrime(Sqrt(size)) then
     return true;
   fi;
 
@@ -428,6 +439,10 @@ function(size)
     return 1;
   fi;
 
+	if IsPrime(Sqrt(size)) then
+		return 4;
+	fi;
+
   if size <= 15 then
     return Size(NCBRACES[size]);
   else
@@ -450,6 +465,10 @@ function(size)
     return 1;
   fi;
 
+	if IsPrime(Sqrt(size)) then
+		return 4;
+	fi;
+
   if size <= 15 then
     return Size(BRACES[size]);
   else
@@ -464,7 +483,7 @@ function(size)
   fi;
 end);
 
-InstallMethod(IsClassicalSkewBrace, "for a skew brace", [ IsSkewBrace ], 
+InstallMethod(IsClassical, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
   return IsAbelian(Group(SkewBraceAList(obj)));
 end);
@@ -569,7 +588,7 @@ InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
 end);
 
 InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewBrace ], function(obj)
-  if not IsClassicalSkewBrace(obj) then
+  if not IsClassical(obj) then
     Error("this is not a classical brace\n");
   fi;
   return YB2CycleSet(SkewBrace2YB(obj));
@@ -680,7 +699,6 @@ function( arg )
   return SelectSmallBraces( arg, false );
 end);
 
-
 InstallGlobalFunction(AllSmallSkewBraces, 
 function( arg )
   return SelectSmallBraces( arg, true );
@@ -716,4 +734,57 @@ end);
 InstallGlobalFunction(FromMul2SkewBrace, function(obj, subset)
   return FromAdd2SkewBrace(obj, FromMul2Add(obj, subset));
 end);
+
+InstallGlobalFunction(BraceP2, function(size, number)
+  local l, i, j, p, q, x, y, u, v, add, mul, tmp;
+
+  add := NullMat(size,size);
+  mul := NullMat(size,size);
+
+  if number = 1 then
+    return TrivialBrace(CyclicGroup(IsPermGroup, size));
+  elif number = 2 then
+    l := AsList(ZmodnZ(size));
+    for i in [1..size] do
+      x := l[i];
+      for j in [1..size] do
+        y := l[j];
+        add[i][j] := Position(l, x+y);
+        mul[i][j] := Position(l, x+y+Sqrt(size)*x*y);
+      od;
+    od;
+
+    p := List(add, PermList);
+    q := List(mul, PermList);
+
+    return SkewBrace(List([1..size], k->[p[k],q[k]]));
+  elif number=3 then
+    return TrivialBrace(ElementaryAbelianGroup(IsPermGroup, size));
+  elif number=4 then
+
+    tmp := AsList(ZmodnZ(Sqrt(size))); 
+    l := AsList(Cartesian(tmp,tmp));
+
+    for i in [1..size] do
+      for j in [1..size] do
+
+        x := l[i][1];
+        y := l[i][2];
+        u := l[j][1];
+        v := l[j][2];
+
+        add[Position(l,[x,y])][Position(l,[u,v])] := Position(l,[x+u,y+v]);
+        mul[Position(l,[x,y])][Position(l,[u,v])] := Position(l,[x+u+y*v,y+v]);
+      od;
+    od;
+
+    p := List(add, PermList);
+    q := List(mul, PermList);
+
+    return SkewBrace(List([1..size], k->[p[k],q[k]]));
+  else
+    Error("there are four braces of size ", size, "\n");
+  fi;
+end); 
+
 

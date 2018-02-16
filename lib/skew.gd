@@ -136,7 +136,7 @@ DeclareAttribute("SkewBraceAList", IsSkewBrace);
 DeclareAttribute("SkewBraceMList", IsSkewBrace);
 DeclareAttribute("AsList", IsSkewBrace);
 DeclareAttribute("Is2Sided", IsSkewBrace);
-DeclareAttribute("IsClassical", IsSkewBrace);
+#DeclareAttribute("IsClassical", IsSkewBrace);
 DeclareAttribute("SkewBrace2YB", IsSkewBrace);
 DeclareAttribute("Labels", IsSkewBrace);
 DeclareAttribute("Brace2CycleSet", IsSkewBrace);
@@ -152,8 +152,10 @@ DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 #! true
 #! @EndExampleSession
 DeclareProperty("IsTwoSided", IsSkewBrace);
+DeclareProperty("IsClassical", IsSkewBrace);
 
-DeclareProperty("IsClassicalSkewBrace", IsSkewBrace);
+# Construction
+DeclareGlobalFunction("BraceP2");
 
 # Conversion utilities
 DeclareGlobalFunction("FromMul2Add");
