@@ -266,7 +266,17 @@ end);
 
 InstallMethod(SmallSkewBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local obj, known, implemented, dir, filename, add, mul;
+  local obj, known, implemented, dir, filename, add, mul, l;
+
+  if IsPrime(size) then
+    if number=1 then
+        l := AsList(CyclicGroup(IsPermGroup, size));
+        return SkewBrace(List([1..size], k->[l[k],l[k]]));
+    else
+        Error("there is only one skew brace of size one");
+    fi;
+  fi;
+
   known := IsBound(NCBRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -301,7 +311,17 @@ end);
 
 InstallMethod(SmallBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
-  local obj, known, implemented, dir, filename, add, mul;
+  local obj, known, implemented, dir, filename, add, mul, l;
+
+  if IsPrime(size) then
+    if number=1 then
+        l := AsList(CyclicGroup(IsPermGroup, size));
+        return SkewBrace(List([1..size], k->[l[k],l[k]]));
+    else
+        Error("there is only one brace of size one");
+    fi;
+  fi;
+
   known := IsBound(BRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -339,6 +359,11 @@ end);
 InstallMethod(IsSkewBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, dir, filename;
+
+  if IsPrime(size) then
+    return true;
+  fi;
+
   known := IsBound(NCBRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -355,6 +380,11 @@ end);
 InstallMethod(IsBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, implemented, dir, filename;
+
+  if IsPrime(size) then
+    return true;
+  fi;
+
   known := IsBound(BRACES[size]);
   if not known then
     dir := DirectoriesPackageLibrary("YangBaxter", "data")[1];
@@ -372,6 +402,11 @@ end);
 InstallGlobalFunction(NrSmallSkewBraces, 
 function(size)
   local dir, filename;
+
+  if IsPrime(size) then
+    return 1;
+  fi;
+
   if size <= 15 then
     return Size(NCBRACES[size]);
   else
@@ -389,6 +424,11 @@ end);
 InstallGlobalFunction(NrSmallBraces, 
 function(size)
   local dir, filename;
+
+  if IsPrime(size) then
+    return 1;
+  fi;
+
   if size <= 15 then
     return Size(BRACES[size]);
   else
