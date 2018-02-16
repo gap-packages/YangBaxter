@@ -65,6 +65,26 @@ DeclareOperation("SkewBrace", [IsList]);
 # <#/GAPDoc>
 DeclareOperation("SmallSkewBrace", [IsInt, IsInt]);
 
+#! @Arguments group
+#! @Returns a brace 
+#! @Description
+#! This function returns the trivial brace over the given group
+#! @ExampleSession
+#! gap> TrivialBrace(CyclicGroup(IsPermGroup, 5));
+#! <brace of size 5>
+#! @EndExampleSession
+DeclareOperation("TrivialBrace", [IsGroup]);
+
+#! @Arguments group
+#! @Returns a skew brace 
+#! @Description
+#! This function returns the trivial skew brace over the given group
+#! @ExampleSession
+#! gap> TrivialSkewBrace(DihedralGroup(10));
+#! <skew brace of size 10>
+#! @EndExampleSession
+DeclareOperation("TrivialSkewBrace", [IsGroup]);
+
 DeclareOperation("SmallBrace", [IsInt, IsInt]);
 DeclareAttribute("IdSkewBrace", IsSkewBrace);
 DeclareAttribute("IdBrace", IsSkewBrace);

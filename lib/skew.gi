@@ -344,7 +344,6 @@ function(size, number)
     mul := Permuted(mul, Inverse(BRACES[size][number].q));
 
     obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
-    #BRACES[size][number].perms);
     SetIdBrace( obj, [ size, number ] );
     SetIsClassicalSkewBrace(obj, true);
     if size > 15 then
@@ -353,6 +352,28 @@ function(size, number)
     return obj;
   else
     Error("there are just ", NrSmallBraces(size), " braces of size ", size);
+  fi;
+end);
+
+InstallMethod(TrivialSkewBrace, "for a group", [IsGroup],
+function(group)
+  local l;
+ 
+  if IsPermGroup(group) then
+    l := AsList(group);
+  else
+    l := AsList(Image(IsomorphismPermGroup(group)));
+  fi;
+  return SkewBrace(List([1..Size(group)], k->[l[k],l[k]]));
+end);
+
+InstallMethod(TrivialBrace, "for a group", [IsGroup],
+function(group)
+  local l;
+  if not IsAbelian(group) then
+    Error("The group should be abelian");
+  else
+    return TrivialSkewBrace(group);
   fi;
 end);
 
