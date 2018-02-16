@@ -1,14 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.0.1",
-Date := "15/12/2017",
-
-##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "0.0.1">
-##  <!ENTITY RELEASEDATE "15 December 2017">
-##  <!ENTITY RELEASEYEAR "2017">
-##  <#/GAPDoc>
+Version := "0.1.0",
+Date := "16/02/2018",
 
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
