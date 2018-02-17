@@ -268,17 +268,16 @@ InstallMethod(SmallSkewBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
   local obj, known, implemented, dir, filename, add, mul, l, n;
 
-	# Size p are trivial
-  if IsPrime(size) then
+	# If <size> is a prime number, the brace is trivial
+  if Gcd(size, Phi(size))=1 then
     if number=1 then
-        l := AsList(CyclicGroup(IsPermGroup, size));
-        return SkewBrace(List([1..size], k->[l[k],l[k]]));
+      return TrivialBrace(CyclicGroup(IsPermGroup, size));
     else
-        Error("there is only one skew brace of size one");
+      Error("there is only one brace of size ", size, "\n");
     fi;
   fi;
 
-	# Size p^2 are known!
+ 	# If <size> is the square of a prime, braces are known
 	if IsPrime(Sqrt(size)) then
 		return BraceP2(size, number);
 	fi;
@@ -319,6 +318,7 @@ InstallMethod(SmallBrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
   local obj, known, implemented, dir, filename, add, mul, l;
 
+  # Braces of size p are known
   if IsPrime(size) then
     if number=1 then
         l := AsList(CyclicGroup(IsPermGroup, size));
@@ -328,7 +328,17 @@ function(size, number)
     fi;
   fi;
 
-	# Size p^2 are known!
+	# If <size> is a prime number, the brace is trivial
+  # The same if <size> Burnside number
+  if Gcd(size, Phi(size))=1 then
+    if number=1 then
+      return TrivialBrace(CyclicGroup(IsPermGroup, size));
+    else
+      Error("there is only one brace of size ", size, "\n");
+    fi;
+  fi;
+
+ 	# If <size> is the square of a prime, braces are known
 	if IsPrime(Sqrt(size)) then
 		return BraceP2(size, number);
 	fi;
@@ -392,7 +402,7 @@ InstallMethod(IsSkewBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, dir, filename;
 
-  if IsPrime(size) or IsPrime(Sqrt(size)) then
+  if Gcd(size, Phi(size))=1 or IsPrime(Sqrt(size)) then
     return true;
   fi;
 
@@ -413,7 +423,7 @@ InstallMethod(IsBraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, implemented, dir, filename;
 
-  if IsPrime(size) or IsPrime(Sqrt(size)) then
+  if Gcd(size, Phi(size))=1 or IsPrime(Sqrt(size)) then
     return true;
   fi;
 
@@ -435,7 +445,7 @@ InstallGlobalFunction(NrSmallSkewBraces,
 function(size)
   local dir, filename;
 
-  if IsPrime(size) then
+  if Gcd(size, Phi(size))=1 then
     return 1;
   fi;
 
@@ -461,7 +471,7 @@ InstallGlobalFunction(NrSmallBraces,
 function(size)
   local dir, filename;
 
-  if IsPrime(size) then
+  if Gcd(size, Phi(size))=1 then
     return 1;
   fi;
 
