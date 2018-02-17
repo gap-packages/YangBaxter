@@ -153,6 +153,7 @@ DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 #! @EndExampleSession
 DeclareProperty("IsTwoSided", IsSkewBrace);
 DeclareProperty("IsClassical", IsSkewBrace);
+DeclareProperty("IsTrivialSkewBrace", IsSkewBrace);
 
 # Construction
 DeclareGlobalFunction("BraceP2");

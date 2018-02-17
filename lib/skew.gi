@@ -378,14 +378,16 @@ end);
 
 InstallMethod(TrivialSkewBrace, "for a group", [IsGroup],
 function(group)
-  local l;
+  local l, obj;
  
   if IsPermGroup(group) then
     l := AsList(group);
   else
     l := AsList(Image(IsomorphismPermGroup(group)));
   fi;
-  return SkewBrace(List([1..Size(group)], k->[l[k],l[k]]));
+  obj := SkewBrace(List([1..Size(group)], k->[l[k],l[k]]));
+  SetIsTrivialSkewBrace(obj, true);
+  return obj;
 end);
 
 InstallMethod(TrivialBrace, "for a group", [IsGroup],
@@ -496,6 +498,19 @@ end);
 InstallMethod(IsClassical, "for a skew brace", [ IsSkewBrace ], 
 function(obj)
   return IsAbelian(Group(SkewBraceAList(obj)));
+end);
+
+InstallMethod(IsTrivialSkewBrace, "for a skew brace", [ IsSkewBrace ],
+function(obj)
+local a,b;
+  for a in obj do
+    for b in obj do
+      if a*b <> a+b then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
 end);
 
 InstallMethod(Lambda, 
