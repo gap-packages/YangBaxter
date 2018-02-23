@@ -85,7 +85,14 @@ DeclareOperation("TrivialBrace", [IsGroup]);
 #! @EndExampleSession
 DeclareOperation("TrivialSkewBrace", [IsGroup]);
 
+
+#! @Arguments size, index
+#! @Returns a skew brace
+#! @Description
+#! This function returns a skew brace of the requested size
 DeclareOperation("SmallBrace", [IsInt, IsInt]);
+
+
 DeclareAttribute("IdSkewBrace", IsSkewBrace);
 DeclareAttribute("IdBrace", IsSkewBrace);
 DeclareAttribute("ZeroImmutable", IsSkewBrace);
