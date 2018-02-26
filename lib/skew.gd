@@ -63,6 +63,16 @@ DeclareOperation("SkewBrace", [IsList]);
 # </Description>
 # </ManSection>
 # <#/GAPDoc>
+#!
+#! @Arguments size, index
+#! @Returns a skew brace 
+#! @Description
+#! Returns the skew brace of the requested $size$ with
+#! position $index$ in the skew brace database.
+#! @ExampleSession
+#! gap> SmallSkewBrace(8,3);
+#! <brace of size 8>
+#! @EndExampleSession
 DeclareOperation("SmallSkewBrace", [IsInt, IsInt]);
 
 #! @Arguments group
