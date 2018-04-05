@@ -388,18 +388,18 @@ InstallMethod(IntersectionOfTwoIdeals, "for ideals of a skew brace", [IsSkewBrac
   return tmp;
 end);
 
-#sum := function(ideal1, ideal2)
-#  local obj, tmp, new;
-#  if Parent(ideal1) <> Parent(ideal2) then
-#    Error("The ideals do not belong to the same skew brace,");
-#  else
-#    obj := Parent(ideal1);
-#  fi;
-#  tmp := AsList(Group(List(Union(AsList(ideal1), AsList(ideal2)), x->x![1])));
-#  new := SubSkewBrace(obj, List(tmp, x->SkewBraceElmConstructor(obj, x)));
-#  SetIsIdealInParent(new, true);
-#  return new;
-#end;
+InstallMethod(SumOfTwoIdeals, "for ideals of a skew brace", [IsSkewBrace and IsIdealInParent, IsSkewBrace and IsIdealInParent], function(ideal1, ideal2)
+  local obj, tmp, new;
+  if Parent(ideal1) <> Parent(ideal2) then
+    Error("The ideals do not belong to the same skew brace,");
+  else
+    obj := Parent(ideal1);
+  fi;
+  tmp := AsList(Group(List(Union(AsList(ideal1), AsList(ideal2)), x->x![1])));
+  new := SubSkewBrace(obj, List(tmp, x->SkewBraceElmConstructor(obj, x)));
+  SetIsIdealInParent(new, true);
+  return new;
+end);
 
 
 

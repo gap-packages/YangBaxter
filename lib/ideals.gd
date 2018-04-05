@@ -113,3 +113,11 @@ DeclareAttribute("SemiprimeIdeals", IsSkewBrace);
 #! @ExampleSession
 #! @EndExampleSession
 DeclareOperation("IntersectionOfTwoIdeals", [ IsSkewBrace and IsIdealInParent, IsSkewBrace and IsIdealInParent ]);
+
+#!
+#! @Arguments ideal1,ideal2
+#! @Returns the sum of <ideal1> and <ideal2> 
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareOperation("SumOfTwoIdeals", [ IsSkewBrace and IsIdealInParent, IsSkewBrace and IsIdealInParent ]);
