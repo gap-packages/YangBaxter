@@ -410,4 +410,13 @@ InstallMethod(IsBaer, "for a skew brace", [IsSkewBrace], function(obj)
 end);
 
 
+InstallMethod(WedderburnRadical, "for a skew brace", [IsSkewBrace], function(obj)
+  return Iterated(Filtered(Ideals(obj), x->IsLeftNilpotent(x) or IsRightNilpotent(x)), SumOfTwoIdeals);
+end);
+
+#ideal_generated_by := function(obj, subset)
+#  local f;
+#  f := Filtered(Ideals(obj), x->ForAll(subset, y->y in x));
+#  return Iterated(f, intersection);
+#end;
 

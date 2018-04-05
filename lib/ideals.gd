@@ -138,4 +138,12 @@ DeclareAttribute("BaerRadical", IsSkewBrace);
 #! @EndExampleSession
 DeclareProperty("IsBaer", IsSkewBrace);
 
+#!
+#! @Arguments obj
+#! @Returns the Wedderburn radical of the skew brace <obj> 
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("WedderburnRadical", IsSkewBrace);
+
 
