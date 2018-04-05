@@ -58,7 +58,7 @@ DeclareGlobalFunction("SubSkewBrace");
 
 #!
 #! @Arguments obj
-#! @Returns <true> if the skew brace <obj> is prime
+#! @Returns true if the skew brace obj is prime
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -66,7 +66,7 @@ DeclareAttribute("IsPrime", IsSkewBrace);
 
 #!
 #! @Arguments obj
-#! @Returns <true> if the ideal <obj> is prime
+#! @Returns true if the ideal obj is prime
 #! @Description
 #! An ideal $I$ of a skew brace $A$ is said to be prime if $A/I$ is a prime skew brace.
 #! @ExampleSession
@@ -75,7 +75,7 @@ DeclareAttribute("IsPrimeIdeal", IsSkewBrace and IsIdealInParent);
 
 #!
 #! @Arguments obj
-#! @Returns the list of prime ideals of the skew brace <obj> 
+#! @Returns the list of prime ideals of the skew brace obj 
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -83,7 +83,7 @@ DeclareAttribute("PrimeIdeals", IsSkewBrace);
 
 #!
 #! @Arguments obj
-#! @Returns <true> if the skew brace <obj> is semiprime
+#! @Returns true if the skew brace obj is semiprime
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -91,7 +91,7 @@ DeclareAttribute("IsSemiprime", IsSkewBrace);
 
 #!
 #! @Arguments obj
-#! @Returns <true> if the ideal <obj> is semiprime
+#! @Returns true if the ideal obj is semiprime
 #! @Description
 #! An ideal $I$ of a skew brace $A$ is said to be semiprime if $A/I$ is a semiprime skew brace.
 #! @ExampleSession
@@ -100,7 +100,7 @@ DeclareAttribute("IsSemiprimeIdeal", IsSkewBrace and IsIdealInParent);
 
 #!
 #! @Arguments obj
-#! @Returns the list of semiprime ideals of the skew brace <obj> 
+#! @Returns the list of semiprime ideals of the skew brace obj 
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -108,7 +108,7 @@ DeclareAttribute("SemiprimeIdeals", IsSkewBrace);
 
 #!
 #! @Arguments ideal1,ideal2
-#! @Returns the intersection of <ideal1> and <ideal2> 
+#! @Returns the intersection of ideal1 and ideal2 
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -116,7 +116,7 @@ DeclareOperation("IntersectionOfTwoIdeals", [ IsSkewBrace and IsIdealInParent, I
 
 #!
 #! @Arguments ideal1,ideal2
-#! @Returns the sum of <ideal1> and <ideal2> 
+#! @Returns the sum of ideal1 and ideal2 
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -124,7 +124,7 @@ DeclareOperation("SumOfTwoIdeals", [ IsSkewBrace and IsIdealInParent, IsSkewBrac
 
 #!
 #! @Arguments obj
-#! @Returns the Baer radical of the skew brace <obj> 
+#! @Returns the Baer radical of the skew brace obj
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -132,7 +132,7 @@ DeclareAttribute("BaerRadical", IsSkewBrace);
 
 #!
 #! @Arguments obj
-#! @Returns <true> if the Baer radical of the skew brace <obj> is equal to <obj>
+#! @Returns true if the Baer radical of the skew brace obj is equal to obj
 #! @Description
 #! @ExampleSession
 #! @EndExampleSession
@@ -140,9 +140,12 @@ DeclareProperty("IsBaer", IsSkewBrace);
 
 #!
 #! @Arguments obj
-#! @Returns the Wedderburn radical of the skew brace <obj> 
-#! @Description
+#! @Returns the Wedderburn radical of the skew brace obj 
+#! @Description The Wedderburn radical of a skew brace is the intersection of all its prime ideals
 #! @ExampleSession
+#! gap> br := SmallSkewBrace(6,2);;
+#! gap> WedderburnRadical(br);
+#! <brace of size 3>
 #! @EndExampleSession
 DeclareAttribute("WedderburnRadical", IsSkewBrace);
 
