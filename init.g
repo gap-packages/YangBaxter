@@ -9,4 +9,5 @@ ReadPackage("yangbaxter", "lib/qlinear.gd");
 #ReadPackage("yangbaxter", "lib/linear.gd");
 ReadPackage("yangbaxter", "lib/skew.gd");
 ReadPackage("yangbaxter", "lib/ideals.gd");
+ReadPackage("yangbaxter", "lib/radical.gd");
 

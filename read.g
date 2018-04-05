@@ -9,6 +9,7 @@ ReadPackage("yangbaxter", "lib/qlinear.gi" );
 #ReadPackage("yangbaxter", "lib/linear.gi" );
 ReadPackage("yangbaxter", "lib/skew.gi" );
 ReadPackage("yangbaxter", "lib/ideals.gi" );
+ReadPackage("yangbaxter", "lib/radical.gi" );
 
 
 
