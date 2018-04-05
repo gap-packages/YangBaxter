@@ -172,3 +172,23 @@ DeclareAttribute("LeftNilpotentIdeals", IsSkewBrace);
 #! @ExampleSession
 #! @EndExampleSession
 DeclareAttribute("RightNilpotentIdeals", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns a list with the solvable series of the skew brace
+#! @Description
+#! The solvable series of a skew brace $A$ is defined recursively as 
+#! $A_{\{1\}}=A$ and $A_{\{n+1\}}=A_{\{n\}}*A_{\{n\}}$ for $n\geq1$, where $a*b=\lambda_a(b)-b$
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("SolvableSeries", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns true if the skew brace is solvable 
+#! @Description
+#! A skew brace $A$ is solvable if there exists some $n$ such that $A_{\{n\}}=\{0\}$. 
+#! @ExampleSession
+#! @EndExampleSession
+#DeclareProperty("IsSolvable", IsSkewBrace);
+
+
