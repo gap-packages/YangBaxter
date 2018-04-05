@@ -401,5 +401,13 @@ InstallMethod(SumOfTwoIdeals, "for ideals of a skew brace", [IsSkewBrace and IsI
   return new;
 end);
 
+InstallMethod(BaerRadical, "for a skew brace", [IsSkewBrace], function(obj)
+  return Iterated(PrimeIdeals(obj), IntersectionOfTwoIdeals);
+end);
+
+InstallMethod(IsBaer, "for a skew brace", [IsSkewBrace], function(obj)
+  return Size(BaerRadical(obj)) = Size(obj);
+end);
+
 
 

@@ -121,3 +121,21 @@ DeclareOperation("IntersectionOfTwoIdeals", [ IsSkewBrace and IsIdealInParent, I
 #! @ExampleSession
 #! @EndExampleSession
 DeclareOperation("SumOfTwoIdeals", [ IsSkewBrace and IsIdealInParent, IsSkewBrace and IsIdealInParent ]);
+
+#!
+#! @Arguments obj
+#! @Returns the Baer radical of the skew brace <obj> 
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("BaerRadical", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns <true> if the Baer radical of the skew brace <obj> is equal to <obj>
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareProperty("IsBaer", IsSkewBrace);
+
+
