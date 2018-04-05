@@ -56,3 +56,52 @@ DeclareOperation("Quotient", [IsSkewBrace, IsSkewBrace]);
 
 DeclareGlobalFunction("SubSkewBrace");
 
+#!
+#! @Arguments obj
+#! @Returns <true> if the skew brace <obj> is prime
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("IsPrime", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns <true> if the ideal <obj> is prime
+#! @Description
+#! An ideal $I$ of a skew brace $A$ is said to be prime if $A/I$ is a prime skew brace.
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("IsPrimeIdeal", IsSkewBrace and IsIdealInParent);
+
+#!
+#! @Arguments obj
+#! @Returns the list of prime ideals of the skew brace <obj> 
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("PrimeIdeals", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns <true> if the skew brace <obj> is semiprime
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("IsSemiprime", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns <true> if the ideal <obj> is semiprime
+#! @Description
+#! An ideal $I$ of a skew brace $A$ is said to be semiprime if $A/I$ is a semiprime skew brace.
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("IsSemiprimeIdeal", IsSkewBrace and IsIdealInParent);
+
+#!
+#! @Arguments obj
+#! @Returns the list of semiprime ideals of the skew brace <obj> 
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("SemiprimeIdeals", IsSkewBrace);

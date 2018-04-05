@@ -326,3 +326,54 @@ InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewBrace], function(ob
 
   return s;
 end);
+
+InstallMethod(IsPrime, "for a skew brace", [IsSkewBrace], function(obj)
+  local l, x, y;
+  l := List(Ideals(obj), AsList);
+  for x in l do
+    if Size(x)=1 then
+      continue;
+    fi;
+    for y in l do
+      if Size(y) = 1 then
+        continue;
+      fi;
+      if Size(Star(x, y))=1 then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
+
+InstallMethod(IsPrimeIdeal, "for an ideal of a skew brace", [IsSkewBrace and IsIdealInParent], function(obj)
+  return IsPrime(Quotient(obj!.ParentAttr, obj));
+end);
+
+InstallMethod(PrimeIdeals, "for a skew brace", [IsSkewBrace], function(obj)
+  return Filtered(Ideals(obj), x->IsPrimeIdeal(x));
+end);
+
+InstallMethod(IsSemiprime, "for a skew brace", [IsSkewBrace], function(obj)
+  local l, x, y;
+  l := List(Ideals(obj), AsList);
+  for x in l do
+    if Size(x)=1 then
+      continue;
+    fi;
+    if Size(Star(x, x))=1 then
+      return false;
+    fi;
+  od;
+  return true;
+end);
+
+InstallMethod(IsSemiprimeIdeal, "for an ideal of a skew brace", [IsSkewBrace and IsIdealInParent], function(obj)
+  return IsSemiprime(Quotient(obj!.ParentAttr, obj));
+end);
+
+InstallMethod(SemiprimeIdeals, "for a skew brace", [IsSkewBrace], function(obj)
+  return Filtered(Ideals(obj), x->IsPrimeIdeal(x));
+end);
+
+

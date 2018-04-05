@@ -63,6 +63,19 @@ gap> List(NormalSubgroups(add), Size);
 gap> List(ls, IdSkewBrace);
 [ [ 36, 191 ], [ 18, 22 ], [ 3, 1 ] ]
 
+# Test prime and semiprime
+gap> br := SmallSkewBrace(24,708);;
+gap> IsSimpleSkewBrace(br);
+false
+gap> IsPrime(br);
+true
+gap> IsSemiprime(br);
+true
+gap> PrimeIdeals(br);
+[ <skew brace of size 24>, <brace of size 1> ]
+gap> SemiprimeIdeals(br);
+[ <skew brace of size 24>, <brace of size 1> ]
+
 gap> STOP_TEST( "ideals.tst", 1 );
 #############################################################################
 ##
