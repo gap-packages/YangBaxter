@@ -409,16 +409,15 @@ InstallMethod(IsBaer, "for a skew brace", [IsSkewBrace], function(obj)
   return Size(BaerRadical(obj)) = Size(obj);
 end);
 
-
 InstallMethod(WedderburnRadical, "for a skew brace", [IsSkewBrace], function(obj)
   return Iterated(Filtered(Ideals(obj), x->IsLeftNilpotent(x) or IsRightNilpotent(x)), SumOfTwoIdeals);
 end);
 
-#ideal_generated_by := function(obj, subset)
-#  local f;
-#  f := Filtered(Ideals(obj), x->ForAll(subset, y->y in x));
-#  return Iterated(f, intersection);
-#end;
+InstallMethod(IdealGeneratedBy, "for a skew brace and a collection", [ IsSkewBrace, IsCollection ], function(obj,subset)
+  local f;
+  f := Filtered(Ideals(obj), x->ForAll(subset, y->y in x));
+  return Iterated(f, IntersectionOfTwoIdeals);
+end);
 
 #is_solvable := function(obj)
 #        return 1 in List(solvable_series(obj), Size);
@@ -450,11 +449,11 @@ end);
 #
 #end;
 
-#left_nilpotent_ideals := function(obj)
-#  return Filtered(Ideals(obj), IsLeftNilpotent);
-#end;
-#
-#right_nilpotent_ideals := function(obj)
-#  return Filtered(Ideals(obj), IsRightNilpotent);
-#end;
+InstallMethod(LeftNilpotentIdeals, "for a skew brace", [ IsSkewBrace], function(obj)
+  return Filtered(Ideals(obj), IsLeftNilpotent);
+end);
+
+InstallMethod(RightNilpotentIdeals, "for a skew brace", [ IsSkewBrace], function(obj)
+  return Filtered(Ideals(obj), IsRightNilpotent);
+end);
 
