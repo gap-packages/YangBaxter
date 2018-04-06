@@ -141,6 +141,14 @@ DeclareAttribute("SkewBrace2YB", IsSkewBrace);
 DeclareAttribute("Labels", IsSkewBrace);
 DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 
+#!
+#! @Arguments obj1,obj2
+#! @Returns the direct product of <A>obj1</A> and <A>obj2</A>
+#! @Description
+#! @ExampleSession
+#! @EndExampleSession
+DeclareOperation("DirectProductSkewBraces", [IsSkewBrace, IsSkewBrace]);
+
 #! 
 #! @Returns true if the skew brace is two sided, false otherwise
 #! @Description
@@ -157,6 +165,8 @@ DeclareProperty("IsTrivialSkewBrace", IsSkewBrace);
 
 # Construction
 DeclareGlobalFunction("BraceP2");
+
+DeclareOperation("\/", [IsSkewBrace, IsSkewBrace and IsIdealInParent]);
 
 # Conversion utilities
 DeclareGlobalFunction("FromMul2Add");

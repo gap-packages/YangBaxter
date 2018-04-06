@@ -812,4 +812,34 @@ InstallGlobalFunction(BraceP2, function(size, number)
   fi;
 end); 
 
+InstallOtherMethod(DirectProductSkewBraces, "for two skew braces", [IsSkewBrace, IsSkewBrace], function(obj1, obj2)
+  local lst, u, v, a, b, c, d, sum, mul;
+
+  lst := Cartesian(obj1, obj2);
+  sum := NullMat(Size(obj1)*Size(obj2),Size(obj1)*Size(obj2));
+  mul := NullMat(Size(obj1)*Size(obj2),Size(obj1)*Size(obj2));
+
+  for u in lst do
+    a := u[1];
+    b := u[2];
+    for v in lst do
+      c := v[1];
+      d := v[2];
+      sum[Position(lst,u)][Position(lst,v)] := Position(lst,[a+c,b+d]);
+      mul[Position(lst,u)][Position(lst,v)] := Position(lst,[a*c,b*d]);
+    od;
+  od;
+
+  sum := List(sum, PermList);
+  mul := List(mul, PermList);
+
+  return SkewBrace(List([1..Size(lst)], x->[sum[x],mul[x]]));
+end);
+
+InstallMethod(\/, "for a semigroup and an ideal",
+[IsSkewBrace, IsSkewBrace and IsIdealInParent],
+function(obj, ideal)
+  return Quotient(obj,ideal);
+end);
+
 
