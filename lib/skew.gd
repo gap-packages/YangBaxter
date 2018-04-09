@@ -1,3 +1,11 @@
+#! @Chapter Preliminaries
+#! In this section we define skew braces and list some of their
+#! main properties
+#! @Section Definition and examples
+#! A skew brace is a triple $(A,+,\circ)$, where $(A,+)$ and $(A,\circ)$
+#! are two (not necessarily abelian) groups such that
+#! the compatibility $a\circ (b+c)=a\circ b-a+a\circ c$ holds
+#! for all $a,b,c\in A$.
 # <#GAPDoc Label="IsSkewBrace">
 # <ManSection>
 #    <Filt Name="IsSkewBrace" />

@@ -1,9 +1,16 @@
-#!
+#! @Chapter Ideals
+#! In this section we describe several functions related 
+#! to ideals and left ideals of skew braces.
+#! @Section Left ideals
+#! An left ideal $I$ of a skew brace $A$ is a subgroup $I$ of
+#! the additive group of $A$ such that $\lambda_a(I)\subseteq I$ for all $a\in A$.
+
+#! @BeginGroup Series of ideals
+#! We describe functions useful for computations involving ideals
+#! and left ideals
 #! @Arguments obj
 #! @Returns the left ideals of the skew brace <A>obj</A>
 #! @Description
-#! An left ideal $I$ of a skew brace $A$ is a subgroup $I$ of
-#! the additive group of $A$ such that $\lambda_a(I)\subseteq I$ for all $a\in A$.
 #! @ExampleSession
 #! gap> br := SmallBrace(8,4);
 #! <brace of size 8>
@@ -14,37 +21,11 @@
 #! @EndExampleSession
 DeclareAttribute("LeftIdeals", IsSkewBrace);
 
-#!
 #! @Arguments obj
 #! @Returns <A>true</A> if the subset is a left ideal of <A>obj</A>
 #! @Description
 DeclareOperation("IsLeftIdeal", [ IsSkewBrace, IsCollection ]);
 
-#!
-#! @Arguments obj
-#! @Returns the ideals of the skew brace <A>obj</A>
-#! @Description
-#! An ideal $I$ of a skew brace $A$ is a normal subgroup $I$ of
-#! the additive group of $A$ such that $\lambda_a(I)\subseteq I$ for all $a\in A$ and $a\circ I=I\circ a$ for all $a\in A$.
-#! @ExampleSession
-#! gap> br := SmallSkewBrace(10,2);;
-#! gap> Ideals(br);
-#! [ <skew brace of size 10>, <brace of size 5>, <brace of size 1> ]
-#! @EndExampleSession
-DeclareAttribute("Ideals", IsSkewBrace);
-
-#! @Arguments obj
-#! @Returns the socle of the skew brace <A>obj</A>
-#! @Description
-#! The socle of a skew brace $A$ is the ideal $\mathrm{Soc}(A)=\ker\lambda\cap Z(A,+)$, where $\lambda\colon (A,\circ)\to\mathrm{Aut}(A,+)$, $a\mapsto \lambda_a$, $\lambda_a(b)=-a+a\circ b$.
-#! @ExampleSession
-#! gap> br := SmallSkewBrace(8,3);;
-#! gap> Socle(br);
-#! <brace of size 4>
-#! @EndExampleSession
-DeclareAttribute("Socle", IsSkewBrace);
-
-#!
 #! @Arguments obj
 #! @Returns the left ideals of the left series of <A>obj</A>
 #! @Description
@@ -58,54 +39,19 @@ DeclareAttribute("Socle", IsSkewBrace);
 #! @EndExampleSession
 DeclareAttribute("LeftSeries", IsSkewBrace);
 
-#!
-#! @Arguments obj 
-#! @Returns the list of ideals of the Smoktunowicz's series of <A>obj</A>
-#! @Description
-#! The Smoktunowicz's series of a skew brace $A$ is defined recursively as 
-#! $A^{[1]}=A$ and 
-#! $A^{[n+1]}=\sum_{i=1}^n A^{[i]}*A^{[n+1-i]}$ 
-#! for $n\geq1$, where $a*b=\lambda_a(b)-b$. 
-#! @ExampleSession
-#! gap> br := SmallSkewBrace(10,2);
-#! <skew brace of size 10>
-#! gap> SmoktunowiczSeries(br);
-#! [ <skew brace of size 10>, <brace of size 1> ]
-#! @EndExampleSession
-DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
-
-#!
+#! @Section Ideals
 #! @Arguments obj
-#! @Returns the ideals of the right series of <A>obj</A>
+#! @Returns the ideals of the skew brace <A>obj</A>
 #! @Description
-#! The right series of a skew brace 0$A$ is defined recursively as 
-#! $A^{(1)}=A$ and $A^{(n+1)}=A*A^{(n)}$ for $n\geq1$, where $a*b=\lambda_a(b)-b$
+#! An ideal $I$ of a skew brace $A$ is a normal subgroup $I$ of
+#! the additive group of $A$ such that $\lambda_a(I)\subseteq I$ for all $a\in A$ and $a\circ I=I\circ a$ for all $a\in A$.
 #! @ExampleSession
-#! gap> br := SmallSkewBrace(8,20);
-#! <skew brace of size 8>
-#! gap> RightSeries(br);
-#! [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
+#! gap> br := SmallSkewBrace(10,2);;
+#! gap> Ideals(br);
+#! [ <skew brace of size 10>, <brace of size 5>, <brace of size 1> ]
 #! @EndExampleSession
-DeclareAttribute("RightSeries", IsSkewBrace);
+DeclareAttribute("Ideals", IsSkewBrace);
 
-#!
-#! @Arguments obj
-#! @Returns the ideals of the socle series of <A>obj</A>
-#! @Description
-#! The socle series of a skew brace $A$ is defined recursively as...
-#! @ExampleSession
-#! gap> br := SmallSkewBrace(8,20);;
-#! gap> SocleSeries(br);
-#! [ <skew brace of size 8>, <brace of size 4>, <brace of size 1> ]
-#! @EndExampleSession
-DeclareAttribute("SocleSeries", IsSkewBrace);
-
-#!
-DeclareAttribute("MultipermutationLevel", IsSkewBrace);
-DeclareAttribute("Fix", IsSkewBrace);
-DeclareAttribute("KernelOfLambda", IsSkewBrace);
-
-#!
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace <A>obj</A> is simple
 #! @Description
@@ -121,25 +67,91 @@ DeclareAttribute("KernelOfLambda", IsSkewBrace);
 #! @EndExampleSession
 DeclareProperty("IsSimpleSkewBrace", IsSkewBrace);
 
-#!
 #! @Arguments obj
-#! @Returns <A>true</A> if the skew brace <A>obj</A> is right (resp. left) nilpotent. 
+#! @Returns the socle of the skew brace <A>obj</A>
 #! @Description
-#! A skew brace $A$ is said to be left (resp. right) nilpotent
-#! if there exists $n\geq1$ such that $A^n=0$ (resp. $A^{(n)}=0$).
+#! The socle of a skew brace $A$ is the ideal $\mathrm{Soc}(A)=\ker\lambda\cap Z(A,+)$, where $\lambda\colon (A,\circ)\to\mathrm{Aut}(A,+)$, $a\mapsto \lambda_a$, $\lambda_a(b)=-a+a\circ b$.
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(8,3);;
+#! gap> Socle(br);
+#! <brace of size 4>
+#! @EndExampleSession
+DeclareAttribute("Socle", IsSkewBrace);
+
+
+#! @Arguments obj 
+#! @Returns the list of ideals of the Smoktunowicz's series of <A>obj</A>
+#! @Description
+#! The Smoktunowicz's series of a skew brace $A$ is defined recursively as 
+#! $A^{[1]}=A$ and 
+#! $A^{[n+1]}=\sum_{i=1}^n A^{[i]}*A^{[n+1-i]}$ 
+#! for $n\geq1$, where $a*b=\lambda_a(b)-b$. 
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(10,2);
+#! <skew brace of size 10>
+#! gap> SmoktunowiczSeries(br);
+#! [ <skew brace of size 10>, <brace of size 1> ]
+#! @EndExampleSession
+DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns the ideals of the right series of <A>obj</A>
+#! @Description
+#! The right series of a skew brace 0$A$ is defined recursively as 
+#! $A^{(1)}=A$ and $A^{(n+1)}=A*A^{(n)}$ for $n\geq1$, where $a*b=\lambda_a(b)-b$
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(8,20);
+#! <skew brace of size 8>
+#! gap> RightSeries(br);
+#! [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
+#! @EndExampleSession
+DeclareAttribute("RightSeries", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> is left nilpotent. 
+#! @Description
+#! A skew brace $A$ is said to be left nilpotent
+#! if there exists $n\geq1$ such that $A^n=0$.
 #! @ExampleSession
 #! gap> IsLeftNilpotent(SmallBrace(8,18));
-#! true
-#! gap> IsRightNilpotent(SmallBrace(8,18));
-#! false
-#! gap> IsRightNilpotent(SmallBrace(12,2));
 #! true
 #! gap> IsLeftNilpotent(SmallBrace(12,2));
 #! false
 #! @EndExampleSession
 DeclareProperty("IsLeftNilpotent", IsSkewBrace);
 
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> is right nilpotent. 
+#! @Description
+#! A skew brace $A$ is said to be right nilpotent
+#! if there exists $n\geq1$ such that $A^{(n)}=0$.
+#! @ExampleSession
+#! gap> IsRightNilpotent(SmallBrace(8,18));
+#! false
+#! gap> IsRightNilpotent(SmallBrace(12,2));
+#! true
+#! @EndExampleSession
 DeclareProperty("IsRightNilpotent", IsSkewBrace);
+
+
+#! @Arguments obj
+#! @Returns the ideals of the socle series of <A>obj</A>
+#! @Description
+#! The socle series of a skew brace $A$ is defined recursively as...
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(8,20);;
+#! gap> SocleSeries(br);
+#! [ <skew brace of size 8>, <brace of size 4>, <brace of size 1> ]
+#! @EndExampleSession
+DeclareAttribute("SocleSeries", IsSkewBrace);
+
+#! @EndGroup
+
+#!
+DeclareAttribute("MultipermutationLevel", IsSkewBrace);
+DeclareAttribute("Fix", IsSkewBrace);
+DeclareAttribute("KernelOfLambda", IsSkewBrace);
+
 
 DeclareProperty("IsMultipermutation", IsSkewBrace);
 
@@ -150,7 +162,7 @@ DeclareOperation("Quotient", [IsSkewBrace, IsSkewBrace]);
 
 DeclareGlobalFunction("SubSkewBrace");
 
-#!
+#! @Section Prime and semiprime ideals
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace <A>obj</A> is prime
 #! @Description
@@ -164,7 +176,6 @@ DeclareGlobalFunction("SubSkewBrace");
 #! @EndExampleSession
 DeclareAttribute("IsPrime", IsSkewBrace);
 
-#!
 #! @Arguments obj
 #! @Returns <A>true</A> if the ideal <A>obj</A> is prime
 #! @Description
