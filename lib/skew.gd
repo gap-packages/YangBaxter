@@ -146,6 +146,15 @@ DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 #! @Returns the direct product of <A>obj1</A> and <A>obj2</A>
 #! @Description
 #! @ExampleSession
+#! gap> br1 := SmallBrace(8,18);;
+#! gap> br2 := SmallBrace(12,2);;
+#! gap> br := DirectProductSkewBraces(br1,br2);;
+#! gap> IsLeftNilpotent(br);
+#! false
+#! gap> IsRightNilpotent(br);
+#! false
+#! gap> IsSolvable(br);
+#! true
 #! @EndExampleSession
 DeclareOperation("DirectProductSkewBraces", [IsSkewBrace, IsSkewBrace]);
 
