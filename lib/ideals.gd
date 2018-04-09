@@ -1,5 +1,47 @@
+#!
+#! @Arguments obj
+#! @Returns the left ideals of the skew brace <A>obj</A>
+#! @Description
+#! An left ideal $I$ of a skew brace $A$ is a subgroup $I$ of
+#! the additive group of $A$ such that $\lambda_a(I)\subseteq I$ for all $a\in A$.
+#! @ExampleSession
+#! gap> br := SmallBrace(8,4);
+#! <brace of size 8>
+#! gap> LeftIdeals(br);
+#! [ <brace of size 8>, <brace of size 4>, <brace of size 2>, <brace of size 1> ]
+#! gap> List(last, IdBrace);
+#! [ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ]
+#! @EndExampleSession
 DeclareAttribute("LeftIdeals", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns <A>true</A> if the subset is a left ideal of <A>obj</A>
+#! @Description
+DeclareOperation("IsLeftIdeal", [ IsSkewBrace, IsCollection ]);
+
+#!
+#! @Arguments obj
+#! @Returns the ideals of the skew brace <A>obj</A>
+#! @Description
+#! An ideal $I$ of a skew brace $A$ is a normal subgroup $I$ of
+#! the additive group of $A$ such that $\lambda_a(I)\subseteq I$ for all $a\in A$ and $a\circ I=I\circ a$ for all $a\in A$.
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(10,2);;
+#! gap> Ideals(br);
+#! [ <skew brace of size 10>, <brace of size 5>, <brace of size 1> ]
+#! @EndExampleSession
 DeclareAttribute("Ideals", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns the socle of the skew brace <A>obj</A>
+#! @Description
+#! The socle of a skew brace $A$ is the ideal $\mathrm{Soc}(A)=\ker\lambda\cap Z(A,+)$, where $\lambda\colon (A,\circ)\to\mathrm{Aut}(A,+)$, $a\mapsto \lambda_a$, $\lambda_a(b)=-a+a\circ b$.
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(8,3);;
+#! gap> Socle(br);
+#! <brace of size 4>
+#! @EndExampleSession
 DeclareAttribute("Socle", IsSkewBrace);
 
 #!
@@ -63,13 +105,45 @@ DeclareAttribute("MultipermutationLevel", IsSkewBrace);
 DeclareAttribute("Fix", IsSkewBrace);
 DeclareAttribute("KernelOfLambda", IsSkewBrace);
 
+#!
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> is simple
+#! @Description
+#! A skew brace $A$ is said to be simple if its only ideals
+#! are $A$ and $\{0\}$. 
+#! @ExampleSession
+#! gap> IsSimpleSkewBrace(SmallBrace(24,94));
+#! true
+#! gap> IsSimpleSkewBrace(SmallSkewBrace(12,22));
+#! true
+#! gap> IsSimpleSkewBrace(SmallSkewBrace(8,12));
+#! false
+#! @EndExampleSession
 DeclareProperty("IsSimpleSkewBrace", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> is right (resp. left) nilpotent. 
+#! @Description
+#! A skew brace $A$ is said to be left (resp. right) nilpotent
+#! if there exists $n\geq1$ such that $A^n=0$ (resp. $A^{(n)}=0$).
+#! @ExampleSession
+#! gap> IsLeftNilpotent(SmallBrace(8,18));
+#! true
+#! gap> IsRightNilpotent(SmallBrace(8,18));
+#! false
+#! gap> IsRightNilpotent(SmallBrace(12,2));
+#! true
+#! gap> IsLeftNilpotent(SmallBrace(12,2));
+#! false
+#! @EndExampleSession
 DeclareProperty("IsLeftNilpotent", IsSkewBrace);
+
 DeclareProperty("IsRightNilpotent", IsSkewBrace);
+
 DeclareProperty("IsMultipermutation", IsSkewBrace);
 
 DeclareOperation("IsIdeal", [ IsSkewBrace, IsCollection ]);
-DeclareOperation("IsLeftIdeal", [ IsSkewBrace, IsCollection ]);
 DeclareOperation("AsIdeal", [ IsSkewBrace, IsCollection ]);
 
 DeclareOperation("Quotient", [IsSkewBrace, IsSkewBrace]);
@@ -186,12 +260,22 @@ DeclareOperation("SumOfTwoIdeals", [ IsSkewBrace and IsIdealInParent, IsSkewBrac
 #! @Description
 #! @ExampleSession
 #! gap> br := SmallSkewBrace(6,2);;
-#! gap> IsBaer(br);
-#! true
 #! gap> BaerRadical(br);
 #! <skew brace of size 6>
 #! @EndExampleSession
 DeclareAttribute("BaerRadical", IsSkewBrace);
+
+#!
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> is ia Baer radical skew brace.
+#! @Description
+#! A skew brace $A$ is said to be Baer radical if $A=B(A)$, where
+#! $B(A)$ is the Baer radical of $A$ (i.e., the intersection of all prime ideals of $A$).
+#! @ExampleSession
+#! gap> br := SmallSkewBrace(6,2);;
+#! gap> IsBaer(br);
+#! true
+#! @EndExampleSession
 DeclareProperty("IsBaer", IsSkewBrace);
 
 #!
