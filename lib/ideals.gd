@@ -12,6 +12,8 @@
 #! @Description
 DeclareAttribute("LeftIdeals", IsSkewBrace);
 
+DeclareAttribute("Ideals", IsSkewBrace);
+
 #! @Arguments obj
 #! @Returns <A>true</A> if the subset is a left ideal of <A>obj</A>
 #! @Description
@@ -45,6 +47,7 @@ DeclareOperation("IsLeftIdeal", [ IsSkewBrace, IsCollection ]);
 #! @EndExampleSession
 DeclareOperation("IsIdeal", [ IsSkewBrace, IsCollection ]);
 
+#! 
 DeclareOperation("AsIdeal", [ IsSkewBrace, IsCollection ]);
 
 #! @Arguments obj,subset
@@ -127,6 +130,8 @@ DeclareAttribute("RightSeries", IsSkewBrace);
 #! @EndExampleSession
 DeclareProperty("IsLeftNilpotent", IsSkewBrace);
 
+DeclareProperty("IsSimpleSkewBrace", IsSkewBrace);
+
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace <A>obj</A> is right nilpotent. 
 #! @Description
@@ -194,6 +199,7 @@ DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
 #! [ <skew brace of size 8>, <brace of size 4>, <brace of size 1> ]
 #! @EndExampleSession
 DeclareAttribute("SocleSeries", IsSkewBrace);
+DeclareAttribute("Socle", IsSkewBrace);
 
 #!
 DeclareAttribute("MultipermutationLevel", IsSkewBrace);

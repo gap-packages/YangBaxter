@@ -57,7 +57,7 @@ function(obj, subset)
   return true;
 end);
 
-InstallMethod(Ideals, "for a skew brace", [ IsSkewBrace], function(obj)
+InstallMethod(Ideals, "for a skew brace", [ IsSkewBrace ], function(obj)
   local add, sg, l, subset, x, res, tmp;
   l := [];
   add := SkewBraceAList(obj);
