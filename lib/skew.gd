@@ -1,11 +1,15 @@
 #! @Chapter Preliminaries
 #! In this section we define skew braces and list some of their
-#! main properties
+#! main properties <URL>http://www.google.com</URL>
+#! <Cite Key="MR3647970"/>,
 #! @Section Definition and examples
 #! A skew brace is a triple $(A,+,\circ)$, where $(A,+)$ and $(A,\circ)$
 #! are two (not necessarily abelian) groups such that
 #! the compatibility $a\circ (b+c)=a\circ b-a+a\circ c$ holds
 #! for all $a,b,c\in A$.
+#! Ones proves that the map $\lambda\colon (A,\circ)\to\mathrm{Aut}(A,+)$, $a\mapsto\lambda_a(b)$, 
+#! $\lambda_a(b)=-a+a\circ b$, is a group homomorphism.
+#! Notation: For $a,b\in A$, we write $a*b=\lambda_a(b)-b$.
 # <#GAPDoc Label="IsSkewBrace">
 # <ManSection>
 #    <Filt Name="IsSkewBrace" />
@@ -35,18 +39,15 @@ BindGlobal("SkewBraceElmFamily", NewFamily("SkewBraceElmFamily", IsSkewBraceElm)
 BindGlobal("SkewBraceElmType", NewType(SkewBraceElmFamily, IsSkewBraceElm));
 BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsSkewBrace and IsAttributeStoringRep));
 
-#!
 #! @Arguments t
 #! @Returns a skew brace 
 #! @Description
-#!  The argument <A>t</A> is a list of pairs of elements in a group.
+#! The argument <A>t</A> is a list of pairs of elements in a group.
 #! @ExampleSession
 #! gap> SkewBrace([[(),()]]);
 #! <brace of size 1>
 #! gap> SkewBrace([[(),()],[(1,2),(1,2)]]);
 #! <brace of size 2>
-#! gap> SkewBrace( [ [ (), () ], [ (1,2)(3,4), (1,2)(3,4) ], [ (1,3,2,4), (1,4,2,3) ], [ (1,4,2,3), (1,3,2,4) ] ] );
-#! <brace of size 4>
 #! @EndExampleSession
 DeclareOperation("SkewBrace", [IsList]);
 
@@ -73,10 +74,10 @@ DeclareOperation("SkewBrace", [IsList]);
 # <#/GAPDoc>
 DeclareOperation("SmallSkewBrace", [IsInt, IsInt]);
 
-#! @Arguments group
+#! @Arguments abelian_group
 #! @Returns a brace 
 #! @Description
-#! This function returns the trivial brace over the given group
+#! This function returns the trivial brace over <A>abelian_group</A>
 #! @ExampleSession
 #! gap> TrivialBrace(CyclicGroup(IsPermGroup, 5));
 #! <brace of size 5>
@@ -86,7 +87,7 @@ DeclareOperation("TrivialBrace", [IsGroup]);
 #! @Arguments group
 #! @Returns a skew brace 
 #! @Description
-#! This function returns the trivial skew brace over the given group
+#! This function returns the trivial skew brace over <A>group</A>
 #! @ExampleSession
 #! gap> TrivialSkewBrace(DihedralGroup(10));
 #! <skew brace of size 10>
@@ -133,6 +134,17 @@ DeclareGlobalFunction("AllSmallSkewBraces");
 DeclareGlobalFunction("AllSmallBraces");
 DeclareGlobalFunction("IsSkewBraceHomomorphism");
 DeclareGlobalFunction("SkewBraceElm");
+
+#! @Arguments obj1,obj2
+#! @Returns an isomorphism of skew braces if <A>obj1</A> and <A>obj2</A> are isomorphic and <A>fail</A> otherwise.
+#! @Description 
+#! If $A$ and $B$ are skew braces, a skew brace homomorphism is a map 
+#! $f\colon A\to B$ such that 
+#! $$f(a+b)=f(a)+f(b)\quad 
+#! f(a\circ b)=f(a)\circ f(b)$$ hold for all $a,b\in A$. A skew brace isomorphism is a bijective 
+#! skew brace homomorphism. <A>IsomorphismSkewBraces</A> first computes all injective homomorphisms 
+#! from $(A,+)$ to $(B,+)$ and then tries to find one $f$ such that 
+#! $f(a\circ b)=f(a)\circ f(b)$ for all $a,b\in A$. 
 DeclareGlobalFunction("IsomorphismSkewBraces");
 
 #DeclareAttribute("Brace2CycleSet", IsBrace);
@@ -166,10 +178,10 @@ DeclareAttribute("Brace2CycleSet", IsSkewBrace);
 #! @EndExampleSession
 DeclareOperation("DirectProductSkewBraces", [IsSkewBrace, IsSkewBrace]);
 
-#! 
-#! @Returns true if the skew brace is two sided, false otherwise
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace is two sided, <A>false</A> otherwise
 #! @Description
-#!  A skew brace $A$ is said to be two-sided if $(a+b)\circ c=a\circ c-c+b\circ c$ holds for all $a,b,c\in A$.
+#! A skew brace $A$ is said to be **two-sided** if $(a+b)\circ c=a\circ c-c+b\circ c$ holds for all $a,b,c\in A$.
 #! @ExampleSession
 #! gap> IsTwoSided(SmallSkewBrace(8,2));
 #! false
@@ -177,7 +189,15 @@ DeclareOperation("DirectProductSkewBraces", [IsSkewBrace, IsSkewBrace]);
 #! true
 #! @EndExampleSession
 DeclareProperty("IsTwoSided", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace is of abelian type, <A>false</A> otherwise
+#! @Description
+#! Let $\mathcal{X}$ be a property of groups. A skew brace $A$ is said to be of $\mathcal{X}$-type if its additive
+#! group belongs to $\mathcal{X}$. In particular, skew braces of abelian type are those skew braces with
+#! abelian additive group. Such skew braces were introduced by Rump in.
 DeclareProperty("IsClassical", IsSkewBrace);
+
 DeclareProperty("IsTrivialSkewBrace", IsSkewBrace);
 
 # Construction
