@@ -26,8 +26,8 @@ Persons := [
     Email         := "lvendramin@dm.uba.ar",
     WWWHome       := "http://mate.dm.uba.ar/~lvendram",
     PostalAddress := Concatenation( [
-                       "Departamento de matem\'atica, FCEN, UBA",
-                       "Ciudad Universitaria, Pab. 1,\n",
+                       "Departamento de matem\'atica, FCEN, UBA\n",
+                       "Ciudad Universitaria, Pab. 1\n",
                        "Buenos Aires, Argentina" ] ),
     Place         := "Buenos Aires",
     Institution   := "UBA"
@@ -84,6 +84,6 @@ AvailabilityTest := ReturnTrue,
 
 TestFile := "tst/testall.g",
 
-Keywords := ["QYBE", "cycle sets", "racks", "quandles"]
+Keywords := ["QYBE", "cycle sets", "racks", "quandles", "braces", "radical rings"]
 
 ));
