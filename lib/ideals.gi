@@ -1,4 +1,5 @@
 # <subset> is a subset of AsList(obj)
+
 InstallMethod(IsIdeal, "for a skew brace and a collection", [ IsSkewBrace, IsCollection ], 
 function(obj, subset)
   local a, x;
@@ -14,12 +15,20 @@ function(obj, subset)
   subset := AsList(subset);
 
   if Order(Group(List(subset, x->x![1]))) <> Size(subset) then
+    # Print("## The subset is not a group!\n");
     return false;
   fi;
 
   for a in obj do
     for x in subset do
-      if not Lambda(a, x) in subset or not a*x*a^-1 in subset or not a+x-a in subset then
+      if not Lambda(a, x) in subset then
+        # Print("## The subset is not lambda stable\n");
+        return false;
+      elif not a*x*a^-1 in subset then
+        # Print("## The subset is not normal with respect to *\n");
+        return false;
+      elif not a+x-a in subset then
+        # Print("## The subset is not normal with respect to +\n");
         return false;
       fi;
     od;
@@ -33,8 +42,8 @@ function(obj, subset)
 
   if IsSkewBrace(subset) then
     if HasParent(subset) and Parent(subset) = obj then
-      if HasIsIdealInParent(subset) then
-        return IsIdealInParent(subset);
+      if HasIsLeftIdealInParent(subset) then
+        return IsLeftIdealInParent(subset);
       elif HasIsLeftIdealInParent(subset) then
         return IsLeftIdealInParent(subset);
       fi;
@@ -89,7 +98,7 @@ InstallMethod(LeftIdeals, "for a skew brace", [ IsSkewBrace], function(obj)
   res := [];
   for x in l do
     tmp := SubSkewBrace(obj, x);
-    SetIsIdealInParent(tmp, true);
+    SetIsLeftIdealInParent(tmp, true);
     Add(res, tmp);
   od;
   return res;
@@ -135,6 +144,11 @@ function(obj)
   return Size(Ideals(obj))=2;
 end);
 
+InstallOtherMethod(IsSimple, "for a skew brace", [ IsSkewBrace ],
+function(obj)
+  return IsSimpleSkewBrace(obj);
+end);
+
 InstallMethod(Socle, "for a skew brace", [ IsSkewBrace ], function(obj)
   local add, l;
   add := SkewBraceAList(obj);
@@ -145,16 +159,20 @@ end);
 InstallMethod(AsIdeal, "for a skew brace and a subset of a skew brace", [ IsSkewBrace, IsCollection ], 
 function(obj, subset)
   local res;
-  res := SubSkewBrace(obj, subset);
-  SetIsIdealInParent(res, true);
-  return res;
+  if not IsIdeal(obj, AsList(subset)) then
+    Error("this is not an ideal,");
+  else
+    res := SubSkewBrace(obj, subset);
+    SetIsIdealInParent(res, true);
+    return res;
+  fi;
 end);
 
 InstallMethod(Quotient, "for two skew braces", [IsSkewBrace, IsSkewBrace], function(obj, ideal)
   local add, mul, bij, idA, idG, fA, fG, r, s, x, a, l;
 
   if not IsIdeal(obj, AsList(ideal)) then
-    Error("<ideal> must be an ideal of <obj>");
+    Error("this is not an ideal,");
   fi;
 
   # groups of <obj>
@@ -200,6 +218,7 @@ InstallMethod(LeftSeries, "for a skew brace", [IsSkewBrace], function(obj)
 
     if Size(new) <> Size(old) then
       Add(l, new);
+      SetIsLeftIdealInParent(new, true);
     fi;
 
     if Size(new)=Size(old) or Size(new)=1 then

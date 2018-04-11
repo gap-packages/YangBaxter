@@ -189,7 +189,7 @@ DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
 
 #! @Section Mutipermutation skew braces
 #! @Arguments obj
-#! @Returns the ideals of the socle series of <A>obj</A>
+#! @Returns the socle series of <A>obj</A>
 #! @Description
 #! The socle series of a skew brace $A$ is defined recursively as 
 #! $A_1=A$ and $A_{n+1}=A_n/\mathrm{Soc}(A_n)$, see <Cite Key="MR3763907"/>.
@@ -199,6 +199,19 @@ DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
 #! [ <skew brace of size 8>, <brace of size 4>, <brace of size 1> ]
 #! @EndExampleSession
 DeclareAttribute("SocleSeries", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns the ideals of the socle series of <A>obj</A>
+#! @Description
+#! The socle of a skew brace $A$ is the ideal $\ker\lambda\cap Z(A,+)$. 
+#! @ExampleSession
+#! gap> Socle(SmallSkewBrace(6,2));
+#! <brace of size 1>
+#! gap> Socle(SmallBrace(8,20));
+#! <brace of size 8>
+#! gap> Socle(SmallBrace(8,2));
+#! <brace of size 4>
+#! @EndExampleSession
 DeclareAttribute("Socle", IsSkewBrace);
 
 #!
