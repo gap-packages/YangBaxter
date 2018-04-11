@@ -12,8 +12,6 @@
 #! @Description
 DeclareAttribute("LeftIdeals", IsSkewBrace);
 
-DeclareAttribute("Ideals", IsSkewBrace);
-
 #! @Arguments obj
 #! @Returns <A>true</A> if the subset is a left ideal of <A>obj</A>
 #! @Description
@@ -46,6 +44,11 @@ DeclareOperation("IsLeftIdeal", [ IsSkewBrace, IsCollection ]);
 #! [ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ]
 #! @EndExampleSession
 DeclareOperation("IsIdeal", [ IsSkewBrace, IsCollection ]);
+
+#! @Arguments obj
+#! @Returns a list with the ideals of the skew brace <A>obj</A>
+#! @Description
+DeclareAttribute("Ideals", IsSkewBrace);
 
 #! 
 DeclareOperation("AsIdeal", [ IsSkewBrace, IsCollection ]);
@@ -130,6 +133,16 @@ DeclareAttribute("RightSeries", IsSkewBrace);
 #! @EndExampleSession
 DeclareProperty("IsLeftNilpotent", IsSkewBrace);
 
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> is simple.
+#! @Description
+#! A skew brace $A$ is said to be simple if $\{0\}$ and $A$ are its only ideals.
+#! @ExampleSession
+#! gap> IsSimple(SmallSkewBrace(12,22));
+#! true
+#! gap> IsSimple(SmallSkewBrace(12,21));
+#! false
+#! @EndExampleSession! 
 DeclareProperty("IsSimpleSkewBrace", IsSkewBrace);
 
 #! @Arguments obj
@@ -187,19 +200,6 @@ DeclareAttribute("RightNilpotentIdeals", IsSkewBrace);
 DeclareAttribute("SmoktunowiczSeries", IsSkewBrace);
 
 
-#! @Section Mutipermutation skew braces
-#! @Arguments obj
-#! @Returns the socle series of <A>obj</A>
-#! @Description
-#! The socle series of a skew brace $A$ is defined recursively as 
-#! $A_1=A$ and $A_{n+1}=A_n/\mathrm{Soc}(A_n)$, see <Cite Key="MR3763907"/>.
-#! @ExampleSession
-#! gap> br := SmallSkewBrace(8,20);;
-#! gap> SocleSeries(br);
-#! [ <skew brace of size 8>, <brace of size 4>, <brace of size 1> ]
-#! @EndExampleSession
-DeclareAttribute("SocleSeries", IsSkewBrace);
-
 #! @Arguments obj
 #! @Returns the ideals of the socle series of <A>obj</A>
 #! @Description
@@ -214,17 +214,64 @@ DeclareAttribute("SocleSeries", IsSkewBrace);
 #! @EndExampleSession
 DeclareAttribute("Socle", IsSkewBrace);
 
-#!
+#! @Section Mutipermutation skew braces
+#! @Arguments obj
+#! @Returns the socle series of <A>obj</A>
+#! @Description
+#! The socle series of a skew brace $A$ is defined recursively as 
+#! $A_1=A$ and $A_{n+1}=A_n/\mathrm{Soc}(A_n)$, see <Cite Key="MR3763907"/>.
+DeclareAttribute("SocleSeries", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns the multipermutation level of the skew brace <A>obj</A>
+#! @Description
+#! The multipermutation level of a skew brace $A$ is defined as the smallest
+#! positive integer $n$ such that the $n$-th term 
+#! $A_n$ of the socle series has only one element, see 
+#! Definition 5.17 of <Cite Key="MR3763907"/>.
+#! @ExampleSession
+#! gap> br := SmallBrace(8,20);;
+#! gap> SocleSeries(br);
+#! [ <brace of size 8>, <brace of size 1> ]
+#! gap> MultipermutationLevel(br);
+#! 2
+#! @EndExampleSession
 DeclareAttribute("MultipermutationLevel", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> has finite multipermutation
+#! level and <A>false</A> otherwise
+#! @Description
 DeclareProperty("IsMultipermutation", IsSkewBrace);
 
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> has finite multipermutation
+#! level and <A>false</A> otherwise
+#! @Description
 DeclareAttribute("Fix", IsSkewBrace);
+
+#! @Arguments obj
+#! @Returns the kernel of the map $\lambda$ as a subset of elements of the skew brace <A>obj</A>.
+#! @Description
+#! @ExampleSession
+#! gap> br := SmallBrace(6,1);;
+#! gap> KernelOfLambda(br);
+#! [ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)> ]
+#! @EndExampleSession
 DeclareAttribute("KernelOfLambda", IsSkewBrace);
 
-
+#! @Arguments obj,ideal
+#! @Returns the quotient <A>obj</A> by <A>ideal</A>
+#! @Description
+#! @ExampleSession
+#! gap> br := SmallBrace(8,10);;
+#! gap> ideals := Ideals(br);;
+#! gap> Quotient(br, ideals[2]);
+#! <brace of size 4>
+#! gap> br/ideals[5];
+#! <brace of size 2>
+#! @EndExampleSession
 DeclareOperation("Quotient", [IsSkewBrace, IsSkewBrace]);
-
-DeclareGlobalFunction("SubSkewBrace");
 
 #! @Section Prime and semiprime ideals
 #! @Arguments obj
@@ -300,9 +347,6 @@ DeclareAttribute("IsSemiprimeIdeal", IsSkewBrace and IsIdealInParent);
 #! @EndExampleSession
 DeclareAttribute("SemiprimeIdeals", IsSkewBrace);
 
-
-
-#!
 #! @Arguments obj
 #! @Returns the Baer radical of the skew brace <A>obj</A>
 #! @Description
@@ -313,7 +357,6 @@ DeclareAttribute("SemiprimeIdeals", IsSkewBrace);
 #! @EndExampleSession
 DeclareAttribute("BaerRadical", IsSkewBrace);
 
-#!
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace <A>obj</A> is ia Baer radical skew brace.
 #! @Description
@@ -326,7 +369,6 @@ DeclareAttribute("BaerRadical", IsSkewBrace);
 #! @EndExampleSession
 DeclareProperty("IsBaer", IsSkewBrace);
 
-#!
 #! @Arguments obj
 #! @Returns the Wedderburn radical of the skew brace <A>obj</A>
 #! @Description The Wedderburn radical of a skew brace is the intersection of all its prime ideals
@@ -337,7 +379,6 @@ DeclareProperty("IsBaer", IsSkewBrace);
 #! @EndExampleSession
 DeclareAttribute("WedderburnRadical", IsSkewBrace);
 
-#!
 #! @Arguments obj
 #! @Returns a list with the solvable series of the skew brace <A>obj</A>
 #! @Description
@@ -355,6 +396,7 @@ DeclareAttribute("WedderburnRadical", IsSkewBrace);
 #! @EndExampleSession
 DeclareAttribute("SolvableSeries", IsSkewBrace);
 
+#! @DoNotReadRestOfFile
 #! @Arguments obj
 #! @Returns true if the skew brace <A>obj</A> is solvable 
 #! @Description
@@ -372,5 +414,7 @@ DeclareAttribute("SolvableSeries", IsSkewBrace);
 #! [ <skew brace of size 12> ]
 #! @EndExampleSession
 # DeclareProperty("IsSolvable", IsSkewBrace);
+
+DeclareGlobalFunction("SubSkewBrace");
 
 
