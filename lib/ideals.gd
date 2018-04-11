@@ -397,6 +397,7 @@ DeclareAttribute("WedderburnRadical", IsSkewBrace);
 DeclareAttribute("SolvableSeries", IsSkewBrace);
 
 #! @DoNotReadRestOfFile
+
 #! @Arguments obj
 #! @Returns true if the skew brace <A>obj</A> is solvable 
 #! @Description
