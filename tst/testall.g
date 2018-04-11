@@ -1,6 +1,7 @@
 LoadPackage( "yangbaxter" );
 
 TestDirectory( Concatenation(
+  DirectoriesPackageLibrary("yangbaxter","tst/testextra"),
   DirectoriesPackageLibrary("yangbaxter","tst/manualexamples"),
   DirectoriesPackageLibrary("yangbaxter","tst/testinstall")
   ), rec(exitGAP     := true,
