@@ -396,6 +396,20 @@ DeclareAttribute("WedderburnRadical", IsSkewbrace);
 #! @EndExampleSession
 DeclareAttribute("SolvableSeries", IsSkewbrace);
 
+#! @Arguments obj,ideal
+#! @Returns <A>true</A> if <A>ideal</A> is a minimal ideal of <A>obj</A>
+#! An ideal $I$ of $A$ is said to be **minimal** if does not
+#! contain any other ideal of $A$. 
+#! To check if an ideal $I$ of $A$ is minimal, one computes the ideals
+#! of $I$ and keep only those that are simple as a skew brace.
+DeclareProperty("IsMinimalIdeal", IsSkewbrace and IsIdealInParent);
+
+#! @Arguments obj
+#! @Returns a list of minimal ideals of the skew brace <A>obj</A>
+#! @Description
+DeclareAttribute("MinimalIdeals", IsSkewbrace);
+
+
 #! @DoNotReadRestOfFile
 
 #! @Arguments obj
@@ -417,8 +431,5 @@ DeclareAttribute("SolvableSeries", IsSkewbrace);
 # DeclareProperty("IsSolvable", IsSkewbrace);
 
 DeclareGlobalFunction("SubSkewbrace");
-
-DeclareProperty("IsMinimalIdeal", IsSkewbrace and IsIdealInParent);
-DeclareAttribute("MinimalIdeals", IsSkewbrace);
 
 
