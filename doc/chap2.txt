@@ -1,0 +1,66 @@
+  
+  [1X2 [33X[0;0YYangBaxter automatic generated documentation[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YYangBaxter automatic generated documentation of attributes[133X[101X
+  
+  [1X2.1-1 AdditiveGroupOfRing[101X
+  
+  [33X[1;0Y[29X[2XAdditiveGroupOfRing[102X( [3Xring[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya group[133X
+  
+  [33X[0;0YThis  function returns a permutation representation of the additive group of
+  the given ring.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X gap> rg := SmallRing(8,10);;[128X[104X
+    [4X[28X gap> StructureDescription(AdditiveGroupOfRing(rg));[128X[104X
+    [4X[28X "C4 x C2"[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-2 IsJacobsonRadical[101X
+  
+  [33X[1;0Y[29X[2XIsJacobsonRadical[102X( [3Xring[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ytrue if the ring is radical and false otherwise.[133X
+  
+  [33X[0;0YThis function checks whether a ring is Jacobson radical.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X gap> rg := SmallRing(8,11);;[128X[104X
+    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
+    [4X[28X true[128X[104X
+    [4X[28X gap> rg := SmallRing(8,20);;[128X[104X
+    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
+    [4X[28X false[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-3 AdjointGroup[101X
+  
+  [33X[1;0Y[29X[2XAdjointGroup[102X( [3Xring[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya group[133X
+  
+  [33X[0;0YThis function returns the adjoint group of the radical ring.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X gap> rg := SmallRing(8,10);;[128X[104X
+    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
+    [4X[28X true[128X[104X
+    [4X[28X gap> StructureDescription(AdjointGroup(rg));[128X[104X
+    [4X[28X "D8"[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-4 RadicalRing2Brace[101X
+  
+  [33X[1;0Y[29X[2XRadicalRing2Brace[102X( [3Xring[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya brace[133X
+  
+  [33X[0;0YThis function returns the brace of the given radical ring.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X gap> rg := SmallRing(8,10);;[128X[104X
+    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
+    [4X[28X true[128X[104X
+    [4X[28X gap> IdBrace(RadicalRing2Brace(rg));[128X[104X
+    [4X[28X [ 8, 13 ][128X[104X
+  [4X[32X[104X
+  

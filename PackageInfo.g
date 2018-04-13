@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.1.0",
-Date := "16/02/2018",
+Version := "0.2.0",
+Date := "13/04/2018",
 
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
@@ -26,8 +26,8 @@ Persons := [
     Email         := "lvendramin@dm.uba.ar",
     WWWHome       := "http://mate.dm.uba.ar/~lvendram",
     PostalAddress := Concatenation( [
-                       "Departamento de matem\'atica, FCEN, UBA",
-                       "Ciudad Universitaria, Pab. 1,\n",
+                       "Departamento de matem\'atica, FCEN, UBA\n",
+                       "Ciudad Universitaria, Pab. 1\n",
                        "Buenos Aires, Argentina" ] ),
     Place         := "Buenos Aires",
     Institution   := "UBA"
@@ -84,6 +84,6 @@ AvailabilityTest := ReturnTrue,
 
 TestFile := "tst/testall.g",
 
-Keywords := ["QYBE", "cycle sets", "racks", "quandles"]
+Keywords := ["QYBE", "cycle sets", "racks", "quandles", "braces", "radical rings"]
 
 ));
