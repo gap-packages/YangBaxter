@@ -476,3 +476,16 @@ InstallMethod(RightNilpotentIdeals, "for a skew brace", [ IsSkewbrace], function
   return Filtered(Ideals(obj), IsRightNilpotent);
 end);
 
+InstallMethod(IsMinimalIdeal, "for an ideal of a skew brace", [ IsSkewBrace and IsIdealInParent ], function(obj)
+  if Size(obj) > 1 then
+    if Size(Filtered(Ideals(obj), x->IsIdeal(Parent(obj), AsList(x))))=2 then
+      return true;
+    fi;
+  fi;
+  return false;
+end);
+
+InstallMethod(MinimalIdeals, "for a skew brace", [ IsSkewBrace ], function(obj)
+  return Filtered(Ideals(obj), IsMinimalIdeal);
+end);
+
