@@ -10,18 +10,18 @@
 #! Ones proves that the map $\lambda\colon (A,\circ)\to\mathrm{Aut}(A,+)$, $a\mapsto\lambda_a(b)$, 
 #! $\lambda_a(b)=-a+a\circ b$, is a group homomorphism.
 #! Notation: For $a,b\in A$, we write $a*b=\lambda_a(b)-b$.
-DeclareCategory("IsSkewBrace", IsAttributeStoringRep);
+DeclareCategory("IsSkewbrace", IsAttributeStoringRep);
 
-DeclareCategory("IsSkewBraceElm", IsMultiplicativeElementWithInverse and IsAdditiveElementWithInverse);
-DeclareCategoryCollections("IsSkewBraceElm");
+DeclareCategory("IsSkewbraceElm", IsMultiplicativeElementWithInverse and IsAdditiveElementWithInverse);
+DeclareCategoryCollections("IsSkewbraceElm");
 
-DeclareRepresentation( "IsSkewBraceElmRep", IsPositionalObjectRep, [ 1 ]);
+DeclareRepresentation( "IsSkewbraceElmRep", IsPositionalObjectRep, [ 1 ]);
 
-DeclareOperation("SkewBraceElmConstructor", [IsSkewBrace, IsPerm]);
+DeclareOperation("SkewbraceElmConstructor", [IsSkewbrace, IsPerm]);
 
-BindGlobal("SkewBraceElmFamily", NewFamily("SkewBraceElmFamily", IsSkewBraceElm));
-BindGlobal("SkewBraceElmType", NewType(SkewBraceElmFamily, IsSkewBraceElm));
-BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsSkewBrace and IsAttributeStoringRep));
+BindGlobal("SkewbraceElmFamily", NewFamily("SkewbraceElmFamily", IsSkewbraceElm));
+BindGlobal("SkewbraceElmType", NewType(SkewbraceElmFamily, IsSkewbraceElm));
+BindGlobal("SkewbraceType", NewType(CollectionsFamily( SkewbraceElmFamily ), IsSkewbrace and IsAttributeStoringRep));
 
 #! @Arguments list
 #! @Returns a skew brace 
@@ -34,12 +34,12 @@ BindGlobal("SkewBraceType", NewType(CollectionsFamily( SkewBraceElmFamily ), IsS
 #! $A=\{a_1,\dots,a_n\}$ are permutation groups. This function is used to construct
 #! skew braces. 
 #! @ExampleSession
-#! gap> SkewBrace([[(),()]]);
+#! gap> Skewbrace([[(),()]]);
 #! <brace of size 1>
-#! gap> SkewBrace([[(),()],[(1,2),(1,2)]]);
+#! gap> Skewbrace([[(),()],[(1,2),(1,2)]]);
 #! <brace of size 2>
 #! @EndExampleSession
-DeclareOperation("SkewBrace", [IsList]);
+DeclareOperation("Skewbrace", [IsList]);
 
 
 #! @Arguments n,k
@@ -47,10 +47,10 @@ DeclareOperation("SkewBrace", [IsList]);
 #! @Description
 #! The function returns the <A>k</A>-th skew brace from the database of skew braces of order <A>n</A>.
 #! @ExampleSession
-#! gap> SmallSkewBrace(8,3);
+#! gap> SmallSkewbrace(8,3);
 #! <brace of size 8>
 #! @EndExampleSession
-DeclareOperation("SmallSkewBrace", [IsInt, IsInt]);
+DeclareOperation("SmallSkewbrace", [IsInt, IsInt]);
 
 #! @Arguments abelian_group
 #! @Returns a brace 
@@ -68,10 +68,10 @@ DeclareOperation("TrivialBrace", [IsGroup]);
 #! @Description
 #! This function returns the trivial skew brace over <A>group</A>.
 #! @ExampleSession
-#! gap> TrivialSkewBrace(DihedralGroup(10));
+#! gap> TrivialSkewbrace(DihedralGroup(10));
 #! <skew brace of size 10>
 #! @EndExampleSession
-DeclareOperation("TrivialSkewBrace", [IsGroup]);
+DeclareOperation("TrivialSkewbrace", [IsGroup]);
 
 #! @Arguments n,k
 #! @Returns a brace of abelian type
@@ -86,12 +86,12 @@ DeclareOperation("SmallBrace", [IsInt, IsInt]);
 #! @Arguments obj
 #! @Returns a list
 #! @Description
-#! The function returns <A>[ n, k ]</A> if the skew brace <A>obj</A> is isomorphic to <A>SmallSkewBrace(n,k)</A>.
+#! The function returns <A>[ n, k ]</A> if the skew brace <A>obj</A> is isomorphic to <A>SmallSkewbrace(n,k)</A>.
 #! @ExampleSession
-#! gap> IdSkewBrace(SmallSkewBrace(8,5));
+#! gap> IdSkewbrace(SmallSkewbrace(8,5));
 #! [ 8, 5 ]
 #! @EndExampleSession
-DeclareAttribute("IdSkewBrace", IsSkewBrace);
+DeclareAttribute("IdSkewbrace", IsSkewbrace);
 
 #! @Arguments obj
 #! @Returns a list
@@ -101,7 +101,7 @@ DeclareAttribute("IdSkewBrace", IsSkewBrace);
 #! gap> IdBrace(SmallBrace(8,5));
 #! [ 8, 5 ]
 #! @EndExampleSession
-DeclareAttribute("IdBrace", IsSkewBrace);
+DeclareAttribute("IdBrace", IsSkewbrace);
 
 #! @Arguments obj1,obj2
 #! @Returns an isomorphism of skew braces if <A>obj1</A> and <A>obj2</A> are isomorphic and <A>fail</A> otherwise.
@@ -110,10 +110,10 @@ DeclareAttribute("IdBrace", IsSkewBrace);
 #! $f\colon A\to B$ such that 
 #! $$f(a+b)=f(a)+f(b)\quad 
 #! f(a\circ b)=f(a)\circ f(b)$$ hold for all $a,b\in A$. A skew brace isomorphism is a bijective 
-#! skew brace homomorphism. <A>IsomorphismSkewBraces</A> first computes all injective homomorphisms 
+#! skew brace homomorphism. <A>IsomorphismSkewbraces</A> first computes all injective homomorphisms 
 #! from $(A,+)$ to $(B,+)$ and then tries to find one $f$ such that 
 #! $f(a\circ b)=f(a)\circ f(b)$ for all $a,b\in A$. 
-DeclareGlobalFunction("IsomorphismSkewBraces");
+DeclareGlobalFunction("IsomorphismSkewbraces");
 
 #! @Arguments obj1,obj2
 #! @Returns the direct product of <A>obj1</A> and <A>obj2</A>
@@ -121,7 +121,7 @@ DeclareGlobalFunction("IsomorphismSkewBraces");
 #! @ExampleSession
 #! gap> br1 := SmallBrace(8,18);;
 #! gap> br2 := SmallBrace(12,2);;
-#! gap> br := DirectProductSkewBraces(br1,br2);;
+#! gap> br := DirectProductSkewbraces(br1,br2);;
 #! gap> IsLeftNilpotent(br);
 #! false
 #! gap> IsRightNilpotent(br);
@@ -129,19 +129,19 @@ DeclareGlobalFunction("IsomorphismSkewBraces");
 #! gap> IsSolvable(br);
 #! true
 #! @EndExampleSession
-DeclareOperation("DirectProductSkewBraces", [IsSkewBrace, IsSkewBrace]);
+DeclareOperation("DirectProductSkewbraces", [IsSkewbrace, IsSkewbrace]);
 
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace is two sided, <A>false</A> otherwise
 #! @Description
 #! A skew brace $A$ is said to be **two-sided** if $(a+b)\circ c=a\circ c-c+b\circ c$ holds for all $a,b,c\in A$.
 #! @ExampleSession
-#! gap> IsTwoSided(SmallSkewBrace(8,2));
+#! gap> IsTwoSided(SmallSkewbrace(8,2));
 #! false
-#! gap> IsTwoSided(SmallSkewBrace(8,4));
+#! gap> IsTwoSided(SmallSkewbrace(8,4));
 #! true
 #! @EndExampleSession
-DeclareProperty("IsTwoSided", IsSkewBrace);
+DeclareProperty("IsTwoSided", IsSkewbrace);
 
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace is of abelian type, <A>false</A> otherwise
@@ -149,76 +149,76 @@ DeclareProperty("IsTwoSided", IsSkewBrace);
 #! Let $\mathcal{X}$ be a property of groups. A skew brace $A$ is said to be of $\mathcal{X}$-type if its additive
 #! group belongs to $\mathcal{X}$. In particular, skew braces of abelian type are those skew braces with
 #! abelian additive group. Such skew braces were introduced by Rump in <Cite Key="MR2278047"/>.
-DeclareProperty("IsClassical", IsSkewBrace);
+DeclareProperty("IsClassical", IsSkewbrace);
 
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace is trivial, <A>false</A> otherwise
 #! @Description
 #! The function returns <A>true</A> if the skew brace $A$ is trivial, i.e., $a\circ b=a+b$ for all $a,b\in A$.
-DeclareProperty("IsTrivialSkewBrace", IsSkewBrace);
+DeclareProperty("IsTrivialSkewbrace", IsSkewbrace);
 
 #! @DoNotReadRestOfFile
 
-DeclareAttribute("UnderlyingAdditiveGroup", IsSkewBrace);
-DeclareAttribute("UnderlyingMultiplicativeGroup", IsSkewBrace);
-DeclareAttribute("SkewBraceAList", IsSkewBrace);
-DeclareAttribute("SkewBraceMList", IsSkewBrace);
-DeclareAttribute("AsList", IsSkewBrace);
-DeclareAttribute("Is2Sided", IsSkewBrace);
-DeclareAttribute("SkewBrace2YB", IsSkewBrace);
-DeclareAttribute("Labels", IsSkewBrace);
-DeclareAttribute("Brace2CycleSet", IsSkewBrace);
+DeclareAttribute("UnderlyingAdditiveGroup", IsSkewbrace);
+DeclareAttribute("UnderlyingMultiplicativeGroup", IsSkewbrace);
+DeclareAttribute("SkewbraceAList", IsSkewbrace);
+DeclareAttribute("SkewbraceMList", IsSkewbrace);
+DeclareAttribute("AsList", IsSkewbrace);
+DeclareAttribute("Is2Sided", IsSkewbrace);
+DeclareAttribute("Skewbrace2YB", IsSkewbrace);
+DeclareAttribute("Labels", IsSkewbrace);
+DeclareAttribute("Brace2CycleSet", IsSkewbrace);
 
-DeclareAttribute("ZeroImmutable", IsSkewBrace);
-DeclareAttribute("OneImmutable", IsSkewBrace);
-DeclareAttribute("Representative", IsSkewBrace);
-DeclareAttribute("Enumerator", IsSkewBrace);
+DeclareAttribute("ZeroImmutable", IsSkewbrace);
+DeclareAttribute("OneImmutable", IsSkewbrace);
+DeclareAttribute("Representative", IsSkewbrace);
+DeclareAttribute("Enumerator", IsSkewbrace);
 
-DeclareOperation("Lambda", [IsSkewBraceElm, IsSkewBraceElm]);
-DeclareOperation("InverseLambda", [IsSkewBraceElm, IsSkewBraceElm]);
-DeclareOperation("Star", [IsSkewBraceElm, IsSkewBraceElm]);
+DeclareOperation("Lambda", [IsSkewbraceElm, IsSkewbraceElm]);
+DeclareOperation("InverseLambda", [IsSkewbraceElm, IsSkewbraceElm]);
+DeclareOperation("Star", [IsSkewbraceElm, IsSkewbraceElm]);
 DeclareOperation("Star", [IsCollection, IsCollection]);
-DeclareOperation("Lambda2Permutation", [IsSkewBraceElm]);
+DeclareOperation("Lambda2Permutation", [IsSkewbraceElm]);
 
-DeclareOperation("Random", [IsSkewBrace]);
-DeclareOperation("IsSkewBraceImplemented", [IsInt]);
+DeclareOperation("Random", [IsSkewbrace]);
+DeclareOperation("IsSkewbraceImplemented", [IsInt]);
 DeclareOperation("IsBraceImplemented", [IsInt]);
-DeclareOperation("SkewBraceLambda", [IsSkewBrace, IsPerm, IsPerm]);
-DeclareOperation("SkewBraceLambdaAsPermutation", [IsSkewBrace, IsPerm]);
-DeclareOperation("Bijective1Cocycle", [IsSkewBrace]);
-DeclareOperation("InverseBijective1Cocycle", [IsSkewBrace]);
+DeclareOperation("SkewbraceLambda", [IsSkewbrace, IsPerm, IsPerm]);
+DeclareOperation("SkewbraceLambdaAsPermutation", [IsSkewbrace, IsPerm]);
+DeclareOperation("Bijective1Cocycle", [IsSkewbrace]);
+DeclareOperation("InverseBijective1Cocycle", [IsSkewbrace]);
 
 #DeclareOperation("LambdaMap", [IsBrace, IsPerm]);
 #DeclareOperation("InverseLambdaMap", [IsBrace, IsPerm]);
 
-DeclareGlobalFunction("NrSmallSkewBraces");
+DeclareGlobalFunction("NrSmallSkewbraces");
 DeclareGlobalFunction("NrSmallBraces");
 
 #!
-DeclareGlobalFunction("AllSmallSkewBraces");
+DeclareGlobalFunction("AllSmallSkewbraces");
 
 #! @Arguments n
 #! @Returns a list
 #! @Description 
 #!  Returns a list of small braces 
 DeclareGlobalFunction("AllSmallBraces");
-DeclareGlobalFunction("IsSkewBraceHomomorphism");
-DeclareGlobalFunction("SkewBraceElm");
+DeclareGlobalFunction("IsSkewbraceHomomorphism");
+DeclareGlobalFunction("SkewbraceElm");
 
 
 
 # Construction
 DeclareGlobalFunction("BraceP2");
 
-DeclareOperation("\/", [IsSkewBrace, IsSkewBrace and IsIdealInParent]);
+DeclareOperation("\/", [IsSkewbrace, IsSkewbrace and IsIdealInParent]);
 
 # Conversion utilities
 DeclareGlobalFunction("FromMul2Add");
 DeclareGlobalFunction("FromAdd2Mul");
-DeclareGlobalFunction("FromSkewBrace2Add");
-DeclareGlobalFunction("FromSkewBrace2Mul");
-DeclareGlobalFunction("FromAdd2SkewBrace");
-DeclareGlobalFunction("FromMul2SkewBrace");
+DeclareGlobalFunction("FromSkewbrace2Add");
+DeclareGlobalFunction("FromSkewbrace2Mul");
+DeclareGlobalFunction("FromAdd2Skewbrace");
+DeclareGlobalFunction("FromMul2Skewbrace");
 
 ### Skew braces of size <15
 ReadPackage("yangbaxter", "data/SBsize1.g");

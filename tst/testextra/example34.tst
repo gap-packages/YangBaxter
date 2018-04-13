@@ -1,5 +1,5 @@
 # Example 3.4
-gap> br := SmallSkewBrace(24,50);;
+gap> br := SmallSkewbrace(24,50);;
 gap> add := UnderlyingAdditiveGroup(br);;
 gap> StructureDescription(add);
 "SL(2,3)"

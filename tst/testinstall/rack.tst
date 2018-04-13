@@ -6,7 +6,7 @@
 gap> START_TEST("rack.tst");
 
 # Test basic stuff
-gap> obj := DerivedRack(SkewBrace2YB(SmallSkewBrace(10,4)));
+gap> obj := DerivedRack(Skewbrace2YB(SmallSkewbrace(10,4)));
 <A rack of size 10>
 gap> Matrix(obj);
 [ [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ], [ 1, 2, 3, 4, 5, 9, 10, 6, 7, 8 ], 

@@ -1,8 +1,8 @@
 ### skew braces
-BindGlobal("SkewBraceFamily", NewFamily("SkewBraceFamily"));
-#InstallValue(SkewBraceType, NewType(SkewBraceFamily, IsSkewBrace));
+BindGlobal("SkewbraceFamily", NewFamily("SkewbraceFamily"));
+#InstallValue(SkewbraceType, NewType(SkewbraceFamily, IsSkewbrace));
 
-InstallMethod(SkewBrace, "for a list of pairs of elements in a group", [IsList], 
+InstallMethod(Skewbrace, "for a list of pairs of elements in a group", [IsList], 
 function(p)
   local add, mul, per, fam, obj, gens;
 
@@ -13,15 +13,15 @@ function(p)
   per := Sortex(add);
   mul := Permuted(List(p, x->x[2]), per);
  
-  fam := NewFamily("SkewBraceElmFamily", IsSkewBraceElm, IsMultiplicativeElementWithInverse and IsAdditiveElementWithInverse);
-  fam!.DefaultType := NewType(fam, IsSkewBraceElmRep);
+  fam := NewFamily("SkewbraceElmFamily", IsSkewbraceElm, IsMultiplicativeElementWithInverse and IsAdditiveElementWithInverse);
+  fam!.DefaultType := NewType(fam, IsSkewbraceElmRep);
 
-  obj := Objectify(NewType(CollectionsFamily(fam), IsSkewBrace and IsAttributeStoringRep), rec());
-  fam!.SkewBrace := obj;
+  obj := Objectify(NewType(CollectionsFamily(fam), IsSkewbrace and IsAttributeStoringRep), rec());
+  fam!.Skewbrace := obj;
 
   SetSize(obj, Size(add)); 
-  SetSkewBraceAList(obj, add);
-  SetSkewBraceMList(obj, mul);
+  SetSkewbraceAList(obj, add);
+  SetSkewbraceMList(obj, mul);
 
   gens := SmallGeneratingSet(Group(add));
   if gens = [] then
@@ -42,27 +42,27 @@ function(p)
 end);
 
 # If <obj> is a classical brace, this function returns the id of the skew brace <obj>
-InstallMethod(IdBrace, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(IdBrace, "for a skew brace", [IsSkewbrace], function(obj)
   if not IsClassical(obj) then
     Error("the skew brace is not classical\n");
   fi;
-  return [Size(obj), First([1..NrSmallBraces(Size(obj))], k->IsomorphismSkewBraces(obj, SmallBrace(Size(obj),k)) <> fail)];
+  return [Size(obj), First([1..NrSmallBraces(Size(obj))], k->IsomorphismSkewbraces(obj, SmallBrace(Size(obj),k)) <> fail)];
 end);
 
 # This function returns the id of the skew brace <obj>
-InstallMethod(IdSkewBrace, "for a skew brace", [IsSkewBrace], function(obj)
-  return [Size(obj), First([1..NrSmallSkewBraces(Size(obj))], k->IsomorphismSkewBraces(obj, SmallSkewBrace(Size(obj),k)) <> fail)];
+InstallMethod(IdSkewbrace, "for a skew brace", [IsSkewbrace], function(obj)
+  return [Size(obj), First([1..NrSmallSkewbraces(Size(obj))], k->IsomorphismSkewbraces(obj, SmallSkewbrace(Size(obj),k)) <> fail)];
 end);
 
-InstallGlobalFunction(SkewBraceElm, function(obj, x)
-  if x in SkewBraceAList(obj) then
-    return SkewBraceElmConstructor(obj, x);
+InstallGlobalFunction(SkewbraceElm, function(obj, x)
+  if x in SkewbraceAList(obj) then
+    return SkewbraceElmConstructor(obj, x);
   else
     Error("the permutation does not belong to the additive group of the skew brace\n");
   fi;
 end);
 
-InstallGlobalFunction(IsSkewBraceHomomorphism, function(f, obj1, obj2)
+InstallGlobalFunction(IsSkewbraceHomomorphism, function(f, obj1, obj2)
   local a, b, c, x, y, z;
   for x in obj1 do
     a := x![1];
@@ -70,7 +70,7 @@ InstallGlobalFunction(IsSkewBraceHomomorphism, function(f, obj1, obj2)
       b := y![1]; 
       z := x*y;
       c := z![1];
-      if SkewBraceElm(obj2, Image(f, c)) <> SkewBraceElm(obj2, Image(f, a))*SkewBraceElm(obj2, Image(f, b)) then
+      if SkewbraceElm(obj2, Image(f, c)) <> SkewbraceElm(obj2, Image(f, a))*SkewbraceElm(obj2, Image(f, b)) then
         return false;
       fi;
     od;
@@ -81,7 +81,7 @@ end);
 # This function returns an isomorphism between the finite skew braces
 # <obj1> and <obj2> 
 # If <obj1> and <obj2> are not isomorphic the function returns fail
-InstallGlobalFunction(IsomorphismSkewBraces, function(obj1, obj2)
+InstallGlobalFunction(IsomorphismSkewbraces, function(obj1, obj2)
   local f, ab1, ab2;
 
   if Size(obj1) <> Size(obj2) then
@@ -92,7 +92,7 @@ InstallGlobalFunction(IsomorphismSkewBraces, function(obj1, obj2)
   ab2 :=  UnderlyingAdditiveGroup(obj2);
 
   for f in AllInjectiveHomomorphisms(ab1, ab2) do
-    if IsSkewBraceHomomorphism(f, obj1, obj2) then
+    if IsSkewbraceHomomorphism(f, obj1, obj2) then
       return f;
     fi;
   od;
@@ -101,127 +101,127 @@ end);
 
 
 
-InstallMethod(SkewBraceElmConstructor, "for a skew brace and an underlying permutation", [ IsSkewBrace, IsPerm ], 
+InstallMethod(SkewbraceElmConstructor, "for a skew brace and an underlying permutation", [ IsSkewbrace, IsPerm ], 
 function( obj, perm )
   return Objectify(ElementsFamily(FamilyObj(obj))!.DefaultType, [ perm ]);
 end);
 
 InstallMethod( \<,
     "for two elements of a skew brace",
-    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    IsIdenticalObj, [ IsSkewbraceElm, IsSkewbraceElm ],
     function( x, y )
       return x![1] < y![1];
 end);
 
 InstallMethod( \+,
     "for two elements of a skew brace",
-    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    IsIdenticalObj, [ IsSkewbraceElm, IsSkewbraceElm ],
     function( x, y )
       local fam;
       fam := FamilyObj(x);
-      return SkewBraceElmConstructor(fam!.SkewBrace, x![1] * y![1]);
+      return SkewbraceElmConstructor(fam!.Skewbrace, x![1] * y![1]);
 end);
 
 InstallMethod( \=,
     "for two elements of a skew brace",
-    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    IsIdenticalObj, [ IsSkewbraceElm, IsSkewbraceElm ],
     function( x, y )
       return x![1] = y![1];
 end);
 
 InstallMethod( \*,
     "for two elements of a skew brace",
-    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    IsIdenticalObj, [ IsSkewbraceElm, IsSkewbraceElm ],
     function( x, y )
       local i, j, obj, mul, add;
 
-      obj := FamilyObj(x)!.SkewBrace;
-      add := SkewBraceAList(obj);
-      mul := SkewBraceMList(obj);
+      obj := FamilyObj(x)!.Skewbrace;
+      add := SkewbraceAList(obj);
+      mul := SkewbraceMList(obj);
 
       i := Position(add, x![1]);
       j := Position(add, y![1]);
-      return SkewBraceElmConstructor(obj, add[Position(mul, mul[i]*mul[j])]);
+      return SkewbraceElmConstructor(obj, add[Position(mul, mul[i]*mul[j])]);
 end);
 
 InstallMethod(AdditiveInverseOp, 
     "for an element of a skew brace",
-    [ IsSkewBraceElm ],
+    [ IsSkewbraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, Inverse(x![1]));
+      return SkewbraceElmConstructor(FamilyObj(x)!.Skewbrace, Inverse(x![1]));
 end);
 
 InstallMethod(InverseOp, 
     "for an element of a skew brace",
-    [ IsSkewBraceElm ],
+    [ IsSkewbraceElm ],
     function( x )
       local i, obj, mul, add;
 
-      obj := FamilyObj(x)!.SkewBrace;
-      add := SkewBraceAList(obj);
-      mul := SkewBraceMList(obj);
+      obj := FamilyObj(x)!.Skewbrace;
+      add := SkewbraceAList(obj);
+      mul := SkewbraceMList(obj);
 
       i := Position(add, x![1]);
-      return SkewBraceElmConstructor(obj, add[Position(mul, mul[i]^-1)]);
+      return SkewbraceElmConstructor(obj, add[Position(mul, mul[i]^-1)]);
 end);
 
 InstallMethod(ZeroOp, 
     "for an element of a skew brace",
-    [ IsSkewBraceElm ],
+    [ IsSkewbraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, () );
+      return SkewbraceElmConstructor(FamilyObj(x)!.Skewbrace, () );
 end);
 
 InstallMethod(OneOp, 
     "for an element of a skew brace",
-    [ IsSkewBraceElm ],
+    [ IsSkewbraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, () );
+      return SkewbraceElmConstructor(FamilyObj(x)!.Skewbrace, () );
 end);
 
 InstallMethod(ZeroOp, 
     "for an element of a skew brace",
-    [ IsSkewBraceElm ],
+    [ IsSkewbraceElm ],
     function( x )
-      return SkewBraceElmConstructor(FamilyObj(x)!.SkewBrace, () );
+      return SkewbraceElmConstructor(FamilyObj(x)!.Skewbrace, () );
 end);
 
 InstallMethod(ZeroImmutable, 
     "for a skew brace",
-    [ IsSkewBrace ],
+    [ IsSkewbrace ],
     function( obj )
-      return SkewBraceElmConstructor( obj, () );
+      return SkewbraceElmConstructor( obj, () );
 end);
 
 InstallMethod(Representative, 
     "for a skew brace",
-    [ IsSkewBrace ],
+    [ IsSkewbrace ],
     function( obj )
       return ZeroImmutable( obj );
 end);
 
 InstallMethod(Random,
     "for a skew brace",
-    [ IsSkewBrace ],
+    [ IsSkewbrace ],
     function( obj )
-      return SkewBraceElmConstructor(obj, Random(SkewBraceAList(obj)));
+      return SkewbraceElmConstructor(obj, Random(SkewbraceAList(obj)));
 end);
 
 InstallMethod(Enumerator,
     "for a skew brace",
-    [ IsSkewBrace ],
+    [ IsSkewbrace ],
     function( obj )
       return AsList(obj);
 end);
 
 InstallMethod(AsList, 
     "for a skew brace",
-    [ IsSkewBrace ],
+    [ IsSkewbrace ],
     function( obj )
-      return List( SkewBraceAList(obj), x->SkewBraceElmConstructor( obj, x ) );
+      return List( SkewbraceAList(obj), x->SkewbraceElmConstructor( obj, x ) );
 end);
 
-InstallMethod(ViewObj, "for skew braces", [ IsSkewBrace ],
+InstallMethod(ViewObj, "for skew braces", [ IsSkewbrace ],
 function(obj)
   if HasIdBrace(obj) or IsClassical(obj) then
     Print("<brace of size ", Size(obj), ">");
@@ -230,17 +230,17 @@ function(obj)
   fi;
 end);
 
-InstallMethod(ViewObj, "for skew brace elements", [ IsSkewBraceElm ],
+InstallMethod(ViewObj, "for skew brace elements", [ IsSkewbraceElm ],
 function(x)
   Print("<", x![1], ">");
 end);
 
-InstallMethod(PrintObj, "for skew braces", [ IsSkewBrace ],
+InstallMethod(PrintObj, "for skew braces", [ IsSkewbrace ],
 function(obj)
   if HasIdBrace(obj) then
     Print( "SmallBrace(", IdBrace(obj)[1], ",", IdBrace(obj)[2], ")");
-  elif HasIdSkewBrace(obj) then
-    Print( "SmallSkewBrace(", IdSkewBrace(obj)[1], ",", IdSkewBrace(obj)[2], ")");
+  elif HasIdSkewbrace(obj) then
+    Print( "SmallSkewbrace(", IdSkewbrace(obj)[1], ",", IdSkewbrace(obj)[2], ")");
   else
     Print("<skew brace of size ", Size(obj), ">");
   fi;
@@ -249,7 +249,7 @@ end);
 #### This function returns true is the <brace> is a two-sided brace
 #### This means: (a+b)c+c=ac+bc
 #### Equivalent condition: l(a+b)(c)+c=l(a)(c)+l(b)(c), where l(a)(b)=ab-a
-InstallMethod(IsTwoSided, "for a skew brace", [IsSkewBrace], 
+InstallMethod(IsTwoSided, "for a skew brace", [IsSkewbrace], 
 function(obj)
   local a, b, c;
   for a in AsList(obj) do 
@@ -264,7 +264,7 @@ function(obj)
   return true;
 end);
 
-InstallMethod(SmallSkewBrace, "for a list of integers", [IsInt, IsInt],
+InstallMethod(SmallSkewbrace, "for a list of integers", [IsInt, IsInt],
 function(size, number)
   local obj, known, implemented, dir, filename, add, mul, l, n;
 
@@ -303,14 +303,14 @@ function(size, number)
     add := Permuted(add, Inverse(NCBRACES[size][number].p));
     mul := Permuted(mul, Inverse(NCBRACES[size][number].q));
 
-    obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
-    SetIdSkewBrace( obj, [ size, number ] );
+    obj := Skewbrace(List([1..Size(add)], k->[add[k], mul[k]]));
+    SetIdSkewbrace( obj, [ size, number ] );
     if size > 15 then
       Unbind(NCBRACES[size]);
     fi;
     return obj;
   else
-    Error("there are just ", NrSmallSkewBraces(size), " skew braces of size ", size);
+    Error("there are just ", NrSmallSkewbraces(size), " skew braces of size ", size);
   fi;
 end);
 
@@ -322,7 +322,7 @@ function(size, number)
   if IsPrime(size) then
     if number=1 then
         l := AsList(CyclicGroup(IsPermGroup, size));
-        return SkewBrace(List([1..size], k->[l[k],l[k]]));
+        return Skewbrace(List([1..size], k->[l[k],l[k]]));
     else
         Error("there is only one brace of size one");
     fi;
@@ -364,7 +364,7 @@ function(size, number)
     add := Permuted(add, Inverse(BRACES[size][number].p));
     mul := Permuted(mul, Inverse(BRACES[size][number].q));
 
-    obj := SkewBrace(List([1..Size(add)], k->[add[k], mul[k]]));
+    obj := Skewbrace(List([1..Size(add)], k->[add[k], mul[k]]));
     SetIdBrace( obj, [ size, number ] );
     SetIsClassical(obj, true);
     if size > 15 then
@@ -376,7 +376,7 @@ function(size, number)
   fi;
 end);
 
-InstallMethod(TrivialSkewBrace, "for a group", [IsGroup],
+InstallMethod(TrivialSkewbrace, "for a group", [IsGroup],
 function(group)
   local l, obj;
  
@@ -385,8 +385,8 @@ function(group)
   else
     l := AsList(Image(IsomorphismPermGroup(group)));
   fi;
-  obj := SkewBrace(List([1..Size(group)], k->[l[k],l[k]]));
-  SetIsTrivialSkewBrace(obj, true);
+  obj := Skewbrace(List([1..Size(group)], k->[l[k],l[k]]));
+  SetIsTrivialSkewbrace(obj, true);
   return obj;
 end);
 
@@ -396,11 +396,11 @@ function(group)
   if not IsAbelian(group) then
     Error("The group should be abelian");
   else
-    return TrivialSkewBrace(group);
+    return TrivialSkewbrace(group);
   fi;
 end);
 
-InstallMethod(IsSkewBraceImplemented, "for an integer", [IsInt],
+InstallMethod(IsSkewbraceImplemented, "for an integer", [IsInt],
 function(size)
   local known, dir, filename;
 
@@ -443,7 +443,7 @@ function(size)
 end);
 
 #### This function returns the number of braces of size <n>
-InstallGlobalFunction(NrSmallSkewBraces, 
+InstallGlobalFunction(NrSmallSkewbraces, 
 function(size)
   local dir, filename;
 
@@ -495,12 +495,12 @@ function(size)
   fi;
 end);
 
-InstallMethod(IsClassical, "for a skew brace", [ IsSkewBrace ], 
+InstallMethod(IsClassical, "for a skew brace", [ IsSkewbrace ], 
 function(obj)
-  return IsAbelian(Group(SkewBraceAList(obj)));
+  return IsAbelian(Group(SkewbraceAList(obj)));
 end);
 
-InstallMethod(IsTrivialSkewBrace, "for a skew brace", [ IsSkewBrace ],
+InstallMethod(IsTrivialSkewbrace, "for a skew brace", [ IsSkewbrace ],
 function(obj)
 local a,b;
   for a in obj do
@@ -515,21 +515,21 @@ end);
 
 InstallMethod(Lambda, 
     "for two elements of a skew brace",
-    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    IsIdenticalObj, [ IsSkewbraceElm, IsSkewbraceElm ],
     function( x, y )
       return -x+x*y;
 end);
 
 InstallMethod(InverseLambda, 
     "for two elements of a skew brace",
-    IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+    IsIdenticalObj, [ IsSkewbraceElm, IsSkewbraceElm ],
     function( x, y )
       return Inverse(x)*(x+y);
 end);
 
 InstallMethod(Star, 
   "for two elements of a skew brace",
-  IsIdenticalObj, [ IsSkewBraceElm, IsSkewBraceElm ],
+  IsIdenticalObj, [ IsSkewbraceElm, IsSkewbraceElm ],
   function( x, y )
     return -x+x*y-y;
 end);
@@ -539,15 +539,15 @@ InstallMethod(Star,
   [IsCollection, IsCollection], function(subset1, subset2)
   local elm, gens, group, obj; 
   elm := AsList(subset1)[1];
-  obj := FamilyObj(elm)!.SkewBrace;
+  obj := FamilyObj(elm)!.Skewbrace;
   gens := List(Cartesian(AsList(subset1), AsList(subset2)), x->Star(x[1], x[2])); 
   group := Group(List(gens, x->x![1]));
-  return List(AsList(group), x->SkewBraceElmConstructor(obj, x));
+  return List(AsList(group), x->SkewbraceElmConstructor(obj, x));
 end);
 
-InstallMethod(Lambda2Permutation, "for an element of a skew brace", [ IsSkewBraceElm ], function(x)
+InstallMethod(Lambda2Permutation, "for an element of a skew brace", [ IsSkewbraceElm ], function(x)
   local obj, lst, p, k;
-  obj := FamilyObj(x)!.SkewBrace;
+  obj := FamilyObj(x)!.Skewbrace;
   lst := AsList(obj);
 
   p := [1..Size(obj)];
@@ -561,27 +561,27 @@ end);
 
 InstallMethod(InverseBijective1Cocycle,
     "for a skew brace", 
-    [ IsSkewBrace ],
+    [ IsSkewbrace ],
     function(obj)
       local add, mul;
-      add := SkewBraceAList(obj);
-      mul := SkewBraceMList(obj);
+      add := SkewbraceAList(obj);
+      mul := SkewbraceMList(obj);
       return MappingByFunction(Domain(AsList(obj)), Domain(mul), x->mul[Position(add, x![1])]);
 end);
 
 InstallMethod(Bijective1Cocycle,
     "for a skew brace", 
-    [ IsSkewBrace ],
+    [ IsSkewbrace ],
     function(obj)
        return InverseGeneralMapping(InverseBijective1Cocycle(obj));  
 end);
 
-InstallMethod(\in, "for a skew brace and a skew brace element", [ IsSkewBraceElm, IsSkewBrace ], 
+InstallMethod(\in, "for a skew brace and a skew brace element", [ IsSkewbraceElm, IsSkewbrace ], 
 function(x, obj)
   return x in AsList(obj);
 end);
 
-InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
+InstallMethod(Skewbrace2YB, "for a skew brace", [ IsSkewbrace ], function(obj)
   local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms, yb;
 
   add := AsList(obj);
@@ -612,11 +612,11 @@ InstallMethod(SkewBrace2YB, "for a skew brace", [ IsSkewBrace ], function(obj)
   return yb;
 end);
 
-InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewBrace ], function(obj)
+InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewbrace ], function(obj)
   if not IsClassical(obj) then
     Error("this is not a classical brace\n");
   fi;
-  return YB2CycleSet(SkewBrace2YB(obj));
+  return YB2CycleSet(Skewbrace2YB(obj));
 end);
 
 
@@ -624,7 +624,7 @@ end);
 #
 # SelectSmallBraces
 # AllSmallBraces
-# AllSmallSkewBraces
+# AllSmallSkewbraces
 #
 SelectSmallBraces := function( argl, skew )
 local sizes, sizepos, size, conditions, name, availabilitycheck, nrfunc, constructfunc, 
@@ -657,9 +657,9 @@ conditions := argl{[ sizepos+1 .. Length(argl)]};
  
 if skew then
   name := "skew braces";
-  availabilitycheck := IsSkewBraceImplemented;
-  nrfunc := NrSmallSkewBraces;
-  constructfunc := SmallSkewBrace;
+  availabilitycheck := IsSkewbraceImplemented;
+  nrfunc := NrSmallSkewbraces;
+  constructfunc := SmallSkewbrace;
 else
   name := "braces";
   availabilitycheck := IsBraceImplemented;
@@ -724,7 +724,7 @@ function( arg )
   return SelectSmallBraces( arg, false );
 end);
 
-InstallGlobalFunction(AllSmallSkewBraces, 
+InstallGlobalFunction(AllSmallSkewbraces, 
 function( arg )
   return SelectSmallBraces( arg, true );
 end);
@@ -741,23 +741,23 @@ end);
 InstallGlobalFunction(FromAdd2Mul, function(obj, subset)
   local q;
   q := InverseBijective1Cocycle(obj);
-  return List(List(subset, x->SkewBraceElmConstructor(obj, x)), y->y^q);
+  return List(List(subset, x->SkewbraceElmConstructor(obj, x)), y->y^q);
 end);
 
-InstallGlobalFunction(FromSkewBrace2Add, function(obj, subset)
+InstallGlobalFunction(FromSkewbrace2Add, function(obj, subset)
   return List(subset, x->x![1]);
 end);
 
-InstallGlobalFunction(FromSkewBrace2Mul, function(obj, subset)
-  return FromAdd2Mul(obj, FromSkewBrace2Add(obj, subset));
+InstallGlobalFunction(FromSkewbrace2Mul, function(obj, subset)
+  return FromAdd2Mul(obj, FromSkewbrace2Add(obj, subset));
 end);
 
-InstallGlobalFunction(FromAdd2SkewBrace, function(obj, subset)
-  return List(subset, x->SkewBraceElmConstructor(obj, x));
+InstallGlobalFunction(FromAdd2Skewbrace, function(obj, subset)
+  return List(subset, x->SkewbraceElmConstructor(obj, x));
 end);
 
-InstallGlobalFunction(FromMul2SkewBrace, function(obj, subset)
-  return FromAdd2SkewBrace(obj, FromMul2Add(obj, subset));
+InstallGlobalFunction(FromMul2Skewbrace, function(obj, subset)
+  return FromAdd2Skewbrace(obj, FromMul2Add(obj, subset));
 end);
 
 InstallGlobalFunction(BraceP2, function(size, number)
@@ -782,7 +782,7 @@ InstallGlobalFunction(BraceP2, function(size, number)
     p := List(add, PermList);
     q := List(mul, PermList);
 
-    return SkewBrace(List([1..size], k->[p[k],q[k]]));
+    return Skewbrace(List([1..size], k->[p[k],q[k]]));
   elif number=3 then
     return TrivialBrace(ElementaryAbelianGroup(IsPermGroup, size));
   elif number=4 then
@@ -806,13 +806,13 @@ InstallGlobalFunction(BraceP2, function(size, number)
     p := List(add, PermList);
     q := List(mul, PermList);
 
-    return SkewBrace(List([1..size], k->[p[k],q[k]]));
+    return Skewbrace(List([1..size], k->[p[k],q[k]]));
   else
     Error("there are four braces of size ", size, "\n");
   fi;
 end); 
 
-InstallOtherMethod(DirectProductSkewBraces, "for two skew braces", [IsSkewBrace, IsSkewBrace], function(obj1, obj2)
+InstallOtherMethod(DirectProductSkewbraces, "for two skew braces", [IsSkewbrace, IsSkewbrace], function(obj1, obj2)
   local lst, u, v, a, b, c, d, sum, mul;
 
   lst := Cartesian(obj1, obj2);
@@ -833,11 +833,11 @@ InstallOtherMethod(DirectProductSkewBraces, "for two skew braces", [IsSkewBrace,
   sum := List(sum, PermList);
   mul := List(mul, PermList);
 
-  return SkewBrace(List([1..Size(lst)], x->[sum[x],mul[x]]));
+  return Skewbrace(List([1..Size(lst)], x->[sum[x],mul[x]]));
 end);
 
 InstallMethod(\/, "for a semigroup and an ideal",
-[IsSkewBrace, IsSkewBrace and IsIdealInParent],
+[IsSkewbrace, IsSkewbrace and IsIdealInParent],
 function(obj, ideal)
   return Quotient(obj,ideal);
 end);

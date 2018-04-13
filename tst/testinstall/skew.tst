@@ -3,30 +3,30 @@
 ##  skew.tst               YangBaxter package               Leandro Vendramin
 ##
 gap> START_TEST("skew.tst");
-gap> List([2..10],NrSmallSkewBraces);
+gap> List([2..10],NrSmallSkewbraces);
 [ 1, 1, 4, 1, 6, 1, 47, 4, 6 ]
 
-gap> br:=SmallSkewBrace(8,1);;
+gap> br:=SmallSkewbrace(8,1);;
 gap> Size(br);
 8
-gap> IdSkewBrace(br);
+gap> IdSkewbrace(br);
 [ 8, 1 ]
-gap> SkewBraceAList(br);
+gap> SkewbraceAList(br);
 [ (), (1,2)(3,4)(5,6)(7,8), (1,3,2,4)(5,7,6,8), (1,4,2,3)(5,8,6,7), 
   (1,5,3,7,2,6,4,8), (1,6,3,8,2,5,4,7), (1,7,4,5,2,8,3,6), (1,8,4,6,2,7,3,5) ]
-gap> SkewBraceMList(br);
+gap> SkewbraceMList(br);
 [ (), (1,2)(3,4)(5,6)(7,8), (1,4,2,3)(5,8,6,7), (1,3,2,4)(5,7,6,8), 
   (1,7,3,6,2,8,4,5), (1,8,3,5,2,7,4,6), (1,5,4,8,2,6,3,7), (1,6,4,7,2,5,3,8) ]
 
 # More testings
-gap> br := SmallSkewBrace(8,25);;
+gap> br := SmallSkewbrace(8,25);;
 gap> IdGroup(UnderlyingAdditiveGroup(br));
 [ 8, 3 ]
 gap> IdGroup(UnderlyingMultiplicativeGroup(br));
 [ 8, 2 ]
 
 # Check neutral elements
-gap> br:=SmallSkewBrace(27,15);;
+gap> br:=SmallSkewbrace(27,15);;
 gap> for a in AsList(br) do
 >      if a*One(br)<>a then
 >        Print("zero fails\n");
@@ -60,21 +60,21 @@ gap> check_compatibility := function(obj)
 function( obj ) ... end
 gap> n := 8;
 8
-gap> for k in [1..NrSmallSkewBraces(n)] do
-> br := SmallSkewBrace(n, k);
+gap> for k in [1..NrSmallSkewbraces(n)] do
+> br := SmallSkewbrace(n, k);
 > if not check_compatibility(br) then 
 >   Print("Compatibility fails for n=", n, " and k=", k, "\n");
 > fi;
 > od;
 
 # Two-sided skew braces
-gap> Number([1..NrSmallSkewBraces(8)], k->IsTwoSided(SmallSkewBrace(8,k)));
+gap> Number([1..NrSmallSkewbraces(8)], k->IsTwoSided(SmallSkewbrace(8,k)));
 42
-gap> NrSmallSkewBraces(8);
+gap> NrSmallSkewbraces(8);
 47
 
 # Classical braces
-gap> Number([1..NrSmallSkewBraces(8)], k->IsClassical(SmallSkewBrace(8,k)));
+gap> Number([1..NrSmallSkewbraces(8)], k->IsClassical(SmallSkewbrace(8,k)));
 27
 gap> NrSmallBraces(8);
 27
@@ -82,7 +82,7 @@ gap> Number([1..NrSmallBraces(8)], k->IsClassical(SmallBrace(8,k)));
 27
 
 # Test Lambda
-gap> br := SmallSkewBrace(16,40);;
+gap> br := SmallSkewbrace(16,40);;
 gap> for a in AsList(br) do
 > for b in AsList(br) do
 > if a+Lambda(a,b) <> a*b then
@@ -102,7 +102,7 @@ gap> for a in AsList(br) do
 > od;
 
 # Test Lambda and its inverse
-gap> br := SmallSkewBrace(8,25);;
+gap> br := SmallSkewbrace(8,25);;
 gap> for a in br do
 > for b in br do
 > if Lambda(a,InverseLambda(a,b)) <> b then
@@ -119,10 +119,10 @@ gap> for a in br do
 > od;
 
 # Test PrintObj and ViewObj for (skew)braces
-gap> br := SmallSkewBrace(8,15);
+gap> br := SmallSkewbrace(8,15);
 <brace of size 8>
 gap> Display(br);
-SmallSkewBrace(8,15)
+SmallSkewbrace(8,15)
 gap> br := SmallBrace(8,25);
 <brace of size 8>
 gap> Display(br);
@@ -133,22 +133,22 @@ gap> obj1 := SmallBrace(8,10);
 <brace of size 8>
 gap> Display(obj1);
 SmallBrace(8,10)
-gap> obj2 := SmallSkewBrace(8,2);
+gap> obj2 := SmallSkewbrace(8,2);
 <brace of size 8>
 gap> Display(obj2);
-SmallSkewBrace(8,2)
-gap> obj3 := SmallSkewBrace(10,4);
+SmallSkewbrace(8,2)
+gap> obj3 := SmallSkewbrace(10,4);
 <skew brace of size 10>
 gap> Display(obj3);
-SmallSkewBrace(10,4)
+SmallSkewbrace(10,4)
 gap> List([obj1,obj2,obj3], x->IsAbelian(UnderlyingAdditiveGroup(x)));
 [ true, true, false ]
 
 
 # Test the solution of the YBE associated with a (skew)brace
-gap> Number([1..NrSmallSkewBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallSkewBrace(8,k))));
+gap> Number([1..NrSmallSkewbraces(8)], k->IsInvolutive(Skewbrace2YB(SmallSkewbrace(8,k))));
 27
-gap> Number([1..NrSmallBraces(8)], k->IsInvolutive(SkewBrace2YB(SmallBrace(8,k))));
+gap> Number([1..NrSmallBraces(8)], k->IsInvolutive(Skewbrace2YB(SmallBrace(8,k))));
 27
 
 # Test how to convert classical braces to cycle sets
@@ -162,13 +162,13 @@ gap> Matrix(Brace2CycleSet(br));
   [ 1, 2, 3, 4, 7, 8, 5, 6 ], [ 1, 2, 3, 4, 7, 8, 5, 6 ] ]
 gap> Permutations(Brace2CycleSet(br));
 [ (), (), (), (), (5,7)(6,8), (5,7)(6,8), (5,7)(6,8), (5,7)(6,8) ]
-gap> br := SmallSkewBrace(10,4);
+gap> br := SmallSkewbrace(10,4);
 <skew brace of size 10>
 gap> Brace2CycleSet(br);
 Error, this is not a classical brace
 
 # Test the map lambda written as a permutation
-gap> br := SmallSkewBrace(8,28);
+gap> br := SmallSkewbrace(8,28);
 <skew brace of size 8>
 gap> gens := List(br, x->Lambda2Permutation(x));
 [ (), (), (), (), (3,4)(7,8), (3,4)(7,8), (3,4)(7,8), (3,4)(7,8) ]
@@ -176,17 +176,17 @@ gap> Orbits(Group(gens));
 [ [ 3, 4 ], [ 7, 8 ] ]
 
 # Test isomorphisms and ids
-gap> br := SmallSkewBrace(16,500);;
-gap> IdSkewBrace(br);
+gap> br := SmallSkewbrace(16,500);;
+gap> IdSkewbrace(br);
 [ 16, 500 ]
 gap> IdBrace(br);
 [ 16, 119 ]
-gap> fail <> IsomorphismSkewBraces(br,br);
+gap> fail <> IsomorphismSkewbraces(br,br);
 true
 gap> for n in [2..7] do
-> for k in [1..NrSmallSkewBraces(n)] do
-> br := SmallSkewBrace(n,k);
-> if IdSkewBrace(br) <> [n,k] then
+> for k in [1..NrSmallSkewbraces(n)] do
+> br := SmallSkewbrace(n,k);
+> if IdSkewbrace(br) <> [n,k] then
 > Print("This is wrong!\n");
 > fi;
 > od;
@@ -195,8 +195,8 @@ gap> for n in [2..7] do
 # Test for IdBrace 
 gap> n := 12;;
 gap> l := [];;
-gap> for k in [1..NrSmallSkewBraces(n)] do
-> br := SmallSkewBrace(n,k);
+gap> for k in [1..NrSmallSkewbraces(n)] do
+> br := SmallSkewbrace(n,k);
 > if IsClassical(br) then
 > Add(l, IdBrace(br));
 > fi;
@@ -205,8 +205,8 @@ gap> l;
 [ [ 12, 1 ], [ 12, 2 ], [ 12, 3 ], [ 12, 4 ], [ 12, 5 ], [ 12, 6 ], [ 12, 7 ], [ 12, 8 ], [ 12, 9 ], [ 12, 10 ] ]
 
 # Test labels for solutions
-gap> br := SmallSkewBrace(16,200);;
-gap> yb := SkewBrace2YB(br);;
+gap> br := SmallSkewbrace(16,200);;
+gap> yb := Skewbrace2YB(br);;
 gap> perms := Permutations(yb);;
 gap> l := AsList(br);;
 gap> for i in [1..Size(br)] do
@@ -238,21 +238,21 @@ gap> l;
 # Test braces of size p and p^2
 gap> IsBraceImplemented(19^2);
 true
-gap> IsSkewBraceImplemented(23^2);
+gap> IsSkewbraceImplemented(23^2);
 true
 gap> List([1..4], k->IdBrace(SmallBrace(9,k)));
 [ [ 9, 1 ], [ 9, 2 ], [ 9, 3 ], [ 9, 4 ] ]
-gap> List([1..4], k->IdSkewBrace(SmallBrace(9,k)));
+gap> List([1..4], k->IdSkewbrace(SmallBrace(9,k)));
 [ [ 9, 1 ], [ 9, 2 ], [ 9, 3 ], [ 9, 4 ] ]
-gap> List([1..4], k->IdSkewBrace(SmallSkewBrace(9,k)));
+gap> List([1..4], k->IdSkewbrace(SmallSkewbrace(9,k)));
 [ [ 9, 1 ], [ 9, 2 ], [ 9, 3 ], [ 9, 4 ] ]
 gap> NrSmallBraces(23^2);
 4
 gap> NrSmallBraces(23);
 1
-gap> NrSmallSkewBraces(23);
+gap> NrSmallSkewbraces(23);
 1
-gap> NrSmallSkewBraces(29^2);
+gap> NrSmallSkewbraces(29^2);
 4
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################

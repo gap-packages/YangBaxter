@@ -7,9 +7,9 @@ gap> START_TEST("ideals.tst");
 
 # Test simple braces
 gap> n := 12;;
-gap> for k in [1..NrSmallSkewBraces(n)] do
-> br := SmallSkewBrace(n,k);
-> if IsSimpleSkewBrace(br) then
+gap> for k in [1..NrSmallSkewbraces(n)] do
+> br := SmallSkewbrace(n,k);
+> if IsSimpleSkewbrace(br) then
 > Print("n=", n, ", k=", k, "\n");
 > fi;
 > od;
@@ -27,8 +27,8 @@ gap> Collected(l);
 [ [ 1, 2 ], [ 2, 11 ], [ 4, 11 ], [ 8, 3 ] ]
 
 # Test IsIdeal
-gap> for k in [1..NrSmallSkewBraces(8)] do
-> br := SmallSkewBrace(8,k);
+gap> for k in [1..NrSmallSkewbraces(8)] do
+> br := SmallSkewbrace(8,k);
 > soc := Socle(br);
 > if not IsIdeal(br, soc) then
 >   Print("This is wrong!\n");
@@ -39,12 +39,12 @@ gap> for k in [1..NrSmallSkewBraces(8)] do
 > od;
 
 # Test quotients 
-gap> br := SmallSkewBrace(16,300);;
+gap> br := SmallSkewbrace(16,300);;
 gap> List(Ideals(br), x->Size(Quotient(br, x)));
 [ 16, 8, 8, 8, 4, 2, 2, 2, 1 ]
 
 # Test LeftSeries and IsLeftIdeal
-gap> br := SmallSkewBrace(36,191);;
+gap> br := SmallSkewbrace(36,191);;
 gap> ls := LeftSeries(br);
 [ <skew brace of size 36>, <skew brace of size 18>, <brace of size 3> ]
 gap> List(ls, x->IsLeftIdeal(br, x));
@@ -54,12 +54,12 @@ gap> List(ls, x->IsIdeal(br, x));
 gap> add := UnderlyingAdditiveGroup(br);;
 gap> Set(List(NormalSubgroups(add), Size));
 [ 1, 9, 18, 36 ]
-gap> List(ls, IdSkewBrace);
+gap> List(ls, IdSkewbrace);
 [ [ 36, 191 ], [ 18, 22 ], [ 3, 1 ] ]
 
 # Test prime and semiprime
-gap> br := SmallSkewBrace(24,708);;
-gap> IsSimpleSkewBrace(br);
+gap> br := SmallSkewbrace(24,708);;
+gap> IsSimpleSkewbrace(br);
 false
 gap> IsPrime(br);
 true

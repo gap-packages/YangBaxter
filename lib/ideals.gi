@@ -1,10 +1,10 @@
 # <subset> is a subset of AsList(obj)
 
-InstallMethod(IsIdeal, "for a skew brace and a collection", [ IsSkewBrace, IsCollection ], 
+InstallMethod(IsIdeal, "for a skew brace and a collection", [ IsSkewbrace, IsCollection ], 
 function(obj, subset)
   local a, x;
 
-  if IsSkewBrace(subset) then
+  if IsSkewbrace(subset) then
     if HasParent(subset) and Parent(subset) = obj then
       if HasIsIdealInParent(subset) then
         return IsIdealInParent(subset);
@@ -36,11 +36,11 @@ function(obj, subset)
   return true;
 end);
 
-InstallMethod(IsLeftIdeal, "for a skew brace and a collection", [ IsSkewBrace, IsCollection ], 
+InstallMethod(IsLeftIdeal, "for a skew brace and a collection", [ IsSkewbrace, IsCollection ], 
 function(obj, subset)
   local a, x;
 
-  if IsSkewBrace(subset) then
+  if IsSkewbrace(subset) then
     if HasParent(subset) and Parent(subset) = obj then
       if HasIsLeftIdealInParent(subset) then
         return IsLeftIdealInParent(subset);
@@ -66,45 +66,45 @@ function(obj, subset)
   return true;
 end);
 
-InstallMethod(Ideals, "for a skew brace", [ IsSkewBrace ], function(obj)
+InstallMethod(Ideals, "for a skew brace", [ IsSkewbrace ], function(obj)
   local add, sg, l, subset, x, res, tmp;
   l := [];
-  add := SkewBraceAList(obj);
+  add := SkewbraceAList(obj);
   for sg in NormalSubgroups(Group(add)) do 
-    subset := List(sg, x->SkewBraceElmConstructor(obj, x));
+    subset := List(sg, x->SkewbraceElmConstructor(obj, x));
     if IsIdeal(obj, subset) then
       Add(l, subset);
     fi;
   od;
   res := [];
   for x in l do
-    tmp := SubSkewBrace(obj, x);
+    tmp := SubSkewbrace(obj, x);
     SetIsIdealInParent(tmp, true);
     Add(res, tmp);
   od;
   return res;
 end);
 
-InstallMethod(LeftIdeals, "for a skew brace", [ IsSkewBrace], function(obj)
+InstallMethod(LeftIdeals, "for a skew brace", [ IsSkewbrace], function(obj)
   local add, sg, l, subset, x, res, tmp;
   l := [];
-  add := SkewBraceAList(obj);
+  add := SkewbraceAList(obj);
   for sg in NormalSubgroups(Group(add)) do 
-    subset := List(sg, x->SkewBraceElmConstructor(obj, x));
+    subset := List(sg, x->SkewbraceElmConstructor(obj, x));
     if IsLeftIdeal(obj, subset) then
       Add(l, subset);
     fi;
   od;
   res := [];
   for x in l do
-    tmp := SubSkewBrace(obj, x);
+    tmp := SubSkewbrace(obj, x);
     SetIsLeftIdealInParent(tmp, true);
     Add(res, tmp);
   od;
   return res;
 end);
 
-InstallGlobalFunction(SubSkewBrace, function(obj, sub)
+InstallGlobalFunction(SubSkewbrace, function(obj, sub)
   local p, res, add, mul, per, fam, gens;
 
   p := List(sub, y->[y![1], y^InverseBijective1Cocycle(obj)]);
@@ -114,11 +114,11 @@ InstallGlobalFunction(SubSkewBrace, function(obj, sub)
   mul := Permuted(List(p, x->x[2]), per);
  
   fam := ElementsFamily(FamilyObj(obj)); 
-  res := Objectify(NewType(CollectionsFamily(fam), IsSkewBrace and IsAttributeStoringRep), rec());
+  res := Objectify(NewType(CollectionsFamily(fam), IsSkewbrace and IsAttributeStoringRep), rec());
 
   SetSize(res, Size(add)); 
-  SetSkewBraceAList(res, add);
-  SetSkewBraceMList(res, mul);
+  SetSkewbraceAList(res, add);
+  SetSkewbraceMList(res, mul);
 
   gens := SmallGeneratingSet(Group(add));
   if gens = [] then
@@ -139,36 +139,36 @@ InstallGlobalFunction(SubSkewBrace, function(obj, sub)
 
 end);
 
-InstallMethod(IsSimpleSkewBrace, "for a skew brace", [ IsSkewBrace ], 
+InstallMethod(IsSimpleSkewbrace, "for a skew brace", [ IsSkewbrace ], 
 function(obj)
   return Size(Ideals(obj))=2;
 end);
 
-InstallOtherMethod(IsSimple, "for a skew brace", [ IsSkewBrace ],
+InstallOtherMethod(IsSimple, "for a skew brace", [ IsSkewbrace ],
 function(obj)
-  return IsSimpleSkewBrace(obj);
+  return IsSimpleSkewbrace(obj);
 end);
 
-InstallMethod(Socle, "for a skew brace", [ IsSkewBrace ], function(obj)
+InstallMethod(Socle, "for a skew brace", [ IsSkewbrace ], function(obj)
   local add, l;
-  add := SkewBraceAList(obj);
-  l := List(Center(Group(add)), x->SkewBraceElmConstructor(obj, x));
+  add := SkewbraceAList(obj);
+  l := List(Center(Group(add)), x->SkewbraceElmConstructor(obj, x));
   return AsIdeal(obj, Filtered(l, a->ForAll(AsList(obj), b->Lambda(a,b)=b)));
 end);
 
-InstallMethod(AsIdeal, "for a skew brace and a subset of a skew brace", [ IsSkewBrace, IsCollection ], 
+InstallMethod(AsIdeal, "for a skew brace and a subset of a skew brace", [ IsSkewbrace, IsCollection ], 
 function(obj, subset)
   local res;
   if not IsIdeal(obj, AsList(subset)) then
     Error("this is not an ideal,");
   else
-    res := SubSkewBrace(obj, subset);
+    res := SubSkewbrace(obj, subset);
     SetIsIdealInParent(res, true);
     return res;
   fi;
 end);
 
-InstallMethod(Quotient, "for two skew braces", [IsSkewBrace, IsSkewBrace], function(obj, ideal)
+InstallMethod(Quotient, "for two skew braces", [IsSkewbrace, IsSkewbrace], function(obj, ideal)
   local add, mul, bij, idA, idG, fA, fG, r, s, x, a, l;
 
   if not IsIdeal(obj, AsList(ideal)) then
@@ -198,14 +198,14 @@ InstallMethod(Quotient, "for two skew braces", [IsSkewBrace, IsSkewBrace], funct
   l := [];
 
   for x in Image(r) do
-    a := SkewBraceElm(obj, Representative(PreImagesElm(r, x)));
+    a := SkewbraceElm(obj, Representative(PreImagesElm(r, x)));
     Add(l, [x, Image(s, Image(bij, a))]);
   od;
 
-  return SkewBrace(l);
+  return Skewbrace(l);
 end);
 
-InstallMethod(LeftSeries, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(LeftSeries, "for a skew brace", [IsSkewbrace], function(obj)
   local tmp, old, new, l, done;
 
   done := false;
@@ -214,7 +214,7 @@ InstallMethod(LeftSeries, "for a skew brace", [IsSkewBrace], function(obj)
 
   repeat
     tmp := List(Cartesian(obj, old), x->Star(x[1],x[2]));
-    new := SubSkewBrace(obj, List(Group(List(tmp, x->x![1])), y->SkewBraceElmConstructor(obj, y)));
+    new := SubSkewbrace(obj, List(Group(List(tmp, x->x![1])), y->SkewbraceElmConstructor(obj, y)));
 
     if Size(new) <> Size(old) then
       Add(l, new);
@@ -232,7 +232,7 @@ InstallMethod(LeftSeries, "for a skew brace", [IsSkewBrace], function(obj)
 
 end);
 
-InstallMethod(RightSeries, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(RightSeries, "for a skew brace", [IsSkewbrace], function(obj)
   local tmp, old, new, l, done;
 
   done := false;
@@ -241,7 +241,7 @@ InstallMethod(RightSeries, "for a skew brace", [IsSkewBrace], function(obj)
 
   repeat
     tmp := List(Cartesian(old, obj), x->Star(x[1],x[2]));
-    new := SubSkewBrace(obj, List(Group(List(tmp, x->x![1])), y->SkewBraceElmConstructor(obj, y)));
+    new := SubSkewbrace(obj, List(Group(List(tmp, x->x![1])), y->SkewbraceElmConstructor(obj, y)));
 
     if Size(new) <> Size(old) then
       Add(l, new);
@@ -258,15 +258,15 @@ InstallMethod(RightSeries, "for a skew brace", [IsSkewBrace], function(obj)
   return l;
 end);
 
-InstallMethod(IsLeftNilpotent, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(IsLeftNilpotent, "for a skew brace", [IsSkewbrace], function(obj)
   return 1 in List(LeftSeries(obj), Size);
 end);
 
-InstallMethod(IsRightNilpotent, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(IsRightNilpotent, "for a skew brace", [IsSkewbrace], function(obj)
   return 1 in List(RightSeries(obj), Size);
 end);
 
-InstallMethod(SocleSeries, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(SocleSeries, "for a skew brace", [IsSkewbrace], function(obj)
   local l, tmp, old, new, done;
 
   old := ShallowCopy(obj);
@@ -291,7 +291,7 @@ InstallMethod(SocleSeries, "for a skew brace", [IsSkewBrace], function(obj)
   
 end);
 
-InstallMethod(MultipermutationLevel, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(MultipermutationLevel, "for a skew brace", [IsSkewbrace], function(obj)
   local s;
   s := SocleSeries(obj);
   if 1 in List(s, Size) then
@@ -301,22 +301,22 @@ InstallMethod(MultipermutationLevel, "for a skew brace", [IsSkewBrace], function
   fi;
 end);
 
-InstallMethod(IsMultipermutation, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(IsMultipermutation, "for a skew brace", [IsSkewbrace], function(obj)
   return 1 in List(SocleSeries(obj), Size);
 end);
 
-InstallMethod(Fix, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(Fix, "for a skew brace", [IsSkewbrace], function(obj)
   local center, f;
-  center := List(Center(UnderlyingAdditiveGroup(obj)), x->SkewBraceElmConstructor(obj, x));
+  center := List(Center(UnderlyingAdditiveGroup(obj)), x->SkewbraceElmConstructor(obj, x));
   f := Filtered(AsList(obj), b->ForAll(AsList(obj), a->Lambda(a,b)=b));
   return Filtered(f, x->x in center);
 end);
 
-InstallMethod(KernelOfLambda, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(KernelOfLambda, "for a skew brace", [IsSkewbrace], function(obj)
   return Filtered(AsList(obj), a->ForAll(AsList(obj), b->Lambda(a,b)=b));
 end);
 
-InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewbrace], function(obj)
   local i, n, s, old, tmp, new, done;
 
   old := ShallowCopy(obj);
@@ -329,7 +329,7 @@ InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewBrace], function(ob
 		for i in [1..n] do
 			tmp := Concatenation(tmp, List(Cartesian(AsList(s[i]), AsList(s[n+1-i])), x->Star(x[1],x[2])));  
 		od;
-		new := SubSkewBrace(obj, List(Group(List(tmp, x->x![1])), y->SkewBraceElmConstructor(obj, y)));
+		new := SubSkewbrace(obj, List(Group(List(tmp, x->x![1])), y->SkewbraceElmConstructor(obj, y)));
 
 		if Size(new) <> Size(old) then
 			Add(s, new);
@@ -346,7 +346,7 @@ InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewBrace], function(ob
   return s;
 end);
 
-InstallMethod(IsPrime, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(IsPrime, "for a skew brace", [IsSkewbrace], function(obj)
   local l, x, y;
   l := List(Ideals(obj), AsList);
   for x in l do
@@ -365,15 +365,15 @@ InstallMethod(IsPrime, "for a skew brace", [IsSkewBrace], function(obj)
   return true;
 end);
 
-InstallMethod(IsPrimeIdeal, "for an ideal of a skew brace", [IsSkewBrace and IsIdealInParent], function(obj)
+InstallMethod(IsPrimeIdeal, "for an ideal of a skew brace", [IsSkewbrace and IsIdealInParent], function(obj)
   return IsPrime(Quotient(obj!.ParentAttr, obj));
 end);
 
-InstallMethod(PrimeIdeals, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(PrimeIdeals, "for a skew brace", [IsSkewbrace], function(obj)
   return Filtered(Ideals(obj), x->IsPrimeIdeal(x));
 end);
 
-InstallMethod(IsSemiprime, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(IsSemiprime, "for a skew brace", [IsSkewbrace], function(obj)
   local l, x, y;
   l := List(Ideals(obj), AsList);
   for x in l do
@@ -387,27 +387,27 @@ InstallMethod(IsSemiprime, "for a skew brace", [IsSkewBrace], function(obj)
   return true;
 end);
 
-InstallMethod(IsSemiprimeIdeal, "for an ideal of a skew brace", [IsSkewBrace and IsIdealInParent], function(obj)
+InstallMethod(IsSemiprimeIdeal, "for an ideal of a skew brace", [IsSkewbrace and IsIdealInParent], function(obj)
   return IsSemiprime(Quotient(obj!.ParentAttr, obj));
 end);
 
-InstallMethod(SemiprimeIdeals, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(SemiprimeIdeals, "for a skew brace", [IsSkewbrace], function(obj)
   return Filtered(Ideals(obj), x->IsPrimeIdeal(x));
 end);
 
-InstallMethod(IntersectionOfTwoIdeals, "for ideals of a skew brace", [IsSkewBrace and IsIdealInParent, IsSkewBrace and IsIdealInParent], function(ideal1, ideal2)
+InstallMethod(IntersectionOfTwoIdeals, "for ideals of a skew brace", [IsSkewbrace and IsIdealInParent, IsSkewbrace and IsIdealInParent], function(ideal1, ideal2)
   local obj, tmp;
   if Parent(ideal1) <> Parent(ideal2) then
     Error("The ideals do not belong to the same skew brace,");
   else
     obj := Parent(ideal1);
   fi;
-  tmp := SubSkewBrace(obj, Intersection(AsList(ideal1), AsList(ideal2)));
+  tmp := SubSkewbrace(obj, Intersection(AsList(ideal1), AsList(ideal2)));
   SetIsIdealInParent(tmp, true);
   return tmp;
 end);
 
-InstallMethod(SumOfTwoIdeals, "for ideals of a skew brace", [IsSkewBrace and IsIdealInParent, IsSkewBrace and IsIdealInParent], function(ideal1, ideal2)
+InstallMethod(SumOfTwoIdeals, "for ideals of a skew brace", [IsSkewbrace and IsIdealInParent, IsSkewbrace and IsIdealInParent], function(ideal1, ideal2)
   local obj, tmp, new;
   if Parent(ideal1) <> Parent(ideal2) then
     Error("The ideals do not belong to the same skew brace,");
@@ -415,34 +415,34 @@ InstallMethod(SumOfTwoIdeals, "for ideals of a skew brace", [IsSkewBrace and IsI
     obj := Parent(ideal1);
   fi;
   tmp := AsList(Group(List(Union(AsList(ideal1), AsList(ideal2)), x->x![1])));
-  new := SubSkewBrace(obj, List(tmp, x->SkewBraceElmConstructor(obj, x)));
+  new := SubSkewbrace(obj, List(tmp, x->SkewbraceElmConstructor(obj, x)));
   SetIsIdealInParent(new, true);
   return new;
 end);
 
-InstallMethod(BaerRadical, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(BaerRadical, "for a skew brace", [IsSkewbrace], function(obj)
   return Iterated(PrimeIdeals(obj), IntersectionOfTwoIdeals);
 end);
 
-InstallMethod(IsBaer, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(IsBaer, "for a skew brace", [IsSkewbrace], function(obj)
   return Size(BaerRadical(obj)) = Size(obj);
 end);
 
-InstallMethod(WedderburnRadical, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(WedderburnRadical, "for a skew brace", [IsSkewbrace], function(obj)
   return Iterated(Filtered(Ideals(obj), x->IsLeftNilpotent(x) or IsRightNilpotent(x)), SumOfTwoIdeals);
 end);
 
-InstallMethod(IdealGeneratedBy, "for a skew brace and a collection", [ IsSkewBrace, IsCollection ], function(obj,subset)
+InstallMethod(IdealGeneratedBy, "for a skew brace and a collection", [ IsSkewbrace, IsCollection ], function(obj,subset)
   local f;
   f := Filtered(Ideals(obj), x->ForAll(subset, y->y in x));
   return Iterated(f, IntersectionOfTwoIdeals);
 end);
 
-InstallOtherMethod(IsSolvable, "for a skew brace", [IsSkewBrace], function(obj)
+InstallOtherMethod(IsSolvable, "for a skew brace", [IsSkewbrace], function(obj)
   return 1 in List(SolvableSeries(obj), Size);
 end);
 
-InstallMethod(SolvableSeries, "for a skew brace", [IsSkewBrace], function(obj)
+InstallMethod(SolvableSeries, "for a skew brace", [IsSkewbrace], function(obj)
   local tmp, old, new, l, done;
 
   done := false;
@@ -451,7 +451,7 @@ InstallMethod(SolvableSeries, "for a skew brace", [IsSkewBrace], function(obj)
 
   repeat
     tmp := List(Cartesian(old, old), x->Star(x[1],x[2]));
-    new := SubSkewBrace(obj, List(Group(List(tmp, x->x![1])), y->SkewBraceElmConstructor(obj, y)));
+    new := SubSkewbrace(obj, List(Group(List(tmp, x->x![1])), y->SkewbraceElmConstructor(obj, y)));
 
     if Size(new) <> Size(old) then
       Add(l, new);
@@ -468,11 +468,11 @@ InstallMethod(SolvableSeries, "for a skew brace", [IsSkewBrace], function(obj)
 
 end);
 
-InstallMethod(LeftNilpotentIdeals, "for a skew brace", [ IsSkewBrace], function(obj)
+InstallMethod(LeftNilpotentIdeals, "for a skew brace", [ IsSkewbrace], function(obj)
   return Filtered(Ideals(obj), IsLeftNilpotent);
 end);
 
-InstallMethod(RightNilpotentIdeals, "for a skew brace", [ IsSkewBrace], function(obj)
+InstallMethod(RightNilpotentIdeals, "for a skew brace", [ IsSkewbrace], function(obj)
   return Filtered(Ideals(obj), IsRightNilpotent);
 end);
 

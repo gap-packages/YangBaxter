@@ -40,6 +40,6 @@ InstallMethod(RadicalRing2Brace, "for a radical ring", [IsRing], function(ring)
   local add, mul;
   add := AsList(AdditiveGroupOfRing(ring));
   mul := AsList(AdjointGroup(ring));
-  return SkewBrace(List([1..Size(ring)], k->[add[k],mul[k]]));
+  return Skewbrace(List([1..Size(ring)], k->[add[k],mul[k]]));
 end);
 

@@ -1,6 +1,6 @@
 # Example 3.5
 gap> br := SmallBrace(6,1);;
-gap> IsTrivialSkewBrace(br);
+gap> IsTrivialSkewbrace(br);
 false
 gap> add := UnderlyingAdditiveGroup(br);;
 gap> StructureDescription(add);
