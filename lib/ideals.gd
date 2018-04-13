@@ -418,7 +418,7 @@ DeclareAttribute("SolvableSeries", IsSkewbrace);
 
 DeclareGlobalFunction("SubSkewbrace");
 
-DeclareProperty("IsMinimalIdeal", IsSkewBrace and IsIdealInParent);
-DeclareAttribute("MinimalIdeals", IsSkewBrace);
+DeclareProperty("IsMinimalIdeal", IsSkewbrace and IsIdealInParent);
+DeclareAttribute("MinimalIdeals", IsSkewbrace);
 
 
