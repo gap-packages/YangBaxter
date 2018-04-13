@@ -1,11 +1,7 @@
 # Example 2.5
 gap> br := SmallBrace(6,2);;
-gap> List(LeftIdeals(br), IdBrace);
-[ [ 1, 1 ], [ 2, 1 ], [ 3, 1 ], [ 6, 2 ] ]
-gap> add := UnderlyingAdditiveGroup(br);
-Group([ (1,5,3,4,2,6) ])
-gap> mul := UnderlyingMultiplicativeGroup(br);
-Group([ (1,5,3,4,2,6) ])
+gap> add := UnderlyingAdditiveGroup(br);;
+gap> mul := UnderlyingMultiplicativeGroup(br);;
 gap> IdGroup(add);
 [ 6, 2 ]
 gap> IdGroup(mul);
@@ -24,7 +20,8 @@ gap> for k in [1..NrSmallBraces(6)] do
 > od;
 gap> l;
 [ 2 ]
-gap> left_ideals := LeftIdeals(br);;
+gap> left_ideals := ShallowCopy(LeftIdeals(br));;
+gap> SortBy(left_ideals,Size);
 gap> List(left_ideals, IdBrace);
 [ [ 1, 1 ], [ 2, 1 ], [ 3, 1 ], [ 6, 2 ] ]
 gap> List(left_ideals, x->IsIdeal(br, x));

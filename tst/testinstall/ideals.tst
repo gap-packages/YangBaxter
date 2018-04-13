@@ -40,8 +40,8 @@ gap> for k in [1..NrSmallSkewbraces(8)] do
 
 # Test quotients 
 gap> br := SmallSkewbrace(16,300);;
-gap> List(Ideals(br), x->Size(Quotient(br, x)));
-[ 16, 8, 8, 8, 4, 2, 2, 2, 1 ]
+gap> SortedList(List(Ideals(br), x->Size(Quotient(br, x))));
+[ 1, 2, 2, 2, 4, 8, 8, 8, 16 ]
 
 # Test LeftSeries and IsLeftIdeal
 gap> br := SmallSkewbrace(36,191);;

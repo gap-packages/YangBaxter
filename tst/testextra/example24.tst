@@ -20,7 +20,8 @@ gap> for k in [1..NrSmallBraces(8)] do
 > od;
 gap> l;
 [ 5 ]
-gap> ideals := Ideals(br);;
+gap> ideals := ShallowCopy(Ideals(br));;
+gap> SortBy(ideals,Size);
 gap> List(ideals, IdBrace);
 [ [ 1, 1 ], [ 2, 1 ], [ 4, 1 ], [ 8, 5 ] ]
 gap> List(ideals, x->IdBrace(br/x));
