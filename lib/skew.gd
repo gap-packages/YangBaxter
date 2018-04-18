@@ -157,6 +157,32 @@ DeclareProperty("IsClassical", IsSkewbrace);
 #! The function returns <A>true</A> if the skew brace $A$ is trivial, i.e., $a\circ b=a+b$ for all $a,b\in A$.
 DeclareProperty("IsTrivialSkewbrace", IsSkewbrace);
 
+#! @Arguments obj
+#! @Returns the set-theoretic solution associated with the skew brace <A>obj</A>
+#! @Description
+#! If $A$ is a skew brace, the map $r_A\colon A\times A\to A\times A$
+#! $$r_A(a,b)=(\lambda_a(b),\lambda_a(b)'\circ a\circ b)$$
+#! is a non-degenerate
+#! set-theoretic solution of the Yang--Baxter equation. Furthermore, $r_A$ is involutive
+#! if and only if $A$ is of abelian type (i.e., the additive group of $A$ is abelian).
+#! @ExampleSession
+#! gap> Skewbrace2YB(TrivialBrace(CyclicGroup(6)));
+#! <A set-theoretical solution of size 6>
+#! @EndExampleSession
+DeclareAttribute("Skewbrace2YB", IsSkewbrace);
+
+#! @Arguments obj
+#! @Returns the set-theoretic solution associated with a given subset of a skew brace 
+#! @Description
+#! @ExampleSession
+#! gap> br := TrivialSkewbrace(SymmetricGroup(3));;
+#! gap> AsList(br);
+#! [ <()>, <(2,3)>, <(1,2)>, <(1,2,3)>, <(1,3,2)>, <(1,3)> ]
+#! gap> SkewbraceSubset2YB(br, last{[4,5]});
+#! <A set-theoretical solution of size 2>
+#! @EndExampleSession
+DeclareOperation("SkewbraceSubset2YB", [ IsSkewbrace, IsCollection ]);
+
 #! @DoNotReadRestOfFile
 
 DeclareAttribute("UnderlyingAdditiveGroup", IsSkewbrace);
@@ -165,7 +191,6 @@ DeclareAttribute("SkewbraceAList", IsSkewbrace);
 DeclareAttribute("SkewbraceMList", IsSkewbrace);
 DeclareAttribute("AsList", IsSkewbrace);
 DeclareAttribute("Is2Sided", IsSkewbrace);
-DeclareAttribute("Skewbrace2YB", IsSkewbrace);
 DeclareAttribute("Labels", IsSkewbrace);
 DeclareAttribute("Brace2CycleSet", IsSkewbrace);
 

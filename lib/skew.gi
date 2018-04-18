@@ -612,6 +612,37 @@ InstallMethod(Skewbrace2YB, "for a skew brace", [ IsSkewbrace ], function(obj)
   return yb;
 end);
 
+InstallMethod(SkewbraceSubset2YB, "for a skew brace and a subset of a skew brace", [ IsSkewbrace, IsCollection ], function(obj, subset)
+  local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms, yb;
+
+  set := [1..Size(subset)];
+
+  lperms := [];
+  rperms := [];
+
+  for a in AsList(subset) do
+
+    tmp_l := [];
+    tmp_r := [];
+
+    for b in AsList(subset) do
+      Add(tmp_l, Position(AsList(subset), Lambda(a,b))); 
+      Add(tmp_r, Position(AsList(subset), Lambda(a,b)^(-1)*a*b)); 
+    od;
+    Add(lperms, tmp_l);
+    Add(rperms, tmp_r);
+  od;
+
+  lperms := List(lperms, PermList);
+  rperms := List(TransposedMat(rperms), PermList);
+
+  yb := Permutations2YB(lperms, rperms); 
+  SetLabels(yb, AsList(subset));
+
+  return yb;
+
+end);
+
 InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewbrace ], function(obj)
   if not IsClassical(obj) then
     Error("this is not a classical brace\n");
@@ -812,7 +843,7 @@ InstallGlobalFunction(BraceP2, function(size, number)
   fi;
 end); 
 
-InstallOtherMethod(DirectProductSkewbraces, "for two skew braces", [IsSkewbrace, IsSkewbrace], function(obj1, obj2)
+InstallMethod(DirectProductSkewbraces, "for two skew braces", [IsSkewbrace, IsSkewbrace], function(obj1, obj2)
   local lst, u, v, a, b, c, d, sum, mul;
 
   lst := Cartesian(obj1, obj2);
