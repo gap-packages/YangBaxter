@@ -316,35 +316,68 @@ InstallMethod(KernelOfLambda, "for a skew brace", [IsSkewbrace], function(obj)
   return Filtered(AsList(obj), a->ForAll(AsList(obj), b->Lambda(a,b)=b));
 end);
 
-InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewbrace], function(obj)
-  local i, n, s, old, tmp, new, done;
+InstallMethod(SmoktunowiczSeries, "for a skew brace", [IsSkewbrace, IsInt], function(obj, bound)
+  local n,i,s,tmp,new,old,k,done;
 
-  old := ShallowCopy(obj);
-  s := [old];
-  n := 1;
   done := false;
+  s := [];
+  n := 1;
 
-	repeat 
-		tmp := [];
-		for i in [1..n] do
-			tmp := Concatenation(tmp, List(Cartesian(AsList(s[i]), AsList(s[n+1-i])), x->Star(x[1],x[2])));  
-		od;
-		new := SubSkewbrace(obj, List(Group(List(tmp, x->x![1])), y->SkewbraceElmConstructor(obj, y)));
+  Add(s, obj);
+  
+  for k in [1..bound] do
 
-		if Size(new) <> Size(old) then
-			Add(s, new);
-		fi;
+    tmp := [];
 
-		if Size(new)=Size(old) or Size(new)=1 then
-			done := true;
-		fi;
+    for i in [1..n] do
+      Add(tmp, List(Cartesian(s[i], s[n+1-i]), x->Star(x[1],x[2])));
+    od;
 
-		old := ShallowCopy(new);
-		n := n+1;
-	until done;
+    old := ShallowCopy(s[n]);
+    new := ShallowCopy(SubSkewbrace(obj, List(Group(List(Flat(tmp), x->x![1])), y->SkewbraceElmConstructor(obj, y))));
 
+    if Size(new) = 1 then
+      Add(s, new);
+      break;
+    else
+      n := n+1; 
+      old := ShallowCopy(new);
+      Add(s, new);
+    fi;
+    
+  od;
   return s;
 end);
+
+
+#  local i, n, s, old, tmp, new, done;
+#
+#  old := ShallowCopy(obj);
+#  s := [old];
+#  n := 1;
+#  done := false;
+#
+#	repeat 
+#		tmp := [];
+#		for i in [1..n] do
+#			tmp := Concatenation(tmp, List(Cartesian(AsList(s[i]), AsList(s[n+1-i])), x->Star(x[1],x[2])));  
+#		od;
+#		new := SubSkewbrace(obj, List(Group(List(tmp, x->x![1])), y->SkewbraceElmConstructor(obj, y)));
+#
+#		if Size(new) <> Size(old) then
+#			Add(s, new);
+#		fi;
+#
+#		if Size(new)=Size(old) or Size(new)=1 then
+#			done := true;
+#		fi;
+#
+#		old := ShallowCopy(new);
+#		n := n+1;
+#	until done;
+#
+#  return s;
+#end);
 
 InstallMethod(IsPrime, "for a skew brace", [IsSkewbrace], function(obj)
   local l, x, y;
