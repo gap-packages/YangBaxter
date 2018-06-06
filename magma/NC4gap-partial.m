@@ -3,7 +3,7 @@ load "NCbraces.m";
 /***
  * 
  * This function produces the file <filename> (in GAP format) 
- * with the list of left braces of size <n>
+ * with the list of skew left braces of size <n>
  * The files are created after each group is studied
  *
  ***/
@@ -16,6 +16,9 @@ MakeList4GAP_partial := procedure(n, filename)
   j := 0;
   m := 0;
   total := NumberOfSmallGroups(n);
+
+  s := Sprintf("NCBRACES[%o] := rec( total := -1, implemented := %o, size := %o, brace := [] );", n, -1, n);
+  PrintFile(filename, s);
 
   for k in [1..NumberOfSmallGroups(n)] do
 
@@ -34,11 +37,10 @@ MakeList4GAP_partial := procedure(n, filename)
 
     printf "%o found, %o seconds\n", #q, Cputime(s);
 
-    m := m+#q;
-    s := Sprintf("NCBRACES[%o] := rec( total := -1, implemented := %o, size := %o, brace := [] );", n, -1, n);
+    s := Sprintf("");
 
-    for l in [1..#p] do
-      s := s cat Sprintf("NCBRACES[%o].brace[%o] := rec ( size := %o, perms := [ ", n, l, n);
+    for l in [1..#q] do
+      s := s cat Sprintf("NCBRACES[%o].brace[%o] := rec ( size := %o, perms := [ ", n, m+l, n);
 
       for x in p[l] do
         s := s cat Sprintf("[ ");
@@ -58,6 +60,7 @@ MakeList4GAP_partial := procedure(n, filename)
       s := s cat Sprintf("]\n);\n\n");
     end for;
 
+    m := m+#p;
     PrintFile(filename, s);
 
   end for;

@@ -17,6 +17,9 @@ MakeList4GAP_partial := procedure(n, filename)
   m := 0;
   total := #{ x: x in {1..NumberOfSmallGroups(n)} | IsAbelian(SmallGroup(n,x)) };
 
+  s := Sprintf("BRACES[%o] := rec( total := -1, implemented := %o, size := %o, brace := [] );", n, -1, n);
+  PrintFile(filename, s);
+
   for k in [1..NumberOfSmallGroups(n)] do
 
     p := [];
@@ -37,12 +40,10 @@ MakeList4GAP_partial := procedure(n, filename)
     end if;
 
     printf "%o found, %o seconds\n", #q, Cputime(s);
+    s := Sprintf("");
 
-    m := m+#q;
-    s := Sprintf("BRACES[%o] := rec( total := -1, implemented := %o, size := %o, brace := [] );", n, -1, n);
-
-    for l in [1..#p] do
-      s := s cat Sprintf("BRACES[%o].brace[%o] := rec ( size := %o, perms := [ ", n, l, n);
+    for l in [1..#q] do
+      s := s cat Sprintf("BRACES[%o].brace[%o] := rec ( size := %o, perms := [ ", n, m+l, n);
 
       for x in p[l] do
         s := s cat Sprintf("[ ");
@@ -62,6 +63,7 @@ MakeList4GAP_partial := procedure(n, filename)
       s := s cat Sprintf("]\n);\n\n");
     end for;
 
+    m := m+#p;
     PrintFile(filename, s);
 
   end for;
