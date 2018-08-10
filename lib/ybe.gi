@@ -580,5 +580,41 @@ InstallMethod(YB2Permutation, "for a solution", [ IsYB ], function(obj)
   return PermList(perm);
 end);
 
+# FIXME: IsObject? 
+InstallMethod(LinearRepresentationOfStructureGroup, "for an involutive solution and a symbol", [ IsYB, IsObject ],
+function(obj,q)
+  local i, m, gens;
 
+  gens := [];
+
+	if not IsInvolutive(obj) then
+		return fail;
+  fi;
+
+  for i in [1..Size(obj)] do
+    m := One(Field(q))*IdentityMat(Size(obj), Size(obj));
+    m[i][i] := q;
+    Add(gens, m*PermutationMat(Inverse(Permutations(obj)[1][i]), Size(obj)));
+  od;
+
+  return Group(gens);
+end);
+
+InstallMethod(DehornoyClass, "for an involutive solution", [ IsYB ],
+function(obj)
+  local x, m, tmp, sigmas, T;
+
+	if not IsInvolutive(obj) then
+		return fail;
+	fi;
+
+  tmp := [];
+  sigmas := Permutations(obj)[2];
+	T := PermList(List([1..Size(obj)], x->x^Inverse(sigmas[x])));
+
+  for x in [1..Size(obj)] do
+    Add(tmp, First(PositiveIntegers, m->Product(List([0..m-1], k->sigmas[x^(T^k)])) = ()));
+  od;
+  return Maximum(tmp);
+end);
 

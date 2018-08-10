@@ -36,6 +36,41 @@ gap> RestrictedYB(yb, [1,2,3]);
 <A set-theoretical solution of size 3>
 gap> RestrictedYB(yb, [1,2,4]);
 fail
+
+# Test Dehornoy's linear representation
+gap> cs := SmallCycleSet(4,13);;
+gap> yb := CycleSet2YB(cs);;
+gap> Permutations(yb);
+[ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], 
+  [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
+gap> field := FunctionField(Rationals, 1);;
+gap> q := IndeterminatesOfFunctionField(field)[1];;
+gap> G := LinearRepresentationOfStructureGroup(yb, q);;
+gap> x1 := G.1;;
+gap> x2 := G.2;;
+gap> x3 := G.3;;
+gap> x4 := G.4;;
+gap> x1*x2=x2*x4;
+true
+gap> x1*x3=x4*x2;
+true
+gap> x1*x4=x3*x3;
+true
+gap> x2*x1=x3*x4;
+true
+gap> x2*x2=x4*x1;
+true
+gap> x3*x1=x4*x3;
+true
+# Test the class of an involutive solution
+gap> cs := SmallCycleSet(4,13);;
+gap> yb := CycleSet2YB(cs);;
+gap> DehornoyClass(yb)
+2
+gap> cs := SmallCycleSet(4,19);;
+gap> yb := CycleSet2YB(cs);;
+gap> DehornoyClass(yb);
+4
 gap> STOP_TEST( "ybe.tst", 1 );
 #############################################################################
 ##
