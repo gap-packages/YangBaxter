@@ -581,6 +581,10 @@ function(x, obj)
   return x in AsList(obj);
 end);
 
+InstallMethod(Brace2YB, "for a skew brace", [ IsSkewbrace ], function(obj)
+  return Skewbrace2YB(obj);
+end);
+
 InstallMethod(Skewbrace2YB, "for a skew brace", [ IsSkewbrace ], function(obj)
   local a, b, x, y, u, v, add, set, tmp_r, tmp_l, lperms, rperms, yb;
 

@@ -170,6 +170,7 @@ DeclareProperty("IsTrivialSkewbrace", IsSkewbrace);
 #! <A set-theoretical solution of size 6>
 #! @EndExampleSession
 DeclareAttribute("Skewbrace2YB", IsSkewbrace);
+DeclareAttribute("Brace2YB", IsSkewbrace);
 
 #! @Arguments obj
 #! @Returns the set-theoretic solution associated with a given subset of a skew brace 

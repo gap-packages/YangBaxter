@@ -107,6 +107,15 @@ function(obj)
   return Group(LPerms(obj));
 end);
 
+InstallMethod(Evaluate, "for a set-theoretical solution and a list of two elements", [ IsYB, IsList ],
+function(obj, pair)
+  local x,y;
+  x := pair[1];
+  y := pair[2];
+  return [LMatrix(obj)[x][y], RMatrix(obj)[y][x]];
+end);
+
+
 ### This function returns the vector value of <obj> at (<x>,<y>)
 InstallMethod(TableYB, "for a set-theoretical solution", [ IsYB, IsInt, IsInt ],
 function(obj, x, y)
@@ -437,12 +446,10 @@ function(n)
   return YB(List([1..n], x->[1..n]), List([1..n], x->[1..n]));
 end);
 
-### This function returns Lyubashenko solution over [1..size] with respect to <f> and <g>
-### r is defined as r(x,y)=(f(y),g(x)), where f and g are permutations 
 InstallMethod(LyubashenkoYB, "for an integer and two permutations", [ IsInt, IsPerm, IsPerm ],
 function(size, f, g)
   if f*g=g*f then
-    return YB(List([1..size], x->ListPerm(g, size)), List([1..size], x->ListPerm(f,size)));
+    return YB(List([1..size], x->ListPerm(f, size)), List([1..size], x->ListPerm(g,size)));
   else
     return fail;
   fi;

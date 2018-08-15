@@ -6,10 +6,43 @@ DeclareOperation("YB", [IsList, IsList]);
 DeclareOperation("Table2YB", [IsList]);
 DeclareOperation("Permutations2YB", [IsList, IsList]);
 DeclareOperation("TableYB", [IsYB, IsInt, IsInt]);
+
+#! @Arguments obj,pair
+#! @Returns a pair of two integers
+#! @Description
+#! Given the pair $(x,y)$ this function returns $r(x,y)$. 
+#! @ExampleSession
+#! gap> cs := SmallCycleSet(4,13);;
+#! gap> yb := CycleSet2YB(cs);;
+#! gap> Permutations(yb);
+#! [ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], 
+#!   [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
+#! gap> Evaluate(yb, [1,2]);
+#! [ 2, 4 ]
+#! gap> Evaluate(yb, [1,3]); 
+#! [ 4, 2 ]
+#! @EndExampleSession
+DeclareOperation("Evaluate", [IsYB, IsList]);
+
 DeclareOperation("IsInvariant", [IsYB, IsList]);
 DeclareOperation("RestrictedYB", [IsYB, IsList]);
 DeclareOperation("TrivialYB", [IsInt]);
+
+#! @Arguments size,f,g
+#! @Returns a permutation solution to the YBE
+#! @Description
+#! Finite Lyubashenko (or permutation) solutions are defined as follows: Let 
+#! $X=\{1,\dots,n\}$ and $f,g\colon X\to X$ be bijective functions such that 
+#! $fg=gf$. Then $(X,r)$, where $r(x,y)=(f(y),g(x))$, is a set-theoretic 
+#! solutionbe to the YBE.
+#! @ExampleSession
+#! gap> yb := LyubashenkoYB(4, (1,2),(3,4));
+#! <A set-theoretical solution of size 4>
+#! gap> Permutations(last);
+#! [ [ (1,2), (1,2), (1,2), (1,2) ], [ (3,4), (3,4), (3,4), (3,4) ] ]
+#! @EndExampleSession
 DeclareOperation("LyubashenkoYB", [IsInt, IsPerm, IsPerm]);
+
 DeclareOperation("CartesianProduct", [IsYB, IsYB]);
 DeclareOperation("DerivedRack", [IsYB]);
 DeclareOperation("YB2Permutation", [IsYB]);
@@ -24,6 +57,13 @@ DeclareProperty("IsMultipermutation", IsYB);
 DeclareProperty("IsInvolutive", IsYB);
 #DeclareProperty("IsSymmetric", IsYB);
 DeclareProperty("IsBiquandle", IsYB);
+
+# gap> cs := SmallCycleSet(4,13);;
+# gap> yb := CycleSet2YB(cs);;
+# gap> Permutations(yb);
+# [ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
+# gap> YB_xy(yb, 1, 3);
+# [ 4, 2 ]
 
 DeclareGlobalFunction("YB_xy");
 #DeclareGlobalFunction("SmallIYB");
@@ -68,8 +108,9 @@ DeclareAttribute("DehornoyClass", IsYB);
 DeclareOperation("Wada", [IsGroup]);
 
 #! @Arguments obj,variable
-#! @Returns A faithful linear representaiton of the structure group of <obj>
+#! @Returns A faithful linear representaiton of the structure group of <A>obj</A>
 #! @Description
+#! ...
 #! @ExampleSession
 #! gap> cs := SmallCycleSet(4,13);;
 #! gap> yb := CycleSet2YB(cs);;
