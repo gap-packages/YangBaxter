@@ -62,10 +62,11 @@ gap> x2*x2=x4*x1;
 true
 gap> x3*x1=x4*x3;
 true
+
 # Test the class of an involutive solution
 gap> cs := SmallCycleSet(4,13);;
 gap> yb := CycleSet2YB(cs);;
-gap> DehornoyClass(yb)
+gap> DehornoyClass(yb);
 2
 gap> cs := SmallCycleSet(4,19);;
 gap> yb := CycleSet2YB(cs);;
