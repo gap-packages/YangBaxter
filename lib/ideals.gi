@@ -462,7 +462,7 @@ InstallMethod(IsBaer, "for a skew brace", [IsSkewbrace], function(obj)
 end);
 
 InstallMethod(WedderburnRadical, "for a skew brace", [IsSkewbrace], function(obj)
-  return Iterated(Filtered(Ideals(obj), x->IsLeftNilpotent(x) or IsRightNilpotent(x)), SumOfTwoIdeals);
+  return Iterated(Filtered(Ideals(obj), x->IsLeftNilpotent(x) and IsRightNilpotent(x)), SumOfTwoIdeals);
 end);
 
 InstallMethod(IdealGeneratedBy, "for a skew brace and a collection", [ IsSkewbrace, IsCollection ], function(obj,subset)
