@@ -225,6 +225,7 @@ InstallMethod(YB2CycleSet,
   if not IsRightNonDegenerate(obj) then
     Error("the soslution of the YBE is not (right) non-degenerate\n");
   fi;
+  return CycleSet(List(RMatrix(obj), x->ListPerm(Inverse(PermList(x)),Size(obj))));
 
   return CycleSet(RMatrix(obj));
 end);
