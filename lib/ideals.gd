@@ -434,4 +434,17 @@ DeclareAttribute("MinimalIdeals", IsSkewbrace);
 
 DeclareGlobalFunction("SubSkewbrace");
 
-
+#! @Arguments obj
+#! @Returns the ideal $A^{(2)}=A^2=A*A$ of the skew brace $A$
+#! @Description
+#! $A^{(2)}$ is the second term of the right series, where $A*A$ is defined as the additive subgroup of $A$ generated
+#! by all the elements $x*y$ for $x,y\in A$. 
+#! @ExampleSession
+#! gap> br := SmallSkewbrace(8,14);
+#! <brace of size 8>
+#! gap> RightSeries(br);
+#! [ <brace of size 8>, <brace of size 2>, <brace of size 1> ]
+#! gap> DerivedSubSkewbrace(br);
+#! <brace of size 2>
+#! @EndExampleSession
+DeclareAttribute("DerivedSubSkewbrace", IsSkewbrace);

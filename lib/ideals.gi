@@ -522,3 +522,12 @@ InstallMethod(MinimalIdeals, "for a skew brace", [ IsSkewbrace ], function(obj)
   return Filtered(Ideals(obj), IsMinimalIdeal);
 end);
 
+InstallMethod(DerivedSubSkewbrace, "for a skew brace", [ IsSkewbrace ], function(obj)
+  local right;
+  right := RightSeries(obj);
+  if Size(right)=1 then
+    return right[1];#AsIdeal(obj, AsList(right[1]));
+  else
+    return right[2];
+  fi;
+end);
