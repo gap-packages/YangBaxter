@@ -531,3 +531,9 @@ InstallMethod(DerivedSubSkewbrace, "for a skew brace", [ IsSkewbrace ], function
     return right[2];
   fi;
 end);
+
+InstallOtherMethod(IsPerfect, "for a skew brace", [ IsSkewbrace ], function(obj)
+  return Size(obj)=Size(DerivedSubSkewbrace(obj));
+end);
+
+

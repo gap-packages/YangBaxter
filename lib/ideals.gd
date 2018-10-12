@@ -448,3 +448,19 @@ DeclareGlobalFunction("SubSkewbrace");
 #! <brace of size 2>
 #! @EndExampleSession
 DeclareAttribute("DerivedSubSkewbrace", IsSkewbrace);
+
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace <A>obj</A> is perfect.
+#! @Description
+#! A skew brace $A$ is said to be perfect if $A^{(2)}=A$.
+#! @ExampleSession
+#! @EndExampleSession
+#! gap> br := SmallSkewbrace(8,14);
+#! <brace of size 8>
+#! gap> IsPerfect(br);
+#! false
+#! gap> br := SmallSkewbrace(12,22);
+#! <skew brace of size 12>
+#! gap> IsPerfect(br);
+#! true
+#DeclareProperty("IsPerfect", IsSkewbrace);
