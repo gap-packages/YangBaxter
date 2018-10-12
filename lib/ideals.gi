@@ -237,7 +237,7 @@ InstallMethod(RightSeries, "for a skew brace", [IsSkewbrace], function(obj)
 
   done := false;
   old := ShallowCopy(obj);
-  l := [old];
+  l := [AsIdeal(obj, AsList(obj))];
 
   repeat
     tmp := List(Cartesian(old, obj), x->Star(x[1],x[2]));
