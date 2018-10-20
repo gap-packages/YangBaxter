@@ -44,8 +44,6 @@ function(obj, subset)
     if HasParent(subset) and Parent(subset) = obj then
       if HasIsLeftIdealInParent(subset) then
         return IsLeftIdealInParent(subset);
-      elif HasIsLeftIdealInParent(subset) then
-        return IsLeftIdealInParent(subset);
       fi;
     fi;
   fi;
