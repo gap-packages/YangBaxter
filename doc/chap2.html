@@ -29,6 +29,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7816FE1786837102">2.1-2 IsJacobsonRadical</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X828909B779819630">2.1-3 AdjointGroup</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86BA1F347D3B2E7C">2.1-4 RadicalRing2Brace</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X815F6E1287725A92">2.1-5 DehornoyClass</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7ECA588F820E4FDD">2.2 <span class="Heading">YangBaxter automatic generated documentation of methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X825856827B8F9B3C">2.2-1 Evaluate</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EB5F8BE80E57D3E">2.2-2 LyubashenkoYB</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79C6A56D840716FB">2.2-3 LinearRepresentationOfStructureGroup</a></span>
 </div></div>
 </div>
 
@@ -49,9 +57,9 @@
 
 
 <div class="example"><pre>
- gap&gt; rg := SmallRing(8,10);;
- gap&gt; StructureDescription(AdditiveGroupOfRing(rg));
- "C4 x C2"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rg := SmallRing(8,10);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(AdditiveGroupOfRing(rg));</span>
+"C4 x C2"
 </pre></div>
 
 <p><a id="X7816FE1786837102" name="X7816FE1786837102"></a></p>
@@ -65,12 +73,12 @@
 
 
 <div class="example"><pre>
- gap&gt; rg := SmallRing(8,11);;
- gap&gt; IsJacobsonRadical(rg);
- true
- gap&gt; rg := SmallRing(8,20);;
- gap&gt; IsJacobsonRadical(rg);
- false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rg := SmallRing(8,11);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsJacobsonRadical(rg);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rg := SmallRing(8,20);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsJacobsonRadical(rg);</span>
+false
 </pre></div>
 
 <p><a id="X828909B779819630" name="X828909B779819630"></a></p>
@@ -84,11 +92,11 @@
 
 
 <div class="example"><pre>
- gap&gt; rg := SmallRing(8,10);;
- gap&gt; IsJacobsonRadical(rg);
- true
- gap&gt; StructureDescription(AdjointGroup(rg));
- "D8"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rg := SmallRing(8,10);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsJacobsonRadical(rg);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(AdjointGroup(rg));</span>
+"D8"
 </pre></div>
 
 <p><a id="X86BA1F347D3B2E7C" name="X86BA1F347D3B2E7C"></a></p>
@@ -102,11 +110,109 @@
 
 
 <div class="example"><pre>
- gap&gt; rg := SmallRing(8,10);;
- gap&gt; IsJacobsonRadical(rg);
- true
- gap&gt; IdBrace(RadicalRing2Brace(rg));
- [ 8, 13 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rg := SmallRing(8,10);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsJacobsonRadical(rg);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdBrace(RadicalRing2Brace(rg));</span>
+[ 8, 13 ]
+</pre></div>
+
+<p><a id="X815F6E1287725A92" name="X815F6E1287725A92"></a></p>
+
+<h5>2.1-5 DehornoyClass</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DehornoyClass</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: The class of an involutive solution</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(4,13);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := CycleSet2YB(cs);;</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(4,19);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := CycleSet2YB(cs);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DehornoyClass(yb);</span>
+4
+</pre></div>
+
+<p><a id="X7ECA588F820E4FDD" name="X7ECA588F820E4FDD"></a></p>
+
+<h4>2.2 <span class="Heading">YangBaxter automatic generated documentation of methods</span></h4>
+
+<p><a id="X825856827B8F9B3C" name="X825856827B8F9B3C"></a></p>
+
+<h5>2.2-1 Evaluate</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Evaluate</code>( <var class="Arg">obj</var>, <var class="Arg">pair</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a pair of two integers</p>
+
+<p>Given the pair <span class="Math">(x,y)</span> this function returns <span class="Math">r(x,y)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(4,13);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := CycleSet2YB(cs);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Permutations(yb);</span>
+[ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], 
+  [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Evaluate(yb, [1,2]);</span>
+[ 2, 4 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Evaluate(yb, [1,3]); </span>
+[ 4, 2 ]
+</pre></div>
+
+<p><a id="X7EB5F8BE80E57D3E" name="X7EB5F8BE80E57D3E"></a></p>
+
+<h5>2.2-2 LyubashenkoYB</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LyubashenkoYB</code>( <var class="Arg">size</var>, <var class="Arg">f</var>, <var class="Arg">g</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a permutation solution to the YBE</p>
+
+<p>Finite Lyubashenko (or permutation) solutions are defined as follows: Let <span class="Math">X=\{1,\dots,n\}</span> and <span class="Math">f,g\colon X\to X</span> be bijective functions such that <span class="Math">fg=gf</span>. Then <span class="Math">(X,r)</span>, where <span class="Math">r(x,y)=(f(y),g(x))</span>, is a set-theoretic solutionbe to the YBE.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := LyubashenkoYB(4, (1,2),(3,4));</span>
+&lt;A set-theoretical solution of size 4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Permutations(last);</span>
+[ [ (1,2), (1,2), (1,2), (1,2) ], [ (3,4), (3,4), (3,4), (3,4) ] ]
+</pre></div>
+
+<p><a id="X79C6A56D840716FB" name="X79C6A56D840716FB"></a></p>
+
+<h5>2.2-3 LinearRepresentationOfStructureGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinearRepresentationOfStructureGroup</code>( <var class="Arg">obj</var>, <var class="Arg">variable</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: A faithful linear representaiton of the structure group of <var class="Arg">obj</var></p>
+
+<p>...</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(4,13);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := CycleSet2YB(cs);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Permutations(yb);</span>
+[ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], 
+  [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">field := FunctionField(Rationals, 1);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := IndeterminatesOfFunctionField(field)[1];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := LinearRepresentationOfStructureGroup(yb, q);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x1 := G.1;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x2 := G.2;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x3 := G.3;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x4 := G.4;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x1*x2=x2*x4;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x1*x3=x4*x2;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x1*x4=x3*x3;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x2*x1=x3*x4;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x2*x2=x4*x1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x3*x1=x4*x3;</span>
+true
 </pre></div>
 
 

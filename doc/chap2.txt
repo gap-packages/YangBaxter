@@ -13,9 +13,9 @@
   the given ring.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X gap> rg := SmallRing(8,10);;[128X[104X
-    [4X[28X gap> StructureDescription(AdditiveGroupOfRing(rg));[128X[104X
-    [4X[28X "C4 x C2"[128X[104X
+    [4X[25Xgap>[125X [27Xrg := SmallRing(8,10);;[127X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(AdditiveGroupOfRing(rg));[127X[104X
+    [4X[28X"C4 x C2"[128X[104X
   [4X[32X[104X
   
   [1X2.1-2 IsJacobsonRadical[101X
@@ -26,12 +26,12 @@
   [33X[0;0YThis function checks whether a ring is Jacobson radical.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X gap> rg := SmallRing(8,11);;[128X[104X
-    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
-    [4X[28X true[128X[104X
-    [4X[28X gap> rg := SmallRing(8,20);;[128X[104X
-    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
-    [4X[28X false[128X[104X
+    [4X[25Xgap>[125X [27Xrg := SmallRing(8,11);;[127X[104X
+    [4X[25Xgap>[125X [27XIsJacobsonRadical(rg);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xrg := SmallRing(8,20);;[127X[104X
+    [4X[25Xgap>[125X [27XIsJacobsonRadical(rg);[127X[104X
+    [4X[28Xfalse[128X[104X
   [4X[32X[104X
   
   [1X2.1-3 AdjointGroup[101X
@@ -42,11 +42,11 @@
   [33X[0;0YThis function returns the adjoint group of the radical ring.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X gap> rg := SmallRing(8,10);;[128X[104X
-    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
-    [4X[28X true[128X[104X
-    [4X[28X gap> StructureDescription(AdjointGroup(rg));[128X[104X
-    [4X[28X "D8"[128X[104X
+    [4X[25Xgap>[125X [27Xrg := SmallRing(8,10);;[127X[104X
+    [4X[25Xgap>[125X [27XIsJacobsonRadical(rg);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(AdjointGroup(rg));[127X[104X
+    [4X[28X"D8"[128X[104X
   [4X[32X[104X
   
   [1X2.1-4 RadicalRing2Brace[101X
@@ -57,10 +57,98 @@
   [33X[0;0YThis function returns the brace of the given radical ring.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X gap> rg := SmallRing(8,10);;[128X[104X
-    [4X[28X gap> IsJacobsonRadical(rg);[128X[104X
-    [4X[28X true[128X[104X
-    [4X[28X gap> IdBrace(RadicalRing2Brace(rg));[128X[104X
-    [4X[28X [ 8, 13 ][128X[104X
+    [4X[25Xgap>[125X [27Xrg := SmallRing(8,10);;[127X[104X
+    [4X[25Xgap>[125X [27XIsJacobsonRadical(rg);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIdBrace(RadicalRing2Brace(rg));[127X[104X
+    [4X[28X[ 8, 13 ][128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-5 DehornoyClass[101X
+  
+  [33X[1;0Y[29X[2XDehornoyClass[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YThe class of an involutive solution[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X
+    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,19);;[127X[104X
+    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
+    [4X[25Xgap>[125X [27XDehornoyClass(yb);[127X[104X
+    [4X[28X4[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.2 [33X[0;0YYangBaxter automatic generated documentation of methods[133X[101X
+  
+  [1X2.2-1 Evaluate[101X
+  
+  [33X[1;0Y[29X[2XEvaluate[102X( [3Xobj[103X, [3Xpair[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya pair of two integers[133X
+  
+  [33X[0;0YGiven the pair [23X(x,y)[123X this function returns [23Xr(x,y)[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X
+    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
+    [4X[25Xgap>[125X [27XPermutations(yb);[127X[104X
+    [4X[28X[ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], [128X[104X
+    [4X[28X  [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ][128X[104X
+    [4X[25Xgap>[125X [27XEvaluate(yb, [1,2]);[127X[104X
+    [4X[28X[ 2, 4 ][128X[104X
+    [4X[25Xgap>[125X [27XEvaluate(yb, [1,3]); [127X[104X
+    [4X[28X[ 4, 2 ][128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-2 LyubashenkoYB[101X
+  
+  [33X[1;0Y[29X[2XLyubashenkoYB[102X( [3Xsize[103X, [3Xf[103X, [3Xg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya permutation solution to the YBE[133X
+  
+  [33X[0;0YFinite  Lyubashenko  (or  permutation) solutions are defined as follows: Let
+  [23XX=\{1,\dots,n\}[123X and [23Xf,g\colon X\to X[123X be bijective functions such that [23Xfg=gf[123X.
+  Then  [23X(X,r)[123X,  where [23Xr(x,y)=(f(y),g(x))[123X, is a set-theoretic solutionbe to the
+  YBE.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xyb := LyubashenkoYB(4, (1,2),(3,4));[127X[104X
+    [4X[28X<A set-theoretical solution of size 4>[128X[104X
+    [4X[25Xgap>[125X [27XPermutations(last);[127X[104X
+    [4X[28X[ [ (1,2), (1,2), (1,2), (1,2) ], [ (3,4), (3,4), (3,4), (3,4) ] ][128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-3 LinearRepresentationOfStructureGroup[101X
+  
+  [33X[1;0Y[29X[2XLinearRepresentationOfStructureGroup[102X( [3Xobj[103X, [3Xvariable[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA faithful linear representaiton of the structure group of [3Xobj[103X[133X
+  
+  [33X[0;0Y...[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X
+    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
+    [4X[25Xgap>[125X [27XPermutations(yb);[127X[104X
+    [4X[28X[ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], [128X[104X
+    [4X[28X  [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ][128X[104X
+    [4X[25Xgap>[125X [27Xfield := FunctionField(Rationals, 1);;[127X[104X
+    [4X[25Xgap>[125X [27Xq := IndeterminatesOfFunctionField(field)[1];[127X[104X
+    [4X[25Xgap>[125X [27XG := LinearRepresentationOfStructureGroup(yb, q);;[127X[104X
+    [4X[25Xgap>[125X [27Xx1 := G.1;;[127X[104X
+    [4X[25Xgap>[125X [27Xx2 := G.2;;[127X[104X
+    [4X[25Xgap>[125X [27Xx3 := G.3;;[127X[104X
+    [4X[25Xgap>[125X [27Xx4 := G.4;;[127X[104X
+    [4X[25Xgap>[125X [27Xx1*x2=x2*x4;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xx1*x3=x4*x2;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xx1*x4=x3*x3;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xx2*x1=x3*x4;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xx2*x2=x4*x1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xx3*x1=x4*x3;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   

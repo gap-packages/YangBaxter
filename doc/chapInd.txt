@@ -6,7 +6,10 @@
   [2XAdjointGroup[102X, for IsRing 2.1-3 
   [2XAsIdeal[102X, for IsSkewbrace, IsCollection 1.2-3 
   [2XBaerRadical[102X, for IsSkewbrace 1.5-7 
+  [2XBrace2YB[102X, for IsSkewbrace 3.1-15 
+  [2XDehornoyClass[102X, for IsYB 2.1-5 
   [2XDirectProductSkewbraces[102X, for IsSkewbrace, IsSkewbrace 3.1-10 
+  [2XEvaluate[102X, for IsYB, IsList 2.2-1 
   [2XFix[102X, for IsSkewbrace 1.4-4 
   [2XIdBrace[102X, for IsSkewbrace 3.1-8 
   [2XIdealGeneratedBy[102X, for IsSkewbrace, IsCollection 1.2-4 
@@ -35,6 +38,8 @@
   [2XLeftIdeals[102X, for IsSkewbrace 1.1-1 
   [2XLeftNilpotentIdeals[102X, for IsSkewbrace 1.3-6 
   [2XLeftSeries[102X, for IsSkewbrace 1.3-1 
+  [2XLinearRepresentationOfStructureGroup[102X, for IsYB, IsObject 2.2-3 
+  [2XLyubashenkoYB[102X, for IsInt, IsPerm, IsPerm 2.2-2 
   [2XMinimalIdeals[102X, for IsSkewbrace 1.5-12 
   [2XMultipermutationLevel[102X, for IsSkewbrace 1.4-2 
   [2XPrimeIdeals[102X, for IsSkewbrace 1.5-3 
@@ -44,9 +49,11 @@
   [2XRightSeries[102X, for IsSkewbrace 1.3-2 
   [2XSemiprimeIdeals[102X, for IsSkewbrace 1.5-6 
   [2XSkewbrace[102X, for IsList 3.1-2 
+  [2XSkewbrace2YB[102X, for IsSkewbrace 3.1-14 
+  [2XSkewbraceSubset2YB[102X, for IsSkewbrace, IsCollection 3.1-16 
   [2XSmallBrace[102X, for IsInt, IsInt 3.1-6 
   [2XSmallSkewbrace[102X, for IsInt, IsInt 3.1-3 
-  [2XSmoktunowiczSeries[102X, for IsSkewbrace 1.3-8 
+  [2XSmoktunowiczSeries[102X, for IsSkewbrace, IsInt 1.3-8 
   [2XSocle[102X, for IsSkewbrace 1.3-9 
   [2XSocleSeries[102X, for IsSkewbrace 1.4-1 
   [2XSolvableSeries[102X, for IsSkewbrace 1.5-10 

@@ -6,10 +6,10 @@
              [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                     0.2.0
+                                     0.3.0
   
   
-                                 13 April 2018
+                                9 February 2019
   
   
                                Leandro Vendramin
@@ -28,7 +28,7 @@
   
   Alexander Konovalov
       Email:    [7Xmailto:alexander.konovalov@st-andrews.ac.uk[107X
-      Homepage: [7Xhttp://www.cs.st-andrews.ac.uk/~alexk/[107X
+      Homepage: [7Xhttps://alexk.host.cs.st-andrews.ac.uk/[107X
       Address:  [33X[0;14YSchool of Computer Science[133X
                 [33X[0;14YUniversity of St Andrews[133X
                 [33X[0;14YJack Cole Building, North Haugh,[133X
@@ -88,6 +88,11 @@
       2.1-2 IsJacobsonRadical
       2.1-3 AdjointGroup
       2.1-4 RadicalRing2Brace
+      2.1-5 DehornoyClass
+    2.2 [33X[0;0YYangBaxter automatic generated documentation of methods[133X
+      2.2-1 Evaluate
+      2.2-2 LyubashenkoYB
+      2.2-3 LinearRepresentationOfStructureGroup
   3 [33X[0;0YPreliminaries[133X
     3.1 [33X[0;0YDefinition and examples[133X
       3.1-1 IsSkewbrace
@@ -103,6 +108,9 @@
       3.1-11 IsTwoSided
       3.1-12 IsClassical
       3.1-13 IsTrivialSkewbrace
+      3.1-14 Skewbrace2YB
+      3.1-15 Brace2YB
+      3.1-16 SkewbraceSubset2YB
   
   
   [32X

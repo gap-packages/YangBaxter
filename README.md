@@ -3,4 +3,13 @@
 
 # YangBaxter
 
-GAP package for set-theoretic solutions of the Yang-Baxter equation.
+This is a GAP package to perform calculations related to set-theoretic 
+solutions to the Yang-Baxter equation. The package includes
+a database of (skew) braces up to size 150 (with some exceptions)
+and all cycle sets of size <9. 
+
+YangBaxter does not use external binaries and, therefore, works without restrictions on the type of the operating system. It is redistributed with GAP, but is not loaded by default. To use YangBaxter, first you need to load it using the following command:
+
+gap> LoadPackage("YangBaxter");
+
+Alexander Konovalov, Leandro Vendramin

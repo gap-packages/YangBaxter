@@ -38,6 +38,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84880C7484699973">3.1-11 IsTwoSided</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BC5B7CF7877F333">3.1-12 IsClassical</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F8C6C4B81096AF0">3.1-13 IsTrivialSkewbrace</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8426ABE1808B92DC">3.1-14 Skewbrace2YB</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F09E6DE78CC240B">3.1-15 Brace2YB</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E2F64338788EBF9">3.1-16 SkewbraceSubset2YB</a></span>
 </div></div>
 </div>
 
@@ -69,10 +72,10 @@
 
 
 <div class="example"><pre>
- gap&gt; Skewbrace([[(),()]]);
- &lt;brace of size 1&gt;
- gap&gt; Skewbrace([[(),()],[(1,2),(1,2)]]);
- &lt;brace of size 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Skewbrace([[(),()]]);</span>
+&lt;brace of size 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Skewbrace([[(),()],[(1,2),(1,2)]]);</span>
+&lt;brace of size 2&gt;
 </pre></div>
 
 <p><a id="X7BBF6AC978DC5CC1" name="X7BBF6AC978DC5CC1"></a></p>
@@ -86,8 +89,8 @@
 
 
 <div class="example"><pre>
- gap&gt; SmallSkewbrace(8,3);
- &lt;brace of size 8&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SmallSkewbrace(8,3);</span>
+&lt;brace of size 8&gt;
 </pre></div>
 
 <p><a id="X7B1AAF517D8D209D" name="X7B1AAF517D8D209D"></a></p>
@@ -101,8 +104,8 @@
 
 
 <div class="example"><pre>
- gap&gt; TrivialBrace(CyclicGroup(IsPermGroup, 5));
- &lt;brace of size 5&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TrivialBrace(CyclicGroup(IsPermGroup, 5));</span>
+&lt;brace of size 5&gt;
 </pre></div>
 
 <p><a id="X82BB1BB37932DF70" name="X82BB1BB37932DF70"></a></p>
@@ -116,8 +119,8 @@
 
 
 <div class="example"><pre>
- gap&gt; TrivialSkewbrace(DihedralGroup(10));
- &lt;skew brace of size 10&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TrivialSkewbrace(DihedralGroup(10));</span>
+&lt;skew brace of size 10&gt;
 </pre></div>
 
 <p><a id="X86AFF9C586B5C2B1" name="X86AFF9C586B5C2B1"></a></p>
@@ -131,8 +134,8 @@
 
 
 <div class="example"><pre>
- gap&gt; SmallBrace(8,3);
- &lt;brace of size 8&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SmallBrace(8,3);</span>
+&lt;brace of size 8&gt;
 </pre></div>
 
 <p><a id="X7ED6436A7DC2AB48" name="X7ED6436A7DC2AB48"></a></p>
@@ -146,8 +149,8 @@
 
 
 <div class="example"><pre>
- gap&gt; IdSkewbrace(SmallSkewbrace(8,5));
- [ 8, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdSkewbrace(SmallSkewbrace(8,5));</span>
+[ 8, 5 ]
 </pre></div>
 
 <p><a id="X80F7E6B78327BD5E" name="X80F7E6B78327BD5E"></a></p>
@@ -161,8 +164,8 @@
 
 
 <div class="example"><pre>
- gap&gt; IdBrace(SmallBrace(8,5));
- [ 8, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdBrace(SmallBrace(8,5));</span>
+[ 8, 5 ]
 </pre></div>
 
 <p><a id="X79746AAC863EA794" name="X79746AAC863EA794"></a></p>
@@ -188,15 +191,15 @@ f(a\circ b)=f(a)\circ f(b)</p>
 
 
 <div class="example"><pre>
- gap&gt; br1 := SmallBrace(8,18);;
- gap&gt; br2 := SmallBrace(12,2);;
- gap&gt; br := DirectProductSkewbraces(br1,br2);;
- gap&gt; IsLeftNilpotent(br);
- false
- gap&gt; IsRightNilpotent(br);
- false
- gap&gt; IsSolvable(br);
- true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br1 := SmallBrace(8,18);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br2 := SmallBrace(12,2);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := DirectProductSkewbraces(br1,br2);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLeftNilpotent(br);</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRightNilpotent(br);</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSolvable(br);</span>
+true
 </pre></div>
 
 <p><a id="X84880C7484699973" name="X84880C7484699973"></a></p>
@@ -210,10 +213,10 @@ f(a\circ b)=f(a)\circ f(b)</p>
 
 
 <div class="example"><pre>
- gap&gt; IsTwoSided(SmallSkewbrace(8,2));
- false
- gap&gt; IsTwoSided(SmallSkewbrace(8,4));
- true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTwoSided(SmallSkewbrace(8,2));</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTwoSided(SmallSkewbrace(8,4));</span>
+true
 </pre></div>
 
 <p><a id="X7BC5B7CF7877F333" name="X7BC5B7CF7877F333"></a></p>
@@ -233,6 +236,46 @@ f(a\circ b)=f(a)\circ f(b)</p>
 <p>Returns: <var class="Arg">true</var> if the skew brace is trivial, <var class="Arg">false</var> otherwise</p>
 
 <p>The function returns <var class="Arg">true</var> if the skew brace <span class="Math">A</span> is trivial, i.e., <span class="Math">a\circ b=a+b</span> for all <span class="Math">a,b\in A</span>.</p>
+
+<p><a id="X8426ABE1808B92DC" name="X8426ABE1808B92DC"></a></p>
+
+<h5>3.1-14 Skewbrace2YB</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Skewbrace2YB</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the set-theoretic solution associated with the skew brace <var class="Arg">obj</var></p>
+
+<p>If <span class="Math">A</span> is a skew brace, the map <span class="Math">r_A\colon A\times A\to A\times A</span></p>
+
+<p class="pcenter">r_A(a,b)=(\lambda_a(b),\lambda_a(b)'\circ a\circ b)</p>
+
+<p>is a non-degenerate set-theoretic solution of the Yang--Baxter equation. Furthermore, <span class="Math">r_A</span> is involutive if and only if <span class="Math">A</span> is of abelian type (i.e., the additive group of <span class="Math">A</span> is abelian).</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Skewbrace2YB(TrivialBrace(CyclicGroup(6)));</span>
+&lt;A set-theoretical solution of size 6&gt;
+</pre></div>
+
+<p><a id="X7F09E6DE78CC240B" name="X7F09E6DE78CC240B"></a></p>
+
+<h5>3.1-15 Brace2YB</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Brace2YB</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7E2F64338788EBF9" name="X7E2F64338788EBF9"></a></p>
+
+<h5>3.1-16 SkewbraceSubset2YB</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkewbraceSubset2YB</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: the set-theoretic solution associated with a given subset of a skew brace</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := TrivialSkewbrace(SymmetricGroup(3));;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList(br);</span>
+[ &lt;()&gt;, &lt;(2,3)&gt;, &lt;(1,2)&gt;, &lt;(1,2,3)&gt;, &lt;(1,3,2)&gt;, &lt;(1,3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SkewbraceSubset2YB(br, last{[4,5]});</span>
+&lt;A set-theoretical solution of size 2&gt;
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>

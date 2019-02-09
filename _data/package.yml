@@ -1,6 +1,6 @@
 name: YangBaxter
-version: 0.2.0
-date: 2018-04-13
+version: 0.3.0
+date: 2019-02-09
 description: |
     Combinatorial Solutions for the Yang-Baxter equation
 
@@ -8,13 +8,13 @@ authors:
     - name: Leandro Vendramin
       url: http://mate.dm.uba.ar/~lvendram
     - name: Alexander Konovalov
-      url: http://www.cs.st-andrews.ac.uk/~alexk/
+      url: https://alexk.host.cs.st-andrews.ac.uk/
 
 maintainers:
     - name: Leandro Vendramin
       url: http://mate.dm.uba.ar/~lvendram
     - name: Alexander Konovalov
-      url: http://www.cs.st-andrews.ac.uk/~alexk/
+      url: https://alexk.host.cs.st-andrews.ac.uk/
 
 GAP: ">=4.8"
 
@@ -24,7 +24,7 @@ packageinfo: https://gap-packages.github.io/YangBaxter/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.2.0/YangBaxter-0.2.0.tar.gz
+      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.3.0/YangBaxter-0.3.0.tar.gz
 
 abstract: |
     The <span class="pkgname">YangBaxter</span> package provides functionality to construct classical and skew braces. It also includes a database of classical and skew braces of small orders.
