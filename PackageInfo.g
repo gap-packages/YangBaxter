@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.2.0",
-Date := "13/04/2018",
+Version := "0.3.0",
+Date := "09/02/2019",
 
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
@@ -38,7 +38,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "alexander.konovalov@st-andrews.ac.uk",
-    WWWHome       := "http://www.cs.st-andrews.ac.uk/~alexk/",
+    WWWHome       := "https://alexk.host.cs.st-andrews.ac.uk/",
     PostalAddress := Concatenation( [
                      "School of Computer Science\n",
                      "University of St Andrews\n",
