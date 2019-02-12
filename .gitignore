@@ -19,3 +19,6 @@ doc/*.six
 doc/*.tex
 doc/*.toc
 doc/*.txt
+
+/tmp/
+/gh-pages/
