@@ -379,7 +379,7 @@ end);
 #  return s;
 #end);
 
-InstallMethod(IsPrime, "for a skew brace", [IsSkewbrace], function(obj)
+InstallMethod(IsPrimeBrace, "for a skew brace", [IsSkewbrace], function(obj)
   local l, x, y;
   l := List(Ideals(obj), AsList);
   for x in l do
@@ -399,7 +399,7 @@ InstallMethod(IsPrime, "for a skew brace", [IsSkewbrace], function(obj)
 end);
 
 InstallMethod(IsPrimeIdeal, "for an ideal of a skew brace", [IsSkewbrace and IsIdealInParent], function(obj)
-  return IsPrime(Quotient(obj!.ParentAttr, obj));
+  return IsPrimeBrace(Quotient(obj!.ParentAttr, obj));
 end);
 
 InstallMethod(PrimeIdeals, "for a skew brace", [IsSkewbrace], function(obj)
