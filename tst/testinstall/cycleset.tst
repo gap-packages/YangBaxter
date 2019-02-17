@@ -39,13 +39,6 @@ gap> IsSquareFree(cs);
 false
 gap> IsSquareFree(yb);
 false
-
-# Test the dual of a cycle set
-gap> cs := SmallCycleSet(7,20);;
-gap> Permutations(cs);
-[ (), (), (), (), (), (3,5,4), (1,2)(3,4,5) ]
-gap> Permutations(Dual(cs));
-[ (), (), (), (), (), (3,4,5), (1,2)(3,5,4) ]
 gap> STOP_TEST( "cycleset.tst", 1 );
 
 #############################################################################
