@@ -58,7 +58,7 @@ DeclareOperation("IsCycleSetHomomorphism", [IsList, IsCycleSet, IsCycleSet]);
 
 ### Sub objects
 DeclareOperation("SubCycleSet", [IsCycleSet, IsList]);
-DeclareOperation("MinimalGenerators", [IsCycleSet]);
+#DeclareOperation("MinimalGenerators", [IsCycleSet]);
 
 ### Homology
 DeclareOperation("BoundaryMap", [ IsCycleSet, IsInt ]);
