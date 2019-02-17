@@ -222,7 +222,7 @@ DeclareAttribute("Socle", IsSkewbrace);
 #! @Description
 #! The socle series of a skew brace $A$ is defined recursively as 
 #! $A_1=A$ and $A_{n+1}=A_n/\mathrm{Soc}(A_n)$, see <Cite Key="MR3763907"/>.
-DeclareAttribute("SocleSeries", IsSkewbrace);
+DeclareOperation("SocleSeries", [IsSkewbrace]);
 
 #! @Arguments obj
 #! @Returns the multipermutation level of the skew brace <A>obj</A>
