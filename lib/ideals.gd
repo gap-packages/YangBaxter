@@ -282,12 +282,12 @@ DeclareOperation("Quotient", [IsSkewbrace, IsSkewbrace]);
 #! A skew brace $A$ is said to be prime if for all non-zero ideals $I$ and $J$ one has
 #! $I*J\ne 0$ 
 #! @ExampleSession
-#! gap> IsPrime(SmallBrace(24,12));
+#! gap> IsPrimeBrace(SmallBrace(24,12));
 #! false
-#! gap> IsPrime(SmallBrace(24,94));
+#! gap> IsPrimeBrace(SmallBrace(24,94));
 #! true
 #! @EndExampleSession
-DeclareAttribute("IsPrime", IsSkewbrace);
+DeclareProperty("IsPrimeBrace", IsSkewbrace);
 
 #! @Arguments obj
 #! @Returns <A>true</A> if the ideal <A>obj</A> is prime
@@ -296,14 +296,14 @@ DeclareAttribute("IsPrime", IsSkewbrace);
 #! @ExampleSession
 #! gap> br := SmallBrace(24,94);
 #! <brace of size 24>
-#! gap> IsPrime(br);
+#! gap> IsPrimeBrace(br);
 #! true
 #! gap> Ideals(br);
 #! [ <brace of size 24>, <brace of size 1> ]
 #! gap> IsPrimeIdeal(last[2]);
 #! true
 #! @EndExampleSession
-DeclareAttribute("IsPrimeIdeal", IsSkewbrace and IsIdealInParent);
+DeclareProperty("IsPrimeIdeal", IsSkewbrace and IsIdealInParent);
 
 #! @Arguments obj
 #! @Returns the list of prime ideals of the skew brace <A>obj</A> 

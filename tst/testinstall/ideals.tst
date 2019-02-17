@@ -61,7 +61,7 @@ gap> List(ls, IdSkewbrace);
 gap> br := SmallSkewbrace(24,708);;
 gap> IsSimpleSkewbrace(br);
 false
-gap> IsPrime(br);
+gap> IsPrimeBrace(br);
 true
 gap> IsSemiprime(br);
 true
