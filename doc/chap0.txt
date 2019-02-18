@@ -6,10 +6,10 @@
              [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                     0.3.0
+                                     0.4.0
   
   
-                                9 February 2019
+                                18 February 2019
   
   
                                Leandro Vendramin
@@ -70,7 +70,7 @@
       1.4-5 KernelOfLambda
       1.4-6 Quotient
     1.5 [33X[0;0YPrime and semiprime ideals[133X
-      1.5-1 IsPrime
+      1.5-1 IsPrimeBrace
       1.5-2 IsPrimeIdeal
       1.5-3 PrimeIdeals
       1.5-4 IsSemiprime

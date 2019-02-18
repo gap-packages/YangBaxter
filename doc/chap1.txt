@@ -251,7 +251,7 @@
   
   [1X1.4-1 SocleSeries[101X
   
-  [33X[1;0Y[29X[2XSocleSeries[102X( [3Xobj[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XSocleSeries[102X( [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ythe socle series of [3Xobj[103X[133X
   
   [33X[0;0YThe  socle  series  of  a  skew  brace [23XA[123X is defined recursively as [23XA_1=A[123X and
@@ -315,24 +315,24 @@
   
   [1X1.5 [33X[0;0YPrime and semiprime ideals[133X[101X
   
-  [1X1.5-1 IsPrime[101X
+  [1X1.5-1 IsPrimeBrace[101X
   
-  [33X[1;0Y[29X[2XIsPrime[102X( [3Xobj[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsPrimeBrace[102X( [3Xobj[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace [3Xobj[103X is prime[133X
   
   [33X[0;0YA  skew  brace  [23XA[123X is said to be prime if for all non-zero ideals [23XI[123X and [23XJ[123X one
   has [23XI*J\ne 0[123X[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XIsPrime(SmallBrace(24,12));[127X[104X
+    [4X[25Xgap>[125X [27XIsPrimeBrace(SmallBrace(24,12));[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsPrime(SmallBrace(24,94));[127X[104X
+    [4X[25Xgap>[125X [27XIsPrimeBrace(SmallBrace(24,94));[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [1X1.5-2 IsPrimeIdeal[101X
   
-  [33X[1;0Y[29X[2XIsPrimeIdeal[102X( [3Xobj[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsPrimeIdeal[102X( [3Xobj[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the ideal [3Xobj[103X is prime[133X
   
   [33X[0;0YAn  ideal  [23XI[123X  of  a  skew brace [23XA[123X is said to be prime if [23XA/I[123X is a prime skew
@@ -341,7 +341,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xbr := SmallBrace(24,94);[127X[104X
     [4X[28X<brace of size 24>[128X[104X
-    [4X[25Xgap>[125X [27XIsPrime(br);[127X[104X
+    [4X[25Xgap>[125X [27XIsPrimeBrace(br);[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIdeals(br);[127X[104X
     [4X[28X[ <brace of size 24>, <brace of size 1> ][128X[104X

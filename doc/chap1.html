@@ -64,7 +64,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7826660686D57FD6">1.5 <span class="Heading">Prime and semiprime ideals</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87CFC03E822200CD">1.5-1 IsPrime</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82CDAD02845051FA">1.5-1 IsPrimeBrace</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X834AED5184F2B9AC">1.5-2 IsPrimeIdeal</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80D35A2880B39EB0">1.5-3 PrimeIdeals</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X820951168658A704">1.5-4 IsSemiprime</a></span>
@@ -370,7 +370,7 @@ false
 
 <h5>1.4-1 SocleSeries</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SocleSeries</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SocleSeries</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: the socle series of <var class="Arg">obj</var></p>
 
 <p>The socle series of a skew brace <span class="Math">A</span> is defined recursively as <span class="Math">A_1=A</span> and <span class="Math">A_{n+1}=A_n/\mathrm{Soc}(A_n)</span>, see <a href="chapBib.html#biBMR3763907">[SV18]</a>.</p>
@@ -442,20 +442,20 @@ false
 
 <h4>1.5 <span class="Heading">Prime and semiprime ideals</span></h4>
 
-<p><a id="X87CFC03E822200CD" name="X87CFC03E822200CD"></a></p>
+<p><a id="X82CDAD02845051FA" name="X82CDAD02845051FA"></a></p>
 
-<h5>1.5-1 IsPrime</h5>
+<h5>1.5-1 IsPrimeBrace</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPrime</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPrimeBrace</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <var class="Arg">true</var> if the skew brace <var class="Arg">obj</var> is prime</p>
 
 <p>A skew brace <span class="Math">A</span> is said to be prime if for all non-zero ideals <span class="Math">I</span> and <span class="Math">J</span> one has <span class="Math">I*J\ne 0</span></p>
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrime(SmallBrace(24,12));</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrimeBrace(SmallBrace(24,12));</span>
 false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrime(SmallBrace(24,94));</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrimeBrace(SmallBrace(24,94));</span>
 true
 </pre></div>
 
@@ -463,7 +463,7 @@ true
 
 <h5>1.5-2 IsPrimeIdeal</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPrimeIdeal</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPrimeIdeal</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <var class="Arg">true</var> if the ideal <var class="Arg">obj</var> is prime</p>
 
 <p>An ideal <span class="Math">I</span> of a skew brace <span class="Math">A</span> is said to be prime if <span class="Math">A/I</span> is a prime skew brace.</p>
@@ -472,7 +472,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallBrace(24,94);</span>
 &lt;brace of size 24&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrime(br);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrimeBrace(br);</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ideals(br);</span>
 [ &lt;brace of size 24&gt;, &lt;brace of size 1&gt; ]

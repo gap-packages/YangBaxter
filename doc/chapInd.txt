@@ -25,7 +25,7 @@
   [2XIsMinimalIdeal[102X, for IsSkewbrace and IsIdealInParent 1.5-11 
   [2XIsMultipermutation[102X, for IsSkewbrace 1.4-3 
   [2XIsomorphismSkewbraces[102X 3.1-9 
-  [2XIsPrime[102X, for IsSkewbrace 1.5-1 
+  [2XIsPrimeBrace[102X, for IsSkewbrace 1.5-1 
   [2XIsPrimeIdeal[102X, for IsSkewbrace and IsIdealInParent 1.5-2 
   [2XIsRightNilpotent[102X, for IsSkewbrace 1.3-5 
   [2XIsSemiprime[102X, for IsSkewbrace 1.5-4 
