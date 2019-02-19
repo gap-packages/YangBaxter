@@ -34,7 +34,7 @@ DeclareOperation("TrivialYB", [IsInt]);
 #! Finite Lyubashenko (or permutation) solutions are defined as follows: Let 
 #! $X=\{1,\dots,n\}$ and $f,g\colon X\to X$ be bijective functions such that 
 #! $fg=gf$. Then $(X,r)$, where $r(x,y)=(f(y),g(x))$, is a set-theoretic 
-#! solutionbe to the YBE.
+#! solution to the YBE.
 #! @ExampleSession
 #! gap> yb := LyubashenkoYB(4, (1,2),(3,4));
 #! <A set-theoretical solution of size 4>
@@ -110,7 +110,7 @@ DeclareOperation("Wada", [IsGroup]);
 #! @Arguments obj,variable
 #! @Returns A faithful linear representaiton of the structure group of <A>obj</A>
 #! @Description
-#! ...
+#! 
 #! @ExampleSession
 #! gap> cs := SmallCycleSet(4,13);;
 #! gap> yb := CycleSet2YB(cs);;

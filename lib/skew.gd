@@ -1,7 +1,7 @@
 #! @Chapter Preliminaries
 #! In this section we define skew braces and list some of their
-#! main properties <URL>http://www.google.com</URL>
-#! <Cite Key="MR3647970"/>,
+#! main properties
+#! <Cite Key="MR3647970"/>.
 #! @Section Definition and examples
 #! A skew brace is a triple $(A,+,\circ)$, where $(A,+)$ and $(A,\circ)$
 #! are two (not necessarily abelian) groups such that
