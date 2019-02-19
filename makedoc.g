@@ -49,7 +49,9 @@ od;
 end;
 
 LoadPackage("AutoDoc");
-AutoDoc(rec(autodoc := true, scaffold:=true));
+AutoDoc( rec( scaffold :=true,
+              autodoc  := rec( files := [ "doc/chapters.autodoc" ] )
+));
 QUIT;
 ###########################################################################
 ##

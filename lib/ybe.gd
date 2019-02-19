@@ -1,3 +1,6 @@
+#! @Chapter Algebraic Properties of Braces
+#! @Section Braces and Yang-Baxter Equation
+
 DeclareCategory("IsYB", IsAttributeStoringRep);
 DeclareGlobalVariable("YBType");
 

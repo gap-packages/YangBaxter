@@ -1,3 +1,5 @@
+#! @Chapter Algebraic Properties of Braces
+#! @Section Braces and Radical Rings
 #! @Arguments ring
 #! @Returns a group 
 #! @Description
