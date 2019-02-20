@@ -1,8 +1,8 @@
   
-  [1X2 [33X[0;0YYangBaxter automatic generated documentation[133X[101X
+  [1X2 [33X[0;0YAlgebraic Properties of Braces[133X[101X
   
   
-  [1X2.1 [33X[0;0YYangBaxter automatic generated documentation of attributes[133X[101X
+  [1X2.1 [33X[0;0YBraces and Radical Rings[133X[101X
   
   [1X2.1-1 AdditiveGroupOfRing[101X
   
@@ -64,23 +64,8 @@
     [4X[28X[ 8, 13 ][128X[104X
   [4X[32X[104X
   
-  [1X2.1-5 DehornoyClass[101X
   
-  [33X[1;0Y[29X[2XDehornoyClass[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10YThe class of an involutive solution[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X
-    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,19);;[127X[104X
-    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
-    [4X[25Xgap>[125X [27XDehornoyClass(yb);[127X[104X
-    [4X[28X4[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X2.2 [33X[0;0YYangBaxter automatic generated documentation of methods[133X[101X
+  [1X2.2 [33X[0;0YBraces and Yang-Baxter Equation[133X[101X
   
   [1X2.2-1 Evaluate[101X
   
@@ -108,7 +93,7 @@
   
   [33X[0;0YFinite  Lyubashenko  (or  permutation) solutions are defined as follows: Let
   [23XX=\{1,\dots,n\}[123X and [23Xf,g\colon X\to X[123X be bijective functions such that [23Xfg=gf[123X.
-  Then  [23X(X,r)[123X,  where [23Xr(x,y)=(f(y),g(x))[123X, is a set-theoretic solutionbe to the
+  Then  [23X(X,r)[123X,  where  [23Xr(x,y)=(f(y),g(x))[123X,  is a set-theoretic solution to the
   YBE.[133X
   
   [4X[32X  Example  [32X[104X
@@ -118,12 +103,25 @@
     [4X[28X[ [ (1,2), (1,2), (1,2), (1,2) ], [ (3,4), (3,4), (3,4), (3,4) ] ][128X[104X
   [4X[32X[104X
   
-  [1X2.2-3 LinearRepresentationOfStructureGroup[101X
+  [1X2.2-3 DehornoyClass[101X
+  
+  [33X[1;0Y[29X[2XDehornoyClass[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YThe class of an involutive solution[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X
+    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,19);;[127X[104X
+    [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
+    [4X[25Xgap>[125X [27XDehornoyClass(yb);[127X[104X
+    [4X[28X4[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-4 LinearRepresentationOfStructureGroup[101X
   
   [33X[1;0Y[29X[2XLinearRepresentationOfStructureGroup[102X( [3Xobj[103X, [3Xvariable[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA faithful linear representaiton of the structure group of [3Xobj[103X[133X
-  
-  [33X[0;0Y...[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X

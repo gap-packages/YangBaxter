@@ -1,225 +1,470 @@
   
-  [1X3 [33X[0;0YPreliminaries[133X[101X
+  [1X3 [33X[0;0YIdeals and left ideals[133X[101X
   
-  [33X[0;0YIn this section we define skew braces and list some of their main properties
-  [7Xhttp://www.google.com[107X [GV17],[133X
+  [33X[0;0YIn  this  section  we  describe several functions related to ideals and left
+  ideals of skew braces. References: [GV17] and [SV18].[133X
   
   
-  [1X3.1 [33X[0;0YDefinition and examples[133X[101X
+  [1X3.1 [33X[0;0YLeft ideals[133X[101X
   
-  [33X[0;0YA skew brace is a triple [23X(A,+,\circ)[123X, where [23X(A,+)[123X and [23X(A,\circ)[123X are two (not
-  necessarily  abelian) groups such that the compatibility [23Xa\circ (b+c)=a\circ
-  b-a+a\circ   c[123X   holds  for  all  [23Xa,b,c\in  A[123X.  Ones  proves  that  the  map
-  [23X\lambda\colon      (A,\circ)\to\mathrm{Aut}(A,+)[123X,      [23Xa\mapsto\lambda_a(b)[123X,
-  [23X\lambda_a(b)=-a+a\circ  b[123X,  is a group homomorphism. Notation: For [23Xa,b\in A[123X,
-  we write [23Xa*b=\lambda_a(b)-b[123X.[133X
+  [33X[0;0YAn left ideal [23XI[123X of a skew brace [23XA[123X is a subgroup [23XI[123X of the additive group of [23XA[123X
+  such that [23X\lambda_a(I)\subseteq I[123X for all [23Xa\in A[123X.[133X
   
-  [1X3.1-1 IsSkewbrace[101X
+  [1X3.1-1 LeftIdeals[101X
   
-  [33X[1;0Y[29X[2XIsSkewbrace[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [33X[1;0Y[29X[2XLeftIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list with the left ideals of the skew brace [3Xobj[103X[133X
   
-  [1X3.1-2 Skewbrace[101X
+  [1X3.1-2 IsLeftIdeal[101X
   
-  [33X[1;0Y[29X[2XSkewbrace[102X( [3Xlist[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya skew brace[133X
-  
-  [33X[0;0YThe  argument [3Xlist[103X is a list of pairs of elements in a group. By Proposition
-  5.11  of [GV17], skew braces over an abelian group [23XA[123X are equivalent to pairs
-  [23X(G,\pi)[123X, where [23XG[123X is a group and [23X\pi\colon G\to A[123X is a bijective [23X1[123X-cocycle, a
-  finite  skew  brace  can be constructed from the set [23X\{(a_j,g_j):1\leq j\leq
-  n\}[123X,  where  [23XG=\{g_1,\dots,g_n\}[123X  and  [23XA=\{a_1,\dots,a_n\}[123X  are  permutation
-  groups. This function is used to construct skew braces.[133X
+  [33X[1;0Y[29X[2XIsLeftIdeal[102X( [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the subset is a left ideal of [3Xobj[103X[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XSkewbrace([[(),()]]);[127X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(8,4);[127X[104X
+    [4X[28X<brace of size 8>[128X[104X
+    [4X[25Xgap>[125X [27Xleftideals := LeftIdeals(br);[127X[104X
+    [4X[28X[ <brace of size 8>, <brace of size 4>, <brace of size 2>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XList(left_ideals, x->IsLeftIdeal(br, x));[127X[104X
+    [4X[28X[ true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList(left_ideals, IdBrace);[127X[104X
+    [4X[28X[ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X3.2 [33X[0;0YIdeals[133X[101X
+  
+  [33X[0;0YAn ideal [23XI[123X of a skew brace [23XA[123X is a normal subgroup [23XI[123X of the additive group of
+  [23XA[123X such that [23X\lambda_a(I)\subseteq I[123X and [23Xa\circ I=I\circ a[123X for all [23Xa\in A[123X.[133X
+  
+  [1X3.2-1 IsIdeal[101X
+  
+  [33X[1;0Y[29X[2XIsIdeal[102X( [3Xobj[103X, [3Xsubset[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the [3Xsubset[103X is a left ideal of [3Xobj[103X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(8,4);[127X[104X
+    [4X[28X<brace of size 8>[128X[104X
+    [4X[25Xgap>[125X [27Xideals := LeftIdeals(br);[127X[104X
+    [4X[28X[ <brace of size 8>, <brace of size 4>, <brace of size 2>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XList(left_ideals, x->IsLeftIdeal(br, x));[127X[104X
+    [4X[28X[ true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList(left_ideals, IdBrace);[127X[104X
+    [4X[28X[ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-2 Ideals[101X
+  
+  [33X[1;0Y[29X[2XIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list with the ideals of the skew brace [3Xobj[103X[133X
+  
+  [1X3.2-3 AsIdeal[101X
+  
+  [33X[1;0Y[29X[2XAsIdeal[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [1X3.2-4 IdealGeneratedBy[101X
+  
+  [33X[1;0Y[29X[2XIdealGeneratedBy[102X( [3Xobj[103X, [3Xsubset[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe ideal of [3Xobj[103X generated by the given [3Xsubset[103X[133X
+  
+  [33X[0;0YThe  ideal  of a skew brace [23XA[123X generated by a subset [23XX[123X is the intersection of
+  all the ideals of [23XA[123X containing [23XX[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,6);;[127X[104X
+    [4X[25Xgap>[125X [27XAsList(br);[127X[104X
+    [4X[28X[ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)>, <(1,4)(2,5)(3,6)>, [128X[104X
+    [4X[28X  <(1,5,3,4,2,6)>, <(1,6,2,4,3,5)> ][128X[104X
+    [4X[25Xgap>[125X [27XIdealGeneratedBy(br, [last[2]]);[127X[104X
+    [4X[28X<brace of size 3>[128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-5 IntersectionOfTwoIdeals[101X
+  
+  [33X[1;0Y[29X[2XIntersectionOfTwoIdeals[102X( [3Xideal1[103X, [3Xideal2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe intersection of [3Xideal1[103X and [3Xideal2[103X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,6);;[127X[104X
+    [4X[25Xgap>[125X [27XIdeals(br);[127X[104X
+    [4X[28X[ <brace of size 6>, <brace of size 2>, <brace of size 3>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XIntersectionOfTwoIdeals(last[2],last[3]);[127X[104X
     [4X[28X<brace of size 1>[128X[104X
-    [4X[25Xgap>[125X [27XSkewbrace([[(),()],[(1,2),(1,2)]]);[127X[104X
+  [4X[32X[104X
+  
+  [1X3.2-6 SumOfTwoIdeals[101X
+  
+  [33X[1;0Y[29X[2XSumOfTwoIdeals[102X( [3Xideal1[103X, [3Xideal2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe sum of [3Xideal1[103X and [3Xideal2[103X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,6);;[127X[104X
+    [4X[25Xgap>[125X [27XIdeals(br);[127X[104X
+    [4X[28X[ <brace of size 6>, <brace of size 2>, <brace of size 3>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XSumOfTwoIdeals(last[2],last[3]);[127X[104X
+    [4X[28X<brace of size 6>[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X3.3 [33X[0;0YSequences (left) ideals[133X[101X
+  
+  [1X3.3-1 LeftSeries[101X
+  
+  [33X[1;0Y[29X[2XLeftSeries[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe left ideals of the left series of [3Xobj[103X[133X
+  
+  [33X[0;0YThe  left  series  of  a  skew  brace  [23XA[123X is defined recursively as [23XA^1=A[123X and
+  [23XA^{n+1}=A*A^n[123X  for  [23Xn\geq1[123X,  where  [23Xa*b=\lambda_a(b)-b[123X.  Each  [23XA^n[123X is a left
+  ideal.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,20);[127X[104X
+    [4X[28X<skew brace of size 8>[128X[104X
+    [4X[25Xgap>[125X [27XLeftSeries(br);[127X[104X
+    [4X[28X[ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.3-2 RightSeries[101X
+  
+  [33X[1;0Y[29X[2XRightSeries[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe ideals of the right series of [3Xobj[103X[133X
+  
+  [33X[0;0YThe  right series of a skew brace 0[23XA[123X is defined recursively as [23XA^{(1)}=A[123X and
+  [23XA^{(n+1)}=A*A^{(n)}[123X for [23Xn\geq1[123X, where [23Xa*b=\lambda_a(b)-b[123X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,20);[127X[104X
+    [4X[28X<skew brace of size 8>[128X[104X
+    [4X[25Xgap>[125X [27XRightSeries(br);[127X[104X
+    [4X[28X[ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.3-3 IsLeftNilpotent[101X
+  
+  [33X[1;0Y[29X[2XIsLeftNilpotent[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace [3Xobj[103X is left nilpotent.[133X
+  
+  [33X[0;0YA skew brace [23XA[123X is said to be left nilpotent if there exists [23Xn\geq1[123X such that
+  [23XA^n=0[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsLeftNilpotent(SmallBrace(8,18));[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLeftNilpotent(SmallBrace(12,2));[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [1X3.3-4 IsSimpleSkewbrace[101X
+  
+  [33X[1;0Y[29X[2XIsSimpleSkewbrace[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace [3Xobj[103X is simple.[133X
+  
+  [33X[0;0YA skew brace [23XA[123X is said to be simple if [23X\{0\}[123X and [23XA[123X are its only ideals.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsSimple(SmallSkewbrace(12,22));[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSimple(SmallSkewbrace(12,21));[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [1X3.3-5 IsRightNilpotent[101X
+  
+  [33X[1;0Y[29X[2XIsRightNilpotent[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace [3Xobj[103X is right nilpotent.[133X
+  
+  [33X[0;0YA  skew  brace  [23XA[123X  is said to be right nilpotent if there exists [23Xn\geq1[123X such
+  that [23XA^{(n)}=0[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsRightNilpotent(SmallBrace(8,18));[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsRightNilpotent(SmallBrace(12,2));[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X3.3-6 LeftNilpotentIdeals[101X
+  
+  [33X[1;0Y[29X[2XLeftNilpotentIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe list of right or left nilpotent ideals of [3Xobj[103X[133X
+  
+  [33X[0;0YAn ideal [23XI[123X of a skew brace [23XA[123X is said to be left if it is left nilpotent as a
+  skew brace.[133X
+  
+  [1X3.3-7 RightNilpotentIdeals[101X
+  
+  [33X[1;0Y[29X[2XRightNilpotentIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe list of right or left nilpotent ideals of [3Xobj[103X[133X
+  
+  [33X[0;0YAn  ideal [23XI[123X of a skew brace [23XA[123X is said to be right nilpotent if An ideal [23XI[123X of
+  a skew brace [23XA[123X is said to be left if it is right nilpotent as a skew brace.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(8,18);;[127X[104X
+    [4X[25Xgap>[125X [27XIsLeftNilpotent(br);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLeftNilpotentIdeals(br);[127X[104X
+    [4X[28X[ <brace of size 8>, <brace of size 4>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XIsRightNilpotent(br);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XRightNilpotentIdeals(br);[127X[104X
+    [4X[28X[ <brace of size 4>, <brace of size 1> ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.3-8 SmoktunowiczSeries[101X
+  
+  [33X[1;0Y[29X[2XSmoktunowiczSeries[102X( [3Xobj[103X, [3Xbound[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [3Xbound[103X left ideals of the Smoktunowicz's series of [3Xobj[103X[133X
+  
+  [33X[0;0YThe  Smoktunowicz's  series  of  a  skew  brace  [23XA[123X is defined recursively as
+  [23XA^{[1]}=A[123X  and  [23XA^{[n+1]}[123X  is  the  additive  subgroup  of  [23XA[123X  generated  by
+  [23XA^{[i]}*A^{[n+1-i]}[123X for [23X1\leq i+j\leq n+1[123X, where [23Xa*b=\lambda_a(b)-b[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(16,145);;[127X[104X
+    [4X[25Xgap>[125X [27XSmoktunowiczSeries(br,4);[127X[104X
+    [4X[28X[ <brace of size 16>, <brace of size 8>, <brace of size 4>, <brace of size 2>,[128X[104X
+    [4X[28X  <brace of size 2> ][128X[104X
+    [4X[25Xgap>[125X [27XSmoktunowiczSeries(br,5);[127X[104X
+    [4X[28X[ <brace of size 16>, <brace of size 8>, <brace of size 4>, <brace of size 2>,[128X[104X
+    [4X[28X  <brace of size 2>, <brace of size 1> ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.3-9 Socle[101X
+  
+  [33X[1;0Y[29X[2XSocle[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe ideals of the socle series of [3Xobj[103X[133X
+  
+  [33X[0;0YThe socle of a skew brace [23XA[123X is the ideal [23X\ker\lambda\cap Z(A,+)[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSocle(SmallSkewbrace(6,2));[127X[104X
+    [4X[28X<brace of size 1>[128X[104X
+    [4X[25Xgap>[125X [27XSocle(SmallBrace(8,20));[127X[104X
+    [4X[28X<brace of size 8>[128X[104X
+    [4X[25Xgap>[125X [27XSocle(SmallBrace(8,2));[127X[104X
+    [4X[28X<brace of size 4>[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X3.4 [33X[0;0YMutipermutation skew braces[133X[101X
+  
+  [1X3.4-1 SocleSeries[101X
+  
+  [33X[1;0Y[29X[2XSocleSeries[102X( [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe socle series of [3Xobj[103X[133X
+  
+  [33X[0;0YThe  socle  series  of  a  skew  brace [23XA[123X is defined recursively as [23XA_1=A[123X and
+  [23XA_{n+1}=A_n/\mathrm{Soc}(A_n)[123X, see [SV18].[133X
+  
+  [1X3.4-2 MultipermutationLevel[101X
+  
+  [33X[1;0Y[29X[2XMultipermutationLevel[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe multipermutation level of the skew brace [3Xobj[103X[133X
+  
+  [33X[0;0YThe  multipermutation  level  of  a  skew brace [23XA[123X is defined as the smallest
+  positive  integer [23Xn[123X such that the [23Xn[123X-th term [23XA_n[123X of the socle series has only
+  one element, see Definition 5.17 of [SV18].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(8,20);;[127X[104X
+    [4X[25Xgap>[125X [27XSocleSeries(br);[127X[104X
+    [4X[28X[ <brace of size 8>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XMultipermutationLevel(br);[127X[104X
+    [4X[28X2[128X[104X
+  [4X[32X[104X
+  
+  [1X3.4-3 IsMultipermutation[101X
+  
+  [33X[1;0Y[29X[2XIsMultipermutation[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X  if  the skew brace [3Xobj[103X has finite multipermutation level and
+            [3Xfalse[103X otherwise[133X
+  
+  [1X3.4-4 Fix[101X
+  
+  [33X[1;0Y[29X[2XFix[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X  if  the skew brace [3Xobj[103X has finite multipermutation level and
+            [3Xfalse[103X otherwise[133X
+  
+  [1X3.4-5 KernelOfLambda[101X
+  
+  [33X[1;0Y[29X[2XKernelOfLambda[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe  kernel of the map [23X\lambda[123X as a subset of elements of the skew
+            brace [3Xobj[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(6,1);;[127X[104X
+    [4X[25Xgap>[125X [27XKernelOfLambda(br);[127X[104X
+    [4X[28X[ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)> ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.4-6 Quotient[101X
+  
+  [33X[1;0Y[29X[2XQuotient[102X( [3Xobj[103X, [3Xideal[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe quotient [3Xobj[103X by [3Xideal[103X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(8,10);;[127X[104X
+    [4X[25Xgap>[125X [27Xideals := Ideals(br);;[127X[104X
+    [4X[25Xgap>[125X [27XQuotient(br, ideals[2]);[127X[104X
+    [4X[28X<brace of size 4>[128X[104X
+    [4X[25Xgap>[125X [27Xbr/ideals[5];[127X[104X
     [4X[28X<brace of size 2>[128X[104X
   [4X[32X[104X
   
-  [1X3.1-3 SmallSkewbrace[101X
   
-  [33X[1;0Y[29X[2XSmallSkewbrace[102X( [3Xn[103X, [3Xk[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya skew brace[133X
+  [1X3.5 [33X[0;0YPrime and semiprime ideals[133X[101X
   
-  [33X[0;0YThe function returns the [3Xk[103X-th skew brace from the database of skew braces of
-  order [3Xn[103X.[133X
+  [1X3.5-1 IsPrimeBrace[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XSmallSkewbrace(8,3);[127X[104X
-    [4X[28X<brace of size 8>[128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XIsPrimeBrace[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace [3Xobj[103X is prime[133X
   
-  [1X3.1-4 TrivialBrace[101X
-  
-  [33X[1;0Y[29X[2XTrivialBrace[102X( [3Xabelian_group[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya brace[133X
-  
-  [33X[0;0YThis   function   returns   the   trivial   brace  over  the  abelian  group
-  [3Xabelian_group[103X. Here [3Xabelian_group[103X should be an abelian group![133X
+  [33X[0;0YA  skew  brace  [23XA[123X is said to be prime if for all non-zero ideals [23XI[123X and [23XJ[123X one
+  has [23XI*J\ne 0[123X[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XTrivialBrace(CyclicGroup(IsPermGroup, 5));[127X[104X
-    [4X[28X<brace of size 5>[128X[104X
-  [4X[32X[104X
-  
-  [1X3.1-5 TrivialSkewbrace[101X
-  
-  [33X[1;0Y[29X[2XTrivialSkewbrace[102X( [3Xgroup[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya skew brace[133X
-  
-  [33X[0;0YThis function returns the trivial skew brace over [3Xgroup[103X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XTrivialSkewbrace(DihedralGroup(10));[127X[104X
-    [4X[28X<skew brace of size 10>[128X[104X
-  [4X[32X[104X
-  
-  [1X3.1-6 SmallBrace[101X
-  
-  [33X[1;0Y[29X[2XSmallBrace[102X( [3Xn[103X, [3Xk[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya brace of abelian type[133X
-  
-  [33X[0;0YThe  function  returns the [3Xk[103X-th brace (of abelian type) from the database of
-  braces of order [3Xn[103X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XSmallBrace(8,3);[127X[104X
-    [4X[28X<brace of size 8>[128X[104X
-  [4X[32X[104X
-  
-  [1X3.1-7 IdSkewbrace[101X
-  
-  [33X[1;0Y[29X[2XIdSkewbrace[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe  function  returns  [3X[  n,  k  ][103X  if  the skew brace [3Xobj[103X is isomorphic to
-  [3XSmallSkewbrace(n,k)[103X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XIdSkewbrace(SmallSkewbrace(8,5));[127X[104X
-    [4X[28X[ 8, 5 ][128X[104X
-  [4X[32X[104X
-  
-  [1X3.1-8 IdBrace[101X
-  
-  [33X[1;0Y[29X[2XIdBrace[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe function returns [3X[ n, k ][103X if the brace of abelian type [3Xobj[103X is isomorphic
-  to [3XSmallBrace(n,k)[103X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XIdBrace(SmallBrace(8,5));[127X[104X
-    [4X[28X[ 8, 5 ][128X[104X
-  [4X[32X[104X
-  
-  [1X3.1-9 IsomorphismSkewbraces[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismSkewbraces[102X( [3Xobj1[103X, [3Xobj2[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Yan  isomorphism of skew braces if [3Xobj1[103X and [3Xobj2[103X are isomorphic and
-            [3Xfail[103X otherwise.[133X
-  
-  [33X[0;0YIf  [23XA[123X and [23XB[123X are skew braces, a skew brace homomorphism is a map [23Xf\colon A\to
-  B[123X such that[133X
-  
-  
-  [24X[33X[0;6Yf(a+b)=f(a)+f(b)\quad f(a\circ b)=f(a)\circ f(b)[133X
-  
-  [124X
-  
-  [33X[0;0Yhold  for  all  [23Xa,b\in A[123X. A skew brace isomorphism is a bijective skew brace
-  homomorphism.    [3XIsomorphismSkewbraces[103X    first   computes   all   injective
-  homomorphisms  from  [23X(A,+)[123X  to  [23X(B,+)[123X and then tries to find one [23Xf[123X such that
-  [23Xf(a\circ b)=f(a)\circ f(b)[123X for all [23Xa,b\in A[123X.[133X
-  
-  [1X3.1-10 DirectProductSkewbraces[101X
-  
-  [33X[1;0Y[29X[2XDirectProductSkewbraces[102X( [3Xobj1[103X, [3Xobj2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ythe direct product of [3Xobj1[103X and [3Xobj2[103X[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xbr1 := SmallBrace(8,18);;[127X[104X
-    [4X[25Xgap>[125X [27Xbr2 := SmallBrace(12,2);;[127X[104X
-    [4X[25Xgap>[125X [27Xbr := DirectProductSkewbraces(br1,br2);;[127X[104X
-    [4X[25Xgap>[125X [27XIsLeftNilpotent(br);[127X[104X
+    [4X[25Xgap>[125X [27XIsPrimeBrace(SmallBrace(24,12));[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsRightNilpotent(br);[127X[104X
-    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsPrimeBrace(SmallBrace(24,94));[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-2 IsPrimeIdeal[101X
+  
+  [33X[1;0Y[29X[2XIsPrimeIdeal[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the ideal [3Xobj[103X is prime[133X
+  
+  [33X[0;0YAn  ideal  [23XI[123X  of  a  skew brace [23XA[123X is said to be prime if [23XA/I[123X is a prime skew
+  brace.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallBrace(24,94);[127X[104X
+    [4X[28X<brace of size 24>[128X[104X
+    [4X[25Xgap>[125X [27XIsPrimeBrace(br);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIdeals(br);[127X[104X
+    [4X[28X[ <brace of size 24>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XIsPrimeIdeal(last[2]);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-3 PrimeIdeals[101X
+  
+  [33X[1;0Y[29X[2XPrimeIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe list of prime ideals of the skew brace [3Xobj[103X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XPrimeIdeals(SmallBrace(24,94));[127X[104X
+    [4X[28X[ <brace of size 24>, <brace of size 1> ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-4 IsSemiprime[101X
+  
+  [33X[1;0Y[29X[2XIsSemiprime[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace [3Xobj[103X is semiprime[133X
+  
+  [33X[0;0YAn  ideal  [23XI[123X of a skew brace [23XA[123X is said to be semiprime if [23XA/I[123X is a semiprime
+  skew brace.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := DirectProductSkewbraces(SmallSkewbrace(12,22),SmallSkewbrace(12,22));;[127X[104X
+    [4X[25Xgap>[125X [27XIsSemiprime(br);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-5 IsSemiprimeIdeal[101X
+  
+  [33X[1;0Y[29X[2XIsSemiprimeIdeal[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the ideal [3Xobj[103X is semiprime[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSemiprimeIdeals(SmallSkewbrace(12,24));[127X[104X
+    [4X[28X[ <skew brace of size 12> ][128X[104X
+    [4X[25Xgap>[125X [27XIsSemiprimeIdeal(last[1]);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-6 SemiprimeIdeals[101X
+  
+  [33X[1;0Y[29X[2XSemiprimeIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe list of semiprime ideals of the skew brace [3Xobj[103X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSemiprimeIdeals(SmallSkewbrace(12,22));[127X[104X
+    [4X[28X[ <skew brace of size 12>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27XSemiprimeIdeals(SmallSkewbrace(12,24));[127X[104X
+    [4X[28X[ <skew brace of size 12> ][128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-7 BaerRadical[101X
+  
+  [33X[1;0Y[29X[2XBaerRadical[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe Baer radical of the skew brace [3Xobj[103X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,2);;[127X[104X
+    [4X[25Xgap>[125X [27XBaerRadical(br);[127X[104X
+    [4X[28X<skew brace of size 6>[128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-8 IsBaer[101X
+  
+  [33X[1;0Y[29X[2XIsBaer[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace [3Xobj[103X is ia Baer radical skew brace.[133X
+  
+  [33X[0;0YA  skew brace [23XA[123X is said to be Baer radical if [23XA=B(A)[123X, where [23XB(A)[123X is the Baer
+  radical of [23XA[123X (i.e., the intersection of all prime ideals of [23XA[123X).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,2);;[127X[104X
+    [4X[25Xgap>[125X [27XIsBaer(br);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-9 WedderburnRadical[101X
+  
+  [33X[1;0Y[29X[2XWedderburnRadical[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe Wedderburn radical of the skew brace [3Xobj[103X[133X
+  
+  [33X[0;0YThe  Wedderburn radical of a skew brace is the intersection of all its prime
+  ideals[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,2);;[127X[104X
+    [4X[25Xgap>[125X [27XWedderburnRadical(br);[127X[104X
+    [4X[28X<brace of size 3>[128X[104X
+  [4X[32X[104X
+  
+  [1X3.5-10 SolvableSeries[101X
+  
+  [33X[1;0Y[29X[2XSolvableSeries[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list with the solvable series of the skew brace [3Xobj[103X[133X
+  
+  [33X[0;0YThe  solvable series of a skew brace [23XA[123X is defined recursively as [23XA_{1}=A[123X and
+  [23XA_{n+1}=A_{n}*A_{n}[123X for [23Xn\geq1[123X, where [23Xa*b=\lambda_a(b)-b[123X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,20);;[127X[104X
     [4X[25Xgap>[125X [27XIsSolvable(br);[127X[104X
     [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  [1X3.1-11 IsTwoSided[101X
-  
-  [33X[1;0Y[29X[2XIsTwoSided[102X( [3Xobj[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is two sided, [3Xfalse[103X otherwise[133X
-  
-  [33X[0;0YA  skew  brace [23XA[123X is said to be [13Xtwo-sided[113X if [23X(a+b)\circ c=a\circ c-c+b\circ c[123X
-  holds for all [23Xa,b,c\in A[123X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XIsTwoSided(SmallSkewbrace(8,2));[127X[104X
+    [4X[25Xgap>[125X [27XSolvableSeries(br);[127X[104X
+    [4X[28X[ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ][128X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(12,23);;[127X[104X
+    [4X[25Xgap>[125X [27XIsSolvable(br);[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsTwoSided(SmallSkewbrace(8,4));[127X[104X
-    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
-  [1X3.1-12 IsClassical[101X
+  [1X3.5-11 IsMinimalIdeal[101X
   
-  [33X[1;0Y[29X[2XIsClassical[102X( [3Xobj[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is of abelian type, [3Xfalse[103X otherwise[133X
+  [33X[1;0Y[29X[2XIsMinimalIdeal[102X( [3Xobj[103X, [3Xideal[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if [3Xideal[103X is a minimal ideal of [3Xobj[103X An ideal [23XI[123X of [23XA[123X is said to
+            be  [13Xminimal[113X  if does not contain any other ideal of [23XA[123X. To check if
+            an  ideal [23XI[123X of [23XA[123X is minimal, one computes the ideals of [23XI[123X and keep
+            only those that are simple as a skew brace.[133X
   
-  [33X[0;0YLet  [23X\mathcal{X}[123X  be  a  property of groups. A skew brace [23XA[123X is said to be of
-  [23X\mathcal{X}[123X-type   if   its   additive  group  belongs  to  [23X\mathcal{X}[123X.  In
-  particular,  skew  braces of abelian type are those skew braces with abelian
-  additive group. Such skew braces were introduced by Rump in [Rum07].[133X
+  [1X3.5-12 MinimalIdeals[101X
   
-  [1X3.1-13 IsTrivialSkewbrace[101X
-  
-  [33X[1;0Y[29X[2XIsTrivialSkewbrace[102X( [3Xobj[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is trivial, [3Xfalse[103X otherwise[133X
-  
-  [33X[0;0YThe function returns [3Xtrue[103X if the skew brace [23XA[123X is trivial, i.e., [23Xa\circ b=a+b[123X
-  for all [23Xa,b\in A[123X.[133X
-  
-  [1X3.1-14 Skewbrace2YB[101X
-  
-  [33X[1;0Y[29X[2XSkewbrace2YB[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ythe set-theoretic solution associated with the skew brace [3Xobj[103X[133X
-  
-  [33X[0;0YIf [23XA[123X is a skew brace, the map [23Xr_A\colon A\times A\to A\times A[123X[133X
-  
-  
-  [24X[33X[0;6Yr_A(a,b)=(\lambda_a(b),\lambda_a(b)'\circ a\circ b)[133X
-  
-  [124X
-  
-  [33X[0;0Yis  a  non-degenerate  set-theoretic  solution of the Yang--Baxter equation.
-  Furthermore,  [23Xr_A[123X  is  involutive if and only if [23XA[123X is of abelian type (i.e.,
-  the additive group of [23XA[123X is abelian).[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XSkewbrace2YB(TrivialBrace(CyclicGroup(6)));[127X[104X
-    [4X[28X<A set-theoretical solution of size 6>[128X[104X
-  [4X[32X[104X
-  
-  [1X3.1-15 Brace2YB[101X
-  
-  [33X[1;0Y[29X[2XBrace2YB[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X3.1-16 SkewbraceSubset2YB[101X
-  
-  [33X[1;0Y[29X[2XSkewbraceSubset2YB[102X( [3Xobj[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ythe  set-theoretic  solution  associated  with a given subset of a
-            skew brace[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xbr := TrivialSkewbrace(SymmetricGroup(3));;[127X[104X
-    [4X[25Xgap>[125X [27XAsList(br);[127X[104X
-    [4X[28X[ <()>, <(2,3)>, <(1,2)>, <(1,2,3)>, <(1,3,2)>, <(1,3)> ][128X[104X
-    [4X[25Xgap>[125X [27XSkewbraceSubset2YB(br, last{[4,5]});[127X[104X
-    [4X[28X<A set-theoretical solution of size 2>[128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XMinimalIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of minimal ideals of the skew brace [3Xobj[103X[133X
   

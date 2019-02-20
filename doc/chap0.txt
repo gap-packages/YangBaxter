@@ -6,10 +6,10 @@
              [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                     0.4.0
+                                     0.5.0
   
   
-                                18 February 2019
+                                20 February 2019
   
   
                                Leandro Vendramin
@@ -41,76 +41,76 @@
   
   [1XContents (YangBaxter)[101X
   
-  1 [33X[0;0YIdeals and left ideals[133X
-    1.1 [33X[0;0YLeft ideals[133X
-      1.1-1 LeftIdeals
-      1.1-2 IsLeftIdeal
-    1.2 [33X[0;0YIdeals[133X
-      1.2-1 IsIdeal
-      1.2-2 Ideals
-      1.2-3 AsIdeal
-      1.2-4 IdealGeneratedBy
-      1.2-5 IntersectionOfTwoIdeals
-      1.2-6 SumOfTwoIdeals
-    1.3 [33X[0;0YSequences (left) ideals[133X
-      1.3-1 LeftSeries
-      1.3-2 RightSeries
-      1.3-3 IsLeftNilpotent
-      1.3-4 IsSimpleSkewbrace
-      1.3-5 IsRightNilpotent
-      1.3-6 LeftNilpotentIdeals
-      1.3-7 RightNilpotentIdeals
-      1.3-8 SmoktunowiczSeries
-      1.3-9 Socle
-    1.4 [33X[0;0YMutipermutation skew braces[133X
-      1.4-1 SocleSeries
-      1.4-2 MultipermutationLevel
-      1.4-3 IsMultipermutation
-      1.4-4 Fix
-      1.4-5 KernelOfLambda
-      1.4-6 Quotient
-    1.5 [33X[0;0YPrime and semiprime ideals[133X
-      1.5-1 IsPrimeBrace
-      1.5-2 IsPrimeIdeal
-      1.5-3 PrimeIdeals
-      1.5-4 IsSemiprime
-      1.5-5 IsSemiprimeIdeal
-      1.5-6 SemiprimeIdeals
-      1.5-7 BaerRadical
-      1.5-8 IsBaer
-      1.5-9 WedderburnRadical
-      1.5-10 SolvableSeries
-      1.5-11 IsMinimalIdeal
-      1.5-12 MinimalIdeals
-  2 [33X[0;0YYangBaxter automatic generated documentation[133X
-    2.1 [33X[0;0YYangBaxter automatic generated documentation of attributes[133X
+  1 [33X[0;0YPreliminaries[133X
+    1.1 [33X[0;0YDefinition and examples[133X
+      1.1-1 IsSkewbrace
+      1.1-2 Skewbrace
+      1.1-3 SmallSkewbrace
+      1.1-4 TrivialBrace
+      1.1-5 TrivialSkewbrace
+      1.1-6 SmallBrace
+      1.1-7 IdSkewbrace
+      1.1-8 IdBrace
+      1.1-9 IsomorphismSkewbraces
+      1.1-10 DirectProductSkewbraces
+      1.1-11 IsTwoSided
+      1.1-12 IsClassical
+      1.1-13 IsTrivialSkewbrace
+      1.1-14 Skewbrace2YB
+      1.1-15 Brace2YB
+      1.1-16 SkewbraceSubset2YB
+  2 [33X[0;0YAlgebraic Properties of Braces[133X
+    2.1 [33X[0;0YBraces and Radical Rings[133X
       2.1-1 AdditiveGroupOfRing
       2.1-2 IsJacobsonRadical
       2.1-3 AdjointGroup
       2.1-4 RadicalRing2Brace
-      2.1-5 DehornoyClass
-    2.2 [33X[0;0YYangBaxter automatic generated documentation of methods[133X
+    2.2 [33X[0;0YBraces and Yang-Baxter Equation[133X
       2.2-1 Evaluate
       2.2-2 LyubashenkoYB
-      2.2-3 LinearRepresentationOfStructureGroup
-  3 [33X[0;0YPreliminaries[133X
-    3.1 [33X[0;0YDefinition and examples[133X
-      3.1-1 IsSkewbrace
-      3.1-2 Skewbrace
-      3.1-3 SmallSkewbrace
-      3.1-4 TrivialBrace
-      3.1-5 TrivialSkewbrace
-      3.1-6 SmallBrace
-      3.1-7 IdSkewbrace
-      3.1-8 IdBrace
-      3.1-9 IsomorphismSkewbraces
-      3.1-10 DirectProductSkewbraces
-      3.1-11 IsTwoSided
-      3.1-12 IsClassical
-      3.1-13 IsTrivialSkewbrace
-      3.1-14 Skewbrace2YB
-      3.1-15 Brace2YB
-      3.1-16 SkewbraceSubset2YB
+      2.2-3 DehornoyClass
+      2.2-4 LinearRepresentationOfStructureGroup
+  3 [33X[0;0YIdeals and left ideals[133X
+    3.1 [33X[0;0YLeft ideals[133X
+      3.1-1 LeftIdeals
+      3.1-2 IsLeftIdeal
+    3.2 [33X[0;0YIdeals[133X
+      3.2-1 IsIdeal
+      3.2-2 Ideals
+      3.2-3 AsIdeal
+      3.2-4 IdealGeneratedBy
+      3.2-5 IntersectionOfTwoIdeals
+      3.2-6 SumOfTwoIdeals
+    3.3 [33X[0;0YSequences (left) ideals[133X
+      3.3-1 LeftSeries
+      3.3-2 RightSeries
+      3.3-3 IsLeftNilpotent
+      3.3-4 IsSimpleSkewbrace
+      3.3-5 IsRightNilpotent
+      3.3-6 LeftNilpotentIdeals
+      3.3-7 RightNilpotentIdeals
+      3.3-8 SmoktunowiczSeries
+      3.3-9 Socle
+    3.4 [33X[0;0YMutipermutation skew braces[133X
+      3.4-1 SocleSeries
+      3.4-2 MultipermutationLevel
+      3.4-3 IsMultipermutation
+      3.4-4 Fix
+      3.4-5 KernelOfLambda
+      3.4-6 Quotient
+    3.5 [33X[0;0YPrime and semiprime ideals[133X
+      3.5-1 IsPrimeBrace
+      3.5-2 IsPrimeIdeal
+      3.5-3 PrimeIdeals
+      3.5-4 IsSemiprime
+      3.5-5 IsSemiprimeIdeal
+      3.5-6 SemiprimeIdeals
+      3.5-7 BaerRadical
+      3.5-8 IsBaer
+      3.5-9 WedderburnRadical
+      3.5-10 SolvableSeries
+      3.5-11 IsMinimalIdeal
+      3.5-12 MinimalIdeals
   
   
   [32X
