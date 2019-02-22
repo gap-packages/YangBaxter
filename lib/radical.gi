@@ -21,20 +21,20 @@ InstallMethod(IsJacobsonRadical, "for a ring", [IsRing], function(ring)
   return Size(ring)=Size(rad);
 end);
 
-InstallMethod(AdjointGroup, "for a ring", [IsRing], function(ring)
-  local x, y, l, perms;
-  if not IsJacobsonRadical(ring) then
-    return fail;
-  fi;
-  perms := NullMat(Size(ring), Size(ring));
-  l := AsList(ring);
-  for x in l do
-    for y in l do
-      perms[Position(l, x)][Position(l, y)] := Position(l, x+y+x*y);
-    od;
-  od;
-  return Group(List(perms, PermList));
-end);
+# InstallMethod(AdjointGroup, "for a ring", [IsRing], function(ring)
+#   local x, y, l, perms;
+#   if not IsJacobsonRadical(ring) then
+#     return fail;
+#   fi;
+#   perms := NullMat(Size(ring), Size(ring));
+#   l := AsList(ring);
+#   for x in l do
+#     for y in l do
+#       perms[Position(l, x)][Position(l, y)] := Position(l, x+y+x*y);
+#     od;
+#   od;
+#   return Group(List(perms, PermList));
+# end);
 
 InstallMethod(RadicalRing2Brace, "for a radical ring", [IsRing], function(ring)
   local add, mul;

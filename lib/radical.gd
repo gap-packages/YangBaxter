@@ -26,18 +26,18 @@ DeclareAttribute("AdditiveGroupOfRing", IsRing);
 #! @EndExampleSession
 DeclareAttribute("IsJacobsonRadical", IsRing);
 
-#! @Arguments ring
-#! @Returns a group 
-#! @Description
-#! This function returns the adjoint group of the radical ring.
-#! @ExampleSession
-#! gap> rg := SmallRing(8,10);;
-#! gap> IsJacobsonRadical(rg);
-#! true
-#! gap> StructureDescription(AdjointGroup(rg));
-#! "D8"
-#! @EndExampleSession
-DeclareAttribute("AdjointGroup", IsRing);
+# @Arguments ring
+# @Returns a group 
+# @Description
+# This function returns the adjoint group of the radical ring.
+# @ExampleSession
+# gap> rg := SmallRing(8,10);;
+# gap> IsJacobsonRadical(rg);
+# true
+# gap> StructureDescription(AdjointGroup(rg));
+# "D8"
+# @EndExampleSession
+# DeclareAttribute("AdjointGroup", IsRing);
 
 #! @Arguments ring
 #! @Returns a brace 
