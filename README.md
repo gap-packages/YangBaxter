@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/gap-packages/YangBaxter.svg?branch=master)](https://travis-ci.org/gap-packages/YangBaxter)
 [![Code Coverage](https://codecov.io/github/gap-packages/YangBaxter/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/YangBaxter)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2573572.svg)](https://doi.org/10.5281/zenodo.2573572)
 
 # YangBaxter
 
