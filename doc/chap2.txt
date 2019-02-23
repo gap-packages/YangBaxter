@@ -34,21 +34,6 @@
     [4X[28Xfalse[128X[104X
   [4X[32X[104X
   
-  [1X2.1-3 RadicalRing2Brace[101X
-  
-  [33X[1;0Y[29X[2XRadicalRing2Brace[102X( [3Xring[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya brace[133X
-  
-  [33X[0;0YThis function returns the brace of the given radical ring.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xrg := SmallRing(8,10);;[127X[104X
-    [4X[25Xgap>[125X [27XIsJacobsonRadical(rg);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIdBrace(RadicalRing2Brace(rg));[127X[104X
-    [4X[28X[ 8, 13 ][128X[104X
-  [4X[32X[104X
-  
   
   [1X2.2 [33X[0;0YBraces and Yang-Baxter Equation[133X[101X
   
