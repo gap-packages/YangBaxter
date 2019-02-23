@@ -39,18 +39,18 @@ DeclareAttribute("IsJacobsonRadical", IsRing);
 # @EndExampleSession
 # DeclareAttribute("AdjointGroup", IsRing);
 
-#! @Arguments ring
-#! @Returns a brace 
-#! @Description
-#! This function returns the brace of the given radical ring.
-#! @ExampleSession
-#! gap> rg := SmallRing(8,10);;
-#! gap> IsJacobsonRadical(rg);
-#! true
-#! gap> IdBrace(RadicalRing2Brace(rg));
-#! [ 8, 13 ]
-#! @EndExampleSession
-DeclareAttribute("RadicalRing2Brace", IsRing);
+# @Arguments ring
+# @Returns a brace 
+# @Description
+# This function returns the brace of the given radical ring.
+# @ExampleSession
+# gap> rg := SmallRing(8,10);;
+# gap> IsJacobsonRadical(rg);
+# true
+# gap> IdBrace(RadicalRing2Brace(rg));
+# [ 8, 13 ]
+# @EndExampleSession
+# DeclareAttribute("RadicalRing2Brace", IsRing);
 
 #DeclareAttribute("Brace2RadicalRing", IsBrace);
 

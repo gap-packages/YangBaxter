@@ -36,10 +36,10 @@ end);
 #   return Group(List(perms, PermList));
 # end);
 
-InstallMethod(RadicalRing2Brace, "for a radical ring", [IsRing], function(ring)
-  local add, mul;
-  add := AsList(AdditiveGroupOfRing(ring));
-  mul := AsList(AdjointGroup(ring));
-  return Skewbrace(List([1..Size(ring)], k->[add[k],mul[k]]));
-end);
+# InstallMethod(RadicalRing2Brace, "for a radical ring", [IsRing], function(ring)
+#   local add, mul;
+#   add := AsList(AdditiveGroupOfRing(ring));
+#   mul := AsList(AdjointGroup(ring));
+#   return Skewbrace(List([1..Size(ring)], k->[add[k],mul[k]]));
+# end);
 
