@@ -50,7 +50,7 @@ Persons := [
      ),  
 ],
 
-Status := "dev",
+Status := "deposited",
 
 README_URL := 
   Concatenation( ~.PackageWWWHome, "/README.md" ),
