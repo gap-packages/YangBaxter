@@ -626,3 +626,13 @@ function(obj)
   return Maximum(tmp);
 end);
 
+InstallMethod(IdYB, "for an involutive solution", [ IsYB ],
+function(obj)
+  local cs;
+  cs := YB2CycleSet(obj);
+  if not Size(obj) in [1..8] then
+    Error("solutions of size ", Size(obj), " are not in the database\n");
+  else
+    return [Size(obj), First([1..NrSmallCycleSets(Size(obj))], k->IsomorphismCycleSets(cs, SmallCycleSet(Size(obj),k)) <> fail)];
+  fi;
+end);

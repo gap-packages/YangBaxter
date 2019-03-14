@@ -142,4 +142,17 @@ DeclareOperation("Wada", [IsGroup]);
 #! @EndExampleSession
 DeclareOperation("LinearRepresentationOfStructureGroup", [ IsYB, IsObject ]);
 
-
+#! @Arguments obj
+#! @Returns the identification number of <A>obj</A>
+#! @Description
+#! 
+#! @ExampleSession
+#! gap> cs := SmallCycleSet(5,10);;
+#! gap> IdCycleSet(cs);
+#! [ 5, 10 ]
+#! gap> cs := SmallCycleSet(4,3);;
+#! gap> yb := CycleSet2YB(cs);;
+#! gap> IdYB(yb);
+#! [ 4, 3 ]
+#! @EndExampleSession
+DeclareAttribute("IdYB", IsYB);
