@@ -89,7 +89,7 @@ InstallMethod(LeftIdeals, "for a skew brace", [ IsSkewbrace], function(obj)
   local add, sg, l, subset, x, res, tmp;
   l := [];
   add := SkewbraceAList(obj);
-  for sg in NormalSubgroups(Group(add)) do 
+  for sg in AllSubgroups(Group(add)) do 
     subset := List(sg, x->SkewbraceElmConstructor(obj, x));
     if IsLeftIdeal(obj, subset) then
       Add(l, subset);
