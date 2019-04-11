@@ -500,6 +500,11 @@ function(obj)
   return IsAbelian(Group(SkewbraceAList(obj)));
 end);
 
+InstallMethod(IsOfNilpotentType, "for a skew brace", [ IsSkewbrace ], 
+function(obj)
+  return IsNilpotent(UnderlyingAdditiveGroup(obj));
+end);
+
 InstallMethod(IsTrivialSkewbrace, "for a skew brace", [ IsSkewbrace ],
 function(obj)
 local a,b;

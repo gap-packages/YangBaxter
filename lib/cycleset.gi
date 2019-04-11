@@ -154,12 +154,6 @@ InstallOtherMethod(Permutations,
   return List([1..Size(obj!.matrix)], i->PermList(obj!.matrix[i]));
 end);
 
-#InstallMethod(IsHomomorphism, "for a list of integers", [IsList, IsCycleSet, IsCycleSet],
-#function(f, obj, image)
-#  
-#end);
-
-
 ### This function converts a cycle set into a set-theoretical solution
 ### EXAMPLE:
 ### gap> c := CycleSet([[1, 2], [1,2]]);;
@@ -527,18 +521,33 @@ end);
 #  return false;
 #end);
 
-#InstallMethod(IsCycleSetHomomorphism, "for cycle sets", [ IsList, IsCycleSet, IsCycleSet ],
-#function(f, dom, codom)
-#  local x,y;
-#  for x in [1..dom!.size] do
-#    for y in [1..dom!.size] do
-#      if f[dom!.matrix[x][y]] <> codom!.matrix[f[x]][f[y]] then
-#        return false;
-#      fi;
-#    od;
-#  od;
-#  return true;
-#end);
+InstallMethod(IsCycleSetHomomorphism, "for cycle sets", [ IsList, IsCycleSet, IsCycleSet ],
+function(f, dom, codom)
+  local x, y, ldo, lco;
+
+  ldo := AsList(dom);
+  lco := AsList(codom);
+
+  for x in ldo do
+    for y in ldo do
+      if lco[f[Position(ldo, x*y)]] <> lco[f[Position(ldo, x)]]*lco[f[Position(ldo, y)]] then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
+
+InstallOtherMethod(IsomorphismCycleSets, "for cycle sets", [ IsCycleSet, IsCycleSet ],
+function(dom, codom)
+  local f;
+  for f in SymmetricGroup(Size(dom)) do
+    if IsCycleSetHomomorphism(ListPerm(f, Size(dom)), dom, codom) then 
+      return ListPerm(f);
+    fi;
+  od;
+  return fail;
+end);
 
 #FIXME!
 #InstallOtherMethod(IsomorphismCycleSets, "for cycle sets", [ IsCycleSet, IsCycleSet ],
@@ -557,20 +566,20 @@ end);
 #  return Group(List(Filtered(Hom(obj, obj), x->PermList(x) <> fail), PermList));
 #end);
 
-#InstallMethod(IdCycleSet, "for a cycle set", [ IsCycleSet ],
-#function(obj)
-#  local n,k,f;
-#  if Size(obj) in [1..8] then
-#    n := Size(obj);
-#    for k in [1..NrSmallCycleSets(n)] do 
-#      f := IsomorphismCycleSets(obj, SmallCycleSet(n,k));
-#      if f <> fail then
-#        return [n, k];
-#      fi;
-#    od;
-#  fi;
-#  return fail;
-#end);
+InstallMethod(IdCycleSet, "for a cycle set", [ IsCycleSet ],
+function(obj)
+  local n,k,f;
+  if Size(obj) in [1..8] then
+    n := Size(obj);
+    for k in [1..NrSmallCycleSets(n)] do 
+      f := IsomorphismCycleSets(obj, SmallCycleSet(n,k));
+      if f <> fail then
+        return [n, k];
+      fi;
+    od;
+  fi;
+  return fail;
+end);
 
 #InstallMethod(SubCycleSet, "for a cycle set", [ IsCycleSet, IsList ], 
 #function(obj, subset)

@@ -152,6 +152,14 @@ DeclareProperty("IsTwoSided", IsSkewbrace);
 DeclareProperty("IsClassical", IsSkewbrace);
 
 #! @Arguments obj
+#! @Returns <A>true</A> if the skew brace is of nilpotent type, <A>false</A> otherwise
+#! @Description
+#! Let $\mathcal{X}$ be a property of groups. A skew brace $A$ is said to be of $\mathcal{X}$-type if its additive
+#! group belongs to $\mathcal{X}$. In particular, skew braces of nilpotent type are those skew braces with
+#! nilpotent additive group. 
+DeclareProperty("IsOfNilpotentType", IsSkewbrace);
+
+#! @Arguments obj
 #! @Returns <A>true</A> if the skew brace is trivial, <A>false</A> otherwise
 #! @Description
 #! The function returns <A>true</A> if the skew brace $A$ is trivial, i.e., $a\circ b=a+b$ for all $a,b\in A$.
