@@ -13,6 +13,11 @@
 DeclareAttribute("LeftIdeals", IsSkewbrace);
 
 #! @Arguments obj
+#! @Returns a list with the left ideals of the skew brace <A>obj</A> that are normal in the additive group of $A$
+#! @Description
+DeclareAttribute("StrongLeftIdeals", IsSkewbrace);
+
+#! @Arguments obj
 #! @Returns <A>true</A> if the subset is a left ideal of <A>obj</A>
 #! @Description
 #! @ExampleSession
