@@ -122,7 +122,7 @@ DeclareOperation("Wada", [IsGroup]);
 #!   [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
 #! gap> field := FunctionField(Rationals, 1);;
 #! gap> q := IndeterminatesOfFunctionField(field)[1];
-#! gap> G := LinearRepresentationOfStructureGroup(yb, q);;
+#! gap> G := DehornoyRepresentationOfStructureGroup(yb, q);;
 #! gap> x1 := G.1;;
 #! gap> x2 := G.2;;
 #! gap> x3 := G.3;;
@@ -140,7 +140,7 @@ DeclareOperation("Wada", [IsGroup]);
 #! gap> x3*x1=x4*x3;
 #! true
 #! @EndExampleSession
-DeclareOperation("LinearRepresentationOfStructureGroup", [ IsYB, IsObject ]);
+DeclareOperation("DehornoyRepresentationOfStructureGroup", [ IsYB, IsObject ]);
 
 #! @Arguments obj
 #! @Returns the identification number of <A>obj</A>
@@ -156,3 +156,19 @@ DeclareOperation("LinearRepresentationOfStructureGroup", [ IsYB, IsObject ]);
 #! [ 4, 3 ]
 #! @EndExampleSession
 DeclareAttribute("IdYB", IsYB);
+
+#! @Arguments obj
+#! @Returns the permutation brace of the involutive solution of <A>obj</A>
+#! @Description
+#! 
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("IYBBrace", IsYB);
+
+#! @Arguments obj
+#! @Returns a linear representation of the structure group of a finite involutive solution
+#! @Description
+#! 
+#! @ExampleSession
+#! @EndExampleSession
+DeclareAttribute("LinearRepresentationOfStructureGroup", IsYB);

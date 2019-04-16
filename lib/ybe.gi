@@ -589,7 +589,7 @@ InstallMethod(YB2Permutation, "for a solution", [ IsYB ], function(obj)
 end);
 
 # FIXME: IsObject? 
-InstallMethod(LinearRepresentationOfStructureGroup, "for an involutive solution and a symbol", [ IsYB, IsObject ],
+InstallMethod(DehornoyRepresentationOfStructureGroup, "for an involutive solution and a symbol", [ IsYB, IsObject ],
 function(obj,q)
   local i, m, gens;
 
@@ -636,3 +636,137 @@ function(obj)
     return [Size(obj), First([1..NrSmallCycleSets(Size(obj))], k->IsomorphismCycleSets(cs, SmallCycleSet(Size(obj),k)) <> fail)];
   fi;
 end);
+
+InstallMethod(IYBBrace, "for an involutive solution", [ IsYB ],
+function(obj)
+  local gens, fam, brace, sum, group, add, x, y, mul, ESS_1cocycle, AllMatrices, ESS_inverse1cocycle;
+
+	group := AffineCrystGroupOnLeft(GeneratorsOfGroup(LinearRepresentationOfStructureGroup(obj)));
+
+  ESS_1cocycle := function(m)
+	  local n, A;
+	  n := Size(m);
+	  A := TransposedMat(m);
+	  A := A{[n]}{[1..(n-1)]};
+	  return A[1];
+  end;
+
+  AllMatrices := function(hol,v)
+  	local n, P, M, i, z, V, A, B;
+	  n := Size(v);
+  	P := AsList(hol);
+
+  	A := [];
+  	B := [];
+  	z := NullMat(n,n);
+  
+  	for i in [1..n] do
+      z[i][1]:=v[i];
+  	od;
+  
+  	B[1] := BlockMatrix([ [1,1, P[1] ], [1,2, z], [2,2,One(P[1])]],2,2);
+  	A[1] := MatrixByBlockMatrix(B[1]);
+  	A[1] := A[1]{[1..n+1]}{[1..n+1]};
+  
+    for i in [2..Size(P)] do 
+  		B[i]:=BlockMatrix([[1,1,P[i]], [1,2,z], [2,2,One(P[i])]],2,2);
+  		A[i]:=MatrixByBlockMatrix(B[i]);
+      A[i]:=A[i]{[1..n+1]}{[1..n+1]};
+    od;
+  	return A;
+  end;
+
+  ESS_inverse1cocycle := function(v)
+	  local hol;
+	  hol := PointGroup(group);
+    return First(AllMatrices(hol, v), x->x in group);
+  end;
+
+  sum := function(x, y)
+		local f,g,h,a,b,c;
+
+		f := PointHomomorphism(group);
+
+		g := PreImagesRepresentative(f,x);
+		h := PreImagesRepresentative(f,y);
+	
+		a:=ESS_1cocycle(g);
+		b:=ESS_1cocycle(h);
+
+		return Image(f, ESS_inverse1cocycle(a+b));
+  
+	end;
+
+	mul := AsList(PointGroup(group));
+	add := NullMat(Size(mul),Size(mul));
+
+	for x in mul do
+		for y in mul do
+			add[Position(mul, x)][Position(mul,y)] := Position(mul, sum(x,y));
+		od;
+	od;	
+
+	add := List(add, PermList);
+
+  fam := NewFamily("SkewbraceElmFamily", IsSkewbraceElm, IsMultiplicativeElementWithInverse and IsAdditiveElementWithInverse);
+  fam!.DefaultType := NewType(fam, IsSkewbraceElmRep);
+  brace := Objectify(NewType(CollectionsFamily(fam), IsSkewbrace and IsAttributeStoringRep), rec());
+  fam!.Skewbrace := brace;
+
+  SetSize(brace, Size(add)); 
+  SetSkewbraceAList(brace, add);
+  SetSkewbraceMList(brace, mul);
+
+  #gens := SmallGeneratingSet(Group(add));
+  gens := GeneratorsOfGroup(Group(add));
+  if gens = [] then
+    SetUnderlyingAdditiveGroup(brace, Group(()));
+  else
+    SetUnderlyingAdditiveGroup(brace, Group(gens));
+  fi;
+
+  gens := GeneratorsOfGroup(Group(mul));
+  if gens = [] then
+    SetUnderlyingMultiplicativeGroup(brace, Group(()));
+  else
+    SetUnderlyingMultiplicativeGroup(brace, Group(gens));
+  fi;
+
+  return brace;
+
+end);
+
+InstallMethod(LinearRepresentationOfStructureGroup, "for an involutive solution", [ IsYB ],
+function(obj)
+  local i,j,m,l,n,x,perms;
+
+  if not IsInvolutive(obj) then
+    return fail;
+  fi;
+  
+  n := Size(obj);
+  l := [];
+  perms := GeneratorsOfGroup(DehornoyRepresentationOfStructureGroup(obj,1));
+
+  for x in [1..n] do
+
+    m := NullMat(n+1, n+1);
+  
+    for i in [1..n] do
+      for j in [1..n] do
+        m[i][j] := perms[x][i][j];
+      od;
+    od;
+    
+    m[x][n+1] := 1;
+    m[n+1][n+1] := 1;
+  
+    Add(l, m);
+
+  od;
+  
+  return Group(l);
+
+end);
+
+
