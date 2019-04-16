@@ -45,7 +45,7 @@ gap> Permutations(yb);
   [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
 gap> field := FunctionField(Rationals, 1);;
 gap> q := IndeterminatesOfFunctionField(field)[1];;
-gap> G := LinearRepresentationOfStructureGroup(yb, q);;
+gap> G := DehornoyRepresentationOfStructureGroup(yb, q);;
 gap> x1 := G.1;;
 gap> x2 := G.2;;
 gap> x3 := G.3;;
