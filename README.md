@@ -14,3 +14,7 @@ YangBaxter does not use external binaries and, therefore, works without restrict
 gap> LoadPackage("YangBaxter");
 
 Alexander Konovalov, Leandro Vendramin
+
+Thanks go to:
+* Emiliano Acri
+* Marco Bonatto
