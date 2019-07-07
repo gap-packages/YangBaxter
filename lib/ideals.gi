@@ -325,10 +325,7 @@ InstallMethod(IsMultipermutation, "for a skew brace", [IsSkewbrace], function(ob
 end);
 
 InstallMethod(Fix, "for a skew brace", [IsSkewbrace], function(obj)
-  local center, f;
-  center := List(Center(UnderlyingAdditiveGroup(obj)), x->SkewbraceElmConstructor(obj, x));
-  f := Filtered(AsList(obj), b->ForAll(AsList(obj), a->Lambda(a,b)=b));
-  return Filtered(f, x->x in center);
+  return Filtered(AsList(obj), b->ForAll(AsList(obj), a->Lambda(a,b)=b));
 end);
 
 InstallMethod(KernelOfLambda, "for a skew brace", [IsSkewbrace], function(obj)
