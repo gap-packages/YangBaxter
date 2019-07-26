@@ -865,8 +865,8 @@ InstallMethod(DirectProductSkewbraces, "for two skew braces", [IsSkewbrace, IsSk
     for v in lst do
       c := v[1];
       d := v[2];
-      sum[Position(lst,u)][Position(lst,v)] := Position(lst,[a+c,b+d]);
-      mul[Position(lst,u)][Position(lst,v)] := Position(lst,[a*c,b*d]);
+      sum[Position(lst,v)][Position(lst,u)] := Position(lst,[a+c,b+d]);
+      mul[Position(lst,v)][Position(lst,u)] := Position(lst,[a*c,b*d]);
     od;
   od;
 
