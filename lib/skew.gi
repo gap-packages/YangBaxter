@@ -853,27 +853,24 @@ InstallGlobalFunction(BraceP2, function(size, number)
 end); 
 
 InstallMethod(DirectProductSkewbraces, "for two skew braces", [IsSkewbrace, IsSkewbrace], function(obj1, obj2)
-  local lst, u, v, a, b, c, d, sum, mul;
+  local l,u,v,a,b,c,d,add,mul;
 
-  lst := Cartesian(obj1, obj2);
-  sum := NullMat(Size(obj1)*Size(obj2),Size(obj1)*Size(obj2));
-  mul := NullMat(Size(obj1)*Size(obj2),Size(obj1)*Size(obj2));
+  l := List(Cartesian(obj1,obj2), u->[u]);
 
-  for u in lst do
-    a := u[1];
-    b := u[2];
-    for v in lst do
-      c := v[1];
-      d := v[2];
-      sum[Position(lst,v)][Position(lst,u)] := Position(lst,[a+c,b+d]);
-      mul[Position(lst,v)][Position(lst,u)] := Position(lst,[a*c,b*d]);
+  add := AsList(DirectProduct(UnderlyingAdditiveGroup(obj1),UnderlyingAdditiveGroup(obj2)));
+  mul := NullMat(Size(l),Size(l));
+
+  for u in l do
+  	a := u[1];
+    for v in l do
+    	b := v[1];
+      c := [a[1]*b[1],a[2]*b[2]];
+      mul[Position(l,v)][Position(l,u)] := Position(l,[c]);
     od;
   od;
 
-  sum := List(sum, PermList);
   mul := List(mul, PermList);
-
-  return Skewbrace(List([1..Size(lst)], x->[sum[x],mul[x]]));
+  return Skewbrace(List([1..Size(l)], x->[add[x],mul[x]]));
 end);
 
 InstallMethod(\/, "for a semigroup and an ideal",

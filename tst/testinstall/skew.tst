@@ -254,6 +254,16 @@ gap> NrSmallSkewbraces(23);
 1
 gap> NrSmallSkewbraces(29^2);
 4
+
+# Test direct product of skew braces
+gap> br1 := SmallSkewbrace(1,1);;
+gap> br2 := SmallSkewbrace(12,22);;
+gap> br3 := SmallSkewbrace(4,3);;
+gap> IS_BRACE(DirectProductSkewbraces(br1,br2));
+true
+gap> IS_BRACE(DirectProductSkewbraces(br2,br3));
+true
+
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##
