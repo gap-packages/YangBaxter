@@ -163,6 +163,15 @@ DeclareProperty("IsOfNilpotentType", IsSkewbrace);
 #! @Returns <A>true</A> if the skew brace is trivial, <A>false</A> otherwise
 #! @Description
 #! The function returns <A>true</A> if the skew brace $A$ is trivial, i.e., $a\circ b=a+b$ for all $a,b\in A$.
+#! WARNING: The property IsTrivial applied to a skew brace will return
+#! true if and only if the skew brace has only one element. 
+#! @ExampleSession
+#! gap> br := SmallSkewbrace(9,1);;
+#! gap> IsTrivialSkewbrace(br);
+#! true
+#! gap> IsTrivial(br);
+#! false
+#! @EndExampleSession
 DeclareProperty("IsTrivialSkewbrace", IsSkewbrace);
 
 #! @Arguments obj
