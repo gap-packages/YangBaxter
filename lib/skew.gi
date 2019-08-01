@@ -919,6 +919,29 @@ InstallMethod(DirectProductSkewbraces, "for two skew braces", [IsSkewbrace, IsSk
   return Skewbrace(List([1..Size(l)], x->[add[x],mul[x]]));
 end);
 
+InstallMethod( DirectProductOp,
+    "for a list of skew braces, and a skew brace",
+    [ IsList, IsSkewbrace ], 0,
+    function( braces, b )
+
+    local new, old, i;
+
+    # Check the arguments.
+    if not ForAll( braces, IsSkewbrace ) then
+      TryNextMethod();
+    fi;
+
+    old := braces[1];
+
+    for i in [ 2 .. Length(braces) ] do
+      new := DirectProductSkewbraces(old,braces[i]);
+      old := new;
+    od;
+
+    return old;
+
+end);
+
 InstallMethod(\/, "for a semigroup and an ideal",
 [IsSkewbrace, IsSkewbrace and IsIdealInParent],
 function(obj, ideal)

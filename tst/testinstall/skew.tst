@@ -263,6 +263,20 @@ gap> IS_BRACE(DirectProductSkewbraces(br1,br2));
 true
 gap> IS_BRACE(DirectProductSkewbraces(br2,br3));
 true
+gap> IdSkewbrace(DirectProduct(br1,br2));
+[ 12, 22 ]
+gap> IdSkewbrace(DirectProduct(br2,br1));
+[ 12, 22 ]
+gap> IdBrace(DirectProduct(SmallBrace(8,12),SmallBrace(3,1)));
+[ 24, 27 ]
+gap> IdBrace(DirectProduct(SmallBrace(3,1),SmallBrace(8,12)));
+[ 24, 27 ]
+gap> IdBrace(DirectProduct(SmallBrace(3,1),SmallBrace(4,2),SmallBrace(3,1)));
+[ 36, 18 ]
+gap> IdBrace(DirectProduct(SmallBrace(4,2),SmallBrace(3,1),SmallBrace(3,1)));
+[ 36, 18 ]
+gap> IdBrace(DirectProduct(SmallBrace(3,1),SmallBrace(3,1),SmallBrace(4,2)));
+[ 36, 18 ]
 
 # Test automorphism groups
 gap> br := SmallSkewbrace(8,20);;
