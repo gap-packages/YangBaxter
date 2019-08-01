@@ -271,6 +271,14 @@ gap> AutomorphismGroup(br);
 gap> StructureDescription(last);
 "D8"
 
+# Test for ImageElm
+gap> br := SmallSkewbrace(8,25);;
+gap> aut := AutomorphismGroup(br);;
+gap> f := Random(aut);;
+gap> x := Random(br);;
+gap> ImageElm(f, x) in br;
+true
+
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##

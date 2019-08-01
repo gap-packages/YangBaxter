@@ -55,7 +55,7 @@ InstallMethod(IdSkewbrace, "for a skew brace", [IsSkewbrace], function(obj)
 end);
 
 InstallMethod(AutomorphismGroup, "for a skew brace", [IsSkewbrace], function(obj)
-  local f,lst,aut,add,is_homomorphism;
+  local f,s,lst,aut,add,is_homomorphism;
 
   is_homomorphism := function(f, dom, codom)
     local x,y,fx,fy,fxy;
@@ -81,10 +81,24 @@ InstallMethod(AutomorphismGroup, "for a skew brace", [IsSkewbrace], function(obj
       Add(lst, f);
     fi;
   od;
-  return Subgroup(aut, lst);
+
+  s := Subgroup(aut, lst); 
+  SetIsAutomorphismGroupOfSkewbrace(s, true);
+  SetIsAutomorphismGroup(s, true);
+	SetAutomorphismDomain(s, obj);
+
+  return s;
 end);
 
-
+InstallMethod(ImageElm, "for an automorphism and a skew brace element", [ IsGroupHomomorphism, IsSkewbraceElm ], function(f, x)
+	local obj;
+	obj := FamilyObj(x)!.Skewbrace;
+	if Source(f) = UnderlyingAdditiveGroup(obj) then 
+		return FromAdd2Skewbrace(obj, [Image(f, x![1])])[1];
+  else
+		Error(x, " is not in ", obj);
+  fi; 
+end);
 
 InstallGlobalFunction(SkewbraceElm, function(obj, x)
   if x in SkewbraceAList(obj) then

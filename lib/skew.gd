@@ -104,6 +104,14 @@ DeclareAttribute("IdSkewbrace", IsSkewbrace);
 #! gap> StructureDescription(last);
 #! "D8"
 #! @EndExampleSession
+#! @ExampleSession
+#! gap> br := SmallSkewbrace(8,25);;
+#! gap> aut := AutomorphismGroup(br);;
+#! gap> f := Random(aut);;
+#! gap> x := Random(br);;
+#! gap> ImageElm(f, x) in br;
+#! true
+#! @EndExampleSession
 DeclareAttribute("AutomorphismGroup", IsSkewbrace);
 
 #! @Arguments obj
@@ -155,6 +163,22 @@ DeclareOperation("DirectProductSkewbraces", [IsSkewbrace, IsSkewbrace]);
 #! true
 #! @EndExampleSession
 DeclareProperty("IsTwoSided", IsSkewbrace);
+
+#! @Arguments obj
+#! @Returns <A>true</A> if the group is the automorphism group of a skew braces, <A>false</A> otherwise
+#! @Description
+#! 
+#! @ExampleSession
+#! gap> br := SmallSkewbrace(8,25);;
+#! gap> aut := AutomorphismGroup(br);;
+#! gap> Order(aut);
+#! 4
+#! gap> IsAutomorphismGroupOfSkewbrace(aut);
+#! true
+#! @EndExampleSession
+DeclareProperty("IsAutomorphismGroupOfSkewbrace", IsAutomorphismGroup);
+
+DeclareProperty("IsSkewbraceAutomorphism", IsGeneralMapping);
 
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace is of abelian type, <A>false</A> otherwise
