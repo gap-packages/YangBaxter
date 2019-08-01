@@ -96,6 +96,19 @@ DeclareAttribute("IdSkewbrace", IsSkewbrace);
 #! @Arguments obj
 #! @Returns a list
 #! @Description
+#! The function computes the automorphism group of a skew brace. 
+#! @ExampleSession
+#! gap> br := SmallSkewbrace(8,20);;
+#! gap> AutomorphismGroup(br);
+#! <group with 8 generators>
+#! gap> StructureDescription(last);
+#! "D8"
+#! @EndExampleSession
+DeclareAttribute("AutomorphismGroup", IsSkewbrace);
+
+#! @Arguments obj
+#! @Returns a list
+#! @Description
 #! The function returns <A>[ n, k ]</A> if the brace of abelian type <A>obj</A> is isomorphic to <A>SmallBrace(n,k)</A>.
 #! @ExampleSession
 #! gap> IdBrace(SmallBrace(8,5));

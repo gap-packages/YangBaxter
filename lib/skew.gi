@@ -54,6 +54,38 @@ InstallMethod(IdSkewbrace, "for a skew brace", [IsSkewbrace], function(obj)
   return [Size(obj), First([1..NrSmallSkewbraces(Size(obj))], k->IsomorphismSkewbraces(obj, SmallSkewbrace(Size(obj),k)) <> fail)];
 end);
 
+InstallMethod(AutomorphismGroup, "for a skew brace", [IsSkewbrace], function(obj)
+  local f,lst,aut,add,is_homomorphism;
+
+  is_homomorphism := function(f, dom, codom)
+    local x,y,fx,fy,fxy;
+    for x in dom do
+      for y in dom do
+        fx := Image(f, FromSkewbrace2Add(dom, [x])[1]);
+        fy := Image(f, FromSkewbrace2Add(dom, [y])[1]);
+        fxy := Image(f, FromSkewbrace2Add(dom, [x*y])[1]);
+        if not FromAdd2Skewbrace(codom, [fx])[1]*FromAdd2Skewbrace(codom, [fy])[1] = FromAdd2Skewbrace(codom, [fxy])[1] then
+          return false;
+        fi;
+      od;
+    od;
+    return true;
+  end;
+
+  lst := [];
+  add := UnderlyingAdditiveGroup(obj);
+  aut := AutomorphismGroup(add);
+
+  for f in aut do
+    if is_homomorphism(f, obj, obj) then
+      Add(lst, f);
+    fi;
+  od;
+  return Subgroup(aut, lst);
+end);
+
+
+
 InstallGlobalFunction(SkewbraceElm, function(obj, x)
   if x in SkewbraceAList(obj) then
     return SkewbraceElmConstructor(obj, x);

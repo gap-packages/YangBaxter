@@ -264,6 +264,13 @@ true
 gap> IS_BRACE(DirectProductSkewbraces(br2,br3));
 true
 
+# Test automorphism groups
+gap> br := SmallSkewbrace(8,20);;
+gap> AutomorphismGroup(br);
+<group with 8 generators>
+gap> StructureDescription(last);
+"D8"
+
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##
