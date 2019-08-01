@@ -151,6 +151,7 @@ DeclareGlobalFunction("IsomorphismSkewbraces");
 #! true
 #! @EndExampleSession
 DeclareOperation("DirectProductSkewbraces", [IsSkewbrace, IsSkewbrace]);
+DeclareOperation("DirectProductOp", [IsList, IsSkewbrace]);
 
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace is two sided, <A>false</A> otherwise
