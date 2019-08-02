@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.7.0",
-Date := "23/02/2019", # dd/mm/yyyy format
+Version := "0.8.0",
+Date := "02/08/2019", # dd/mm/yyyy format
 License := "GPL-3.0",
 
 PackageWWWHome :=
@@ -50,7 +50,7 @@ Persons := [
      ),  
 ],
 
-Status := "dev",
+Status := "deposited",
 
 README_URL := 
   Concatenation( ~.PackageWWWHome, "/README.md" ),

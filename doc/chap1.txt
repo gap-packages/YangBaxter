@@ -102,7 +102,31 @@
     [4X[28X[ 8, 5 ][128X[104X
   [4X[32X[104X
   
-  [1X1.1-8 IdBrace[101X
+  [1X1.1-8 AutomorphismGroup[101X
+  
+  [33X[1;0Y[29X[2XAutomorphismGroup[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe function computes the automorphism group of a skew brace.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,20);;[127X[104X
+    [4X[25Xgap>[125X [27XAutomorphismGroup(br);[127X[104X
+    [4X[28X<group with 8 generators>[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(last);[127X[104X
+    [4X[28X"D8"[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,25);;[127X[104X
+    [4X[25Xgap>[125X [27Xaut := AutomorphismGroup(br);;[127X[104X
+    [4X[25Xgap>[125X [27Xf := Random(aut);;[127X[104X
+    [4X[25Xgap>[125X [27Xx := Random(br);;[127X[104X
+    [4X[25Xgap>[125X [27XImageElm(f, x) in br;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X1.1-9 IdBrace[101X
   
   [33X[1;0Y[29X[2XIdBrace[102X( [3Xobj[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -115,7 +139,7 @@
     [4X[28X[ 8, 5 ][128X[104X
   [4X[32X[104X
   
-  [1X1.1-9 IsomorphismSkewbraces[101X
+  [1X1.1-10 IsomorphismSkewbraces[101X
   
   [33X[1;0Y[29X[2XIsomorphismSkewbraces[102X( [3Xobj1[103X, [3Xobj2[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yan  isomorphism of skew braces if [3Xobj1[103X and [3Xobj2[103X are isomorphic and
@@ -134,7 +158,7 @@
   homomorphisms  from  [23X(A,+)[123X  to  [23X(B,+)[123X and then tries to find one [23Xf[123X such that
   [23Xf(a\circ b)=f(a)\circ f(b)[123X for all [23Xa,b\in A[123X.[133X
   
-  [1X1.1-10 DirectProductSkewbraces[101X
+  [1X1.1-11 DirectProductSkewbraces[101X
   
   [33X[1;0Y[29X[2XDirectProductSkewbraces[102X( [3Xobj1[103X, [3Xobj2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ythe direct product of [3Xobj1[103X and [3Xobj2[103X[133X
@@ -151,7 +175,11 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
-  [1X1.1-11 IsTwoSided[101X
+  [1X1.1-12 DirectProductOp[101X
+  
+  [33X[1;0Y[29X[2XDirectProductOp[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [1X1.1-13 IsTwoSided[101X
   
   [33X[1;0Y[29X[2XIsTwoSided[102X( [3Xobj[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is two sided, [3Xfalse[103X otherwise[133X
@@ -166,7 +194,22 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
-  [1X1.1-12 IsClassical[101X
+  [1X1.1-14 IsAutomorphismGroupOfSkewbrace[101X
+  
+  [33X[1;0Y[29X[2XIsAutomorphismGroupOfSkewbrace[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X  if  the  group  is  the automorphism group of a skew braces,
+            [3Xfalse[103X otherwise[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,25);;[127X[104X
+    [4X[25Xgap>[125X [27Xaut := AutomorphismGroup(br);;[127X[104X
+    [4X[25Xgap>[125X [27XOrder(aut);[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XIsAutomorphismGroupOfSkewbrace(aut);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X1.1-15 IsClassical[101X
   
   [33X[1;0Y[29X[2XIsClassical[102X( [3Xobj[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is of abelian type, [3Xfalse[103X otherwise[133X
@@ -176,15 +219,52 @@
   particular,  skew  braces of abelian type are those skew braces with abelian
   additive group. Such skew braces were introduced by Rump in [Rum07].[133X
   
-  [1X1.1-13 IsTrivialSkewbrace[101X
+  [1X1.1-16 IsOfAbelianType[101X
+  
+  [33X[1;0Y[29X[2XIsOfAbelianType[102X( [3Xarg[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [1X1.1-17 IsBiSkewbrace[101X
+  
+  [33X[1;0Y[29X[2XIsBiSkewbrace[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is a bi-skew brace, [3Xfalse[103X otherwise[133X
+  
+  [33X[0;0YA  skew  brace [23X(A,+,\circ)[123X is said to be a bi-skew brace if [23X(A,\circ,+)[123X is a
+  skew brace[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XNumber([1..NrSmallSkewbraces(8)], k->IsBiSkewbrace(SmallSkewbrace(8,k)));[127X[104X
+    [4X[28X39[128X[104X
+  [4X[32X[104X
+  
+  [1X1.1-18 IsOfNilpotentType[101X
+  
+  [33X[1;0Y[29X[2XIsOfNilpotentType[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is of nilpotent type, [3Xfalse[103X otherwise[133X
+  
+  [33X[0;0YLet  [23X\mathcal{X}[123X  be  a  property of groups. A skew brace [23XA[123X is said to be of
+  [23X\mathcal{X}[123X-type   if   its   additive  group  belongs  to  [23X\mathcal{X}[123X.  In
+  particular,  skew  braces  of  nilpotent  type  are  those  skew braces with
+  nilpotent additive group.[133X
+  
+  [1X1.1-19 IsTrivialSkewbrace[101X
   
   [33X[1;0Y[29X[2XIsTrivialSkewbrace[102X( [3Xobj[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the skew brace is trivial, [3Xfalse[103X otherwise[133X
   
   [33X[0;0YThe function returns [3Xtrue[103X if the skew brace [23XA[123X is trivial, i.e., [23Xa\circ b=a+b[123X
-  for all [23Xa,b\in A[123X.[133X
+  for  all  [23Xa,b\in  A[123X. WARNING: The property IsTrivial applied to a skew brace
+  will return true if and only if the skew brace has only one element.[133X
   
-  [1X1.1-14 Skewbrace2YB[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(9,1);;[127X[104X
+    [4X[25Xgap>[125X [27XIsTrivialSkewbrace(br);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsTrivial(br);[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [1X1.1-20 Skewbrace2YB[101X
   
   [33X[1;0Y[29X[2XSkewbrace2YB[102X( [3Xobj[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ythe set-theoretic solution associated with the skew brace [3Xobj[103X[133X
@@ -205,11 +285,11 @@
     [4X[28X<A set-theoretical solution of size 6>[128X[104X
   [4X[32X[104X
   
-  [1X1.1-15 Brace2YB[101X
+  [1X1.1-21 Brace2YB[101X
   
   [33X[1;0Y[29X[2XBrace2YB[102X( [3Xarg[103X ) [32X attribute[133X
   
-  [1X1.1-16 SkewbraceSubset2YB[101X
+  [1X1.1-22 SkewbraceSubset2YB[101X
   
   [33X[1;0Y[29X[2XSkewbraceSubset2YB[102X( [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ythe  set-theoretic  solution  associated  with a given subset of a
@@ -221,5 +301,34 @@
     [4X[28X[ <()>, <(2,3)>, <(1,2)>, <(1,2,3)>, <(1,3,2)>, <(1,3)> ][128X[104X
     [4X[25Xgap>[125X [27XSkewbraceSubset2YB(br, last{[4,5]});[127X[104X
     [4X[28X<A set-theoretical solution of size 2>[128X[104X
+  [4X[32X[104X
+  
+  [1X1.1-23 SemidirectProduct[101X
+  
+  [33X[1;0Y[29X[2XSemidirectProduct[102X( [3XA[103X, [3XB[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe semidirect product of skew braces[133X
+  
+  [33X[0;0YLet  [23XA[123X and [23XB[123X be two skew braces and [23X\sigma[123X be a skew brace action of [23XB[123X on [23XA[123X,
+  this  is a group homomorphism [23X\sigma\colon (B,\circ)\to Aut_{\mathrm{Br}}(A)[123X
+  from  the multiplicative group of [23XB[123X to the skew brace automorphism of [23XA[123X. The
+  semidirect  product of [23XA[123X and [23XB[123X with with respect to [23X\sigma[123X is the skew brace
+  [23XA\rtimes_{\sigma}B[123X with operations[133X
+  
+  
+  [24X[33X[0;6Y(a_1,b_1)+(a_2,b_2)=(a_1+a_2,b_1+b_2),          \quad         (a_1,b_1)\circ
+  (b_2,b_2)=(a_1\circ\sigma(b_1)(a_2),b_1\circ b_2)[133X
+  
+  [124X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XA := SmallSkewbrace(4,2);;[127X[104X
+    [4X[25Xgap>[125X [27XB := SmallSkewbrace(3,1);;[127X[104X
+    [4X[25Xgap>[125X [27Xs := SkewbraceActions(B,A);;[127X[104X
+    [4X[25Xgap>[125X [27XSize(s);[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XIdSkewbrace(SemidirectProduct(A,B,s[1]));[127X[104X
+    [4X[28X[ 12, 11 ][128X[104X
+    [4X[25Xgap>[125X [27XIdSkewbrace(DirectProduct(A,B));[127X[104X
+    [4X[28X[ 12, 11 ][128X[104X
   [4X[32X[104X
   

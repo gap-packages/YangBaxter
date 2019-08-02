@@ -34,7 +34,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X825856827B8F9B3C">2.2-1 Evaluate</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EB5F8BE80E57D3E">2.2-2 LyubashenkoYB</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X815F6E1287725A92">2.2-3 DehornoyClass</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79C6A56D840716FB">2.2-4 LinearRepresentationOfStructureGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86A7FA1E843A438E">2.2-4 DehornoyRepresentationOfStructureGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8596E3EA7E4C1067">2.2-5 IdYB</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FBF12347DC2ECA2">2.2-6 IYBBrace</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X829BF82C814E5498">2.2-7 LinearRepresentationOfStructureGroup</a></span>
 </div></div>
 </div>
 
@@ -140,11 +143,11 @@ false
 4
 </pre></div>
 
-<p><a id="X79C6A56D840716FB" name="X79C6A56D840716FB"></a></p>
+<p><a id="X86A7FA1E843A438E" name="X86A7FA1E843A438E"></a></p>
 
-<h5>2.2-4 LinearRepresentationOfStructureGroup</h5>
+<h5>2.2-4 DehornoyRepresentationOfStructureGroup</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinearRepresentationOfStructureGroup</code>( <var class="Arg">obj</var>, <var class="Arg">variable</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DehornoyRepresentationOfStructureGroup</code>( <var class="Arg">obj</var>, <var class="Arg">variable</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A faithful linear representaiton of the structure group of <var class="Arg">obj</var></p>
 
 
@@ -155,8 +158,8 @@ false
 [ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], 
   [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">field := FunctionField(Rationals, 1);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := IndeterminatesOfFunctionField(field)[1];</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := LinearRepresentationOfStructureGroup(yb, q);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := IndeterminatesOfFunctionField(field)[1];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := DehornoyRepresentationOfStructureGroup(yb, q);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x1 := G.1;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x2 := G.2;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x3 := G.3;;</span>
@@ -173,6 +176,59 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x3*x1=x4*x3;</span>
 true
+</pre></div>
+
+<p><a id="X8596E3EA7E4C1067" name="X8596E3EA7E4C1067"></a></p>
+
+<h5>2.2-5 IdYB</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdYB</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the identification number of <var class="Arg">obj</var></p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(5,10);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdCycleSet(cs);</span>
+[ 5, 10 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(4,3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := CycleSet2YB(cs);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdYB(yb);</span>
+[ 4, 3 ]
+</pre></div>
+
+<p><a id="X7FBF12347DC2ECA2" name="X7FBF12347DC2ECA2"></a></p>
+
+<h5>2.2-6 IYBBrace</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IYBBrace</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the permutation brace of the involutive solution of <var class="Arg">obj</var></p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := SmallIYB(5,86);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdBrace(IYBBrace(yb));</span>
+[ 6, 2 ]
+</pre></div>
+
+<p><a id="X829BF82C814E5498" name="X829BF82C814E5498"></a></p>
+
+<h5>2.2-7 LinearRepresentationOfStructureGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinearRepresentationOfStructureGroup</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a linear representation of the structure group of a finite involutive solution</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := SmallIYB(5,86);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gr := LinearRepresentationOfStructureGroup(yb);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gens := GeneratorsOfGroup(gr);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(gens[1]);</span>
+[ [  0,  1,  0,  0,  0,  1 ],
+  [  1,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  1,  0 ],
+  [  0,  0,  1,  0,  0,  0 ],
+  [  0,  0,  0,  1,  0,  0 ],
+  [  0,  0,  0,  0,  0,  1 ] ]
 </pre></div>
 
 

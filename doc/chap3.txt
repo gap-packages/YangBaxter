@@ -15,7 +15,13 @@
   [33X[1;0Y[29X[2XLeftIdeals[102X( [3Xobj[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list with the left ideals of the skew brace [3Xobj[103X[133X
   
-  [1X3.1-2 IsLeftIdeal[101X
+  [1X3.1-2 StrongLeftIdeals[101X
+  
+  [33X[1;0Y[29X[2XStrongLeftIdeals[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya  list with the left ideals of the skew brace [3Xobj[103X that are normal
+            in the additive group of [23XA[123X[133X
+  
+  [1X3.1-3 IsLeftIdeal[101X
   
   [33X[1;0Y[29X[2XIsLeftIdeal[102X( [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Y[3Xtrue[103X if the subset is a left ideal of [3Xobj[103X[133X
