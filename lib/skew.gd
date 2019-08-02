@@ -187,6 +187,18 @@ DeclareProperty("IsSkewbraceAutomorphism", IsGeneralMapping);
 #! group belongs to $\mathcal{X}$. In particular, skew braces of abelian type are those skew braces with
 #! abelian additive group. Such skew braces were introduced by Rump in <Cite Key="MR2278047"/>.
 DeclareProperty("IsClassical", IsSkewbrace);
+DeclareProperty("IsOfAbelianType", IsSkewbrace);
+
+#! @Arguments obj
+#! @Returns <A>true</A> if the skew brace is a bi-skew brace, <A>false</A> otherwise
+#! @Description
+#! A skew brace $(A,+,\circ)$ is said to be a bi-skew brace if $(A,\circ,+)$ 
+#! is a skew brace 
+#! @ExampleSession
+#! gap> Number([1..NrSmallSkewbraces(8)], k->IsBiSkewbrace(SmallSkewbrace(8,k)));
+#! 39
+#! @EndExampleSession
+DeclareProperty("IsBiSkewbrace", IsSkewbrace);
 
 #! @Arguments obj
 #! @Returns <A>true</A> if the skew brace is of nilpotent type, <A>false</A> otherwise

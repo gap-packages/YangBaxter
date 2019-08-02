@@ -925,4 +925,17 @@ function(obj, ideal)
   return Quotient(obj,ideal);
 end);
 
-
+InstallMethod(IsBiSkewbrace, "for a skew brace", [ IsSkewbrace ],
+function(obj)
+  local a,b,c;
+  for a in obj do
+    for b in obj do
+      for c in obj do
+        if not a+(b*c)=(a+b)*Inverse(a)*(a+c) then
+          return false;
+        fi;
+      od;
+    od;
+  od;
+  return true;
+end);

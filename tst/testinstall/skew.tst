@@ -279,6 +279,10 @@ gap> x := Random(br);;
 gap> ImageElm(f, x) in br;
 true
 
+# Test for IsBiSkewbrace
+gap> Number([1..NrSmallSkewbraces(8)], k->IsBiSkewbrace(SmallSkewbrace(8,k)));
+39
+
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##
