@@ -297,6 +297,13 @@ true
 gap> Number([1..NrSmallSkewbraces(8)], k->IsBiSkewbrace(SmallSkewbrace(8,k)));
 39
 
+# Test for SemidirectProduct
+gap> A := SmallSkewbrace(12,22);;
+gap> B := SmallSkewbrace(4,2);;
+gap> s := SkewbraceActions(B,A);;
+gap> List(s, f->IS_BRACE(SemidirectProduct(A,B,f)));
+[ true, true, true, true ]
+
 gap> STOP_TEST( "skew.tst", 1 );
 #############################################################################
 ##

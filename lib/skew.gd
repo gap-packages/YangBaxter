@@ -298,7 +298,9 @@ DeclareGlobalFunction("AllSmallBraces");
 DeclareGlobalFunction("IsSkewbraceHomomorphism");
 DeclareGlobalFunction("SkewbraceElm");
 
-
+DeclareOperation("SkewbraceActions", [ IsSkewbrace, IsSkewbrace ]);
+DeclareOperation("EvaluateSkewbraceAction", [ IsSkewbraceElm, IsSkewbraceElm, IsGeneralMapping ]);
+DeclareOperation("SemidirectProduct", [ IsSkewbrace, IsSkewbrace, IsGeneralMapping ]);
 
 # Construction
 DeclareGlobalFunction("BraceP2");

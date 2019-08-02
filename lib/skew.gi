@@ -962,3 +962,54 @@ function(obj)
   od;
   return true;
 end);
+
+# returns all group homomorphism from the multiplicative group
+# of <obj2> to the skew brace automorphism group of <obj1>
+InstallMethod(SkewbraceActions, "for two skew braces", [ IsSkewbrace, IsSkewbrace ], 
+function(obj2, obj1)
+  return AllHomomorphisms(UnderlyingMultiplicativeGroup(obj2), AsGroup(AutomorphismGroup(obj1)));
+end);
+
+InstallMethod(EvaluateSkewbraceAction, "for two skew braces elements and a map", [ IsSkewbraceElm, IsSkewbraceElm, IsGeneralMapping ], 
+function(b, a, f)
+  local x, A, B;
+
+  A := FamilyObj(a)!.Skewbrace;
+  B := FamilyObj(b)!.Skewbrace;
+
+  # WARNING: The skew brace automorphism group acts on the right!
+  b := FromSkewbrace2Mul(B, [b])[1];
+  x := Image(Inverse(Image(f, b)), a![1]);
+
+  return FromAdd2Skewbrace(A, [x])[1];
+end);
+
+InstallMethod(SemidirectProduct, "for two skew braces and a map", [ IsSkewbrace, IsSkewbrace, IsGeneralMapping ], 
+function(obj1, obj2, sigma)
+  local l,u,v,a,b,c,d,add,mul;
+
+	l := List(Cartesian(obj1,obj2), u->[u]);
+
+	mul := NullMat(Size(l),Size(l));
+	add := NullMat(Size(l),Size(l));
+
+  # WARNING: The skew brace automorphism group acts on the right!
+	for u in l do
+		a := u[1];
+		for v in l do
+			b := v[1];
+     c := [a[1]*EvaluateSkewbraceAction(a[2],b[1],sigma),a[2]*b[2]];
+			mul[Position(l,v)][Position(l,u)] := Position(l,[c]);
+			add[Position(l,v)][Position(l,u)] := Position(l,[[a[1]+b[1],a[2]+b[2]]]);
+		od;
+	od;
+
+	mul := List(mul, PermList);
+	add := List(add, PermList);
+
+	return Skewbrace(List([1..Size(l)], x->[add[x],mul[x]]));
+
+end);
+
+
+
