@@ -370,7 +370,7 @@ function(size, number)
         l := AsList(CyclicGroup(IsPermGroup, size));
         return Skewbrace(List([1..size], k->[l[k],l[k]]));
     else
-        Error("there is only one brace of size one");
+        Error("there is only one brace of size ", size);
     fi;
   fi;
 
