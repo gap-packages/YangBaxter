@@ -251,6 +251,38 @@ DeclareAttribute("Brace2YB", IsSkewbrace);
 #! @EndExampleSession
 DeclareOperation("SkewbraceSubset2YB", [ IsSkewbrace, IsCollection ]);
 
+DeclareOperation("EvaluateSkewbraceAction", [ IsSkewbraceElm, IsSkewbraceElm, IsGeneralMapping ]);
+
+DeclareOperation("SkewbraceActions", [ IsSkewbrace, IsSkewbrace ]);
+
+#! @Arguments A, B, s
+#! @Returns the semidirect product of skew braces
+#! @Description
+#! Let $A$ and $B$ be two skew braces and $\sigma$ be a skew brace 
+#! action of $B$ on $A$, this is a group homomorphism 
+#! $\sigma\colon (B,\circ)\to Aut_{\mathrm{Br}}(A)$ 
+#! from the multiplicative group of $B$ to the skew brace
+#! automorphism of $A$. The semidirect product of $A$ and $B$ with
+#! with respect to $\sigma$ is the skew brace $A\rtimes_{\sigma}B$ with
+#! operations 
+#! $$
+#! (a_1,b_1)+(a_2,b_2)=(a_1+a_2,b_1+b_2),
+#! \quad
+#! (a_1,b_1)\circ (b_2,b_2)=(a_1\circ\sigma(b_1)(a_2),b_1\circ b_2)
+#! $$
+#! @ExampleSession
+#! gap> A := SmallSkewbrace(4,2);;
+#! gap> B := SmallSkewbrace(3,1);;
+#! gap> s := SkewbraceActions(B,A);;
+#! gap> Size(s);
+#! 1
+#! gap> IdSkewbrace(SemidirectProduct(A,B,s[1]));
+#! [ 12, 11 ]
+#! gap> IdSkewbrace(DirectProduct(A,B));
+#! [ 12, 11 ]
+#! @EndExampleSession
+DeclareOperation("SemidirectProduct", [ IsSkewbrace, IsSkewbrace, IsGeneralMapping ]);
+
 #! @DoNotReadRestOfFile
 
 DeclareAttribute("UnderlyingAdditiveGroup", IsSkewbrace);
@@ -298,9 +330,6 @@ DeclareGlobalFunction("AllSmallBraces");
 DeclareGlobalFunction("IsSkewbraceHomomorphism");
 DeclareGlobalFunction("SkewbraceElm");
 
-DeclareOperation("SkewbraceActions", [ IsSkewbrace, IsSkewbrace ]);
-DeclareOperation("EvaluateSkewbraceAction", [ IsSkewbraceElm, IsSkewbraceElm, IsGeneralMapping ]);
-DeclareOperation("SemidirectProduct", [ IsSkewbrace, IsSkewbrace, IsGeneralMapping ]);
 
 # Construction
 DeclareGlobalFunction("BraceP2");
