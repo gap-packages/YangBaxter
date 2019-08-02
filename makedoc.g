@@ -50,6 +50,7 @@ end;
 
 LoadPackage("AutoDoc");
 AutoDoc( rec( scaffold :=true,
+      extract_examples := true,
               autodoc  := rec( files := [ "doc/chapters.autodoc" ] )
 ));
 QUIT;

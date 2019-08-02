@@ -99,7 +99,7 @@ DeclareAttribute("DerivedRightRack", IsYB);
 #! @ExampleSession
 #! gap> cs := SmallCycleSet(4,13);;
 #! gap> yb := CycleSet2YB(cs);;
-#| gap> DehornoyClass(yb);
+#! gap> DehornoyClass(yb);
 #! 2
 #! gap> cs := SmallCycleSet(4,19);;
 #! gap> yb := CycleSet2YB(cs);;
