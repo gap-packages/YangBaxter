@@ -99,7 +99,7 @@ DeclareAttribute("DerivedRightRack", IsYB);
 #! @ExampleSession
 #! gap> cs := SmallCycleSet(4,13);;
 #! gap> yb := CycleSet2YB(cs);;
-#| gap> DehornoyClass(yb)
+#| gap> DehornoyClass(yb);
 #! 2
 #! gap> cs := SmallCycleSet(4,19);;
 #! gap> yb := CycleSet2YB(cs);;
@@ -121,7 +121,7 @@ DeclareOperation("Wada", [IsGroup]);
 #! [ [ (3,4), (1,3,2,4), (1,4,2,3), (1,2) ], 
 #!   [ (2,4), (1,4,3,2), (1,2,3,4), (1,3) ] ]
 #! gap> field := FunctionField(Rationals, 1);;
-#! gap> q := IndeterminatesOfFunctionField(field)[1];
+#! gap> q := IndeterminatesOfFunctionField(field)[1];;
 #! gap> G := DehornoyRepresentationOfStructureGroup(yb, q);;
 #! gap> x1 := G.1;;
 #! gap> x2 := G.2;;
@@ -162,6 +162,9 @@ DeclareAttribute("IdYB", IsYB);
 #! @Description
 #! 
 #! @ExampleSession
+#! gap> yb := SmallIYB(5,86);;
+#! gap> IdBrace(IYBBrace(yb));
+#! [ 6, 2 ]
 #! @EndExampleSession
 DeclareAttribute("IYBBrace", IsYB);
 
@@ -170,5 +173,15 @@ DeclareAttribute("IYBBrace", IsYB);
 #! @Description
 #! 
 #! @ExampleSession
+#! gap> yb := SmallIYB(5,86);;
+#! gap> gr := LinearRepresentationOfStructureGroup(yb);;
+#! gap> gens := GeneratorsOfGroup(gr);;
+#! gap> Display(gens[1]);
+#! [ [  0,  1,  0,  0,  0,  1 ],
+#!   [  1,  0,  0,  0,  0,  0 ],
+#!   [  0,  0,  0,  0,  1,  0 ],
+#!   [  0,  0,  1,  0,  0,  0 ],
+#!   [  0,  0,  0,  1,  0,  0 ],
+#!   [  0,  0,  0,  0,  0,  1 ] ]
 #! @EndExampleSession
 DeclareAttribute("LinearRepresentationOfStructureGroup", IsYB);
