@@ -52,9 +52,7 @@ end);
 InstallMethod(Enumerator,
     "for a cycle set", 
     [ IsCycleSet ],
-    function( obj )
-      return AsList(obj);
-end);
+    AsList);
 
 InstallMethod(AsList, 
     "for a cycle set", 
@@ -138,13 +136,7 @@ InstallOtherMethod(IsSquareFree,
   "for cycle sets", 
   [ IsCycleSet ],
   function(obj)
-  local x;
-  for x in obj do
-    if x*x <> x then
-      return false;
-    fi;
-  od;
-  return true;
+  return ForAll(obj, x -> x*x = x);
 end);
 
 InstallOtherMethod(Permutations,

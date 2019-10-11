@@ -39,9 +39,7 @@ end);
 InstallMethod(Enumerator,
     "for a rack", 
     [ IsRack ],
-    function( obj )
-      return AsList(obj);
-end);
+    AsList);
 
 InstallMethod(AsList, 
     "for a rack",
