@@ -256,9 +256,7 @@ end);
 InstallMethod(Enumerator,
     "for a skew brace",
     [ IsSkewbrace ],
-    function( obj )
-      return AsList(obj);
-end);
+    AsList);
 
 InstallMethod(AsList, 
     "for a skew brace",
