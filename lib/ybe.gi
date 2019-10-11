@@ -231,7 +231,6 @@ InstallMethod(YB2CycleSet,
 end);
 
 InstallGlobalFunction(YB_xy,
-  "for a set-theoretical solution",
   function(obj, x, y)
   return [LMatrix(obj)[x][y], RMatrix(obj)[y][x]];
   #return [obj!.l_actions[x][y], obj!.r_actions[y][x]];
