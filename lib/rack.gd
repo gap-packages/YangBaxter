@@ -11,12 +11,11 @@ BindGlobal("RackType", NewType(CollectionsFamily( RackElmFamily ), IsRack and Is
 #DeclareGlobalVariable("RackType");
 
 ### To create/recognize racks 
-DeclareGlobalFunction("IsRackMatrix");
 DeclareOperation("Rack", [IsList]);
 DeclareAttribute("Rack2YB", IsRack);
 DeclareAttribute("AsList", IsRack);
 DeclareAttribute("Enumerator", IsRack);
 
 DeclareAttribute("Permutations", IsRack);
-DeclareAttribute("Matrix", IsRack);
+DeclareAttribute("MatrixOfRack", IsRack);
 

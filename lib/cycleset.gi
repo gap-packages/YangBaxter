@@ -18,11 +18,13 @@ function(matrix)
   fam!.CycleSet := obj;
 
   SetSize(obj, Size(matrix)); 
-  SetMatrix(obj, matrix);
+  SetMatrixOfCycleSet(obj, matrix);
   SetPermutations(obj, List([1..Size(obj)], x->PermList(matrix[x])));
 
   return obj;
 end);
+
+InstallOtherMethod(Matrix, [ IsCycleSet and HasMatrixOfCycleSet ], MatrixOfCycleSet);
 
 InstallMethod(ViewObj,
   "for a cycle set",
@@ -36,7 +38,7 @@ InstallMethod(PrintObj,
   [ IsCycleSet ],
   function(obj)
   if Size(obj) < 6 then
-    Print("CycleSet(", Matrix(obj), ")");
+    Print("CycleSet(", MatrixOfCycleSet(obj), ")");
   else
     Print("<A cycle set of size ", Size(obj), ">");
   fi;
@@ -84,7 +86,7 @@ InstallMethod( \*,
     function( x, y )
     local fam;
     fam := FamilyObj(x);
-    return CycleSetElmConstructor(fam!.CycleSet, Matrix(fam!.CycleSet)[x![1]][y![1]]);
+    return CycleSetElmConstructor(fam!.CycleSet, MatrixOfCycleSet(fam!.CycleSet)[x![1],y![1]]);
 end);
 
 InstallMethod(Permutations2CycleSet, "for a list of permutations", [ IsList ], 
@@ -139,12 +141,12 @@ InstallOtherMethod(IsSquareFree,
   return ForAll(obj, x -> x*x = x);
 end);
 
-InstallOtherMethod(Permutations,
-  "for cycle sets",
-  [ IsCycleSet ],
-  function(obj)
-  return List([1..Size(obj!.matrix)], i->PermList(obj!.matrix[i]));
-end);
+#InstallOtherMethod(Permutations,
+#  "for cycle sets",
+#  [ IsCycleSet ],
+#  function(obj)
+#  return List([1..Size(obj!.matrix)], i->PermList(obj!.matrix[i]));
+#end);
 
 ### This function converts a cycle set into a set-theoretical solution
 ### EXAMPLE:
@@ -152,11 +154,13 @@ end);
 ### gap> r := CycleSet2YB(c);;
 InstallMethod(CycleSet2YB, "for cycle sets", [ IsCycleSet ],
 function(obj)
-  local lperms, rperms, x, y;
+  local mat, lperms, rperms, x, y;
+  mat := MatrixOfCycleSet(obj);
+  perms := Permutations(obj);
   lperms := NullMat(Size(obj), Size(obj));
   for x in [1..Size(obj)] do
     for y in [1..Size(obj)] do
-      lperms[x][y] := Matrix(obj)[x^Inverse(PermList(Matrix(obj)[y]))][y];
+      lperms[x][y] := mat[x/perms[y],y];
     od;
   od;
   rperms := List(Permutations(obj), x->ListPerm(Inverse(x), Size(obj)));
@@ -713,10 +717,11 @@ end);
 ### returns true if the map f:f(x)=x>x is bijective
 InstallOtherMethod(IsNonDegenerate, "for a cycle set", [ IsCycleSet ],
 function(obj)
-  local i,p;
+  local mat,i,p;
+  mat := MatrixOfCycleSet(obj);
   p := [];
   for i in [1..Size(obj)] do
-    p[i] := Matrix(obj)[i][i];
+    p[i] := mat[i,i];
   od;
   if PermList(p) <> fail then
     return true;

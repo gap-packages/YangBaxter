@@ -16,11 +16,13 @@ function(matrix)
   fam!.Rack := obj;
 
   SetSize(obj, Size(matrix)); 
-  SetMatrix(obj, matrix);
+  SetMatrixOfRack(obj, matrix);
   SetPermutations(obj, List([1..Size(obj)], x->PermList(matrix[x])));
 
   return obj;
 end);
+
+InstallOtherMethod(Matrix, [ IsRack and HasMatrixOfRack ], MatrixOfRack);
 
 InstallMethod(ViewObj,
   "for a rack",
@@ -33,7 +35,7 @@ InstallMethod(PrintObj,
   "for a rack", 
   [ IsRack ],
   function(obj)
-  Print( "Rack( ", Matrix(obj), " )");
+  Print( "Rack( ", MatrixOfRack(obj), " )");
 end);
 
 InstallMethod(Enumerator,
@@ -71,11 +73,11 @@ InstallMethod( \*,
     function( x, y )
     local fam;
     fam := FamilyObj(x);
-    return RackElmConstructor(fam!.Rack, Matrix(fam!.Rack)[x![1]][y![1]]);
+    return RackElmConstructor(fam!.Rack, MatrixOfRack(fam!.Rack)[x![1],y![1]]);
 end);
 
 InstallMethod(Rack2YB, "for a rack", [ IsRack ], 
 function(obj)
-  return YB(Matrix(obj), List([1..Size(obj)], x->[1..Size(obj)]));
+  return YB(MatrixOfRack(obj), List([1..Size(obj)], x->[1..Size(obj)]));
 end);
 
