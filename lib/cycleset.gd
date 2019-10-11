@@ -29,7 +29,7 @@ DeclareOperation("CycleSetCycle", [ IsCycleSet, IsInt, IsInt ]);
 DeclareAttribute("AsList", IsCycleSet);
 DeclareAttribute("Enumerator", IsCycleSet);
 DeclareAttribute("Permutations", IsCycleSet);
-DeclareAttribute("Matrix", IsCycleSet);
+DeclareAttribute("MatrixOfCycleSet", IsCycleSet);
 
 
 ### Dynamical cocycles and extensions
