@@ -1,8 +1,8 @@
-NCBRACES := [];
+NCBRACES:=[];
 
-NCBRACES[1] := [ rec(
-      gadd := [ () ],
-      gmul := [ () ],
-      p := (),
-      q := () ) 
+NCBRACES[1]:=[rec(
+gadd:=[()],
+gmul:=[()],
+p:=(),
+q:=())
 ];
