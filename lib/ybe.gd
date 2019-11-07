@@ -99,7 +99,7 @@ DeclareAttribute("DerivedRightRack", IsYB);
 #! @ExampleSession
 #! gap> cs := SmallCycleSet(4,13);;
 #! gap> yb := CycleSet2YB(cs);;
-#| gap> DehornoyClass(yb);
+#! gap> DehornoyClass(yb);
 #! 2
 #! gap> cs := SmallCycleSet(4,19);;
 #! gap> yb := CycleSet2YB(cs);;
@@ -161,11 +161,13 @@ DeclareAttribute("IdYB", IsYB);
 #! @Returns the permutation brace of the involutive solution of <A>obj</A>
 #! @Description
 #! 
-#! @ExampleSession
+#! @BeginLog
 #! gap> yb := SmallIYB(5,86);;
 #! gap> IdBrace(IYBBrace(yb));
 #! [ 6, 2 ]
-#! @EndExampleSession
+#! @EndLog
+# This example is excluded from the test since it goes into an
+# infinite recursion at assertion level 2
 DeclareAttribute("IYBBrace", IsYB);
 
 #! @Arguments obj
