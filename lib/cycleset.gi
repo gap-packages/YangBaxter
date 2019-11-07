@@ -154,7 +154,7 @@ end);
 ### gap> r := CycleSet2YB(c);;
 InstallMethod(CycleSet2YB, "for cycle sets", [ IsCycleSet ],
 function(obj)
-  local mat, lperms, rperms, x, y;
+  local mat, perms, lperms, rperms, x, y;
   mat := MatrixOfCycleSet(obj);
   perms := Permutations(obj);
   lperms := NullMat(Size(obj), Size(obj));
