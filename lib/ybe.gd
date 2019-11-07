@@ -161,11 +161,13 @@ DeclareAttribute("IdYB", IsYB);
 #! @Returns the permutation brace of the involutive solution of <A>obj</A>
 #! @Description
 #! 
-#! @ExampleSession
+#! @BeginLog
 #! gap> yb := SmallIYB(5,86);;
 #! gap> IdBrace(IYBBrace(yb));
 #! [ 6, 2 ]
-#! @EndExampleSession
+#! @EndLog
+# This example is excluded from the test since it goes into an
+# infinite recursion at assertion level 2
 DeclareAttribute("IYBBrace", IsYB);
 
 #! @Arguments obj

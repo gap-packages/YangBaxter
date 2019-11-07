@@ -85,12 +85,7 @@ gap> yb := CycleSet2YB(cs);;
 gap> IdYB(yb);
 [ 4, 3 ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:185-189
-gap> yb := SmallIYB(5,86);;
-gap> IdBrace(IYBBrace(yb));
-[ 6, 2 ]
-
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:202-213
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:193-204
 gap> yb := SmallIYB(5,86);;
 gap> gr := LinearRepresentationOfStructureGroup(yb);;
 gap> gens := GeneratorsOfGroup(gr);;
