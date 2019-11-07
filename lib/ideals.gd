@@ -24,11 +24,11 @@ DeclareAttribute("StrongLeftIdeals", IsSkewbrace);
 #! gap> br := SmallBrace(8,4);
 #! <brace of size 8>
 #! gap> leftideals := LeftIdeals(br);
-#! [ <brace of size 8>, <brace of size 4>, <brace of size 2>, <brace of size 1> ]
-#! gap> List(left_ideals, x->IsLeftIdeal(br, x));
+#! [ <brace of size 1>, <brace of size 2>, <brace of size 4>, <brace of size 8> ]
+#! gap> List(leftideals, x->IsLeftIdeal(br, x));
 #! [ true, true, true, true ]
-#! gap> List(left_ideals, IdBrace);
-#! [ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ]
+#! gap> List(leftideals, IdBrace);
+#! [ [ 1, 1 ], [ 2, 1 ], [ 4, 1 ], [ 8, 4 ] ]
 #! @EndExampleSession
 DeclareOperation("IsLeftIdeal", [ IsSkewbrace, IsCollection ]);
 
@@ -41,12 +41,12 @@ DeclareOperation("IsLeftIdeal", [ IsSkewbrace, IsCollection ]);
 #! @ExampleSession
 #! gap> br := SmallBrace(8,4);
 #! <brace of size 8>
-#! gap> ideals := LeftIdeals(br);
-#! [ <brace of size 8>, <brace of size 4>, <brace of size 2>, <brace of size 1> ]
-#! gap> List(left_ideals, x->IsLeftIdeal(br, x));
+#! gap> leftideals := LeftIdeals(br);
+#! [ <brace of size 1>, <brace of size 2>, <brace of size 4>, <brace of size 8> ]
+#! gap> List(leftideals, x->IsLeftIdeal(br, x));
 #! [ true, true, true, true ]
-#! gap> List(left_ideals, IdBrace);
-#! [ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ]
+#! gap> List(leftideals, IdBrace);
+#! [ [ 1, 1 ], [ 2, 1 ], [ 4, 1 ], [ 8, 4 ] ]
 #! @EndExampleSession
 DeclareOperation("IsIdeal", [ IsSkewbrace, IsCollection ]);
 
@@ -273,9 +273,9 @@ DeclareAttribute("KernelOfLambda", IsSkewbrace);
 #! @ExampleSession
 #! gap> br := SmallBrace(8,10);;
 #! gap> ideals := Ideals(br);;
-#! gap> Quotient(br, ideals[2]);
+#! gap> Quotient(br, ideals[5]);
 #! <brace of size 4>
-#! gap> br/ideals[5];
+#! gap> br/ideals[2];
 #! <brace of size 2>
 #! @EndExampleSession
 DeclareOperation("Quotient", [IsSkewbrace, IsSkewbrace]);

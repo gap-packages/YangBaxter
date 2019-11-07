@@ -76,7 +76,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
    GAP := ">=4.9",
-  NeededOtherPackages := [ ],
+  NeededOtherPackages := [["cryst","4.1.12"]],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ]
 ),
