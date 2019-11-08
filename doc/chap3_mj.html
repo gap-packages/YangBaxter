@@ -119,11 +119,11 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallBrace(8,4);</span>
 &lt;brace of size 8&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">leftideals := LeftIdeals(br);</span>
-[ &lt;brace of size 8&gt;, &lt;brace of size 4&gt;, &lt;brace of size 2&gt;, &lt;brace of size 1&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(left_ideals, x-&gt;IsLeftIdeal(br, x));</span>
+[ &lt;brace of size 1&gt;, &lt;brace of size 2&gt;, &lt;brace of size 4&gt;, &lt;brace of size 8&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, x-&gt;IsLeftIdeal(br, x));</span>
 [ true, true, true, true ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(left_ideals, IdBrace);</span>
-[ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, IdBrace);</span>
+[ [ 1, 1 ], [ 2, 1 ], [ 4, 1 ], [ 8, 4 ] ]
 </pre></div>
 
 <p><a id="X83629803819C4A6F" name="X83629803819C4A6F"></a></p>
@@ -143,12 +143,12 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallBrace(8,4);</span>
 &lt;brace of size 8&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ideals := LeftIdeals(br);</span>
-[ &lt;brace of size 8&gt;, &lt;brace of size 4&gt;, &lt;brace of size 2&gt;, &lt;brace of size 1&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(left_ideals, x-&gt;IsLeftIdeal(br, x));</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">leftideals := LeftIdeals(br);</span>
+[ &lt;brace of size 1&gt;, &lt;brace of size 2&gt;, &lt;brace of size 4&gt;, &lt;brace of size 8&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, x-&gt;IsLeftIdeal(br, x));</span>
 [ true, true, true, true ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(left_ideals, IdBrace);</span>
-[ [ 8, 4 ], [ 4, 1 ], [ 2, 1 ], [ 1, 1 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, IdBrace);</span>
+[ [ 1, 1 ], [ 2, 1 ], [ 4, 1 ], [ 8, 4 ] ]
 </pre></div>
 
 <p><a id="X7EBF92377C5E417D" name="X7EBF92377C5E417D"></a></p>
@@ -443,9 +443,9 @@ false
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallBrace(8,10);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ideals := Ideals(br);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Quotient(br, ideals[2]);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Quotient(br, ideals[5]);</span>
 &lt;brace of size 4&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br/ideals[5];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br/ideals[2];</span>
 &lt;brace of size 2&gt;
 </pre></div>
 

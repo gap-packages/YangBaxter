@@ -39,8 +39,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X815F6E1287725A92">2.2-3 DehornoyClass</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X86A7FA1E843A438E">2.2-4 DehornoyRepresentationOfStructureGroup</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8596E3EA7E4C1067">2.2-5 IdYB</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FBF12347DC2ECA2">2.2-6 IYBBrace</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X829BF82C814E5498">2.2-7 LinearRepresentationOfStructureGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X829BF82C814E5498">2.2-6 LinearRepresentationOfStructureGroup</a></span>
 </div></div>
 </div>
 
@@ -139,6 +138,7 @@ false
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(4,13);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := CycleSet2YB(cs);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DehornoyClass(yb);</span>
 2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cs := SmallCycleSet(4,19);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">yb := CycleSet2YB(cs);;</span>
@@ -199,12 +199,12 @@ true
 [ 4, 3 ]
 </pre></div>
 
-<p><a id="X7FBF12347DC2ECA2" name="X7FBF12347DC2ECA2"></a></p>
+<p><a id="X829BF82C814E5498" name="X829BF82C814E5498"></a></p>
 
-<h5>2.2-6 IYBBrace</h5>
+<h5>2.2-6 LinearRepresentationOfStructureGroup</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IYBBrace</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: the permutation brace of the involutive solution of <var class="Arg">obj</var></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinearRepresentationOfStructureGroup</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the permutation brace of the involutive solution of <var class="Arg">obj</var> a linear representation of the structure group of a finite involutive solution</p>
 
 
 <div class="example"><pre>
@@ -212,13 +212,6 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdBrace(IYBBrace(yb));</span>
 [ 6, 2 ]
 </pre></div>
-
-<p><a id="X829BF82C814E5498" name="X829BF82C814E5498"></a></p>
-
-<h5>2.2-7 LinearRepresentationOfStructureGroup</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinearRepresentationOfStructureGroup</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a linear representation of the structure group of a finite involutive solution</p>
 
 
 <div class="example"><pre>

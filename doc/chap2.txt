@@ -81,6 +81,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X
     [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
+    [4X[25Xgap>[125X [27XDehornoyClass(yb);[127X[104X
     [4X[28X2[128X[104X
     [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,19);;[127X[104X
     [4X[25Xgap>[125X [27Xyb := CycleSet2YB(cs);;[127X[104X
@@ -135,22 +136,18 @@
     [4X[28X[ 4, 3 ][128X[104X
   [4X[32X[104X
   
-  [1X2.2-6 IYBBrace[101X
+  [1X2.2-6 LinearRepresentationOfStructureGroup[101X
   
-  [33X[1;0Y[29X[2XIYBBrace[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ythe permutation brace of the involutive solution of [3Xobj[103X[133X
+  [33X[1;0Y[29X[2XLinearRepresentationOfStructureGroup[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe  permutation  brace of the involutive solution of [3Xobj[103X a linear
+            representation  of  the  structure  group  of  a finite involutive
+            solution[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xyb := SmallIYB(5,86);;[127X[104X
     [4X[25Xgap>[125X [27XIdBrace(IYBBrace(yb));[127X[104X
     [4X[28X[ 6, 2 ][128X[104X
   [4X[32X[104X
-  
-  [1X2.2-7 LinearRepresentationOfStructureGroup[101X
-  
-  [33X[1;0Y[29X[2XLinearRepresentationOfStructureGroup[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya  linear  representation  of  the  structure  group  of  a finite
-            involutive solution[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xyb := SmallIYB(5,86);;[127X[104X

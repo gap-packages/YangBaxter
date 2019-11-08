@@ -41,12 +41,11 @@
   [2XIsSkewbrace[102X, for IsAttributeStoringRep 1.1-1 
   [2XIsTrivialSkewbrace[102X, for IsSkewbrace 1.1-19 
   [2XIsTwoSided[102X, for IsSkewbrace 1.1-13 
-  [2XIYBBrace[102X, for IsYB 2.2-6 
   [2XKernelOfLambda[102X, for IsSkewbrace 3.4-5 
   [2XLeftIdeals[102X, for IsSkewbrace 3.1-1 
   [2XLeftNilpotentIdeals[102X, for IsSkewbrace 3.3-6 
   [2XLeftSeries[102X, for IsSkewbrace 3.3-1 
-  [2XLinearRepresentationOfStructureGroup[102X, for IsYB 2.2-7 
+  [2XLinearRepresentationOfStructureGroup[102X, for IsYB 2.2-6 
   [2XLyubashenkoYB[102X, for IsInt, IsPerm, IsPerm 2.2-2 
   [2XMinimalIdeals[102X, for IsSkewbrace 3.5-12 
   [2XMultipermutationLevel[102X, for IsSkewbrace 3.4-2 

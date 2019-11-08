@@ -6,10 +6,10 @@
              [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                     0.8.0
+                                     0.9.0
   
   
-                                 2 August 2019
+                                8 November 2019
   
   
                                Leandro Vendramin
@@ -76,8 +76,7 @@
       2.2-3 DehornoyClass
       2.2-4 DehornoyRepresentationOfStructureGroup
       2.2-5 IdYB
-      2.2-6 IYBBrace
-      2.2-7 LinearRepresentationOfStructureGroup
+      2.2-6 LinearRepresentationOfStructureGroup
   3 [33X[0;0YIdeals and left ideals[133X
     3.1 [33X[0;0YLeft ideals[133X
       3.1-1 LeftIdeals
