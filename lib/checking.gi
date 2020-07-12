@@ -23,7 +23,7 @@ InstallGlobalFunction(IS_CYCLESET, function(m)
 
   ### Check bijectivity
   if fail in List([1..size], i->PermList(m[i])) then
-    return fail;
+    return false;
   fi;
 
   ### Check (xy)(xz)=(yx)(yz)
