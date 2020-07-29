@@ -107,9 +107,10 @@ function(n, i)
     CSsize5, 
     CSsize6, 
     CSsize7, 
-    CSsize8
+    CSsize8,
+    CSsize9
   ];
-  if n in [1..8] then
+  if n in [1..9] then
     m := data[n][i];
     return CycleSet(m);
   else
@@ -129,7 +130,8 @@ function(n)
     CSsize5, 
     CSsize6, 
     CSsize7, 
-    CSsize8
+    CSsize8,
+    CSsize9
   ];
   return Size(data[n]);
 end);

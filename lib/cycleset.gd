@@ -71,5 +71,6 @@ ReadPackage("yangbaxter", "data/CSsmall.g");
 ReadPackage("yangbaxter", "data/CSsize6.g");
 ReadPackage("yangbaxter", "data/CSsize7.g");
 ReadPackage("yangbaxter", "data/CSsize8.g");
+ReadPackage("yangbaxter", "data/CSsize9.g");
 
 
