@@ -121,19 +121,13 @@ end);
 ### This function returns the number of cycle sets of size <n>
 InstallGlobalFunction(NrSmallCycleSets, 
 function(n)
-  local data;
-  data := [
-    CSsize1, 
-    CSsize2, 
-    CSsize3, 
-    CSsize4, 
-    CSsize5, 
-    CSsize6, 
-    CSsize7, 
-    CSsize8,
-    CSsize9
-  ];
-  return Size(data[n]);
+  local l;
+  l := [ 1, 2, 5, 23, 88, 595, 3456, 34530, 321931 ];
+  if n <= 9 then
+    return l[n];
+  else
+    return fail;
+  fi;
 end);
 
 InstallOtherMethod(IsSquareFree,
