@@ -137,6 +137,22 @@ InstallOtherMethod(IsSquareFree,
   return ForAll(obj, x -> x*x = x);
 end);
 
+
+InstallMethod(IsIndecomposable,
+  "for cycle sets", 
+  [ IsCycleSet ],
+  function(obj)
+    return IsTransitive(IYBGroup(obj), [1..Size(obj)]);
+end);
+
+InstallMethod(IsDecomposable,
+  "for cycle sets", 
+  [ IsCycleSet ],
+  function(obj)
+    return not IsIndecomposable(obj);
+end);
+
+
 #InstallOtherMethod(Permutations,
 #  "for cycle sets",
 #  [ IsCycleSet ],

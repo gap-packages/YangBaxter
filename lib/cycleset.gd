@@ -19,6 +19,16 @@ DeclareGlobalFunction("NrSmallCycleSets");
 ### Properties of a cycle set
 DeclareProperty("IsSquareFree", IsCycleSet);
 DeclareProperty("IsBalanced", IsCycleSet);
+
+#! @Arguments X
+#! @Returns true if the cycle set is indecomposable
+#! @Description 
+#! Let $X$ be a cycle set. We say that $X$ is indecomposable
+#! if the group $\mathcal{G}(X)=\langle\varphi_x:x\in X\rangle$ acts
+#! transitively on $X$. 
+DeclareProperty("IsIndecomposable", IsCycleSet);
+
+DeclareProperty("IsDecomposable", IsCycleSet);
 DeclareAttribute("IdCycleSet", IsCycleSet);
 
 ### 
