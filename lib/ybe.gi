@@ -768,4 +768,15 @@ function(obj)
 
 end);
 
+InstallMethod(IsIndecomposable,
+  "for cycle sets", 
+  [ IsYB ],
+  function(obj)
+    if not IsInvolutive(obj) then
+      return fail;
+    else
+      return IsTransitive(IYBGroup(obj), [1..Size(obj)]);
+    fi;
+end);
+
 

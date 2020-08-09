@@ -61,6 +61,11 @@ DeclareProperty("IsInvolutive", IsYB);
 #DeclareProperty("IsSymmetric", IsYB);
 DeclareProperty("IsBiquandle", IsYB);
 
+#! @Arguments X
+#! @Returns true if the involutive solutions is indecomposable
+#! @Description 
+DeclareProperty("IsIndecomposable", IsYB);
+
 # gap> cs := SmallCycleSet(4,13);;
 # gap> yb := CycleSet2YB(cs);;
 # gap> Permutations(yb);
