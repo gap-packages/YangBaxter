@@ -26,7 +26,7 @@ gap> Matrix(obj);
 gap> AsList(obj);
 [ <1>, <2>, <3>, <4>, <5>, <6>, <7>, <8> ]
 gap> List([1..8], k->NrSmallCycleSets(k));
-[ 1, 2, 5, 23, 88, 595, 3456, 34528 ]
+[ 1, 2, 5, 23, 88, 595, 3456, 34530 ]
 gap> Number(List([1..NrSmallCycleSets(5)], k->SmallCycleSet(5,k)), IsSquareFree);
 17
 gap> cs := SmallCycleSet(5,10);;
