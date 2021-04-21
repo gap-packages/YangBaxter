@@ -20,10 +20,6 @@ jobs:
           - stable-4.11
           - stable-4.10
           - stable-4.9
-        ABI: ['']
-        include:
-          - gap-branch: master
-            ABI: 32
 
     steps:
       - uses: actions/checkout@v2
