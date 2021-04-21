@@ -155,11 +155,16 @@ gap> Number([1..NrSmallBraces(8)], k->IsInvolutive(Skewbrace2YB(SmallBrace(8,k))
 gap> br := SmallBrace(8,10);;
 gap> Brace2CycleSet(br);
 <A cycle set of size 8>
-gap> Matrix(Brace2CycleSet(br));
-[ [ 1, 2, 3, 4, 5, 6, 7, 8 ], [ 1, 2, 3, 4, 5, 6, 7, 8 ], 
-  [ 1, 2, 3, 4, 5, 6, 7, 8 ], [ 1, 2, 3, 4, 5, 6, 7, 8 ], 
-  [ 1, 2, 3, 4, 7, 8, 5, 6 ], [ 1, 2, 3, 4, 7, 8, 5, 6 ], 
-  [ 1, 2, 3, 4, 7, 8, 5, 6 ], [ 1, 2, 3, 4, 7, 8, 5, 6 ] ]
+gap> Matrix(Brace2CycleSet(br)) =
+> [ [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+>   [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+>   [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+>   [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+>   [ 1, 2, 3, 4, 7, 8, 5, 6 ],
+>   [ 1, 2, 3, 4, 7, 8, 5, 6 ],
+>   [ 1, 2, 3, 4, 7, 8, 5, 6 ],
+>   [ 1, 2, 3, 4, 7, 8, 5, 6 ] ];
+true
 gap> Permutations(Brace2CycleSet(br));
 [ (), (), (), (), (5,7)(6,8), (5,7)(6,8), (5,7)(6,8), (5,7)(6,8) ]
 gap> br := SmallSkewbrace(10,4);
