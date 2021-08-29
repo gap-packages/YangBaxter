@@ -20,6 +20,22 @@ function(l, r)
 
 end);
 
+InstallMethod(InverseYB, "for a solution", [ IsYB ], 
+function(obj)
+  local x, y, n, t, l, u, v;
+  t := Table(obj);
+  n := Size(obj);
+  l := NullMat(n,n);
+  for x in [1..n] do
+    for y in [1..n] do
+      u := t[x][y][1];
+      v := t[x][y][2];
+      l[u][v] := [x,y];
+    od;
+  od;
+  return Table2YB(l);
+end);
+
 InstallMethod(ViewObj,
   "for a set-theoretical solution",
   [ IsYB ],

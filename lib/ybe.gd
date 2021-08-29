@@ -7,6 +7,8 @@ DeclareGlobalVariable("YBType");
 DeclareOperation("SmallIYB", [IsInt, IsInt]);
 DeclareOperation("YB", [IsList, IsList]);
 
+DeclareOperation("InverseYB", [IsYB]);
+
 #! @Arguments table
 #! @Returns the solution given by the table 
 #! @Description
@@ -172,9 +174,9 @@ DeclareOperation("DehornoyRepresentationOfStructureGroup", [ IsYB, IsObject ]);
 #! @Returns the identification number of <A>obj</A>
 #! @Description
 #! 
-#! @ExampleSession
-#! gap> cs := SmallCycleSet(5,10);;
-#! gap> IdCycleSet(cs);
+#! @ExampleSessiong
+#! gap> cs := SmallCycleg1Set(5,10);;
+#! gap> IdCycleSet(cs);1
 #! [ 5, 10 ]
 #! gap> cs := SmallCycleSet(4,3);;
 #! gap> yb := CycleSet2YB(cs);;
