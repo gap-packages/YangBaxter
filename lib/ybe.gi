@@ -50,37 +50,37 @@ end);
 
 ### This function returns the set-theoretic solution
 ### corresponding to the matrix <table> such that the (i,j) entry is r(i,j)
-#InstallMethod(Table2YB, "for a square matrix", [ IsList ],
-#function(table)
-#  local ll, rr, x, y, p, n;
-#
-#  n := Sqrt(Size(table));
-#
-#  ll := List([1..n], x->[1..n]);
-#  rr := List([1..n], x->[1..n]);
-#
-#  for p in table do
-#    x := p[1][1];
-#    y := p[1][2];
-#    ll[x][y] := p[2][1];
-#    rr[y][x] := p[2][2];
-#  od;
-#  return YB(ll, rr);
-#end);
+InstallMethod(Table2YB, "for a square matrix", [ IsList ],
+function(table)
+  local ll, rr, x, y, p, n;
+
+  n := Size(table);
+
+  ll := List([1..n], x->[1..n]);
+  rr := List([1..n], x->[1..n]);
+
+  for x in [1..n] do 
+    for y in [1..n] do
+      ll[x][y] := table[x][y][1];
+      rr[y][x] := table[x][y][2];
+    od;
+  od;
+  return YB(ll, rr);
+end);
 
 ##### This function returns the table of the solution, which is 
 ##### the matrix that in the (i,j)-entry has r(i,j)
-#InstallMethod(DisplayTable, "for a set theoretic solution", [ IsYB ], 
-#function(obj)
-#  local m, x, y;
-#  m := NullMat(Size(obj), Size(obj));
-#  for x in [1..Size(obj)] do
-#    for y in [1..Size(obj)] do
-#      m[x][y] := TableYB(obj, x, y);
-#    od;
-#  od;
-#  return m;
-#end);
+InstallMethod(Table, "for a set theoretic solution", [ IsYB ], 
+function(obj)
+  local m, x, y;
+  m := NullMat(Size(obj), Size(obj));
+  for x in [1..Size(obj)] do
+    for y in [1..Size(obj)] do
+      m[x][y] := TableYB(obj, x, y);
+    od;
+  od;
+  return m;
+end);
 
 ### This function returns true if <obj> is square-free
 ### A solution r is square-free iff r(x,x)=(x,x) for all x

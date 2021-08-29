@@ -112,4 +112,6 @@ gap> IdSkewbrace(SemidirectProduct(A,B,s[1]));
 [ 12, 11 ]
 gap> IdSkewbrace(DirectProduct(A,B));
 [ 12, 11 ]
+
+#
 gap> STOP_TEST("yangbaxter01.tst", 1 );

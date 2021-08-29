@@ -40,7 +40,14 @@ gap> yb := LyubashenkoYB(4, (1,2),(3,4));
 gap> Permutations(last);
 [ [ (1,2), (1,2), (1,2), (1,2) ], [ (3,4), (3,4), (3,4), (3,4) ] ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:104-113
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:115-131
+gap> yb := SmallIYB(3,2);;
+gap> Table(yb);
+[ [ [ 1, 1 ], [ 2, 1 ], [ 3, 2 ] ], [ [ 1, 2 ], [ 2, 2 ], [ 3, 1 ] ], [ [ 2, 3 ], [ 1, 3 ], [ 3, 3 ] ] ]
+@Arguments obj
+@Returns The class of an involutive solution
+@Description
+@ExampleSession
 gap> cs := SmallCycleSet(4,13);;
 gap> yb := CycleSet2YB(cs);;
 gap> DehornoyClass(yb);
@@ -50,7 +57,7 @@ gap> yb := CycleSet2YB(cs);;
 gap> DehornoyClass(yb);
 4
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:126-151
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:144-169
 gap> cs := SmallCycleSet(4,13);;
 gap> yb := CycleSet2YB(cs);;
 gap> Permutations(yb);
@@ -76,7 +83,7 @@ true
 gap> x3*x1=x4*x3;
 true
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:164-172
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:182-190
 gap> cs := SmallCycleSet(5,10);;
 gap> IdCycleSet(cs);
 [ 5, 10 ]
@@ -85,7 +92,7 @@ gap> yb := CycleSet2YB(cs);;
 gap> IdYB(yb);
 [ 4, 3 ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:193-204
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:211-222
 gap> yb := SmallIYB(5,86);;
 gap> gr := LinearRepresentationOfStructureGroup(yb);;
 gap> gens := GeneratorsOfGroup(gr);;
@@ -96,4 +103,6 @@ gap> Display(gens[1]);
   [  0,  0,  1,  0,  0,  0 ],
   [  0,  0,  0,  1,  0,  0 ],
   [  0,  0,  0,  0,  0,  1 ] ]
+
+#
 gap> STOP_TEST("yangbaxter02.tst", 1 );

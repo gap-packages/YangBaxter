@@ -6,7 +6,19 @@ DeclareGlobalVariable("YBType");
 
 DeclareOperation("SmallIYB", [IsInt, IsInt]);
 DeclareOperation("YB", [IsList, IsList]);
+
+#! @Arguments table
+#! @Returns the solution given by the table 
+#! @Description
+#! Given the table with $r(x,y)$ in the position $(x,y)$ find the corresponding $r$  
+#! @ExampleSession
+#! gap> l := Table(SmallIYB(4,13));;
+#! gap> t := Table2YB(l);
+#! gap> IdCycleSet(YB2CycleSet(t));
+#! [ 4, 13 ]
+#! @EndExampleSession
 DeclareOperation("Table2YB", [IsList]);
+
 DeclareOperation("Permutations2YB", [IsList, IsList]);
 DeclareOperation("TableYB", [IsYB, IsInt, IsInt]);
 
@@ -85,7 +97,16 @@ DeclareAttribute("RPerms", IsYB);
 DeclareAttribute("LMatrix", IsYB);
 DeclareAttribute("RMatrix", IsYB);
 
-DeclareAttribute("DisplayTable", IsYB);
+#! @Arguments obj
+#! @Returns a table with the image of the solution 
+#! @Description
+#! The table shows the value of $r(x,y)$ for each $(x,y)$
+#! @ExampleSession
+#! gap> yb := SmallIYB(3,2);;
+#! gap> Table(yb);
+#! [ [ [ 1, 1 ], [ 2, 1 ], [ 3, 2 ] ], [ [ 1, 2 ], [ 2, 2 ], [ 3, 1 ] ], [ [ 2, 3 ], [ 1, 3 ], [ 3, 3 ] ] ]
+DeclareAttribute("Table", IsYB);
+
 DeclareAttribute("YBPermutationGroup", IsYB);
 DeclareAttribute("IYBGroup", IsYB);
 DeclareAttribute("LeftPermutations", IsYB);
