@@ -447,73 +447,73 @@ end);
 #  return q;
 #end);
 #
-#InstallGlobalFunction(MakeCycleSetHomorphism,
-#function(f, dom, codom)
-#  local c, done , i, j;
-#
-#  c := true;
-#  done := true;
-#
-#  while c = true do
-#    c := false;
-#    for i in [1..Size(dom)] do
-#      for j in [1..Size(dom)] do
-#        if f[i]*f[j] <> 0 then
-#          if f[dom!.matrix[i][j]] = 0 then
-#            f[dom!.matrix[i][j]] := codom!.matrix[f[i]][f[j]];
-#            c := true;
-#          elif f[dom!.matrix[i][j]] <> 0 and f[dom!.matrix[i][j]] <> codom!.matrix[f[i]][f[j]] then
-#            done := false;
-#            c := false;
-#          fi;
-#        fi;
-#      od;
-#    od;
-#    if done = true then
-#      return f;
-#    else
-#      return done;
-#    fi;
-#  od;
-#end);
+InstallGlobalFunction(MakeCycleSetHomorphism,
+function(f, dom, codom)
+  local c, done , i, j;
 
-#InstallMethod(Hom, "for cycle sets", [ IsCycleSet, IsCycleSet ],
-#function(dom, codom)
-#  local l,o,w,i,j,f,g;
-#  l := [List([1..Size(dom)], x->0)];
-#  o := [];
-#  while not Size(l) = 0 do
-#    w := l[1];
-#    Remove(l,1);
-#    if not 0 in w then
-#      Add(o,w);
-#    else
-#      i := Position(w,0);
-#      for j in [1..Size(codom)] do
-#        f := ShallowCopy(w);
-#        f[i] := j;
-#        g := MakeCycleSetHomorphism(f, dom, codom);
-#        if not g = false then
-#          Add(l,f);
-#        fi;
-#      od;
-#    fi;
-#  od;
-#  return o;
-#end);
-#
+  c := true;
+  done := true;
+
+  while c = true do
+    c := false;
+    for i in [1..Size(dom)] do
+      for j in [1..Size(dom)] do
+        if f[i]*f[j] <> 0 then
+          if f[dom!.MatrixOfCycleSet[i][j]] = 0 then
+            f[dom!.MatrixOfCycleSet[i][j]] := codom!.MatrixOfCycleSet[f[i]][f[j]];
+            c := true;
+          elif f[dom!.MatrixOfCycleSet[i][j]] <> 0 and f[dom!.MatrixOfCycleSet[i][j]] <> codom!.MatrixOfCycleSet[f[i]][f[j]] then
+            done := false;
+            c := false;
+          fi;
+        fi;
+      od;
+    od;
+    if done = true then
+      return f;
+    else
+      return done;
+    fi;
+  od;
+end);
+
+InstallMethod(Hom, "for cycle sets", [ IsCycleSet, IsCycleSet ],
+function(dom, codom)
+  local l,o,w,i,j,f,g;
+  l := [List([1..Size(dom)], x->0)];
+  o := [];
+  while not Size(l) = 0 do
+    w := l[1];
+    Remove(l,1);
+    if not 0 in w then
+      Add(o,w);
+    else
+      i := Position(w,0);
+      for j in [1..Size(codom)] do
+        f := ShallowCopy(w);
+        f[i] := j;
+        g := MakeCycleSetHomorphism(f, dom, codom);
+        if not g = false then
+          Add(l,f);
+        fi;
+      od;
+    fi;
+  od;
+  return o;
+end);
+
 #### This function returns an epimorphism from <r> to <s> (if exists) 
-#InstallMethod(IsQuotient, "for cycle sets", [ IsCycleSet, IsCycleSet ],
-#function(dom, codom)
-#  local f, h; 
-#  h := Hom(dom, codom);
-#  for f in h do
-#    if Size(Unique(f))=Size(codom) then
-#      return f;  
-#    fi;
-#  od;
-#  return false;
-#end);
+InstallMethod(IsQuotient, "for cycle sets", [ IsCycleSet, IsCycleSet ],
+function(dom, codom)
+  local f, h; 
+  h := Hom(dom, codom);
+  for f in h do
+    if Size(Unique(f))=Size(codom) then
+      return f;  
+    fi;
+  od;
+  return false;
+end);
 
 #InstallMethod(IsCovering, "for cycle sets", [ IsCycleSet, IsCycleSet ],
 #function(dom, codom)
@@ -567,6 +567,32 @@ end);
 #    return fail;
 #  fi;
 #end);
+
+InstallMethod(IsSimpleCycleSet, "for cycle sets", [ IsCycleSet ],
+function(obj)
+  local n,k;
+
+  if Size(obj)=1 then
+    return false;
+  fi;
+
+  if Size(obj)>2 and not IsIndecomposable(obj) then
+    return false;
+  fi;
+
+  if not IsPrime(Size(obj)) and IsRetractable(CycleSet2YB(obj)) then
+    return false;
+  fi;
+
+  for n in [2..Size(obj)-1] do
+    for k in [1..NrSmallCycleSets(n)] do
+      if not IsQuotient(obj, SmallCycleSet(n,k)) = false then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
 
 #InstallOtherMethod(AutomorphismGroup, "for a cycle set", [ IsCycleSet ],
 #function(obj)

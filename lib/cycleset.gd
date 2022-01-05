@@ -19,8 +19,8 @@ DeclareGlobalFunction("NrSmallCycleSets");
 ### Properties of a cycle set
 DeclareProperty("IsSquareFree", IsCycleSet);
 DeclareProperty("IsBalanced", IsCycleSet);
+DeclareProperty("IsSimpleCycleSet", IsCycleSet);
 
-#! @Arguments X
 #! @Returns true if the cycle set is indecomposable
 #! @Description 
 #! Let $X$ be a cycle set. We say that $X$ is indecomposable
