@@ -15,7 +15,7 @@ DeclareOperation("InverseYB", [IsYB]);
 #! Given the table with $r(x,y)$ in the position $(x,y)$ find the corresponding $r$  
 #! @ExampleSession
 #! gap> l := Table(SmallIYB(4,13));;
-#! gap> t := Table2YB(l);
+#! gap> t := Table2YB(l);;
 #! gap> IdCycleSet(YB2CycleSet(t));
 #! [ 4, 13 ]
 #! @EndExampleSession
@@ -107,6 +107,7 @@ DeclareAttribute("RMatrix", IsYB);
 #! gap> yb := SmallIYB(3,2);;
 #! gap> Table(yb);
 #! [ [ [ 1, 1 ], [ 2, 1 ], [ 3, 2 ] ], [ [ 1, 2 ], [ 2, 2 ], [ 3, 1 ] ], [ [ 2, 3 ], [ 1, 3 ], [ 3, 3 ] ] ]
+#! @EndExampleSession
 DeclareAttribute("Table", IsYB);
 
 DeclareAttribute("YBPermutationGroup", IsYB);
@@ -174,9 +175,9 @@ DeclareOperation("DehornoyRepresentationOfStructureGroup", [ IsYB, IsObject ]);
 #! @Returns the identification number of <A>obj</A>
 #! @Description
 #! 
-#! @ExampleSessiong
-#! gap> cs := SmallCycleg1Set(5,10);;
-#! gap> IdCycleSet(cs);1
+#! @ExampleSession
+#! gap> cs := SmallCycleSet(5,10);;
+#! gap> IdCycleSet(cs);
 #! [ 5, 10 ]
 #! gap> cs := SmallCycleSet(4,3);;
 #! gap> yb := CycleSet2YB(cs);;
