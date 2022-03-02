@@ -21,5 +21,7 @@ doc/*.toc
 doc/*.txt
 doc/*.xml
 
+/data/*.gz
+
 /tmp/
 /gh-pages/
