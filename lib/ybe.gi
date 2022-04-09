@@ -636,7 +636,7 @@ function(obj)
 	T := PermList(List([1..Size(obj)], x->x^Inverse(sigmas[x])));
 
   for x in [1..Size(obj)] do
-    Add(tmp, First(PositiveIntegers, m->Product(List([0..m-1], k->sigmas[x^(T^k)])) = ()));
+    Add(tmp, First(PositiveIntegers, m->Product(Reversed(List([0..m-1], k->sigmas[x^(T^k)]))) = ()));
   od;
   return Maximum(tmp);
 end);
