@@ -24,14 +24,16 @@ Persons := [
     FirstNames    := "Leandro",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "lvendramin@dm.uba.ar",
-    WWWHome       := "http://mate.dm.uba.ar/~lvendram",
+    Email         := "Leandro.Vendramin@vub.be",
+    WWWHome       := "https://vendramin.github.io/",
     PostalAddress := Concatenation( [
-                       "Departamento de matem\'atica, FCEN, UBA\n",
-                       "Ciudad Universitaria, Pab. 1\n",
-                       "Buenos Aires, Argentina" ] ),
-    Place         := "Buenos Aires",
-    Institution   := "UBA"
+                       "Vrije Universiteit Brussel\n",
+                       "Faculty of Sciences\n",
+                       "Department of Mathematics and Data Science\n",
+                       "Pleinlaan 2, B-1050\n",
+                       "Brussel, Belgium" ] ),
+    Place         := "Brussels",
+    Institution   := "Vrije Universiteit Brussel"
   ),
   rec( 
     LastName      := "Konovalov",
