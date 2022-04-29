@@ -78,8 +78,7 @@ DeclareOperation("IdealGeneratedBy", [ IsSkewbrace, IsCollection ]);
 #! @Description
 #! @ExampleSession
 #! gap> br := SmallSkewbrace(6,6);;
-#! gap> Ideals(br);
-#! [ <brace of size 6>, <brace of size 2>, <brace of size 3>, <brace of size 1> ]
+#! gap> Ideals(br);;
 #! gap> IntersectionOfTwoIdeals(last[2],last[3]);
 #! <brace of size 1>
 #! @EndExampleSession
@@ -90,8 +89,7 @@ DeclareOperation("IntersectionOfTwoIdeals", [ IsSkewbrace and IsIdealInParent, I
 #! @Description
 #! @ExampleSession
 #! gap> br := SmallSkewbrace(6,6);;
-#! gap> Ideals(br);
-#! [ <brace of size 6>, <brace of size 2>, <brace of size 3>, <brace of size 1> ]
+#! gap> Ideals(br);;
 #! gap> SumOfTwoIdeals(last[2],last[3]);
 #! <brace of size 6>
 #! @EndExampleSession
@@ -180,12 +178,12 @@ DeclareAttribute("LeftNilpotentIdeals", IsSkewbrace);
 #! gap> br := SmallBrace(8,18);;
 #! gap> IsLeftNilpotent(br);
 #! true
-#! gap> LeftNilpotentIdeals(br);
-#! [ <brace of size 8>, <brace of size 4>, <brace of size 1> ]
 #! gap> IsRightNilpotent(br);
 #! false
-#! gap> RightNilpotentIdeals(br);
-#! [ <brace of size 4>, <brace of size 1> ]
+#! gap> Length(LeftNilpotentIdeals(br));
+#! 3
+#! gap> Length(RightNilpotentIdeals(br));
+#! 2
 #! @EndExampleSession
 DeclareAttribute("RightNilpotentIdeals", IsSkewbrace);
 
@@ -273,10 +271,10 @@ DeclareAttribute("KernelOfLambda", IsSkewbrace);
 #! @ExampleSession
 #! gap> br := SmallBrace(8,10);;
 #! gap> ideals := Ideals(br);;
-#! gap> Quotient(br, ideals[5]);
+#! gap> Quotient(br, ideals[3]);
 #! <brace of size 4>
-#! gap> br/ideals[2];
-#! <brace of size 2>
+#! gap> br/ideals[3];
+#! <brace of size 4>
 #! @EndExampleSession
 DeclareOperation("Quotient", [IsSkewbrace, IsSkewbrace]);
 
@@ -303,8 +301,7 @@ DeclareProperty("IsPrimeBrace", IsSkewbrace);
 #! <brace of size 24>
 #! gap> IsPrimeBrace(br);
 #! true
-#! gap> Ideals(br);
-#! [ <brace of size 24>, <brace of size 1> ]
+#! gap> Ideals(br);;
 #! gap> IsPrimeIdeal(last[2]);
 #! true
 #! @EndExampleSession
@@ -314,8 +311,8 @@ DeclareProperty("IsPrimeIdeal", IsSkewbrace and IsIdealInParent);
 #! @Returns the list of prime ideals of the skew brace <A>obj</A> 
 #! @Description
 #! @ExampleSession
-#! gap> PrimeIdeals(SmallBrace(24,94));
-#! [ <brace of size 24>, <brace of size 1> ]
+#! gap> Length(PrimeIdeals(SmallBrace(24,94)));
+#! 2
 #! @EndExampleSession
 DeclareAttribute("PrimeIdeals", IsSkewbrace);
 
@@ -347,10 +344,10 @@ DeclareAttribute("IsSemiprimeIdeal", IsSkewbrace and IsIdealInParent);
 #! @Returns the list of semiprime ideals of the skew brace <A>obj</A>
 #! @Description
 #! @ExampleSession
-#! gap> SemiprimeIdeals(SmallSkewbrace(12,22));
-#! [ <skew brace of size 12>, <brace of size 1> ]
 #! gap> SemiprimeIdeals(SmallSkewbrace(12,24));
 #! [ <skew brace of size 12> ]
+#! gap> Length(SemiprimeIdeals(SmallSkewbrace(12,22)));
+#! 2
 #! @EndExampleSession
 DeclareAttribute("SemiprimeIdeals", IsSkewbrace);
 
