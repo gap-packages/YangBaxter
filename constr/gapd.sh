@@ -1,7 +1,7 @@
 #!/bin/sh
 ###########################################################################
 ##
-#W gapd.sh                The SCSCP package             Alexander Konovalov
+#W gapd.sh                The SCSCP package              Olexandr Konovalov
 #W                                                             Steve Linton
 ##
 ## gapscscp.sh [-h host] [-a] [-l] [-u] [-p port] [-t]

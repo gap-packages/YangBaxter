@@ -1,6 +1,6 @@
 ###########################################################################
 ##
-#W makedoc.g                     The YangBaxter         Alexander Konovalov
+#W makedoc.g                     The YangBaxter          Olexandr Konovalov
 ##
 ###########################################################################
 

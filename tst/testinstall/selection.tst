@@ -1,7 +1,7 @@
 #############################################################################
 ##
 ##  selection.tst          YangBaxter package               Leandro Vendramin
-##                                                        Alexander Konovalov
+##                                                         Olexandr Konovalov
 
 gap> START_TEST("ideals.tst");
 
