@@ -6,29 +6,31 @@
              [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                     0.9.0
+                                     0.10.0
   
   
-                                8 November 2019
+                                 29 April 2022
   
   
                                Leandro Vendramin
   
-                              Alexander Konovalov
+                               Olexandr Konovalov
   
   
   
   Leandro Vendramin
-      Email:    [7Xmailto:lvendramin@dm.uba.ar[107X
-      Homepage: [7Xhttp://mate.dm.uba.ar/~lvendram[107X
-      Address:  [33X[0;14YDepartamento de matem'atica, FCEN, UBA[133X
-                [33X[0;14YCiudad Universitaria, Pab. 1[133X
-                [33X[0;14YBuenos Aires, Argentina[133X
+      Email:    [7Xmailto:Leandro.Vendramin@vub.be[107X
+      Homepage: [7Xhttps://vendramin.github.io/[107X
+      Address:  [33X[0;14YVrije Universiteit Brussel[133X
+                [33X[0;14YFaculty of Sciences[133X
+                [33X[0;14YDepartment of Mathematics and Data Science[133X
+                [33X[0;14YPleinlaan 2, B-1050[133X
+                [33X[0;14YBrussel, Belgium[133X
   
   
-  Alexander Konovalov
-      Email:    [7Xmailto:alexander.konovalov@st-andrews.ac.uk[107X
-      Homepage: [7Xhttps://alexk.host.cs.st-andrews.ac.uk/[107X
+  Olexandr Konovalov
+      Email:    [7Xmailto:obk1@st-andrews.ac.uk[107X
+      Homepage: [7Xhttps://alex-konovalov.github.io/[107X
       Address:  [33X[0;14YSchool of Computer Science[133X
                 [33X[0;14YUniversity of St Andrews[133X
                 [33X[0;14YJack Cole Building, North Haugh,[133X
@@ -71,54 +73,60 @@
       2.1-1 AdditiveGroupOfRing
       2.1-2 IsJacobsonRadical
     2.2 [33X[0;0YBraces and Yang-Baxter Equation[133X
-      2.2-1 Evaluate
-      2.2-2 LyubashenkoYB
-      2.2-3 DehornoyClass
-      2.2-4 DehornoyRepresentationOfStructureGroup
-      2.2-5 IdYB
-      2.2-6 LinearRepresentationOfStructureGroup
-  3 [33X[0;0YIdeals and left ideals[133X
-    3.1 [33X[0;0YLeft ideals[133X
-      3.1-1 LeftIdeals
-      3.1-2 StrongLeftIdeals
-      3.1-3 IsLeftIdeal
-    3.2 [33X[0;0YIdeals[133X
-      3.2-1 IsIdeal
-      3.2-2 Ideals
-      3.2-3 AsIdeal
-      3.2-4 IdealGeneratedBy
-      3.2-5 IntersectionOfTwoIdeals
-      3.2-6 SumOfTwoIdeals
-    3.3 [33X[0;0YSequences (left) ideals[133X
-      3.3-1 LeftSeries
-      3.3-2 RightSeries
-      3.3-3 IsLeftNilpotent
-      3.3-4 IsSimpleSkewbrace
-      3.3-5 IsRightNilpotent
-      3.3-6 LeftNilpotentIdeals
-      3.3-7 RightNilpotentIdeals
-      3.3-8 SmoktunowiczSeries
-      3.3-9 Socle
-    3.4 [33X[0;0YMutipermutation skew braces[133X
-      3.4-1 SocleSeries
-      3.4-2 MultipermutationLevel
-      3.4-3 IsMultipermutation
-      3.4-4 Fix
-      3.4-5 KernelOfLambda
-      3.4-6 Quotient
-    3.5 [33X[0;0YPrime and semiprime ideals[133X
-      3.5-1 IsPrimeBrace
-      3.5-2 IsPrimeIdeal
-      3.5-3 PrimeIdeals
-      3.5-4 IsSemiprime
-      3.5-5 IsSemiprimeIdeal
-      3.5-6 SemiprimeIdeals
-      3.5-7 BaerRadical
-      3.5-8 IsBaer
-      3.5-9 WedderburnRadical
-      3.5-10 SolvableSeries
-      3.5-11 IsMinimalIdeal
-      3.5-12 MinimalIdeals
+      2.2-1 Table2YB
+      2.2-2 Evaluate
+      2.2-3 LyubashenkoYB
+      2.2-4 IsIndecomposable
+      2.2-5 Table
+      2.2-6 DehornoyClass
+      2.2-7 DehornoyRepresentationOfStructureGroup
+      2.2-8 IdYB
+      2.2-9 LinearRepresentationOfStructureGroup
+  3 [33X[0;0YYangBaxter automatic generated documentation[133X
+    3.1 [33X[0;0YYangBaxter automatic generated documentation of properties[133X
+      3.1-1 IsIndecomposable
+  4 [33X[0;0YIdeals and left ideals[133X
+    4.1 [33X[0;0YLeft ideals[133X
+      4.1-1 LeftIdeals
+      4.1-2 StrongLeftIdeals
+      4.1-3 IsLeftIdeal
+    4.2 [33X[0;0YIdeals[133X
+      4.2-1 IsIdeal
+      4.2-2 Ideals
+      4.2-3 AsIdeal
+      4.2-4 IdealGeneratedBy
+      4.2-5 IntersectionOfTwoIdeals
+      4.2-6 SumOfTwoIdeals
+    4.3 [33X[0;0YSequences (left) ideals[133X
+      4.3-1 LeftSeries
+      4.3-2 RightSeries
+      4.3-3 IsLeftNilpotent
+      4.3-4 IsSimpleSkewbrace
+      4.3-5 IsRightNilpotent
+      4.3-6 LeftNilpotentIdeals
+      4.3-7 RightNilpotentIdeals
+      4.3-8 SmoktunowiczSeries
+      4.3-9 Socle
+    4.4 [33X[0;0YMutipermutation skew braces[133X
+      4.4-1 SocleSeries
+      4.4-2 MultipermutationLevel
+      4.4-3 IsMultipermutation
+      4.4-4 Fix
+      4.4-5 KernelOfLambda
+      4.4-6 Quotient
+    4.5 [33X[0;0YPrime and semiprime ideals[133X
+      4.5-1 IsPrimeBrace
+      4.5-2 IsPrimeIdeal
+      4.5-3 PrimeIdeals
+      4.5-4 IsSemiprime
+      4.5-5 IsSemiprimeIdeal
+      4.5-6 SemiprimeIdeals
+      4.5-7 BaerRadical
+      4.5-8 IsBaer
+      4.5-9 WedderburnRadical
+      4.5-10 SolvableSeries
+      4.5-11 IsMinimalIdeal
+      4.5-12 MinimalIdeals
   
   
   [32X

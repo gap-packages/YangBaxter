@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.9.0",
-Date := "08/11/2019", # dd/mm/yyyy format
+Version := "0.10.0",
+Date := "29/04/2022", # dd/mm/yyyy format
 License := "GPL-3.0",
 
 PackageWWWHome :=
@@ -24,22 +24,24 @@ Persons := [
     FirstNames    := "Leandro",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "lvendramin@dm.uba.ar",
-    WWWHome       := "http://mate.dm.uba.ar/~lvendram",
+    Email         := "Leandro.Vendramin@vub.be",
+    WWWHome       := "https://vendramin.github.io/",
     PostalAddress := Concatenation( [
-                       "Departamento de matem\'atica, FCEN, UBA\n",
-                       "Ciudad Universitaria, Pab. 1\n",
-                       "Buenos Aires, Argentina" ] ),
-    Place         := "Buenos Aires",
-    Institution   := "UBA"
+                       "Vrije Universiteit Brussel\n",
+                       "Faculty of Sciences\n",
+                       "Department of Mathematics and Data Science\n",
+                       "Pleinlaan 2, B-1050\n",
+                       "Brussel, Belgium" ] ),
+    Place         := "Brussels",
+    Institution   := "Vrije Universiteit Brussel"
   ),
   rec( 
     LastName      := "Konovalov",
-    FirstNames    := "Alexander",
+    FirstNames    := "Olexandr",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "alexander.konovalov@st-andrews.ac.uk",
-    WWWHome       := "https://alexk.host.cs.st-andrews.ac.uk/",
+    Email         := "obk1@st-andrews.ac.uk",
+    WWWHome       := "https://alex-konovalov.github.io/",
     PostalAddress := Concatenation( [
                      "School of Computer Science\n",
                      "University of St Andrews\n",
@@ -76,7 +78,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
    GAP := ">=4.9",
-  NeededOtherPackages := [ ],
+  NeededOtherPackages := [ [ "cryst", ">=4.0" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ]
 ),
