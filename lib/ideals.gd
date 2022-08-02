@@ -250,9 +250,17 @@ DeclareAttribute("MultipermutationLevel", IsSkewbrace);
 DeclareProperty("IsMultipermutation", IsSkewbrace);
 
 #! @Arguments obj
-#! @Returns <A>true</A> if the skew brace <A>obj</A> has finite multipermutation
-#! level and <A>false</A> otherwise
+#! @Returns the left ideal $\{x\in A:\lambda_a(x)=x\;\forall a\in A\}$
+#! of the skew brace $A$. 
 #! @Description
+#! @ExampleSession
+#! gap> br := SmallBrace(6,1);;
+#! gap> IsTrivialSkewbrace(br);
+#! true
+#! gap> Fix(br);
+#! [ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)>, <(1,4)(2,6)(3,5)>,
+#!   <(1,5)(2,4)(3,6)>, <(1,6)(2,5)(3,4)> ]
+#! @EndExampleSession
 DeclareAttribute("Fix", IsSkewbrace);
 
 #! @Arguments obj

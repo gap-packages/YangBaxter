@@ -115,12 +115,20 @@ gap> SocleSeries(br);
 gap> MultipermutationLevel(br);
 2
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:404-408
+# doc/_Chapter_Ideals_and_left_ideals.xml:394-401
+gap> br := SmallBrace(6,1);;
+gap> IsTrivialSkewbrace(br);
+true
+gap> Fix(br);
+[ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)>, <(1,4)(2,6)(3,5)>,
+  <(1,5)(2,4)(3,6)>, <(1,6)(2,5)(3,4)> ]
+
+# doc/_Chapter_Ideals_and_left_ideals.xml:413-417
 gap> br := SmallBrace(6,1);;
 gap> KernelOfLambda(br);
 [ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)> ]
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:420-427
+# doc/_Chapter_Ideals_and_left_ideals.xml:429-436
 gap> br := SmallBrace(8,10);;
 gap> ideals := Ideals(br);;
 gap> Quotient(br, ideals[3]);
@@ -128,13 +136,13 @@ gap> Quotient(br, ideals[3]);
 gap> br/ideals[3];
 <brace of size 4>
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:447-452
+# doc/_Chapter_Ideals_and_left_ideals.xml:456-461
 gap> IsPrimeBrace(SmallBrace(24,12));
 false
 gap> IsPrimeBrace(SmallBrace(24,94));
 true
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:465-473
+# doc/_Chapter_Ideals_and_left_ideals.xml:474-482
 gap> br := SmallBrace(24,94);
 <brace of size 24>
 gap> IsPrimeBrace(br);
@@ -143,43 +151,43 @@ gap> Ideals(br);;
 gap> IsPrimeIdeal(last[2]);
 true
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:485-488
+# doc/_Chapter_Ideals_and_left_ideals.xml:494-497
 gap> Length(PrimeIdeals(SmallBrace(24,94)));
 2
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:501-505
+# doc/_Chapter_Ideals_and_left_ideals.xml:510-514
 gap> br := DirectProductSkewbraces(SmallSkewbrace(12,22),SmallSkewbrace(12,22));;
 gap> IsSemiprime(br);
 true
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:518-523
+# doc/_Chapter_Ideals_and_left_ideals.xml:527-532
 gap> SemiprimeIdeals(SmallSkewbrace(12,24));
 [ <skew brace of size 12> ]
 gap> IsSemiprimeIdeal(last[1]);
 true
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:536-541
+# doc/_Chapter_Ideals_and_left_ideals.xml:545-550
 gap> SemiprimeIdeals(SmallSkewbrace(12,24));
 [ <skew brace of size 12> ]
 gap> Length(SemiprimeIdeals(SmallSkewbrace(12,22)));
 2
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:553-557
+# doc/_Chapter_Ideals_and_left_ideals.xml:562-566
 gap> br := SmallSkewbrace(6,2);;
 gap> BaerRadical(br);
 <skew brace of size 6>
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:571-575
+# doc/_Chapter_Ideals_and_left_ideals.xml:580-584
 gap> br := SmallSkewbrace(6,2);;
 gap> IsBaer(br);
 true
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:588-592
+# doc/_Chapter_Ideals_and_left_ideals.xml:597-601
 gap> br := SmallSkewbrace(6,2);;
 gap> WedderburnRadical(br);
 <brace of size 3>
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:606-615
+# doc/_Chapter_Ideals_and_left_ideals.xml:615-624
 gap> br := SmallSkewbrace(8,20);;
 gap> IsSolvable(br);
 true
