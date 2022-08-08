@@ -254,7 +254,7 @@ DeclareProperty("IsMultipermutation", IsSkewbrace);
 #! of the skew brace $A$. 
 #! @Description
 #! @ExampleSession
-#! gap> br := SmallBrace(6,1);;
+#! gap> br := SmallSkewbrace(6,1);;
 #! gap> IsTrivialSkewbrace(br);
 #! true
 #! gap> Fix(br);
