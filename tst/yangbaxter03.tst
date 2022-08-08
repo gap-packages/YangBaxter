@@ -116,7 +116,7 @@ gap> MultipermutationLevel(br);
 2
 
 # doc/_Chapter_Ideals_and_left_ideals.xml:394-401
-gap> br := SmallBrace(6,1);;
+gap> br := SmallSkewbrace(6,1);;
 gap> IsTrivialSkewbrace(br);
 true
 gap> Fix(br);
