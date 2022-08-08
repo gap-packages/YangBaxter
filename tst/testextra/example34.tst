@@ -1,3 +1,6 @@
+#
+gap> START_TEST("example34.tst");
+
 # Example 3.4
 gap> br := SmallSkewbrace(24,50);;
 gap> add := UnderlyingAdditiveGroup(br);;
@@ -13,3 +16,5 @@ gap> RightSeries(br);
 gap> Socle(br);
 <brace of size 2>
 
+#
+gap> STOP_TEST("example34.tst", 1);

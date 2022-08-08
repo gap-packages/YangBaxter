@@ -1,6 +1,7 @@
+#
+gap> START_TEST("example32.tst");
+
 # Example 3.2
-gap> INFO_PERFORMANCE_CURRENT := InfoLevel(InfoPerformance);;
-gap> SetInfoLevel(InfoPerformance,0);
 gap> br := SmallBrace(16,73);;
 gap> ideals := Ideals(br);;
 gap> SortedList(List(ideals, IdBrace));
@@ -11,4 +12,6 @@ gap> Star(x, x);
 [ <()>, <( 1, 2)( 3, 4)( 5, 6)( 7, 8)( 9,10)(11,12)(13,14)(15,16)> ]
 gap> IsIdeal(br, last);
 false
-gap> SetInfoLevel(InfoPerformance, INFO_PERFORMANCE_CURRENT);
+
+#
+gap> STOP_TEST("example32.tst", 1);

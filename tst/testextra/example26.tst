@@ -1,3 +1,6 @@
+#
+gap> START_TEST("example26.tst");
+
 # Example 3.5
 gap> br := SmallBrace(6,1);;
 gap> IsTrivialSkewbrace(br);
@@ -20,3 +23,6 @@ gap> List(left_ideals, x->IsIdeal(br, x));
 [ true, false, true, true ]
 gap> SortedList(List(Ideals(br),Size));
 [ 1, 3, 6 ]
+
+#
+gap> STOP_TEST("example26.tst", 1);

@@ -1,3 +1,6 @@
+#
+gap> START_TEST("example24.tst");
+
 # Example 2.4
 gap> br := SmallBrace(8,5);;
 gap> add := UnderlyingAdditiveGroup(br);;
@@ -27,3 +30,5 @@ gap> List(ideals, IdBrace);
 gap> List(ideals, x->IdBrace(br/x));
 [ [ 8, 5 ], [ 4, 2 ], [ 2, 1 ], [ 1, 1 ] ]
 
+#
+gap> STOP_TEST("example24.tst", 1);

@@ -1,3 +1,6 @@
+#
+gap> START_TEST("example25.tst");
+
 # Example 2.5
 gap> br := SmallBrace(6,2);;
 gap> add := UnderlyingAdditiveGroup(br);;
@@ -28,3 +31,5 @@ gap> List(left_ideals, x->IsIdeal(br, x));
 [ true, true, true, true ]
 gap> 
 
+#
+gap> STOP_TEST("example25.tst", 1);
