@@ -1,3 +1,6 @@
+#
+gap> START_TEST("example23.tst");
+
 # Example 2.3
 gap> br := SmallSkewbrace(6,1);;
 gap> IsTrivialSkewbrace(br);
@@ -11,3 +14,5 @@ gap> StructureDescription(mul);
 gap> Socle(br);
 <brace of size 1>
 
+#
+gap> STOP_TEST("example23.tst", 1);

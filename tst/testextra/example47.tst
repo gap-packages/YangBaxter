@@ -1,3 +1,6 @@
+#
+gap> START_TEST("example47.tst");
+
 # Example 4.7
 gap> br := SmallSkewbrace(12,22);;
 gap> IsSimple(br);
@@ -12,3 +15,5 @@ false
 gap> IsSemiprime(prod);
 true
 
+#
+gap> STOP_TEST("example47.tst", 1);

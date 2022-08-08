@@ -1,3 +1,6 @@
+#
+gap> START_TEST("example33.tst");
+
 # Example 3.3
 gap> br := SmallSkewbrace(12,22);;
 gap> StructureDescription(UnderlyingAdditiveGroup(br));
@@ -11,3 +14,5 @@ gap> LeftSeries(br);
 gap> RightSeries(br);
 [ <skew brace of size 12> ]
 
+#
+gap> STOP_TEST("example33.tst", 1);
