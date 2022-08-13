@@ -411,7 +411,17 @@ false
 <h5>4.4-4 Fix</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Fix</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: <var class="Arg">true</var> if the skew brace <var class="Arg">obj</var> has finite multipermutation level and <var class="Arg">false</var> otherwise</p>
+<p>Returns: the left ideal <span class="Math">\{x\in A:\lambda_a(x)=x\;\forall a\in A\}</span> of the skew brace <span class="Math">A</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(6,1);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTrivialSkewbrace(br);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fix(br);</span>
+[ &lt;()&gt;, &lt;(1,2,3)(4,5,6)&gt;, &lt;(1,3,2)(4,6,5)&gt;, &lt;(1,4)(2,6)(3,5)&gt;,
+  &lt;(1,5)(2,4)(3,6)&gt;, &lt;(1,6)(2,5)(3,4)&gt; ]
+</pre></div>
 
 <p><a id="X7CE04CC57E82FD02" name="X7CE04CC57E82FD02"></a></p>
 
