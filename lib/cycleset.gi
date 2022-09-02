@@ -8,7 +8,7 @@ function(matrix)
   local fam, obj;
 
   if not IS_CYCLESET(matrix) then
-    Error("This is not a cycle set\n");
+    Error("This is not a cycle set");
   fi;
 
   fam := NewFamily("CycleSetElmFamily", IsCycleSetElm, IsMultiplicativeElement);

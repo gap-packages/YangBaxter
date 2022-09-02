@@ -44,7 +44,7 @@ end);
 # If <obj> is a classical brace, this function returns the id of the skew brace <obj>
 InstallMethod(IdBrace, "for a skew brace", [IsSkewbrace], function(obj)
   if not IsClassical(obj) then
-    Error("the skew brace is not classical\n");
+    Error("the skew brace is not classical");
   fi;
   return [Size(obj), First([1..NrSmallBraces(Size(obj))], k->IsomorphismSkewbraces(obj, SmallBrace(Size(obj),k)) <> fail)];
 end);
@@ -104,7 +104,7 @@ InstallGlobalFunction(SkewbraceElm, function(obj, x)
   if x in SkewbraceAList(obj) then
     return SkewbraceElmConstructor(obj, x);
   else
-    Error("the permutation does not belong to the additive group of the skew brace\n");
+    Error("the permutation does not belong to the additive group of the skew brace");
   fi;
 end);
 
@@ -317,7 +317,7 @@ function(size, number)
     if number=1 then
       return TrivialBrace(CyclicGroup(IsPermGroup, size));
     else
-      Error("there is only one brace of size ", size, "\n");
+      Error("there is only one brace of size ", size);
     fi;
   fi;
 
@@ -378,7 +378,7 @@ function(size, number)
     if number=1 then
       return TrivialBrace(CyclicGroup(IsPermGroup, size));
     else
-      Error("there is only one brace of size ", size, "\n");
+      Error("there is only one brace of size ", size);
     fi;
   fi;
 
@@ -698,7 +698,7 @@ end);
 
 InstallMethod(Brace2CycleSet, "for a brace", [ IsSkewbrace ], function(obj)
   if not IsClassical(obj) then
-    Error("this is not a classical brace\n");
+    Error("this is not a classical brace");
   fi;
   return YB2CycleSet(Skewbrace2YB(obj));
 end);
@@ -715,7 +715,7 @@ local sizes, sizepos, size, conditions, name, availabilitycheck, nrfunc, constru
   funcs, vals, pos, f, res, i, j, br;
 
 if Length(argl) = 0 then
-  Error("You must specify at least one argument\n");
+  Error("You must specify at least one argument");
 fi;
   
 # determine expected position of size(s) in the list of arguments 
@@ -731,10 +731,10 @@ elif IsList (argl[ sizepos ]) then          # list of sizes is given
   if ForAll( argl[ sizepos ], IsPosInt ) then
     sizes := argl[ sizepos ];
   else
-    Error("The ", Ordinal( sizepos ), " argument is not a list of positive integers\n");
+    Error("The ", Ordinal( sizepos ), " argument is not a list of positive integers");
   fi;
 else
-  Error("The ", Ordinal( sizepos ), " argument is not a positive integer or a list\n");
+  Error("The ", Ordinal( sizepos ), " argument is not a positive integer or a list");
 fi;
 
 conditions := argl{[ sizepos+1 .. Length(argl)]};
@@ -752,11 +752,11 @@ else
 fi;
 
 if not ForAll( sizes, availabilitycheck ) then
-  Error( name, " of sizes ", Filtered( sizes, i -> not availabilitycheck(i) ), " are not implemented\n");
+  Error( name, " of sizes ", Filtered( sizes, i -> not availabilitycheck(i) ), " are not implemented");
 fi;
 
 if IsBound(conditions[1]) and not IsFunction( conditions[1] ) then
-  Error( "Expected a function, but got ", conditions[1], "\n");
+  Error( "Expected a function, but got ", conditions[1]);
 fi;
 
 funcs:=[];
@@ -782,7 +782,7 @@ while pos <= Length(conditions) do
       # look ahead and check that the value is either 
       # the last or followed by a function
       if IsBound( conditions[pos] ) and not IsFunction( conditions[pos] ) then
-        Error( "Expected a function, but got ", conditions[pos], "\n");
+        Error( "Expected a function, but got ", conditions[pos]);
       fi;
     fi;
   fi;
@@ -892,7 +892,7 @@ InstallGlobalFunction(BraceP2, function(size, number)
 
     return Skewbrace(List([1..size], k->[p[k],q[k]]));
   else
-    Error("there are four braces of size ", size, "\n");
+    Error("there are four braces of size ", size);
   fi;
 end); 
 
