@@ -7,7 +7,7 @@ InstallMethod(YB, "for a two lists of permutations", [ IsList, IsList ],
 function(l, r)
   local obj;
   if not IS_YB(l, r) then
-    Error("this is not a solution of the YBE\n");
+    Error("this is not a solution of the YBE");
   fi;
   
   obj := Objectify(YBType, rec());
@@ -235,11 +235,11 @@ InstallMethod(YB2CycleSet,
   function(obj)
 
   if not IsInvolutive(obj) then
-    Error("the solution of the YBE is not involutive\n");
+    Error("the solution of the YBE is not involutive");
   fi;
 
   if not IsRightNonDegenerate(obj) then
-    Error("the soslution of the YBE is not (right) non-degenerate\n");
+    Error("the soslution of the YBE is not (right) non-degenerate");
   fi;
   return CycleSet(List(RMatrix(obj), x->ListPerm(Inverse(PermList(x)),Size(obj))));
 
@@ -259,7 +259,7 @@ InstallMethod(Retract,
   local e, c, s, pairs, x, y, z, ll, rr;
 
   if not IsInvolutive(obj) then
-    Error("the solutions of the YBE is not involutive\n");
+    Error("the solutions of the YBE is not involutive");
   fi;
 
   pairs := [];
@@ -646,7 +646,7 @@ function(obj)
   local cs;
   cs := YB2CycleSet(obj);
   if not Size(obj) in [1..8] then
-    Error("solutions of size ", Size(obj), " are not in the database\n");
+    Error("solutions of size ", Size(obj), " are not in the database");
   else
     return [Size(obj), First([1..NrSmallCycleSets(Size(obj))], k->IsomorphismCycleSets(cs, SmallCycleSet(Size(obj),k)) <> fail)];
   fi;
