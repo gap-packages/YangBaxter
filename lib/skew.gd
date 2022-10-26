@@ -283,10 +283,32 @@ DeclareOperation("SkewbraceActions", [ IsSkewbrace, IsSkewbrace ]);
 #! @EndExampleSession
 DeclareOperation("SemidirectProduct", [ IsSkewbrace, IsSkewbrace, IsGeneralMapping ]);
 
+#! @Arguments A
+#! @Returns the underlying multiplicative group of the skew brace
+#! @Description
+#! @ExampleSession
+#! gap> br := SmallBrace(4,2);;
+#! gap> UnderlyingMultiplicativeGroup(br);
+#! Group([ (1,2)(3,4), (1,3)(2,4), (1,4)(2,3) ])
+#! gap> StructureDescription(last);
+#! "C2 x C2"
+#! @EndExampleSession
+DeclareAttribute("UnderlyingAdditiveGroup", IsSkewbrace);
+
+#! @Arguments A
+#! @Returns the underlying additive group of the skew brace
+#! @Description
+#! @ExampleSession
+#! gap> br := SmallSkewbrace(6,2);;
+#! gap> UnderlyingAdditiveGroup(br);
+#! Group([ (1,2,3)(4,5,6), (1,4)(2,6)(3,5) ])
+#! gap> IsAbelian(last);
+#! false
+#! @EndExampleSession
+DeclareAttribute("UnderlyingMultiplicativeGroup", IsSkewbrace);
+
 #! @DoNotReadRestOfFile
 
-DeclareAttribute("UnderlyingAdditiveGroup", IsSkewbrace);
-DeclareAttribute("UnderlyingMultiplicativeGroup", IsSkewbrace);
 DeclareAttribute("SkewbraceAList", IsSkewbrace);
 DeclareAttribute("SkewbraceMList", IsSkewbrace);
 DeclareAttribute("AsList", IsSkewbrace);
