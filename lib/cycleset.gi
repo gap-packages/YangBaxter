@@ -70,7 +70,7 @@ InstallMethod( \=,
       return x![1] = y![1];
 end);
 
-InstallMethod(ViewObj, "for a cyle set element", [ IsCycleSetElm ],
+InstallMethod(ViewObj, "for a cycle set element", [ IsCycleSetElm ],
 function(x)
   Print("<", x![1], ">");
 end);
@@ -192,7 +192,7 @@ end);
 #  return true;
 #end);
 #
-#### This funtion returns a list of 2-cocycles with values in the finite field <field> of the cycle set <obj>
+#### This function returns a list of 2-cocycles with values in the finite field <field> of the cycle set <obj>
 #InstallGlobalFunction(CycleSetCocycles, function(obj, field)
 #  local m,t,x,y,z,xy,yx,xz,yz,e2,e3;
 #
@@ -218,7 +218,7 @@ end);
 #  return List(Elements(VectorSpace(field, NullspaceMat(TransposedMat(m)))), x->list2matrix(x, Size(obj)));
 #end);
 
-#### This funtion returns a list of 2-cocycles with values in <field> of the cycle set <obj>
+#### This function returns a list of 2-cocycles with values in <field> of the cycle set <obj>
 #### satisfying f(x,x)=0 for all x
 #InstallGlobalFunction(CycleSetSquareFreeCocycles, function(obj, field)
 #  local m,t,x,y,z,xy,yx,xz,yz,e2,e3;

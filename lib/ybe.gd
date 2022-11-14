@@ -140,7 +140,7 @@ DeclareAttribute("DehornoyClass", IsYB);
 DeclareOperation("Wada", [IsGroup]);
 
 #! @Arguments obj,variable
-#! @Returns A faithful linear representaiton of the structure group of <A>obj</A>
+#! @Returns A faithful linear representation of the structure group of <A>obj</A>
 #! @Description
 #! 
 #! @ExampleSession
