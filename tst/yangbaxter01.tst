@@ -113,18 +113,16 @@ gap> IdSkewbrace(SemidirectProduct(A,B,s[1]));
 gap> IdSkewbrace(DirectProduct(A,B));
 [ 12, 11 ]
 
-# doc/_Chapter_Preliminaries.xml:422-428
+# doc/_Chapter_Preliminaries.xml:422-427
 gap> br := SmallBrace(4,2);;
-gap> UnderlyingMultiplicativeGroup(br);
-Group([ (1,2)(3,4), (1,3)(2,4), (1,4)(2,3) ])
-gap> StructureDescription(last);
+gap> G:=UnderlyingMultiplicativeGroup(br);;
+gap> StructureDescription(G);
 "C2 x C2"
 
-# doc/_Chapter_Preliminaries.xml:440-446
+# doc/_Chapter_Preliminaries.xml:439-444
 gap> br := SmallSkewbrace(6,2);;
-gap> UnderlyingAdditiveGroup(br);
-Group([ (1,2,3)(4,5,6), (1,4)(2,6)(3,5) ])
-gap> IsAbelian(last);
+gap> G:=UnderlyingAdditiveGroup(br);;
+gap> IsAbelian(G);
 false
 
 #
