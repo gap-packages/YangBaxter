@@ -288,9 +288,8 @@ DeclareOperation("SemidirectProduct", [ IsSkewbrace, IsSkewbrace, IsGeneralMappi
 #! @Description
 #! @ExampleSession
 #! gap> br := SmallBrace(4,2);;
-#! gap> UnderlyingMultiplicativeGroup(br);
-#! Group([ (1,2)(3,4), (1,3)(2,4), (1,4)(2,3) ])
-#! gap> StructureDescription(last);
+#! gap> G:=UnderlyingMultiplicativeGroup(br);;
+#! gap> StructureDescription(G);
 #! "C2 x C2"
 #! @EndExampleSession
 DeclareAttribute("UnderlyingAdditiveGroup", IsSkewbrace);
@@ -300,9 +299,8 @@ DeclareAttribute("UnderlyingAdditiveGroup", IsSkewbrace);
 #! @Description
 #! @ExampleSession
 #! gap> br := SmallSkewbrace(6,2);;
-#! gap> UnderlyingAdditiveGroup(br);
-#! Group([ (1,2,3)(4,5,6), (1,4)(2,6)(3,5) ])
-#! gap> IsAbelian(last);
+#! gap> G:=UnderlyingAdditiveGroup(br);;
+#! gap> IsAbelian(G);
 #! false
 #! @EndExampleSession
 DeclareAttribute("UnderlyingMultiplicativeGroup", IsSkewbrace);
