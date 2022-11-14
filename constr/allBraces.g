@@ -78,7 +78,7 @@ BracesWithAbelianGroup2 := function(ab)
   l := [];
   used := [];
   
-  for gr in AllGroups(Size, Size(ab), IsSolvable, true) do
+  for gr in AllSmallGroups(Size, Size(ab), IsSolvable, true) do
     f := List(IsomorphicSubgroups(hol, gr), x->Image(x));
 
     for s in f do
@@ -104,7 +104,7 @@ AllBraces := function(size)
 
   l := [];
 
-  for ab in AllGroups(Size, size, IsAbelian, true) do
+  for ab in AllSmallGroups(Size, size, IsAbelian, true) do
     for x in BracesWithAbelianGroup(ab) do
       Add(l, x);
     od;
@@ -149,7 +149,7 @@ IsYB := function(group)
     return false;
   fi;
 
-  for ab in AllGroups(Size, Size(group), IsAbelian, true) do
+  for ab in AllSmallGroups(Size, Size(group), IsAbelian, true) do
 
     aut := AutomorphismGroup(ab);
     hol := SemidirectProduct(aut, ab);
