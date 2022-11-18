@@ -173,6 +173,16 @@ InstallMethod(Socle, "for a skew brace", [ IsSkewbrace ], function(obj)
   return AsIdeal(obj, Filtered(l, a->ForAll(AsList(obj), b->Lambda(a,b)=b)));
 end);
 
+InstallMethod(Annihilator, "for a skew brace", [ IsSkewbrace], function(obj)
+  local mul,soc,ann,tmp;
+  mul := UnderlyingMultiplicativeGroup(obj);
+  soc := Socle(obj);
+  tmp := Intersection(AsList(soc), FromMul2Skewbrace(obj, AsList(Center(mul))));
+  ann := SubSkewbrace(obj, tmp);
+  SetIsIdealInParent(ann, true);
+  return ann;
+end);
+
 InstallMethod(AsIdeal, "for a skew brace and a subset of a skew brace", [ IsSkewbrace, IsCollection ], 
 function(obj, subset)
   local res;

@@ -206,7 +206,7 @@ DeclareAttribute("RightNilpotentIdeals", IsSkewbrace);
 DeclareOperation("SmoktunowiczSeries", [IsSkewbrace, IsInt]);
 
 #! @Arguments obj
-#! @Returns the ideals of the socle series of <A>obj</A>
+#! @Returns the socle of <A>obj</A>
 #! @Description
 #! The socle of a skew brace $A$ is the ideal $\ker\lambda\cap Z(A,+)$. 
 #! @ExampleSession
@@ -218,6 +218,20 @@ DeclareOperation("SmoktunowiczSeries", [IsSkewbrace, IsInt]);
 #! <brace of size 4>
 #! @EndExampleSession
 DeclareAttribute("Socle", IsSkewbrace);
+
+#! @Arguments obj
+#! @Returns the annihilator of <A>obj</A>
+#! @Description
+#! The socle of a skew brace $A$ is the ideal $\ker\lambda\cap Z(A,+)\cap Z(A,\circ)$. 
+#! @ExampleSession
+#! gap> Annihilator(SmallSkewbrace(8,12));
+#! <brace of size 2>
+#! gap> Annihilator(SmallSkewbrace(4,2));
+#! <brace of size 2>
+#! gap> Annihilator(SmallSkewbrace(8,14));
+#! <brace of size 4>
+#! @EndExampleSession
+DeclareAttribute("Annihilator", IsSkewbrace);
 
 #! @Section Mutipermutation skew braces
 #! @Arguments obj
