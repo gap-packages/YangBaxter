@@ -901,7 +901,7 @@ InstallMethod(DirectProductSkewbraces, "for two skew braces", [IsSkewbrace, IsSk
 
   l := List(Cartesian(obj1,obj2), u->[u]);
 
-  add := AsList(DirectProduct(UnderlyingAdditiveGroup(obj1),UnderlyingAdditiveGroup(obj2)));
+  add := AsSet(DirectProduct(UnderlyingAdditiveGroup(obj1),UnderlyingAdditiveGroup(obj2)));
   mul := NullMat(Size(l),Size(l));
 
   for u in l do
