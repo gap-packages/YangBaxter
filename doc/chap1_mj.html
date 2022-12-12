@@ -51,6 +51,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F09E6DE78CC240B">1.1-21 Brace2YB</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E2F64338788EBF9">1.1-22 SkewbraceSubset2YB</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8439C2087DD1D9A6">1.1-23 SemidirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86D6131182AE2DBC">1.1-24 UnderlyingAdditiveGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X840A631685DA79D6">1.1-25 UnderlyingMultiplicativeGroup</a></span>
 </div></div>
 </div>
 
@@ -403,6 +405,36 @@ false
 [ 12, 11 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdSkewbrace(DirectProduct(A,B));</span>
 [ 12, 11 ]
+</pre></div>
+
+<p><a id="X86D6131182AE2DBC" name="X86D6131182AE2DBC"></a></p>
+
+<h5>1.1-24 UnderlyingAdditiveGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingAdditiveGroup</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the underlying multiplicative group of the skew brace</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallBrace(4,2);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=UnderlyingMultiplicativeGroup(br);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(G);</span>
+"C2 x C2"
+</pre></div>
+
+<p><a id="X840A631685DA79D6" name="X840A631685DA79D6"></a></p>
+
+<h5>1.1-25 UnderlyingMultiplicativeGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMultiplicativeGroup</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the underlying additive group of the skew brace</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(6,2);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=UnderlyingAdditiveGroup(br);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAbelian(G);</span>
+false
 </pre></div>
 
 

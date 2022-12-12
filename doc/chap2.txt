@@ -124,7 +124,7 @@
   [1X2.2-7 DehornoyRepresentationOfStructureGroup[101X
   
   [33X[1;0Y[29X[2XDehornoyRepresentationOfStructureGroup[102X( [3Xobj[103X, [3Xvariable[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10YA faithful linear representaiton of the structure group of [3Xobj[103X[133X
+  [6XReturns:[106X  [33X[0;10YA faithful linear representation of the structure group of [3Xobj[103X[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xcs := SmallCycleSet(4,13);;[127X[104X

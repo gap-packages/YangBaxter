@@ -54,6 +54,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7B6EB5A37EBFFB7D">4.3-7 RightNilpotentIdeals</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E9665EB79226E96">4.3-8 SmoktunowiczSeries</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D503F497CB34B9D">4.3-9 Socle</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7FF15DAA78E08F0A">4.3-10 Annihilator</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X876342AF7CF51C9B">4.4 <span class="Heading">Mutipermutation skew braces</span></a>
 </span>
@@ -357,7 +358,7 @@ false
 <h5>4.3-9 Socle</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Socle</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: the ideals of the socle series of <var class="Arg">obj</var></p>
+<p>Returns: the socle of <var class="Arg">obj</var></p>
 
 <p>The socle of a skew brace <span class="SimpleMath">\(A\)</span> is the ideal <span class="SimpleMath">\(\ker\lambda\cap Z(A,+)\)</span>.</p>
 
@@ -368,6 +369,25 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Socle(SmallBrace(8,20));</span>
 &lt;brace of size 8&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Socle(SmallBrace(8,2));</span>
+&lt;brace of size 4&gt;
+</pre></div>
+
+<p><a id="X7FF15DAA78E08F0A" name="X7FF15DAA78E08F0A"></a></p>
+
+<h5>4.3-10 Annihilator</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Annihilator</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the annihilator of <var class="Arg">obj</var></p>
+
+<p>The socle of a skew brace <span class="SimpleMath">\(A\)</span> is the ideal <span class="SimpleMath">\(\ker\lambda\cap Z(A,+)\cap Z(A,\circ)\)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Annihilator(SmallSkewbrace(8,12));</span>
+&lt;brace of size 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Annihilator(SmallSkewbrace(4,2));</span>
+&lt;brace of size 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Annihilator(SmallSkewbrace(8,14));</span>
 &lt;brace of size 4&gt;
 </pre></div>
 

@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.10.1",
-Date := "14/08/2022", # dd/mm/yyyy format
+Version := "0.10.2",
+Date := "12/12/2022", # dd/mm/yyyy format
 License := "GPL-3.0",
 
 PackageWWWHome :=

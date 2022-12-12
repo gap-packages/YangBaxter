@@ -237,7 +237,7 @@
   [1X4.3-9 Socle[101X
   
   [33X[1;0Y[29X[2XSocle[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ythe ideals of the socle series of [3Xobj[103X[133X
+  [6XReturns:[106X  [33X[0;10Ythe socle of [3Xobj[103X[133X
   
   [33X[0;0YThe socle of a skew brace [23XA[123X is the ideal [23X\ker\lambda\cap Z(A,+)[123X.[133X
   
@@ -247,6 +247,23 @@
     [4X[25Xgap>[125X [27XSocle(SmallBrace(8,20));[127X[104X
     [4X[28X<brace of size 8>[128X[104X
     [4X[25Xgap>[125X [27XSocle(SmallBrace(8,2));[127X[104X
+    [4X[28X<brace of size 4>[128X[104X
+  [4X[32X[104X
+  
+  [1X4.3-10 Annihilator[101X
+  
+  [33X[1;0Y[29X[2XAnnihilator[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe annihilator of [3Xobj[103X[133X
+  
+  [33X[0;0YThe  socle  of  a  skew  brace  [23XA[123X  is  the  ideal [23X\ker\lambda\cap Z(A,+)\cap
+  Z(A,\circ)[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XAnnihilator(SmallSkewbrace(8,12));[127X[104X
+    [4X[28X<brace of size 2>[128X[104X
+    [4X[25Xgap>[125X [27XAnnihilator(SmallSkewbrace(4,2));[127X[104X
+    [4X[28X<brace of size 2>[128X[104X
+    [4X[25Xgap>[125X [27XAnnihilator(SmallSkewbrace(8,14));[127X[104X
     [4X[28X<brace of size 4>[128X[104X
   [4X[32X[104X
   

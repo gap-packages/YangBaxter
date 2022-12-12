@@ -3,6 +3,7 @@
   [1XIndex[101X
   
   [2XAdditiveGroupOfRing[102X, for IsRing 2.1-1 
+  [2XAnnihilator[102X, for IsSkewbrace 4.3-10 
   [2XAsIdeal[102X, for IsSkewbrace, IsCollection 4.2-3 
   [2XAutomorphismGroup[102X, for IsSkewbrace 1.1-8 
   [2XBaerRadical[102X, for IsSkewbrace 4.5-7 
@@ -72,6 +73,8 @@
   [2XTable2YB[102X, for IsList 2.2-1 
   [2XTrivialBrace[102X, for IsGroup 1.1-4 
   [2XTrivialSkewbrace[102X, for IsGroup 1.1-5 
+  [2XUnderlyingAdditiveGroup[102X, for IsSkewbrace 1.1-24 
+  [2XUnderlyingMultiplicativeGroup[102X, for IsSkewbrace 1.1-25 
   [2XWedderburnRadical[102X, for IsSkewbrace 4.5-9 
   
   

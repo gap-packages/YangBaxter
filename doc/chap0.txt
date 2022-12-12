@@ -6,10 +6,10 @@
              [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                     0.10.1
+                                     0.10.2
   
   
-                                 14 August 2022
+                                12 December 2022
   
   
                                Leandro Vendramin
@@ -68,6 +68,8 @@
       1.1-21 Brace2YB
       1.1-22 SkewbraceSubset2YB
       1.1-23 SemidirectProduct
+      1.1-24 UnderlyingAdditiveGroup
+      1.1-25 UnderlyingMultiplicativeGroup
   2 [33X[0;0YAlgebraic Properties of Braces[133X
     2.1 [33X[0;0YBraces and Radical Rings[133X
       2.1-1 AdditiveGroupOfRing
@@ -107,6 +109,7 @@
       4.3-7 RightNilpotentIdeals
       4.3-8 SmoktunowiczSeries
       4.3-9 Socle
+      4.3-10 Annihilator
     4.4 [33X[0;0YMutipermutation skew braces[133X
       4.4-1 SocleSeries
       4.4-2 MultipermutationLevel

@@ -1,6 +1,6 @@
 name: YangBaxter
-version: 0.10.1
-date: 2022-08-14
+version: 0.10.2
+date: 2022-12-12
 description: |
     Combinatorial Solutions for the Yang-Baxter equation
 
@@ -29,7 +29,7 @@ packageinfo: https://gap-packages.github.io/YangBaxter/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.10.1/YangBaxter-0.10.1.tar.gz
+      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.10.2/YangBaxter-0.10.2.tar.gz
 
 abstract: |
     The <span class="pkgname">YangBaxter</span> package provides functionality to construct classical and skew braces. It also includes a database of classical and skew braces of small orders.
