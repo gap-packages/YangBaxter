@@ -588,21 +588,6 @@ function(obj)
   return DerivedRack(obj);
 end);
 
-InstallMethod(YB2Permutation, "for a solution", [ IsYB ], function(obj)
-  local perm, x, y, u, v;
-
-  perm := [1..Size(obj)^2];
-
-  for x in [1..Size(obj)] do
-    for y in [1..Size(obj)] do
-      u := YB_xy(obj, x, y)[1];
-      v := YB_xy(obj, x, y)[2];
-      perm[x+Size(obj)*y] := u+Size(obj)*v;
-    od;
-  od;
-  return PermList(perm);
-end);
-
 # FIXME: IsObject? 
 InstallMethod(DehornoyRepresentationOfStructureGroup, "for an involutive solution and a symbol", [ IsYB, IsObject ],
 function(obj,q)
