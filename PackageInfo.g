@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "YangBaxter",
 Subtitle := "Combinatorial Solutions for the Yang-Baxter equation",
-Version := "0.10.2",
-Date := "12/12/2022", # dd/mm/yyyy format
+Version := "0.10.3",
+Date := "25/02/2023", # dd/mm/yyyy format
 License := "GPL-3.0",
 
 PackageWWWHome :=
@@ -41,7 +41,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "obk1@st-andrews.ac.uk",
-    WWWHome       := "https://alex-konovalov.github.io/",
+    WWWHome       := "https://olexandr-konovalov.github.io/",
     PostalAddress := Concatenation( [
                      "School of Computer Science\n",
                      "University of St Andrews\n",
