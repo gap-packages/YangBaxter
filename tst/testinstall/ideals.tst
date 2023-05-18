@@ -46,7 +46,8 @@ gap> SortedList(List(Ideals(br), x->Size(Quotient(br, x))));
 # Test LeftSeries and IsLeftIdeal
 gap> br := SmallSkewbrace(36,191);;
 gap> ls := LeftSeries(br);
-[ <skew brace of size 36>, <skew brace of size 18>, <brace of size 3> ]
+[ <skew brace of size 36>, <left ideal in <skew brace of size 36>, (size 18)>,
+  <left ideal in <skew brace of size 36>, (size 3)> ]
 gap> List(ls, x->IsLeftIdeal(br, x));
 [ true, true, true ]
 gap> List(ls, x->IsIdeal(br, x));
@@ -70,8 +71,49 @@ gap> Size(PrimeIdeals(br));
 gap> Size(SemiprimeIdeals(br));
 2
 
+# Test  ViewObj for left ideals and ideals
+gap> br := SmallSkewbrace(8,15);
+<brace of size 8>
+gap> left_ideals := LeftIdeals(br);;
+gap> ViewObj(left_ideals[3]);
+<left ideal in <brace of size 8>, (size 4)>
+gap> left_ideal:=left_ideals[3];
+<left ideal in <brace of size 8>, (size 4)>
+gap> left_ideals_of_left_ideals:= LeftIdeals(left_ideal);
+[ <left ideal in <skew brace of size 4>, (size 1)>,
+  <left ideal in <skew brace of size 4>, (size 2)>,
+  <left ideal in <skew brace of size 4>, (size 4)> ]
+gap> ViewObj(left_ideals_of_left_ideals[2]);
+<left ideal in <skew brace of size 4>, (size 2)>
+gap> ideals := Ideals(br);;
+gap> ViewObj(ideals[2]);
+<ideal in <brace of size 8>, (size 4)>
+gap> ideal := ideals[2];
+<ideal in <brace of size 8>, (size 4)>
+gap> ideals_of_ideals:= Ideals(ideal);
+[ <ideal in <skew brace of size 4>, (size 4)>, <ideal in <skew brace of size 4>, (size 2)>
+    , <ideal in <skew brace of size 4>, (size 1)> ]
+gap> ViewObj(last[2]);
+<ideal in <skew brace of size 4>, (size 2)>
+
+
+# Test IsIdealInParent for left ideals
+gap> br := SmallSkewbrace(12,12);
+<brace of size 12>
+gap> ideals := Ideals(br);
+[ <ideal in <brace of size 12>, (size 12)>, <ideal in <brace of size 12>, (size 6)>,
+  <ideal in <brace of size 12>, (size 3)>, <ideal in <brace of size 12>, (size 2)>,
+  <ideal in <brace of size 12>, (size 1)> ]
+gap> IsIdealInParent(last[3]);
+true
+gap> left_ideals := LeftIdeals(br);
+[ <left ideal in <brace of size 12>, (size 1)>, <left ideal in <brace of size 12>, (size 2)>,
+  <left ideal in <brace of size 12>, (size 3)>, <left ideal in <brace of size 12>, (size 4)>,
+  <left ideal in <brace of size 12>, (size 6)>, <left ideal in <brace of size 12>, (size 12)> ]
+gap> IsIdealInParent(last[4]);
+false
+
 gap> STOP_TEST( "ideals.tst", 1 );
 #############################################################################
 ##
 #E
-

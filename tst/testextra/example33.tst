@@ -12,7 +12,7 @@ true
 gap> LeftSeries(br);
 [ <skew brace of size 12> ]
 gap> RightSeries(br);
-[ <skew brace of size 12> ]
+[ <ideal in <skew brace of size 12>, (size 12)> ]
 
 #
 gap> STOP_TEST("example33.tst", 1);

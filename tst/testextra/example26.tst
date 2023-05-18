@@ -18,7 +18,9 @@ gap> IdGroup(mul);
 gap> left_ideals := ShallowCopy(LeftIdeals(br));;
 gap> SortBy(left_ideals,Size);
 gap> left_ideals;
-[ <brace of size 1>, <brace of size 2>, <brace of size 3>, <brace of size 6> ]
+[ <left ideal in <brace of size 6>, (size 1)>, <left ideal in <brace of size 6>, (size 2)>
+    , <left ideal in <brace of size 6>, (size 3)>,
+  <left ideal in <brace of size 6>, (size 6)> ]
 gap> List(left_ideals, x->IsIdeal(br, x));
 [ true, false, true, true ]
 gap> SortedList(List(Ideals(br),Size));

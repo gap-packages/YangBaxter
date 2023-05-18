@@ -560,4 +560,41 @@ InstallOtherMethod(IsPerfect, "for a skew brace", [ IsSkewbrace ], function(obj)
   return Size(obj)=Size(DerivedSubSkewbrace(obj));
 end);
 
+InstallMethod( IsIdealInParent,
+    "for a left ideal",
+    true,
+    [ IsSkewbrace and IsLeftIdealInParent],
+    
+    function( I )
+      return IsIdeal(ParentAttr(I),I);
+end );
 
+InstallMethod( ViewObj,
+    "for a left ideal and ideal",
+    true,
+    [ IsSkewbrace and IsLeftIdealInParent],
+    function( I )
+      Print( "\>\><left ideal in \>\>" );
+      #Distinguishes between parents with(out) parentobject -> solves nesting of "Left ideal in ..."
+    if HasIdSkewbrace( ParentAttr(I) ) or HasIdBrace( ParentAttr(I) ) then 
+      View( ParentAttr( I ) );
+    else
+      Print( ParentAttr( I ) );
+    fi;
+    Print( "\<,\< \>\>(size ", Size( I ), "\<\<\<\<)>" );
+    end );
+
+InstallMethod( ViewObj,
+    "for a two-sided ideal",
+    true,
+    [ IsSkewbrace and IsIdealInParent],
+    function( I )
+      Print( "\>\><ideal in \>\>" );
+      #Distinguishes between parents with(out) parentobject -> solves nesting of "Ideal in ;.."
+      if HasIdSkewbrace( ParentAttr(I) ) or HasIdBrace( ParentAttr(I) ) then 
+        View( ParentAttr( I ) );
+      else
+        Print( ParentAttr( I ) );
+      fi;
+      Print( "\<,\< \>\>(size ", Size( I ), "\<\<\<\<)>" );
+    end );

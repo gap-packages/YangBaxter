@@ -15,6 +15,18 @@ DeclareAttribute("LeftIdeals", IsSkewbrace);
 #! @Arguments obj
 #! @Returns a list with the left ideals of the skew brace <A>obj</A> that are normal in the additive group of $A$
 #! @Description
+#! @ExampleSession
+#! gap> br := SmallSkewbrace(24,12);
+#! <skew brace of size 24>
+#! gap> strong_left_ideals := StrongLeftIdeals(br);
+#! [ <left ideal in <skew brace of size 24>, (size 24)>,
+#!   <left ideal in <skew brace of size 24>, (size 12)>,
+#!   <left ideal in <skew brace of size 24>, (size 6)>,
+#!   <left ideal in <skew brace of size 24>, (size 4)>,
+#!   <left ideal in <skew brace of size 24>, (size 2)>,
+#!   <left ideal in <skew brace of size 24>, (size 3)>,
+#!   <left ideal in <skew brace of size 24>, (size 1)> ]
+#! @EndExampleSession
 DeclareAttribute("StrongLeftIdeals", IsSkewbrace);
 
 #! @Arguments obj
@@ -24,7 +36,9 @@ DeclareAttribute("StrongLeftIdeals", IsSkewbrace);
 #! gap> br := SmallBrace(8,4);
 #! <brace of size 8>
 #! gap> leftideals := LeftIdeals(br);
-#! [ <brace of size 1>, <brace of size 2>, <brace of size 4>, <brace of size 8> ]
+#! [ <left ideal in <brace of size 8>, (size 1)>, <left ideal in <brace of size 8>, (size 2)>, 
+#! <left ideal in <brace of size 8>, (size 4)>, 
+#! <left ideal in <brace of size 8>, (size 8)> ]
 #! gap> List(leftideals, x->IsLeftIdeal(br, x));
 #! [ true, true, true, true ]
 #! gap> List(leftideals, IdBrace);
@@ -40,9 +54,12 @@ DeclareOperation("IsLeftIdeal", [ IsSkewbrace, IsCollection ]);
 #! @Description
 #! @ExampleSession
 #! gap> br := SmallBrace(8,4);
-#! <brace of size 8>
+#! <brace of size 8> 
 #! gap> leftideals := LeftIdeals(br);
-#! [ <brace of size 1>, <brace of size 2>, <brace of size 4>, <brace of size 8> ]
+#! [ <left ideal in <brace of size 8>, (size 1)>, 
+#! <left ideal in <brace of size 8>, (size 2)>,
+#! <left ideal in <brace of size 8>, (size 4)>, 
+#! <left ideal in <brace of size 8>, (size 8)> ]
 #! gap> List(leftideals, x->IsLeftIdeal(br, x));
 #! [ true, true, true, true ]
 #! gap> List(leftideals, IdBrace);
@@ -69,7 +86,7 @@ DeclareOperation("AsIdeal", [ IsSkewbrace, IsCollection ]);
 #! [ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)>, <(1,4)(2,5)(3,6)>, 
 #!   <(1,5,3,4,2,6)>, <(1,6,2,4,3,5)> ]
 #! gap> IdealGeneratedBy(br, [last[2]]);
-#! <brace of size 3>
+#! <ideal in <brace of size 6>, (size 3)>
 #! @EndExampleSession
 DeclareOperation("IdealGeneratedBy", [ IsSkewbrace, IsCollection ]);
 
@@ -80,7 +97,7 @@ DeclareOperation("IdealGeneratedBy", [ IsSkewbrace, IsCollection ]);
 #! gap> br := SmallSkewbrace(6,6);;
 #! gap> Ideals(br);;
 #! gap> IntersectionOfTwoIdeals(last[2],last[3]);
-#! <brace of size 1>
+#! <ideal in <brace of size 6>, (size 1)>
 #! @EndExampleSession
 DeclareOperation("IntersectionOfTwoIdeals", [ IsSkewbrace and IsIdealInParent, IsSkewbrace and IsIdealInParent ]);
 
@@ -91,7 +108,7 @@ DeclareOperation("IntersectionOfTwoIdeals", [ IsSkewbrace and IsIdealInParent, I
 #! gap> br := SmallSkewbrace(6,6);;
 #! gap> Ideals(br);;
 #! gap> SumOfTwoIdeals(last[2],last[3]);
-#! <brace of size 6>
+#! <ideal in <brace of size 6>, (size 6)>
 #! @EndExampleSession
 DeclareOperation("SumOfTwoIdeals", [ IsSkewbrace and IsIdealInParent, IsSkewbrace and IsIdealInParent ]);
 
@@ -106,7 +123,9 @@ DeclareOperation("SumOfTwoIdeals", [ IsSkewbrace and IsIdealInParent, IsSkewbrac
 #! gap> br := SmallSkewbrace(8,20);
 #! <skew brace of size 8>
 #! gap> LeftSeries(br);
-#! [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
+#! [ <skew brace of size 8>, 
+#! <left ideal in <skew brace of size 8>, (size 2)>, 
+#! <left ideal in <skew brace of size 8>, (size 1)> ]
 #! @EndExampleSession
 DeclareAttribute("LeftSeries", IsSkewbrace);
 
@@ -119,7 +138,9 @@ DeclareAttribute("LeftSeries", IsSkewbrace);
 #! gap> br := SmallSkewbrace(8,20);
 #! <skew brace of size 8>
 #! gap> RightSeries(br);
-#! [ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ]
+#! [ <ideal in <skew brace of size 8>, (size 8)>, 
+#! <ideal in <skew brace of size 8>, (size 2)>, 
+#! <ideal in <skew brace of size 8>, (size 1)> ]
 #! @EndExampleSession
 DeclareAttribute("RightSeries", IsSkewbrace);
 
@@ -211,11 +232,11 @@ DeclareOperation("SmoktunowiczSeries", [IsSkewbrace, IsInt]);
 #! The socle of a skew brace $A$ is the ideal $\ker\lambda\cap Z(A,+)$. 
 #! @ExampleSession
 #! gap> Socle(SmallSkewbrace(6,2));
-#! <brace of size 1>
+#! <ideal in <skew brace of size 6>, (size 1)>
 #! gap> Socle(SmallBrace(8,20));
-#! <brace of size 8>
+#! <ideal in <brace of size 8>, (size 8)>
 #! gap> Socle(SmallBrace(8,2));
-#! <brace of size 4>
+#! <ideal in <brace of size 8>, (size 4)>
 #! @EndExampleSession
 DeclareAttribute("Socle", IsSkewbrace);
 
@@ -225,11 +246,11 @@ DeclareAttribute("Socle", IsSkewbrace);
 #! The socle of a skew brace $A$ is the ideal $\ker\lambda\cap Z(A,+)\cap Z(A,\circ)$. 
 #! @ExampleSession
 #! gap> Annihilator(SmallSkewbrace(8,12));
-#! <brace of size 2>
+#! <ideal in <brace of size 8>, (size 2)>
 #! gap> Annihilator(SmallSkewbrace(4,2));
-#! <brace of size 2>
+#! <ideal in <skew brace of size 4>, (size 2)>
 #! gap> Annihilator(SmallSkewbrace(8,14));
-#! <brace of size 4>
+#! <ideal in <brace of size 8>, (size 4)>
 #! @EndExampleSession
 DeclareAttribute("Annihilator", IsSkewbrace);
 
@@ -355,7 +376,7 @@ DeclareAttribute("IsSemiprime", IsSkewbrace);
 #! @Description
 #! @ExampleSession
 #! gap> SemiprimeIdeals(SmallSkewbrace(12,24));
-#! [ <skew brace of size 12> ]
+#! [ <ideal in <skew brace of size 12>, (size 12)> ]
 #! gap> IsSemiprimeIdeal(last[1]);
 #! true
 #! @EndExampleSession
@@ -367,7 +388,7 @@ DeclareAttribute("IsSemiprimeIdeal", IsSkewbrace and IsIdealInParent);
 #! @Description
 #! @ExampleSession
 #! gap> SemiprimeIdeals(SmallSkewbrace(12,24));
-#! [ <skew brace of size 12> ]
+#! [ <ideal in <skew brace of size 12>, (size 12)> ]
 #! gap> Length(SemiprimeIdeals(SmallSkewbrace(12,22)));
 #! 2
 #! @EndExampleSession
@@ -379,7 +400,7 @@ DeclareAttribute("SemiprimeIdeals", IsSkewbrace);
 #! @ExampleSession
 #! gap> br := SmallSkewbrace(6,2);;
 #! gap> BaerRadical(br);
-#! <skew brace of size 6>
+#! <ideal in <skew brace of size 6>, (size 6)>
 #! @EndExampleSession
 DeclareAttribute("BaerRadical", IsSkewbrace);
 
@@ -401,7 +422,7 @@ DeclareProperty("IsBaer", IsSkewbrace);
 #! @ExampleSession
 #! gap> br := SmallSkewbrace(6,2);;
 #! gap> WedderburnRadical(br);
-#! <brace of size 3>
+#! <ideal in <skew brace of size 6>, (size 3)>
 #! @EndExampleSession
 DeclareAttribute("WedderburnRadical", IsSkewbrace);
 

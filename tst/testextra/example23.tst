@@ -12,7 +12,7 @@ gap> mul := UnderlyingMultiplicativeGroup(br);;
 gap> StructureDescription(mul);
 "S3"
 gap> Socle(br);
-<brace of size 1>
+<ideal in <skew brace of size 6>, (size 1)>
 
 #
 gap> STOP_TEST("example23.tst", 1);
