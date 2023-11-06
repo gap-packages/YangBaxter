@@ -623,7 +623,7 @@ function(obj)
   for x in [1..Size(obj)] do
     Add(tmp, First(PositiveIntegers, m->Product(Reversed(List([0..m-1], k->sigmas[x^(T^k)]))) = ()));
   od;
-  return Maximum(tmp);
+  return Lcm(tmp);
 end);
 
 InstallMethod(IdYB, "for an involutive solution", [ IsYB ],
