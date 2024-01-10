@@ -1,5 +1,4 @@
 DeclareCategory("IsQLCycleSet", IsAttributeStoringRep);
-DeclareGlobalVariable("QLCycleSetType");
 
 DeclareOperation("QLCycleSet", [IsList, IsMatrix]);
 DeclareOperation("SmallQLCycleSet", [IsInt, IsInt]);

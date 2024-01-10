@@ -1,5 +1,4 @@
 DeclareCategory("IsBrace", IsAttributeStoringRep);
-DeclareGlobalVariable("BraceType");
 
 ### To create/recognize braces 
 DeclareOperation("Brace", [IsList]);

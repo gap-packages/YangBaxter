@@ -1,6 +1,4 @@
 ### racks
-BindGlobal("RackFamily", NewFamily("RackFamily"));
-#InstallValue(RackType, NewType(RackFamily, IsRack));
 
 InstallMethod(Rack, "for a matrix", [ IsMatrix ], 
 function(matrix)

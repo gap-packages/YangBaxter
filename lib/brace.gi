@@ -1,6 +1,6 @@
 ### braces
 BindGlobal("BraceFamily", NewFamily("BraceFamily"));
-InstallValue(BraceType, NewType(BraceFamily, IsBrace));
+BindGlobal("BraceType", NewType(BraceFamily, IsBrace));
 
 InstallMethod(Brace, "for a list of pairs of elements in a group", [IsList], 
 function(p)

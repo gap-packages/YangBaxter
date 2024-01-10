@@ -1,6 +1,6 @@
 ### linear cycle sets
 BindGlobal("LinearCycleSetFamily", NewFamily("LinearCycleSetFamily"));
-InstallValue(LinearCycleSetType, NewType(LinearCycleSetFamily, IsLinearCycleSet));
+BindGlobal("LinearCycleSetType", NewType(LinearCycleSetFamily, IsLinearCycleSet));
 
 InstallMethod(LinearCycleSet, "for the list of elements of a group and a matrix", [IsList, IsMatrix], 
 function(l, m)

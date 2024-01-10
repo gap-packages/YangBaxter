@@ -1,6 +1,4 @@
 ### cycle sets
-BindGlobal("CycleSetFamily", NewFamily("CycleSetFamily"));
-#InstallValue(CycleSetType, NewType(CycleSetFamily, IsCycleSet));
 
 ### This function returns the cycle set associated with the action given <matrix>
 InstallMethod(CycleSet, "for a matrix", [IsList],

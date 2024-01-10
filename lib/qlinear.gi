@@ -1,6 +1,6 @@
 ### quasilinear cycle sets
 BindGlobal("QLCycleSetFamily", NewFamily("QLCycleSetFamily"));
-InstallValue(QLCycleSetType, NewType(QLCycleSetFamily, IsQLCycleSet));
+BindGlobal("QLCycleSetType", NewType(QLCycleSetFamily, IsQLCycleSet));
 
 InstallMethod(QLCycleSet, "for the list of elements of a group and a matrix", [IsList, IsMatrix], 
 function(l, m)

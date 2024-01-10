@@ -1,5 +1,4 @@
 DeclareCategory("IsTauGroup", IsAttributeStoringRep);
-DeclareGlobalVariable("TauGroupType");
 
 DeclareOperation("TauGroup", [IsList, IsPerm]);
 DeclareOperation("SmallTauGroup", [IsInt, IsInt]);

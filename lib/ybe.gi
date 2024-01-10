@@ -1,5 +1,5 @@
 BindGlobal("YBFamily", NewFamily("YBFamily"));
-InstallValue(YBType, NewType(YBFamily, IsYB));
+BindGlobal("YBType", NewType(YBFamily, IsYB));
 
 ### This function returns the set-theoretic solution given by the permutations <l_actions> and <r_actions>
 ### <l_action> and <r_action> are matrices!

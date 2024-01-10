@@ -2,7 +2,6 @@
 #! @Section Braces and Yang-Baxter Equation
 
 DeclareCategory("IsYB", IsAttributeStoringRep);
-DeclareGlobalVariable("YBType");
 
 DeclareOperation("SmallIYB", [IsInt, IsInt]);
 DeclareOperation("YB", [IsList, IsList]);
