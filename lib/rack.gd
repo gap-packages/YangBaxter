@@ -8,8 +8,6 @@ BindGlobal("RackElmFamily", NewFamily("RackElmFamily", IsRackElm));
 BindGlobal("RackElmType", NewType(RackElmFamily, IsRackElm));
 BindGlobal("RackType", NewType(CollectionsFamily( RackElmFamily ), IsRack and IsAttributeStoringRep));
 
-#DeclareGlobalVariable("RackType");
-
 ### To create/recognize racks 
 DeclareOperation("Rack", [IsList]);
 DeclareAttribute("Rack2YB", IsRack);

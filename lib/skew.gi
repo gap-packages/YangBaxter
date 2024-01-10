@@ -1,6 +1,4 @@
 ### skew braces
-BindGlobal("SkewbraceFamily", NewFamily("SkewbraceFamily"));
-#InstallValue(SkewbraceType, NewType(SkewbraceFamily, IsSkewbrace));
 
 InstallMethod(Skewbrace, "for a list of pairs of elements in a group", [IsList], 
 function(p)

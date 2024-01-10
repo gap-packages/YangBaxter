@@ -1,6 +1,6 @@
 ### quasilinear cycle sets
 BindGlobal("TauGroupFamily", NewFamily("TauGroupFamily"));
-InstallValue(TauGroupType, NewType(TauGroupFamily, IsTauGroup));
+BindGlobal("TauGroupType", NewType(TauGroupFamily, IsTauGroup));
 
 InstallMethod(TauGroup, "for the list of elements of a group and a permutation", [IsList, IsPerm], 
 function(l, p)

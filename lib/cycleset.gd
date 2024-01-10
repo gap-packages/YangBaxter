@@ -4,7 +4,6 @@ DeclareCategory("IsCycleSetElm", IsMultiplicativeElement);
 DeclareRepresentation( "IsCycleSetElmRep", IsPositionalObjectRep, [ 1 ]);
 DeclareOperation("CycleSetElmConstructor", [IsCycleSet, IsInt]);
 
-#DeclareGlobalVariable("CycleSetType");
 BindGlobal("CycleSetElmFamily", NewFamily("CycleSetElmFamily", IsCycleSetElm));
 BindGlobal("CycleSetElmType", NewType(CycleSetElmFamily, IsCycleSetElm));
 BindGlobal("CycleSetType", NewType(CollectionsFamily( CycleSetElmFamily ), IsCycleSet and IsAttributeStoringRep));
