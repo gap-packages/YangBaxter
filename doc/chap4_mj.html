@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <script type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <title>GAP (YangBaxter) - Chapter 4: Ideals and left ideals</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -108,6 +108,20 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StrongLeftIdeals</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list with the left ideals of the skew brace <var class="Arg">obj</var> that are normal in the additive group of <span class="SimpleMath">\(A\)</span></p>
 
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(24,12);</span>
+&lt;skew brace of size 24&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">strong_left_ideals := StrongLeftIdeals(br);</span>
+[ &lt;left ideal in &lt;skew brace of size 24&gt;, (size 24)&gt;,
+  &lt;left ideal in &lt;skew brace of size 24&gt;, (size 12)&gt;,
+  &lt;left ideal in &lt;skew brace of size 24&gt;, (size 6)&gt;,
+  &lt;left ideal in &lt;skew brace of size 24&gt;, (size 4)&gt;,
+  &lt;left ideal in &lt;skew brace of size 24&gt;, (size 2)&gt;,
+  &lt;left ideal in &lt;skew brace of size 24&gt;, (size 3)&gt;,
+  &lt;left ideal in &lt;skew brace of size 24&gt;, (size 1)&gt; ]
+</pre></div>
+
 <p><a id="X829DFD167A8D0D4A" name="X829DFD167A8D0D4A"></a></p>
 
 <h5>4.1-3 IsLeftIdeal</h5>
@@ -120,7 +134,9 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallBrace(8,4);</span>
 &lt;brace of size 8&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">leftideals := LeftIdeals(br);</span>
-[ &lt;brace of size 1&gt;, &lt;brace of size 2&gt;, &lt;brace of size 4&gt;, &lt;brace of size 8&gt; ]
+[ &lt;left ideal in &lt;brace of size 8&gt;, (size 1)&gt;, &lt;left ideal in &lt;brace of size 8&gt;, (size 2)&gt;, 
+&lt;left ideal in &lt;brace of size 8&gt;, (size 4)&gt;, 
+&lt;left ideal in &lt;brace of size 8&gt;, (size 8)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, x-&gt;IsLeftIdeal(br, x));</span>
 [ true, true, true, true ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, IdBrace);</span>
@@ -143,9 +159,12 @@
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallBrace(8,4);</span>
-&lt;brace of size 8&gt;
+&lt;brace of size 8&gt; 
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">leftideals := LeftIdeals(br);</span>
-[ &lt;brace of size 1&gt;, &lt;brace of size 2&gt;, &lt;brace of size 4&gt;, &lt;brace of size 8&gt; ]
+[ &lt;left ideal in &lt;brace of size 8&gt;, (size 1)&gt;, 
+&lt;left ideal in &lt;brace of size 8&gt;, (size 2)&gt;,
+&lt;left ideal in &lt;brace of size 8&gt;, (size 4)&gt;, 
+&lt;left ideal in &lt;brace of size 8&gt;, (size 8)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, x-&gt;IsLeftIdeal(br, x));</span>
 [ true, true, true, true ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(leftideals, IdBrace);</span>
@@ -180,7 +199,7 @@
 [ &lt;()&gt;, &lt;(1,2,3)(4,5,6)&gt;, &lt;(1,3,2)(4,6,5)&gt;, &lt;(1,4)(2,5)(3,6)&gt;, 
   &lt;(1,5,3,4,2,6)&gt;, &lt;(1,6,2,4,3,5)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdealGeneratedBy(br, [last[2]]);</span>
-&lt;brace of size 3&gt;
+&lt;ideal in &lt;brace of size 6&gt;, (size 3)&gt;
 </pre></div>
 
 <p><a id="X8721D11884A2CDAD" name="X8721D11884A2CDAD"></a></p>
@@ -195,7 +214,7 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(6,6);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ideals(br);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntersectionOfTwoIdeals(last[2],last[3]);</span>
-&lt;brace of size 1&gt;
+&lt;ideal in &lt;brace of size 6&gt;, (size 1)&gt;
 </pre></div>
 
 <p><a id="X85A4F7FE7B627615" name="X85A4F7FE7B627615"></a></p>
@@ -210,7 +229,7 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(6,6);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ideals(br);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SumOfTwoIdeals(last[2],last[3]);</span>
-&lt;brace of size 6&gt;
+&lt;ideal in &lt;brace of size 6&gt;, (size 6)&gt;
 </pre></div>
 
 <p><a id="X8079CE3187FE380D" name="X8079CE3187FE380D"></a></p>
@@ -231,7 +250,9 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(8,20);</span>
 &lt;skew brace of size 8&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftSeries(br);</span>
-[ &lt;skew brace of size 8&gt;, &lt;brace of size 2&gt;, &lt;brace of size 1&gt; ]
+[ &lt;skew brace of size 8&gt;, 
+&lt;left ideal in &lt;skew brace of size 8&gt;, (size 2)&gt;, 
+&lt;left ideal in &lt;skew brace of size 8&gt;, (size 1)&gt; ]
 </pre></div>
 
 <p><a id="X7B9ED49481948B91" name="X7B9ED49481948B91"></a></p>
@@ -248,7 +269,9 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(8,20);</span>
 &lt;skew brace of size 8&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightSeries(br);</span>
-[ &lt;skew brace of size 8&gt;, &lt;brace of size 2&gt;, &lt;brace of size 1&gt; ]
+[ &lt;ideal in &lt;skew brace of size 8&gt;, (size 8)&gt;, 
+&lt;ideal in &lt;skew brace of size 8&gt;, (size 2)&gt;, 
+&lt;ideal in &lt;skew brace of size 8&gt;, (size 1)&gt; ]
 </pre></div>
 
 <p><a id="X84C0A78F7B2845FD" name="X84C0A78F7B2845FD"></a></p>
@@ -365,11 +388,11 @@ false
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Socle(SmallSkewbrace(6,2));</span>
-&lt;brace of size 1&gt;
+&lt;ideal in &lt;skew brace of size 6&gt;, (size 1)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Socle(SmallBrace(8,20));</span>
-&lt;brace of size 8&gt;
+&lt;ideal in &lt;brace of size 8&gt;, (size 8)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Socle(SmallBrace(8,2));</span>
-&lt;brace of size 4&gt;
+&lt;ideal in &lt;brace of size 8&gt;, (size 4)&gt;
 </pre></div>
 
 <p><a id="X7FF15DAA78E08F0A" name="X7FF15DAA78E08F0A"></a></p>
@@ -384,11 +407,11 @@ false
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Annihilator(SmallSkewbrace(8,12));</span>
-&lt;brace of size 2&gt;
+&lt;ideal in &lt;brace of size 8&gt;, (size 2)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Annihilator(SmallSkewbrace(4,2));</span>
-&lt;brace of size 2&gt;
+&lt;ideal in &lt;skew brace of size 4&gt;, (size 2)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Annihilator(SmallSkewbrace(8,14));</span>
-&lt;brace of size 4&gt;
+&lt;ideal in &lt;brace of size 8&gt;, (size 4)&gt;
 </pre></div>
 
 <p><a id="X876342AF7CF51C9B" name="X876342AF7CF51C9B"></a></p>
@@ -557,7 +580,7 @@ true
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SemiprimeIdeals(SmallSkewbrace(12,24));</span>
-[ &lt;skew brace of size 12&gt; ]
+[ &lt;ideal in &lt;skew brace of size 12&gt;, (size 12)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSemiprimeIdeal(last[1]);</span>
 true
 </pre></div>
@@ -572,7 +595,7 @@ true
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SemiprimeIdeals(SmallSkewbrace(12,24));</span>
-[ &lt;skew brace of size 12&gt; ]
+[ &lt;ideal in &lt;skew brace of size 12&gt;, (size 12)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length(SemiprimeIdeals(SmallSkewbrace(12,22)));</span>
 2
 </pre></div>
@@ -588,7 +611,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(6,2);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BaerRadical(br);</span>
-&lt;skew brace of size 6&gt;
+&lt;ideal in &lt;skew brace of size 6&gt;, (size 6)&gt;
 </pre></div>
 
 <p><a id="X8571BC2F80364341" name="X8571BC2F80364341"></a></p>
@@ -620,7 +643,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">br := SmallSkewbrace(6,2);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">WedderburnRadical(br);</span>
-&lt;brace of size 3&gt;
+&lt;ideal in &lt;skew brace of size 6&gt;, (size 3)&gt;
 </pre></div>
 
 <p><a id="X85F4D83079E1013A" name="X85F4D83079E1013A"></a></p>
@@ -665,6 +688,6 @@ false
 <div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
-<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
 </body>
 </html>

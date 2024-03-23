@@ -21,6 +21,19 @@
   [6XReturns:[106X  [33X[0;10Ya  list with the left ideals of the skew brace [3Xobj[103X that are normal
             in the additive group of [23XA[123X[133X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(24,12);[127X[104X
+    [4X[28X<skew brace of size 24>[128X[104X
+    [4X[25Xgap>[125X [27Xstrong_left_ideals := StrongLeftIdeals(br);[127X[104X
+    [4X[28X[ <left ideal in <skew brace of size 24>, (size 24)>,[128X[104X
+    [4X[28X  <left ideal in <skew brace of size 24>, (size 12)>,[128X[104X
+    [4X[28X  <left ideal in <skew brace of size 24>, (size 6)>,[128X[104X
+    [4X[28X  <left ideal in <skew brace of size 24>, (size 4)>,[128X[104X
+    [4X[28X  <left ideal in <skew brace of size 24>, (size 2)>,[128X[104X
+    [4X[28X  <left ideal in <skew brace of size 24>, (size 3)>,[128X[104X
+    [4X[28X  <left ideal in <skew brace of size 24>, (size 1)> ][128X[104X
+  [4X[32X[104X
+  
   [1X4.1-3 IsLeftIdeal[101X
   
   [33X[1;0Y[29X[2XIsLeftIdeal[102X( [3Xobj[103X ) [32X operation[133X
@@ -30,7 +43,9 @@
     [4X[25Xgap>[125X [27Xbr := SmallBrace(8,4);[127X[104X
     [4X[28X<brace of size 8>[128X[104X
     [4X[25Xgap>[125X [27Xleftideals := LeftIdeals(br);[127X[104X
-    [4X[28X[ <brace of size 1>, <brace of size 2>, <brace of size 4>, <brace of size 8> ][128X[104X
+    [4X[28X[ <left ideal in <brace of size 8>, (size 1)>, <left ideal in <brace of size 8>, (size 2)>, [128X[104X
+    [4X[28X<left ideal in <brace of size 8>, (size 4)>, [128X[104X
+    [4X[28X<left ideal in <brace of size 8>, (size 8)> ][128X[104X
     [4X[25Xgap>[125X [27XList(leftideals, x->IsLeftIdeal(br, x));[127X[104X
     [4X[28X[ true, true, true, true ][128X[104X
     [4X[25Xgap>[125X [27XList(leftideals, IdBrace);[127X[104X
@@ -50,9 +65,12 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xbr := SmallBrace(8,4);[127X[104X
-    [4X[28X<brace of size 8>[128X[104X
+    [4X[28X<brace of size 8> [128X[104X
     [4X[25Xgap>[125X [27Xleftideals := LeftIdeals(br);[127X[104X
-    [4X[28X[ <brace of size 1>, <brace of size 2>, <brace of size 4>, <brace of size 8> ][128X[104X
+    [4X[28X[ <left ideal in <brace of size 8>, (size 1)>, [128X[104X
+    [4X[28X<left ideal in <brace of size 8>, (size 2)>,[128X[104X
+    [4X[28X<left ideal in <brace of size 8>, (size 4)>, [128X[104X
+    [4X[28X<left ideal in <brace of size 8>, (size 8)> ][128X[104X
     [4X[25Xgap>[125X [27XList(leftideals, x->IsLeftIdeal(br, x));[127X[104X
     [4X[28X[ true, true, true, true ][128X[104X
     [4X[25Xgap>[125X [27XList(leftideals, IdBrace);[127X[104X
@@ -82,7 +100,7 @@
     [4X[28X[ <()>, <(1,2,3)(4,5,6)>, <(1,3,2)(4,6,5)>, <(1,4)(2,5)(3,6)>, [128X[104X
     [4X[28X  <(1,5,3,4,2,6)>, <(1,6,2,4,3,5)> ][128X[104X
     [4X[25Xgap>[125X [27XIdealGeneratedBy(br, [last[2]]);[127X[104X
-    [4X[28X<brace of size 3>[128X[104X
+    [4X[28X<ideal in <brace of size 6>, (size 3)>[128X[104X
   [4X[32X[104X
   
   [1X4.2-5 IntersectionOfTwoIdeals[101X
@@ -94,7 +112,7 @@
     [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,6);;[127X[104X
     [4X[25Xgap>[125X [27XIdeals(br);;[127X[104X
     [4X[25Xgap>[125X [27XIntersectionOfTwoIdeals(last[2],last[3]);[127X[104X
-    [4X[28X<brace of size 1>[128X[104X
+    [4X[28X<ideal in <brace of size 6>, (size 1)>[128X[104X
   [4X[32X[104X
   
   [1X4.2-6 SumOfTwoIdeals[101X
@@ -106,7 +124,7 @@
     [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,6);;[127X[104X
     [4X[25Xgap>[125X [27XIdeals(br);;[127X[104X
     [4X[25Xgap>[125X [27XSumOfTwoIdeals(last[2],last[3]);[127X[104X
-    [4X[28X<brace of size 6>[128X[104X
+    [4X[28X<ideal in <brace of size 6>, (size 6)>[128X[104X
   [4X[32X[104X
   
   
@@ -125,7 +143,9 @@
     [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,20);[127X[104X
     [4X[28X<skew brace of size 8>[128X[104X
     [4X[25Xgap>[125X [27XLeftSeries(br);[127X[104X
-    [4X[28X[ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ][128X[104X
+    [4X[28X[ <skew brace of size 8>, [128X[104X
+    [4X[28X<left ideal in <skew brace of size 8>, (size 2)>, [128X[104X
+    [4X[28X<left ideal in <skew brace of size 8>, (size 1)> ][128X[104X
   [4X[32X[104X
   
   [1X4.3-2 RightSeries[101X
@@ -140,7 +160,9 @@
     [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(8,20);[127X[104X
     [4X[28X<skew brace of size 8>[128X[104X
     [4X[25Xgap>[125X [27XRightSeries(br);[127X[104X
-    [4X[28X[ <skew brace of size 8>, <brace of size 2>, <brace of size 1> ][128X[104X
+    [4X[28X[ <ideal in <skew brace of size 8>, (size 8)>, [128X[104X
+    [4X[28X<ideal in <skew brace of size 8>, (size 2)>, [128X[104X
+    [4X[28X<ideal in <skew brace of size 8>, (size 1)> ][128X[104X
   [4X[32X[104X
   
   [1X4.3-3 IsLeftNilpotent[101X
@@ -243,11 +265,11 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XSocle(SmallSkewbrace(6,2));[127X[104X
-    [4X[28X<brace of size 1>[128X[104X
+    [4X[28X<ideal in <skew brace of size 6>, (size 1)>[128X[104X
     [4X[25Xgap>[125X [27XSocle(SmallBrace(8,20));[127X[104X
-    [4X[28X<brace of size 8>[128X[104X
+    [4X[28X<ideal in <brace of size 8>, (size 8)>[128X[104X
     [4X[25Xgap>[125X [27XSocle(SmallBrace(8,2));[127X[104X
-    [4X[28X<brace of size 4>[128X[104X
+    [4X[28X<ideal in <brace of size 8>, (size 4)>[128X[104X
   [4X[32X[104X
   
   [1X4.3-10 Annihilator[101X
@@ -260,11 +282,11 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XAnnihilator(SmallSkewbrace(8,12));[127X[104X
-    [4X[28X<brace of size 2>[128X[104X
+    [4X[28X<ideal in <brace of size 8>, (size 2)>[128X[104X
     [4X[25Xgap>[125X [27XAnnihilator(SmallSkewbrace(4,2));[127X[104X
-    [4X[28X<brace of size 2>[128X[104X
+    [4X[28X<ideal in <skew brace of size 4>, (size 2)>[128X[104X
     [4X[25Xgap>[125X [27XAnnihilator(SmallSkewbrace(8,14));[127X[104X
-    [4X[28X<brace of size 4>[128X[104X
+    [4X[28X<ideal in <brace of size 8>, (size 4)>[128X[104X
   [4X[32X[104X
   
   
@@ -409,7 +431,7 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XSemiprimeIdeals(SmallSkewbrace(12,24));[127X[104X
-    [4X[28X[ <skew brace of size 12> ][128X[104X
+    [4X[28X[ <ideal in <skew brace of size 12>, (size 12)> ][128X[104X
     [4X[25Xgap>[125X [27XIsSemiprimeIdeal(last[1]);[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
@@ -421,7 +443,7 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XSemiprimeIdeals(SmallSkewbrace(12,24));[127X[104X
-    [4X[28X[ <skew brace of size 12> ][128X[104X
+    [4X[28X[ <ideal in <skew brace of size 12>, (size 12)> ][128X[104X
     [4X[25Xgap>[125X [27XLength(SemiprimeIdeals(SmallSkewbrace(12,22)));[127X[104X
     [4X[28X2[128X[104X
   [4X[32X[104X
@@ -434,7 +456,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,2);;[127X[104X
     [4X[25Xgap>[125X [27XBaerRadical(br);[127X[104X
-    [4X[28X<skew brace of size 6>[128X[104X
+    [4X[28X<ideal in <skew brace of size 6>, (size 6)>[128X[104X
   [4X[32X[104X
   
   [1X4.5-8 IsBaer[101X
@@ -462,7 +484,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xbr := SmallSkewbrace(6,2);;[127X[104X
     [4X[25Xgap>[125X [27XWedderburnRadical(br);[127X[104X
-    [4X[28X<brace of size 3>[128X[104X
+    [4X[28X<ideal in <skew brace of size 6>, (size 3)>[128X[104X
   [4X[32X[104X
   
   [1X4.5-10 SolvableSeries[101X
