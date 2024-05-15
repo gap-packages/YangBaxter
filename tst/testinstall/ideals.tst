@@ -86,32 +86,26 @@ gap> left_ideals_of_left_ideals:= LeftIdeals(left_ideal);
 gap> ViewObj(left_ideals_of_left_ideals[2]);
 <left ideal in <skew brace of size 4>, (size 2)>
 gap> ideals := Ideals(br);;
-gap> ViewObj(ideals[2]);
+gap> ideal := First(ideals, x -> Size(x) = 4);
 <ideal in <brace of size 8>, (size 4)>
-gap> ideal := ideals[2];
-<ideal in <brace of size 8>, (size 4)>
-gap> ideals_of_ideals:= Ideals(ideal);
-[ <ideal in <skew brace of size 4>, (size 4)>, <ideal in <skew brace of size 4>, (size 2)>
-    , <ideal in <skew brace of size 4>, (size 1)> ]
-gap> ViewObj(last[2]);
-<ideal in <skew brace of size 4>, (size 2)>
-
+gap> ideals_of_ideals:= Ideals(ideal);;
+gap> SortedList(List(ideals_of_ideals, Size));
+[ 1, 2, 4 ]
 
 # Test IsIdealInParent for left ideals
 gap> br := SmallSkewbrace(12,12);
 <brace of size 12>
-gap> ideals := Ideals(br);
-[ <ideal in <brace of size 12>, (size 12)>, <ideal in <brace of size 12>, (size 6)>,
-  <ideal in <brace of size 12>, (size 3)>, <ideal in <brace of size 12>, (size 2)>,
-  <ideal in <brace of size 12>, (size 1)> ]
-gap> IsIdealInParent(last[3]);
+gap> ideals := Ideals(br);;
+gap> SortedList(List(ideals, Size));
+[ 1, 2, 3, 6, 12 ]
+gap> ForAll(ideals, IsIdealInParent);
 true
 gap> left_ideals := LeftIdeals(br);
 [ <left ideal in <brace of size 12>, (size 1)>, <left ideal in <brace of size 12>, (size 2)>,
   <left ideal in <brace of size 12>, (size 3)>, <left ideal in <brace of size 12>, (size 4)>,
   <left ideal in <brace of size 12>, (size 6)>, <left ideal in <brace of size 12>, (size 12)> ]
-gap> IsIdealInParent(last[4]);
-false
+gap> Collected(List(left_ideals, IsIdealInParent));
+[ [ true, 5 ], [ false, 1 ] ]
 
 gap> STOP_TEST( "ideals.tst", 1 );
 #############################################################################
