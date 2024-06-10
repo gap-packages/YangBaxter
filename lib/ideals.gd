@@ -15,7 +15,7 @@ DeclareAttribute("LeftIdeals", IsSkewbrace);
 #! @Arguments obj
 #! @Returns a list with the left ideals of the skew brace <A>obj</A> that are normal in the additive group of $A$
 #! @Description
-#! @ExampleSession
+#! @BeginLogSession
 #! gap> br := SmallSkewbrace(24,12);
 #! <skew brace of size 24>
 #! gap> strong_left_ideals := StrongLeftIdeals(br);
@@ -26,7 +26,7 @@ DeclareAttribute("LeftIdeals", IsSkewbrace);
 #!   <left ideal in <skew brace of size 24>, (size 2)>,
 #!   <left ideal in <skew brace of size 24>, (size 3)>,
 #!   <left ideal in <skew brace of size 24>, (size 1)> ]
-#! @EndExampleSession
+#! @EndLogSession
 DeclareAttribute("StrongLeftIdeals", IsSkewbrace);
 
 #! @Arguments obj

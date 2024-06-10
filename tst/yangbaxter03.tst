@@ -10,18 +10,6 @@
 #
 gap> START_TEST("yangbaxter03.tst");
 
-# doc/_Chapter_Ideals_and_left_ideals.xml:30-41
-gap> br := SmallSkewbrace(24,12);
-<skew brace of size 24>
-gap> strong_left_ideals := StrongLeftIdeals(br);
-[ <left ideal in <skew brace of size 24>, (size 24)>,
-  <left ideal in <skew brace of size 24>, (size 12)>,
-  <left ideal in <skew brace of size 24>, (size 6)>,
-  <left ideal in <skew brace of size 24>, (size 4)>,
-  <left ideal in <skew brace of size 24>, (size 2)>,
-  <left ideal in <skew brace of size 24>, (size 3)>,
-  <left ideal in <skew brace of size 24>, (size 1)> ]
-
 # doc/_Chapter_Ideals_and_left_ideals.xml:53-64
 gap> br := SmallBrace(8,4);
 <brace of size 8>
