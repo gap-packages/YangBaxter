@@ -1,7 +1,7 @@
 name: YangBaxter
-version: "0.10.4"
+version: "0.10.5"
 license: "GPL-3.0"
-date: 2024-03-23
+date: 2024-06-15
 description: |
     Combinatorial Solutions for the Yang-Baxter equation
 
@@ -30,7 +30,7 @@ packageinfo: https://gap-packages.github.io/YangBaxter/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.10.4/YangBaxter-0.10.4.tar.gz
+      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.10.5/YangBaxter-0.10.5.tar.gz
 
 abstract: |
     The <span class="pkgname">YangBaxter</span> package provides functionality to construct classical and skew braces. It also includes a database of classical and skew braces of small orders.
@@ -44,7 +44,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>VK24</span>]   <b class='BibAuthor'>Vendramin, L. and Konovalov, O.</b>,
      <i class='BibTitle'>YangBaxter, Combinatorial Solutions for the Yang-Baxter equation,
-             Version 0.10.4</i>
+             Version 0.10.5</i>
      (<span class='BibYear'>2024</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://gap-packages.github.io/YangBaxter">https://gap-packages.github.io/YangBaxter</a></span>.
@@ -56,8 +56,8 @@ bibtex: |
       author =           {Vendramin, L. and Konovalov, O.},
       title =            {{YangBaxter},    Combinatorial   Solutions   for   the
                           Yang\texttt{\symbol{45}}Baxter   equation,   {V}ersion
-                          0.10.4},
-      month =            {Mar},
+                          0.10.5},
+      month =            {Jun},
       year =             {2024},
       note =             {GAP package},
       howpublished =     {\href      {https://gap-packages.github.io/YangBaxter}
