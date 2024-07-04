@@ -3,4 +3,4 @@
 # https://github.com/gap-system/ReleaseTools
 
 # compress data files
-gzip -9 data/*
+gzip -9 -n data/*
