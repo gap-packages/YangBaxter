@@ -1,7 +1,7 @@
 ReadPackage("yangbaxter", "lib/ybe.gi" );
 ReadPackage("yangbaxter", "lib/cycleset.gi" );
 ReadPackage("yangbaxter", "lib/utils.gi" );
-#ReadPackage("yangbaxter", "lib/brace.gi" );
+ReadPackage("yangbaxter", "lib/prelie.gi" );
 ReadPackage("yangbaxter", "lib/rack.gi" );
 ReadPackage("yangbaxter", "lib/checking.gi" );
 ReadPackage("yangbaxter", "lib/tau.gi" );
