@@ -19,3 +19,4 @@ Thanks go to:
 * Emiliano Acri
 * Marco Bonatto
 * Raúl Sastriques Guardiola
+* Arne Van Antwerpen
