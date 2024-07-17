@@ -6,10 +6,10 @@
              [1X Combinatorial Solutions for the Yang-Baxter equation [101X
   
   
-                                     0.10.5
+                                     0.10.6
   
   
-                                  15 June 2024
+                                  17 July 2024
   
   
                                Leandro Vendramin
