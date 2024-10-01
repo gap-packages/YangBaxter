@@ -774,7 +774,7 @@ InstallMethod(IsIndecomposable,
   [ IsYB ],
   function(obj)
     if not IsInvolutive(obj) then
-      return fail;
+      Error("the solutions of the YBE is not involutive");
     else
       return IsTransitive(IYBGroup(obj), [1..Size(obj)]);
     fi;
