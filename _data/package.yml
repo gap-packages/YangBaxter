@@ -1,7 +1,7 @@
 name: YangBaxter
-version: "0.10.6"
+version: "0.10.7"
 license: "GPL-3.0"
-date: 2024-07-17
+date: 2025-07-14
 description: |
     Combinatorial Solutions for the Yang-Baxter equation
 
@@ -30,7 +30,7 @@ packageinfo: https://gap-packages.github.io/YangBaxter/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.10.6/YangBaxter-0.10.6.tar.gz
+      url: https://github.com/gap-packages/YangBaxter/releases/download/v0.10.7/YangBaxter-0.10.7.tar.gz
 
 abstract: |
     The <span class="pkgname">YangBaxter</span> package provides functionality to construct classical and skew braces. It also includes a database of classical and skew braces of small orders.
@@ -42,10 +42,10 @@ keywords: |
     QYBE, cycle sets, racks, quandles, braces, radical rings.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>VK24</span>]   <b class='BibAuthor'>Vendramin, L. and Konovalov, O.</b>,
+    [<span class='BibKey'>VK25</span>]   <b class='BibAuthor'>Vendramin, L. and Konovalov, O.</b>,
      <i class='BibTitle'>YangBaxter, Combinatorial Solutions for the Yang-Baxter equation,
-             Version 0.10.6</i>
-     (<span class='BibYear'>2024</span>)<br />
+             Version 0.10.7</i>
+     (<span class='BibYear'>2025</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://gap-packages.github.io/YangBaxter">https://gap-packages.github.io/YangBaxter</a></span>.
     </p>
@@ -54,17 +54,17 @@ citeas: |
 bibtex: |
     @misc{ YangBaxter,
       author =           {Vendramin, L. and Konovalov, O.},
-      title =            {{YangBaxter},    Combinatorial   Solutions   for   the
-                          Yang\texttt{\symbol{45}}Baxter   equation,   {V}ersion
-                          0.10.6},
+      title =            {{YangBaxter},   {Combinatorial   Solutions   for   the
+                          Yang\texttt{\symbol{45}}Baxter   equation},  {V}ersion
+                          0.10.7},
       month =            {Jul},
-      year =             {2024},
+      year =             {2025},
       note =             {GAP package},
       howpublished =     {\href      {https://gap-packages.github.io/YangBaxter}
                           {\texttt{https://gap\texttt{\symbol{45}}packages.github.io/}\discretionary
                           {}{}{}\texttt{YangBaxter}}},
       keywords =         {QYBE;  cycle  sets;  racks;  quandles; braces; radical
                           rings},
-      printedkey =       {VK24}
+      printedkey =       {VK25}
     }
 
