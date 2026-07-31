@@ -20,10 +20,10 @@ gap> SkewbraceMList(br);
 
 # More testings
 gap> br := SmallSkewbrace(8,25);;
-gap> IdGroup(UnderlyingAdditiveGroup(br));
-[ 8, 3 ]
-gap> IdGroup(UnderlyingMultiplicativeGroup(br));
-[ 8, 2 ]
+gap> StructureDescription(UnderlyingAdditiveGroup(br));
+"D8"
+gap> StructureDescription(UnderlyingMultiplicativeGroup(br));
+"C4 x C2"
 
 # Check neutral elements
 gap> br:=SmallSkewbrace(27,15);;

@@ -11,10 +11,6 @@ gap> StructureDescription(add);
 gap> mul := UnderlyingMultiplicativeGroup(br);;
 gap> StructureDescription(mul);
 "S3"
-gap> IdGroup(add);
-[ 6, 2 ]
-gap> IdGroup(mul);
-[ 6, 1 ]
 gap> left_ideals := ShallowCopy(LeftIdeals(br));;
 gap> SortBy(left_ideals,Size);
 gap> left_ideals;

@@ -5,10 +5,6 @@ gap> START_TEST("example25.tst");
 gap> br := SmallBrace(6,2);;
 gap> add := UnderlyingAdditiveGroup(br);;
 gap> mul := UnderlyingMultiplicativeGroup(br);;
-gap> IdGroup(add);
-[ 6, 2 ]
-gap> IdGroup(mul);
-[ 6, 2 ]
 gap> StructureDescription(add);
 "C6"
 gap> StructureDescription(mul);
@@ -16,8 +12,8 @@ gap> StructureDescription(mul);
 gap> l := [];;
 gap> for k in [1..NrSmallBraces(6)] do
 > x := SmallBrace(6,k);
-> if IdGroup(UnderlyingAdditiveGroup(x))=IdGroup(add)\
-> and IdGroup(UnderlyingMultiplicativeGroup(x))=IdGroup(mul) then
+> if IsomorphismGroups(UnderlyingAdditiveGroup(x),add)<>fail \
+> and IsomorphismGroups(UnderlyingMultiplicativeGroup(x),mul)<>fail then
 > Add(l,k);
 > fi;
 > od;

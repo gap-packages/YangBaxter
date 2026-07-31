@@ -27,10 +27,10 @@ gap> AllSmallSkewbraces(4,IsTwoSided);
 gap> AllSmallSkewbraces(10,IsTwoSided,false);
 [ <brace of size 10> ]
 gap> AllSmallSkewbraces(8,IsTwoSided,
->      br->IdGroup(UnderlyingAdditiveGroup(br)),[[8,1]]);
+>      br->IsCyclic(UnderlyingAdditiveGroup(br)));
 [ <brace of size 8>, <brace of size 8>, <brace of size 8> ]
 gap> AllSmallSkewbraces(8,IsTwoSided,false,
->      br->IdGroup(UnderlyingAdditiveGroup(br)),[[8,1]] );
+>      br->IsCyclic(UnderlyingAdditiveGroup(br)));
 [ <brace of size 8>, <brace of size 8> ]
 
 # Error messages
