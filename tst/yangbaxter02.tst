@@ -15,7 +15,7 @@ gap> rg := SmallRing(8,10);;
 gap> StructureDescription(AdditiveGroupOfRing(rg));
 "C4 x C2"
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:35-42
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:33-40
 gap> rg := SmallRing(8,11);;
 gap> IsJacobsonRadical(rg);
 true
@@ -23,13 +23,13 @@ gap> rg := SmallRing(8,20);;
 gap> IsJacobsonRadical(rg);
 false
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:61-66
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:56-61
 gap> l := Table(SmallIYB(4,13));;
 gap> t := Table2YB(l);;
 gap> IdCycleSet(YB2CycleSet(t));
 [ 4, 13 ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:79-89
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:72-82
 gap> cs := SmallCycleSet(4,13);;
 gap> yb := CycleSet2YB(cs);;
 gap> Permutations(yb);
@@ -40,18 +40,18 @@ gap> Evaluate(yb, [1,2]);
 gap> Evaluate(yb, [1,3]); 
 [ 4, 2 ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:105-110
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:96-101
 gap> yb := LyubashenkoYB(4, (1,2),(3,4));
 <A set-theoretical solution of size 4>
 gap> Permutations(last);
 [ [ (1,2), (1,2), (1,2), (1,2) ], [ (3,4), (3,4), (3,4), (3,4) ] ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:133-137
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:121-125
 gap> yb := SmallIYB(3,2);;
 gap> Table(yb);
 [ [ [ 1, 1 ], [ 2, 1 ], [ 3, 2 ] ], [ [ 1, 2 ], [ 2, 2 ], [ 3, 1 ] ], [ [ 2, 3 ], [ 1, 3 ], [ 3, 3 ] ] ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:149-158
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:135-144
 gap> cs := SmallCycleSet(4,13);;
 gap> yb := CycleSet2YB(cs);;
 gap> DehornoyClass(yb);
@@ -61,7 +61,7 @@ gap> yb := CycleSet2YB(cs);;
 gap> DehornoyClass(yb);
 4
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:171-196
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:155-180
 gap> cs := SmallCycleSet(4,13);;
 gap> yb := CycleSet2YB(cs);;
 gap> Permutations(yb);
@@ -87,7 +87,7 @@ true
 gap> x3*x1=x4*x3;
 true
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:209-217
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:191-199
 gap> cs := SmallCycleSet(5,10);;
 gap> IdCycleSet(cs);
 [ 5, 10 ]
@@ -96,7 +96,7 @@ gap> yb := CycleSet2YB(cs);;
 gap> IdYB(yb);
 [ 4, 3 ]
 
-# doc/_Chapter_Algebraic_Properties_of_Braces.xml:238-249
+# doc/_Chapter_Algebraic_Properties_of_Braces.xml:217-228
 gap> yb := SmallIYB(5,86);;
 gap> gr := LinearRepresentationOfStructureGroup(yb);;
 gap> gens := GeneratorsOfGroup(gr);;
